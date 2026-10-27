@@ -32,6 +32,16 @@ VENDOR_DEFAULTS: dict[str, dict[str, Any]] = {
         "deny": ["delete_rung"],
         "proxy_tools": [],
     },
+    "outseal": {
+        "prefix": "outseal_",
+        "deny": [],
+        "proxy_tools": [],
+    },
+    "haiwell": {
+        "prefix": "haiwell_",
+        "deny": [],
+        "proxy_tools": [],
+    },
 }
 
 

@@ -16,8 +16,14 @@ obtained and installed by the user under its own license.
   https://github.com/BlackUppsss/Cx-Proggrammer-MCP
   No license file was published in that repository at the time of writing.
 
+The backends in backends/outseal and backends/haiwell are part of this
+repository. They drive Outseal Studio and Haiwell Happy, which the user
+installs separately; neither program is included.
+
 GX Works2, GX Works3 and MELSOFT are trademarks of Mitsubishi Electric.
 TIA Portal and SIMATIC are trademarks of Siemens AG. CX-Programmer, CX-One
-and SYSMAC are trademarks of OMRON Corporation. This project is not
-affiliated with or endorsed by these companies, and grants no rights to
-their software. Users need their own licensed installations.
+and SYSMAC are trademarks of OMRON Corporation. Outseal is a trademark of
+its owner. Haiwell and HaiwellHappy are trademarks of Xiamen Haiwell
+Technology Co., Ltd. This project is not affiliated with or endorsed by
+these companies, and grants no rights to their software. Users need their
+own installations.

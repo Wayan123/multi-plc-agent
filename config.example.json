@@ -20,6 +20,20 @@
       "args": ["${CX_MCP_DIR}\\server.py", "--project", "${CX_PROJECT}", "--allow-write", "--no-auto-reload-cxp"],
       "cwd": "${CX_MCP_DIR}"
     },
+    "outseal": {
+      "vendor": "outseal",
+      "software": "Outseal Studio 3.6",
+      "command": "${GUI_PYTHON}",
+      "args": ["-m", "outseal_mcp", "--allow-write", "--gui-python", "${GUI_PYTHON}"],
+      "cwd": "${MULTIPLC_DIR}\\backends\\outseal"
+    },
+    "haiwell": {
+      "vendor": "haiwell",
+      "software": "Haiwell Happy 2.2.13",
+      "command": "${GUI_PYTHON}",
+      "args": ["-m", "haiwell_mcp", "--allow-write", "--gui-python", "${GUI_PYTHON}"],
+      "cwd": "${MULTIPLC_DIR}\\backends\\haiwell"
+    },
     "gxworks3": {
       "enabled": false,
       "vendor": "mitsubishi",

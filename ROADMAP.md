@@ -39,3 +39,6 @@ GX Works3 will be listed as supported only once that run passes.
 | Omron CP1L / CP1H / CJ2 | The Cx-Proggrammer-MCP file format already works. Address ranges and the instruction set must be added |
 | Omron Sysmac Studio (NJ/NX) | Different tool and project format. No backend known |
 | Siemens TIA Portal V21 | Supported by the backend (`runtime/v21`). Not yet run here |
+| Haiwell: direct `.hwb` block import | File > Import > Program accepts a hand-edited block once its CRC-16/MODBUS section checksums are recomputed (checked on V2.2.13). A full encoder would replace keystroke entry and lift the branch limits |
+| Haiwell: more CPU templates, TON 10 ms/100 ms base, nested branches | Keystroke entry supports TON with 1 s base only and one level of parallel branches |
+| Outseal Studio: upload | Deliberately not exposed: it writes to a board |
