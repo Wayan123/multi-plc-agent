@@ -1,0 +1,31 @@
+{
+  "backends": {
+    "gxworks2": {
+      "vendor": "mitsubishi",
+      "software": "GX Works2 1.580 / 1.635",
+      "command": "${GXWORKS_AGENT_DIR}\\.venv-mcp\\Scripts\\python.exe",
+      "args": ["${GXWORKS_AGENT_DIR}\\scripts\\mcp_entry.py", "--local", "--approval-mode", "ask"],
+      "cwd": "${GXWORKS_AGENT_DIR}"
+    },
+    "tia-portal": {
+      "vendor": "siemens",
+      "software": "TIA Portal V20",
+      "command": "${TIA_MCP_DIR}\\runtime\\v20\\TiaMcpServer.exe",
+      "args": ["--tia-major-version", "20", "--tia-portal-location", "C:\\Program Files\\Siemens\\Automation\\Portal V20"]
+    },
+    "cx-programmer": {
+      "vendor": "omron",
+      "software": "CX-Programmer 9.x (CP1E)",
+      "command": "${CX_MCP_DIR}\\.venv\\Scripts\\python.exe",
+      "args": ["${CX_MCP_DIR}\\server.py", "--project", "${CX_PROJECT}", "--allow-write", "--no-auto-reload-cxp"],
+      "cwd": "${CX_MCP_DIR}"
+    },
+    "gxworks3": {
+      "enabled": false,
+      "vendor": "mitsubishi",
+      "prefix": "mitsubishi_gx3_",
+      "software": "GX Works3 (no backend yet; see ROADMAP.md)",
+      "command": "unsupported"
+    }
+  }
+}

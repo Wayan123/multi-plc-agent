@@ -1,0 +1,19 @@
+[project]
+name = "multi-plc-agent"
+version = "0.1.0"
+description = "One MCP server for Mitsubishi GX Works2, Siemens TIA Portal and Omron CX-Programmer ladder engineering."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+authors = [{ name = "Wayan Dadang" }]
+dependencies = []
+
+[project.scripts]
+multi-plc-agent = "multiplc.__main__:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["multiplc"]

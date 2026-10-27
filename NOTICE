@@ -1,0 +1,23 @@
+multi-plc-agent
+Copyright 2026 Wayan Dadang
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It starts the following separately distributed MCP servers as child
+processes. None of their code is included in this repository; each is
+obtained and installed by the user under its own license.
+
+- gxworks-agent, Apache-2.0
+  https://github.com/Arienax/gxworks-agent (original, Copyright 2026 Arienax)
+  https://github.com/Wayan123/gxworks-agent (fork used for GX Works2 1.580)
+- TIA_Portal_Openness_MCP, MIT, Copyright 2026 bulaofen0036-coder
+  https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP
+- Cx-Proggrammer-MCP, Copyright BlackUppsss
+  https://github.com/BlackUppsss/Cx-Proggrammer-MCP
+  No license file was published in that repository at the time of writing.
+
+GX Works2, GX Works3 and MELSOFT are trademarks of Mitsubishi Electric.
+TIA Portal and SIMATIC are trademarks of Siemens AG. CX-Programmer, CX-One
+and SYSMAC are trademarks of OMRON Corporation. This project is not
+affiliated with or endorsed by these companies, and grants no rights to
+their software. Users need their own licensed installations.
