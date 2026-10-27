@@ -8,12 +8,23 @@ multi-plc-agent does not drive any PLC software by itself. It starts one existin
 
 | Vendor | Software | Backend | How it writes | Verified on |
 | --- | --- | --- | --- | --- |
-| Mitsubishi | GX Works2 1.580 and 1.635 | [Wayan123/gxworks-agent](https://github.com/Wayan123/gxworks-agent) (fork of [Arienax/gxworks-agent](https://github.com/Arienax/gxworks-agent)) | Drives the GX Works2 UI: CSV import of the program and device comments | 1.580.0.1 English UI, FX3U: program and comments imported, export matched |
-| Siemens | TIA Portal V20 / V21 | [bulaofen0036-coder/TIA_Portal_Openness_MCP](https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP) v2.7.8 | Official TIA Openness API, LAD as S7DCL text | V20, S7-1200 1212C: FC + OB1 + tags imported, compile 0 errors / 0 warnings |
+| Mitsubishi | GX Works2 1.580 and 1.635 | [Wayan123/gxworks-agent](https://github.com/Wayan123/gxworks-agent) (fork of [Arienax/gxworks-agent](https://github.com/Arienax/gxworks-agent)) | Drives the GX Works2 UI: CSV import of the program and device comments | 1.580.0.1 English UI, FX3U: program and comments imported, Check Program "No error found" |
+| Siemens | TIA Portal V20 / V21 | [bulaofen0036-coder/TIA_Portal_Openness_MCP](https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP) v2.7.8 | Official TIA Openness API: LAD as S7DCL text, timers/counters as SCL external source | V20, S7-1200 1212C: FB + FC + OB1 + tags imported, compile 0 errors / 0 warnings |
 | Omron | CX-Programmer 9.x, CP1E | [BlackUppsss/Cx-Proggrammer-MCP](https://github.com/BlackUppsss/Cx-Proggrammer-MCP) | Edits `.cxt`/`.cxp` project files directly | 9.75, CP1E-NA: project opened, compile 0 errors / 0 warnings |
-| Mitsubishi | GX Works3 | none yet | — | Not supported, see [ROADMAP.md](ROADMAP.md) |
+| Mitsubishi | GX Works3 | none yet | Planned: ladder editor [Edit] → [Import File] CSV | Not supported. Write path researched, not yet run; see [ROADMAP.md](ROADMAP.md) |
 
 "Verified on" lists only what was actually run. Other CPUs and versions may work, but they have not been tested.
+
+## Demo
+
+The same conveyor specification was written into each tool by the agent through this router: start/stop with E-stop, a 3 s warning horn before the motor starts, and a stop after a batch of 10. The demo then checks the result in the vendor software. The recordings are unedited apart from title cards. Waits are sped up and labelled on screen. Videos are attached to the [v0.1.0 release](https://github.com/Wayan123/multi-plc-agent/releases/tag/v0.1.0):
+
+| Video | Shows |
+| --- | --- |
+| `multi-plc-agent-demo.mp4` (4 min) | All three in sequence |
+| `demo-gxworks2.mp4` | GX Works2 1.580: import 5 rungs + 11 comments, Check Program "No error found" |
+| `demo-cxprogrammer.mp4` | CX-Programmer 9.75: 6 rungs + 9 symbols written to the project file, Compile 0 errors / 0 warnings |
+| `demo-tiaportal.mp4` | TIA Portal V20: 10 tags, SCL timing FB, LAD FC and OB1 calls, Compile 0 errors / 0 warnings |
 
 ## Install (Windows)
 
