@@ -17,14 +17,33 @@ multi-plc-agent does not drive any PLC software by itself. It starts one existin
 
 ## Demo
 
-The same conveyor specification was written into each tool by the agent through this router: start/stop with E-stop, a 3 s warning horn before the motor starts, and a stop after a batch of 10. The demo then checks the result in the vendor software. The recordings are unedited apart from title cards. Waits are sped up and labelled on screen. Videos are attached to the [v0.1.0 release](https://github.com/Wayan123/multi-plc-agent/releases/tag/v0.1.0):
+The agent wrote the same conveyor specification into each tool through this router:
 
-| Video | Shows |
-| --- | --- |
-| `multi-plc-agent-demo.mp4` (4 min) | All three in sequence |
-| `demo-gxworks2.mp4` | GX Works2 1.580: import 5 rungs + 11 comments, Check Program "No error found" |
-| `demo-cxprogrammer.mp4` | CX-Programmer 9.75: 6 rungs + 9 symbols written to the project file, Compile 0 errors / 0 warnings |
-| `demo-tiaportal.mp4` | TIA Portal V20: 10 tags, SCL timing FB, LAD FC and OB1 calls, Compile 0 errors / 0 warnings |
+- start/stop with an E-stop
+- a 3 s warning horn before the motor starts
+- a stop after a batch of 10 products
+
+Each recording is one continuous run: the agent's MCP calls appear in the log window, and the result is then checked in the vendor software. The GIFs play at 1.5× speed. Paths on the development machine are masked.
+
+### Mitsubishi GX Works2 1.580 (FX3U)
+
+The agent imports 5 rungs and 11 device comments into MAIN, and Check Program reports "No error found".
+
+![GX Works2 demo](docs/demo/demo-gxworks2.gif)
+
+### Omron CX-Programmer 9.75 (CP1E-NA)
+
+The agent writes 6 rungs and 9 symbols directly to the `.cxt`/`.cxp` project, which is then opened in CX-Programmer. Compile reports 0 errors and 0 warnings. The desktop is blurred while the agent writes the file, because CX-Programmer is not open yet at that point.
+
+![CX-Programmer demo](docs/demo/demo-cxprogrammer.gif)
+
+### Siemens TIA Portal V20 (S7-1200 1212C)
+
+The agent creates 10 tags, an SCL FB for the timer and counter, a LAD FC and OB1 calls, and compile reports 0 errors and 0 warnings. FC_Conveyor and OB1 are then opened in the editor.
+
+![TIA Portal demo](docs/demo/demo-tiaportal.gif)
+
+Full-length MP4 videos (1080p) are attached to the [v0.1.0 release](https://github.com/Wayan123/multi-plc-agent/releases/tag/v0.1.0): `multi-plc-agent-demo.mp4` (all three, 3 min), `demo-gxworks2.mp4`, `demo-cxprogrammer.mp4` and `demo-tiaportal.mp4`.
 
 ## Install (Windows)
 
