@@ -9,7 +9,7 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 ### Added
 - `--client <name>` prints the MCP registration for VS Code, GitHub Copilot CLI, OpenAI Codex, Cursor, Devin, ZCode, Claude Desktop, Claude Code, Google Antigravity and Gemini CLI. `--client-write` merges it into the client's file, keeps the other settings and saves a `.bak`. A 15-minute tool timeout is set where the client supports one. See [docs/clients.md](docs/clients.md).
 - Backend contract test: every in-repo backend starts over stdio, answers `initialize` and `tools/list` with valid schemas, offers no online, download or upload tools, and refuses writes without `--allow-write`.
-- CI on Windows as well as Linux, a 2 MB file-size and no-video guard, and Dependabot for GitHub Actions.
+- CI on Windows as well as Linux, a 2 MB file-size and no-video guard, and Dependabot for GitHub Actions. The DCO check skips Dependabot's PRs.
 - Indonesian translations in `*.id.md`; the English files are the default.
 
 ### Changed

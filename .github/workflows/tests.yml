@@ -24,7 +24,8 @@ jobs:
       - name: No videos, no files over 2 MB
         run: python3 scripts/check_large_files.py --max-mb 2
   dco:
-    if: github.event_name == 'pull_request'
+    # Dependabot's commits carry no Signed-off-by; they are bot updates, not contributions.
+    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
