@@ -69,7 +69,13 @@ The agent types 7 rungs with network and component comments into the LD editor, 
 
 ![Haiwell Happy demo](docs/demo/demo-haiwell.gif)
 
-Full-length MP4 videos (1080p) are attached to the [releases](https://github.com/Wayan123/multi-plc-agent/releases): `multi-plc-agent-demo.mp4`, `demo-gxworks2.mp4`, `demo-cxprogrammer.mp4` and `demo-tiaportal.mp4` (v0.1.0), and `demo-outseal.mp4` and `demo-haiwell.mp4` (v0.2.0). The CODESYS, Sysmac, Schneider and Delta backends have been verified by tool output; recordings will follow.
+#### CODESYS V3.5 SP21 (CODESYS Control Win V3 x64)
+
+CODESYS runs headless while the agent creates the project, imports the LD program as PLCopen XML and builds it: "Compile complete -- 0 errors, 0 warnings", and the exported logic matches the request. The project is then opened in CODESYS to review PLC_PRG. The headless build is shown at 4× speed.
+
+![CODESYS demo](docs/demo/demo-codesys.gif)
+
+Full-length MP4 videos (1080p) are attached to the [releases](https://github.com/Wayan123/multi-plc-agent/releases): `multi-plc-agent-demo.mp4`, `demo-gxworks2.mp4`, `demo-cxprogrammer.mp4` and `demo-tiaportal.mp4` (v0.1.0), `demo-outseal.mp4` and `demo-haiwell.mp4` (v0.2.0), and `demo-codesys.mp4` (v0.3.0). The Sysmac, Schneider and Delta backends have been verified by tool output; recordings will follow.
 
 ### Install (Windows)
 
@@ -199,7 +205,7 @@ Agen menulis spesifikasi conveyor yang sama ke setiap software lewat router ini:
 - horn peringatan 3 detik sebelum motor jalan
 - berhenti setelah satu batch berisi 10 produk
 
-Setiap rekaman adalah satu kali jalan tanpa potongan: pemanggilan MCP oleh agen muncul di jendela log, lalu hasilnya dicek di software vendor. GIF diputar 1,5× lebih cepat. Path di mesin pengembang disamarkan. GIF dan video lengkap ada di bagian [Demo versi bahasa Inggris](#demo) dan di [halaman release](https://github.com/Wayan123/multi-plc-agent/releases). Backend CODESYS, Sysmac, Schneider, dan Delta sudah diverifikasi lewat output tool; rekamannya menyusul.
+Setiap rekaman adalah satu kali jalan tanpa potongan: pemanggilan MCP oleh agen muncul di jendela log, lalu hasilnya dicek di software vendor. GIF diputar 1,5× lebih cepat. Path di mesin pengembang disamarkan. GIF dan video lengkap ada di bagian [Demo versi bahasa Inggris](#demo) dan di [halaman release](https://github.com/Wayan123/multi-plc-agent/releases), termasuk demo CODESYS (`demo-codesys.mp4`, v0.3.0). Backend Sysmac, Schneider, dan Delta sudah diverifikasi lewat output tool; rekamannya menyusul.
 
 ### Instalasi (Windows)
 

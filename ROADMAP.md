@@ -70,5 +70,5 @@ Ranked by how often they appear in Indonesian and Asian machine building and by 
 | WPLSoft: rung (segment) comments, edge contacts, API instructions, ES2 template | Segment comment record not yet decoded |
 | Haiwell: direct `.hwb` block import | File > Import > Program accepts a hand-edited block once its CRC-16/MODBUS section checksums are recomputed (checked on V2.2.13). A full encoder would replace keystroke entry and lift the branch limits |
 | Haiwell: more CPU templates, TON 10 ms/100 ms base, nested branches | Keystroke entry supports TON with 1 s base only and one level of parallel branches |
-| Demo recordings for CODESYS, Sysmac, Machine Expert - Basic and WPLSoft | Verified by tool output; recordings pending |
+| Demo recordings for Sysmac, Machine Expert - Basic and WPLSoft | Verified by tool output; recordings pending (CODESYS recorded in v0.3.0) |
 | Outseal Studio: upload | Deliberately not exposed: it writes to a board |
