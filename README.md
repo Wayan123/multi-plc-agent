@@ -11,6 +11,44 @@ Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Supported software
 
+### Status
+
+A box is checked only after the tool was run on real software: program written, compile/build with 0 errors, and read-back matched. Unchecked boxes are planned; they get checked in the PR that adds and verifies the backend.
+
+**Supported (9 tools, 7 vendors)**
+
+- [x] Mitsubishi GX Works2 (FX3U)
+- [x] Siemens TIA Portal V20 (S7-1200)
+- [x] Omron CX-Programmer (CP1E)
+- [x] Omron Sysmac Studio (NX/NJ)
+- [x] CODESYS V3.5
+- [x] Schneider EcoStruxure Machine Expert - Basic (M221)
+- [x] Delta WPLSoft (DVP)
+- [x] Outseal Studio (Nano / Mega)
+- [x] Haiwell Happy (C/T/N/H)
+
+**Planned**
+
+- [ ] Mitsubishi GX Works3 (iQ-F / iQ-R): blocked, GX Works3 crashes on the development machine
+- [ ] Siemens TIA Portal V21: backend supports it, not yet run here
+- [ ] Omron CP1L / CP1H / CJ2 in CX-Programmer
+- [ ] Beckhoff TwinCAT 3
+- [ ] Delta ISPSoft
+- [ ] Delta DIADesigner
+- [ ] Schneider EcoStruxure Machine Expert (M241/M251/M262)
+- [ ] Rockwell Connected Components Workbench (Micro800)
+- [ ] Rockwell Studio 5000 (ControlLogix/CompactLogix)
+- [ ] Inovance AutoShop / InoProShop
+- [ ] LS Electric XG5000
+- [ ] Keyence KV Studio
+- [ ] Xinje XDPPro
+- [ ] Panasonic FPWIN GR7
+- [ ] Schneider Control Expert (M340/M580)
+- [ ] ABB Automation Builder
+- [ ] B&R Automation Studio
+
+### Details
+
 | Vendor | Software | Backend | How it writes | Verified on |
 | --- | --- | --- | --- | --- |
 | Mitsubishi | GX Works2 1.580 and 1.635 | [Wayan123/gxworks-agent](https://github.com/Wayan123/gxworks-agent) (fork of [Arienax/gxworks-agent](https://github.com/Arienax/gxworks-agent)) | Drives the GX Works2 UI: CSV import of the program and device comments | 1.580.0.1 English UI, FX3U: program and comments imported, Check Program "No error found" |

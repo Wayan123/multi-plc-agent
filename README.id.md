@@ -10,6 +10,44 @@ Kontribusi sangat diterima: lihat [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Software yang didukung
 
+### Status
+
+Kotak dicentang hanya setelah software benar-benar dijalankan: program ditulis, compile/build 0 error, dan read-back cocok. Kotak yang belum dicentang adalah rencana; kotak itu dicentang di PR yang menambahkan dan memverifikasi backend-nya.
+
+**Sudah didukung (9 software, 7 vendor)**
+
+- [x] Mitsubishi GX Works2 (FX3U)
+- [x] Siemens TIA Portal V20 (S7-1200)
+- [x] Omron CX-Programmer (CP1E)
+- [x] Omron Sysmac Studio (NX/NJ)
+- [x] CODESYS V3.5
+- [x] Schneider EcoStruxure Machine Expert - Basic (M221)
+- [x] Delta WPLSoft (DVP)
+- [x] Outseal Studio (Nano / Mega)
+- [x] Haiwell Happy (C/T/N/H)
+
+**Direncanakan**
+
+- [ ] Mitsubishi GX Works3 (iQ-F / iQ-R): terblokir, GX Works3 crash di mesin pengembang
+- [ ] Siemens TIA Portal V21: didukung backend, belum dijalankan di sini
+- [ ] Omron CP1L / CP1H / CJ2 di CX-Programmer
+- [ ] Beckhoff TwinCAT 3
+- [ ] Delta ISPSoft
+- [ ] Delta DIADesigner
+- [ ] Schneider EcoStruxure Machine Expert (M241/M251/M262)
+- [ ] Rockwell Connected Components Workbench (Micro800)
+- [ ] Rockwell Studio 5000 (ControlLogix/CompactLogix)
+- [ ] Inovance AutoShop / InoProShop
+- [ ] LS Electric XG5000
+- [ ] Keyence KV Studio
+- [ ] Xinje XDPPro
+- [ ] Panasonic FPWIN GR7
+- [ ] Schneider Control Expert (M340/M580)
+- [ ] ABB Automation Builder
+- [ ] B&R Automation Studio
+
+### Rincian
+
 | Vendor | Software | Backend | Cara menulis | Diverifikasi di |
 | --- | --- | --- | --- | --- |
 | Mitsubishi | GX Works2 1.580 dan 1.635 | [Wayan123/gxworks-agent](https://github.com/Wayan123/gxworks-agent) (fork dari [Arienax/gxworks-agent](https://github.com/Arienax/gxworks-agent)) | Mengendalikan UI GX Works2: import CSV program dan komentar device | 1.580.0.1 UI Inggris, FX3U: program dan komentar masuk, Check Program "No error found" |

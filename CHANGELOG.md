@@ -4,6 +4,9 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+### Changed
+- README (English and Indonesian): a **Status** checklist shows supported tools checked and planned tools unchecked. A test keeps it in line with the verified support table and between both languages.
+
 ## [0.5.0] - 2026-10-28
 
 ### Added

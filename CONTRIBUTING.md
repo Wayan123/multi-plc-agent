@@ -45,7 +45,7 @@ A backend is a stdio MCP server under `backends/<vendor>/<vendor>_mcp/`. Copy th
 - Writing requires `--allow-write`. Never overwrite a file without an explicit flag; keep a `.bak`.
 - Tests in `backends/<vendor>/tests/` that run without the vendor software and check behaviour (validation boundaries, codec round-trip, read-back comparison). Don't test wiring or copy strings.
 - Proof in the PR: the conveyor demo spec (start/stop with seal-in, E-stop, 3 s start delay with horn, counter of 10 with reset, batch lamp) written, compiled with 0 errors in the real tool, and read back matching. Paste the outputs.
-- Add the backend to `multiplc/config.py` (`VENDOR_DEFAULTS`), `config.example.json`, the support table in `README.md` (and `README.id.md` if you can) and `ROADMAP.md`. List the tool only under "Verified on" for what you actually ran.
+- Add the backend to `multiplc/config.py` (`VENDOR_DEFAULTS`), `config.example.json`, the support table in `README.md` (and `README.id.md` if you can) and `ROADMAP.md`. List the tool only under "Verified on" for what you actually ran. In the **Status** checklist of both READMEs, move the tool from **Planned** to **Supported** and check its box (`- [x]`) only after that run; a planned tool that isn't listed yet goes under **Planned** unchecked (`- [ ]`).
 
 ## Checks before a PR
 
