@@ -4,6 +4,8 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-28
+
 ### Added
 - `--client all` registers the router in every AI client installed on this PC; `--client list` shows which are installed.
 - `--scope project --project <folder>` writes the entry into a project's own config (`.vscode/mcp.json`, `.cursor/mcp.json`, `.mcp.json`, `.codex/config.toml`, `.devin/mcp_config.json`, `.zcode/config.json`, `.agents/mcp_config.json`, `.gemini/settings.json`, `.github/mcp.json`).
@@ -51,7 +53,8 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 ### Added
 - Router that exposes GX Works2, TIA Portal and CX-Programmer MCP servers as one server, withholds online/download tools by default, and reports backend status through `list_plc_backends`.
 
-[Unreleased]: https://github.com/Wayan123/multi-plc-agent/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/Wayan123/multi-plc-agent/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/Wayan123/multi-plc-agent/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Wayan123/multi-plc-agent/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Wayan123/multi-plc-agent/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/Wayan123/multi-plc-agent/compare/v0.1.0...v0.2.0
