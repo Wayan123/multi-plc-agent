@@ -1,0 +1,31 @@
+name: Bug report / Laporan bug
+description: Something does not work as documented / Sesuatu tidak berjalan sesuai dokumentasi
+labels: [bug]
+body:
+  - type: input
+    id: backend
+    attributes:
+      label: Backend
+      placeholder: codesys / haiwell / tia-portal / ...
+    validations:
+      required: true
+  - type: input
+    id: software
+    attributes:
+      label: Vendor software, version, CPU, UI language / Software vendor, versi, CPU, bahasa UI
+      placeholder: CODESYS V3.5 SP21, Control Win V3 x64, English
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and tool calls / Langkah dan pemanggilan tool
+      description: Remove customer data and secrets. / Hapus data pelanggan dan rahasia.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected vs. actual / Yang diharapkan vs. yang terjadi
+    validations:
+      required: true

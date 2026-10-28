@@ -173,8 +173,8 @@ def serve(server: Server) -> None:
 
     def write(message: dict[str, Any]) -> None:
         with write_lock:
-            sys.stdout.write(json.dumps(message, ensure_ascii=False) + "\n")
-            sys.stdout.flush()
+            sys.stdout.buffer.write((json.dumps(message, ensure_ascii=False) + "\n").encode("utf-8"))
+            sys.stdout.buffer.flush()
 
     for line in stdin:
         line = line.strip()

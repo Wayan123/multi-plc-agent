@@ -1,7 +1,7 @@
 [project]
 name = "multi-plc-agent"
-version = "0.1.0"
-description = "One MCP server for ladder engineering in GX Works2, TIA Portal, CX-Programmer, Outseal Studio and Haiwell Happy."
+version = "0.3.0"
+description = "One MCP server for ladder engineering in GX Works2, TIA Portal, CX-Programmer, Sysmac Studio, CODESYS, Machine Expert - Basic, WPLSoft, Outseal Studio and Haiwell Happy."
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.10"

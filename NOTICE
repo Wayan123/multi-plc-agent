@@ -1,29 +1,75 @@
 multi-plc-agent
-Copyright 2026 Wayan Dadang
+Copyright 2026 Wayan Dadang and multi-plc-agent contributors
 
 This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+Contributors keep their copyright and license their contributions under the
+same terms, certified per commit with the Developer Certificate of Origin
+(see CONTRIBUTING.md).
 
-It starts the following separately distributed MCP servers as child
-processes. None of their code is included in this repository; each is
-obtained and installed by the user under its own license.
+What this repository contains
+-----------------------------
+- The router (multiplc/) and the backends in backends/ (Outseal, Haiwell,
+  CODESYS, Sysmac Studio, Delta WPLSoft, Schneider Machine Expert Basic and
+  any later in-repo backend). All of it is original work of the contributors.
+- Empty project templates saved by a contributor with the vendor tool, with
+  vendor-supplied preset comment texts and local paths removed:
+  backends/haiwell/haiwell_mcp/templates/AT16S0T.gpc (Haiwell Happy V2.2.13),
+  backends/delta/delta_mcp/templates/SS2.dvp (WPLSoft 2.52, DVP-SS2),
+  backends/schneider/schneider_mcp/templates/TM221M16R.smbp (Machine Expert -
+  Basic V1.3, TM221M16R). They contain no program logic, manual text or
+  vendor sample.
+- docs/demo/*.gif: screen recordings made by the contributors of their own
+  test projects running in the vendors' software.
+- Short technical facts needed for interoperability (menu names, file-format
+  field names, numeric command IDs, compiler message texts). No vendor
+  manuals, help files, libraries, DLLs, installers or sample projects are
+  included or redistributed.
 
-- gxworks-agent, Apache-2.0
-  https://github.com/Arienax/gxworks-agent (original, Copyright 2026 Arienax)
+Separately distributed MCP servers
+----------------------------------
+The router can start the following MCP servers as child processes. None of
+their code is included here; each is obtained and installed by the user under
+its own license.
+
+- gxworks-agent, Apache-2.0, Copyright 2026 Arienax
+  https://github.com/Arienax/gxworks-agent (original)
   https://github.com/Wayan123/gxworks-agent (fork used for GX Works2 1.580)
 - TIA_Portal_Openness_MCP, MIT, Copyright 2026 bulaofen0036-coder
   https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP
 - Cx-Proggrammer-MCP, Copyright BlackUppsss
   https://github.com/BlackUppsss/Cx-Proggrammer-MCP
-  No license file was published in that repository at the time of writing.
+  No license was published in that repository when checked (2026-10-28).
+  Without a license, the author keeps all rights; this project only refers to
+  it and does not copy, modify or distribute it. Users must obtain permission
+  from its author for uses beyond what GitHub's terms allow.
 
-The backends in backends/outseal and backends/haiwell are part of this
-repository. They drive Outseal Studio and Haiwell Happy, which the user
-installs separately; neither program is included.
+Vendor software
+---------------
+Every backend requires the user's own, properly licensed installation of the
+vendor software and use within its license terms. This project grants no
+rights to any vendor software, library, file format or documentation.
+Backends use the vendors' official interfaces where they exist (TIA Portal
+Openness, CODESYS ScriptEngine and PLCopen XML import, CSV/text import and
+export, the program's own keyboard commands).
 
-GX Works2, GX Works3 and MELSOFT are trademarks of Mitsubishi Electric.
-TIA Portal and SIMATIC are trademarks of Siemens AG. CX-Programmer, CX-One
-and SYSMAC are trademarks of OMRON Corporation. Outseal is a trademark of
-its owner. Haiwell and HaiwellHappy are trademarks of Xiamen Haiwell
-Technology Co., Ltd. This project is not affiliated with or endorsed by
-these companies, and grants no rights to their software. Users need their
-own installations.
+Trademarks
+----------
+GX Works2, GX Works3 and MELSOFT are trademarks of Mitsubishi Electric
+Corporation. TIA Portal, SIMATIC and STEP 7 are trademarks of Siemens AG.
+CX-Programmer, CX-One, Sysmac and SYSMAC are trademarks of OMRON Corporation.
+CODESYS is a trademark of CODESYS GmbH. EcoStruxure and Machine Expert are
+trademarks of Schneider Electric. WPLSoft, ISPSoft and DIADesigner are
+trademarks of Delta Electronics, Inc. TwinCAT is a trademark of Beckhoff
+Automation GmbH. Haiwell and HaiwellHappy are trademarks of Xiamen Haiwell
+Technology Co., Ltd. Outseal is a trademark of its owner. Other names may be
+trademarks of their respective owners. They are used only to identify the
+software a backend works with. This project is not affiliated with, endorsed
+or sponsored by any of these companies.
+
+No warranty, safety
+-------------------
+As stated in the Apache License, the software is provided "AS IS", without
+warranties or conditions of any kind. Generated PLC logic is a draft that a
+qualified person must review and test before use. It must not be used to
+implement safety functions (emergency stop, guarding, two-hand control and
+the like), which belong in certified safety hardware.

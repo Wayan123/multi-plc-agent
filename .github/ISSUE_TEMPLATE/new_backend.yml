@@ -1,0 +1,32 @@
+name: New PLC software / Software PLC baru
+description: Propose or volunteer a backend / Usulkan atau kerjakan backend baru
+labels: [backend]
+body:
+  - type: input
+    id: software
+    attributes:
+      label: Vendor software and version / Software vendor dan versinya
+      placeholder: Delta ISPSoft 3.19
+    validations:
+      required: true
+  - type: textarea
+    id: path
+    attributes:
+      label: Write path / Cara menulis program
+      description: |
+        Official API, import format (PLCopen XML, CSV, text), or file format? Link public documentation.
+        API resmi, format import (PLCopen XML, CSV, teks), atau format file? Tautkan dokumentasi publik.
+    validations:
+      required: true
+  - type: textarea
+    id: verify
+    attributes:
+      label: How to compile and read back / Cara compile dan membaca balik
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Rules / Aturan
+      options:
+        - label: The approach does not break the vendor's licence terms / Cara ini tidak melanggar ketentuan lisensi vendor
+          required: true
+        - label: I can run it on a licensed installation / Saya bisa menjalankannya di instalasi berlisensi

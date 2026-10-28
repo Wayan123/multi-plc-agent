@@ -1,0 +1,25 @@
+name: tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest==8.3.3
+      - run: python -m pytest tests backends -q -p no:cacheprovider
+  dco:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Every commit is signed off
+        run: |
+          missing=$(git log --format='%H %s%n%b%n--END--' origin/${{ github.base_ref }}..HEAD | awk '/^[0-9a-f]{40} /{c=$1; ok=0} /^Signed-off-by: /{ok=1} /^--END--$/{if(!ok) print c}')
+          if [ -n "$missing" ]; then echo "Commits without Signed-off-by: $missing"; exit 1; fi

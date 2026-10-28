@@ -34,6 +34,34 @@
       "args": ["-m", "haiwell_mcp", "--allow-write", "--gui-python", "${GUI_PYTHON}"],
       "cwd": "${MULTIPLC_DIR}\\backends\\haiwell"
     },
+    "codesys": {
+      "vendor": "codesys",
+      "software": "CODESYS V3.5 SP21",
+      "command": "${GUI_PYTHON}",
+      "args": ["-m", "codesys_mcp", "--allow-write", "--codesys-exe", "C:\\Program Files\\CODESYS 3.5.21.0\\CODESYS\\Common\\CODESYS.exe", "--profile", "CODESYS V3.5 SP21"],
+      "cwd": "${MULTIPLC_DIR}\\backends\\codesys"
+    },
+    "sysmac": {
+      "vendor": "sysmac",
+      "software": "Sysmac Studio 1.47 (NX/NJ)",
+      "command": "${GUI_PYTHON}",
+      "args": ["-m", "sysmac_mcp", "--allow-write", "--gui-python", "${GUI_PYTHON}"],
+      "cwd": "${MULTIPLC_DIR}\\backends\\sysmac"
+    },
+    "schneider": {
+      "vendor": "schneider",
+      "software": "EcoStruxure Machine Expert - Basic 1.3 (M221)",
+      "command": "${GUI_PYTHON}",
+      "args": ["-m", "schneider_mcp", "--allow-write", "--gui-python", "${GUI_PYTHON}"],
+      "cwd": "${MULTIPLC_DIR}\\backends\\schneider"
+    },
+    "delta": {
+      "vendor": "delta",
+      "software": "WPLSoft 2.52 (DVP-ES2/SS2)",
+      "command": "${GUI_PYTHON}",
+      "args": ["-m", "delta_mcp", "--allow-write", "--gui-python", "${GUI_PYTHON}"],
+      "cwd": "${MULTIPLC_DIR}\\backends\\delta"
+    },
     "gxworks3": {
       "enabled": false,
       "vendor": "mitsubishi",

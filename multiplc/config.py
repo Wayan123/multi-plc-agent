@@ -42,6 +42,26 @@ VENDOR_DEFAULTS: dict[str, dict[str, Any]] = {
         "deny": [],
         "proxy_tools": [],
     },
+    "codesys": {
+        "prefix": "codesys_",
+        "deny": [],
+        "proxy_tools": [],
+    },
+    "sysmac": {
+        "prefix": "sysmac_",
+        "deny": [],
+        "proxy_tools": [],
+    },
+    "schneider": {
+        "prefix": "schneider_",
+        "deny": [],
+        "proxy_tools": [],
+    },
+    "delta": {
+        "prefix": "delta_",
+        "deny": [],
+        "proxy_tools": [],
+    },
 }
 
 
