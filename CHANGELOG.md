@@ -4,6 +4,19 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+### Added
+- `--client all` registers the router in every AI client installed on this PC; `--client list` shows which are installed.
+- `--scope project --project <folder>` writes the entry into a project's own config (`.vscode/mcp.json`, `.cursor/mcp.json`, `.mcp.json`, `.codex/config.toml`, `.devin/mcp_config.json`, `.zcode/config.json`, `.agents/mcp_config.json`, `.gemini/settings.json`, `.github/mcp.json`).
+- `--client status` reports where `multi-plc` is registered and exits with 1 when an entry points at a Python that no longer exists.
+- Monthly workflow `client-docs` checks the vendors' MCP config pages (`multiplc/client_sources.json`) and opens an issue when one changes.
+
+### Changed
+- `--client vscode` now writes the VS Code user profile (`%APPDATA%\Code\User\mcp.json`) by default; the workspace file needs `--scope project`.
+- Claude Desktop installed from the Microsoft Store is detected and gets its packaged config file.
+
+### Fixed
+- Entries written from a source checkout failed to start (`No module named multiplc`) because clients launch servers from their own folder. The entry now sets `cwd` or, where the client has no `cwd`, `PYTHONPATH` to the checkout.
+
 ## [0.4.0] - 2026-10-28
 
 ### Added

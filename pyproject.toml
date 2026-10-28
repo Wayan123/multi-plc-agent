@@ -18,5 +18,8 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 packages = ["multiplc"]
 
+[tool.setuptools.package-data]
+multiplc = ["client_sources.json"]
+
 [tool.setuptools.dynamic]
 version = { attr = "multiplc.__version__" }

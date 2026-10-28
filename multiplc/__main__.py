@@ -17,10 +17,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--check", action="store_true",
                         help="start every backend, print status as JSON and exit")
     parser.add_argument("--client", metavar="NAME",
-                        help="print the MCP registration for an AI client (vscode, codex, cursor, claude-code, ...; 'list' for all) and exit")
+                        help="AI client registration: vscode, copilot-cli, codex, cursor, devin, zcode, claude-desktop, "
+                             "claude-code, antigravity, gemini-cli; 'all' = every installed client; "
+                             "'list' = clients and files; 'status' = where multi-plc is registered")
     parser.add_argument("--client-write", action="store_true",
-                        help="with --client: merge the entry into that client's config file (keeps a .bak)")
-    parser.add_argument("--project", help="with --client vscode: project folder for .vscode/mcp.json (default: current folder)")
+                        help="with --client: merge the entry into the client's config file (keeps a .bak)")
+    parser.add_argument("--scope", choices=["user", "project"], default="user",
+                        help="with --client: the user's own config (default) or a project folder's config")
+    parser.add_argument("--project", help="with --scope project: project folder (default: current folder)")
     parser.add_argument("--version", action="version", version=__version__)
     args = parser.parse_args(argv)
     try:
@@ -31,7 +35,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.client:
         from .clients import run as client_run
         try:
-            return client_run(args.config, args.client, args.client_write, args.project)
+            return client_run(args.config, args.client, args.client_write, args.project, scope=args.scope)
         except ValueError as error:
             print(f"multi-plc-agent: {error}", file=sys.stderr)
             return 2

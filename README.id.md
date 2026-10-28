@@ -69,15 +69,17 @@ Perintah ini keluar dengan kode 0 hanya jika semua backend yang aktif berstatus 
 
 ## Menghubungkan client MCP
 
-Router bisa menulis konfigurasi untuk client Anda: VS Code, GitHub Copilot CLI, OpenAI Codex, Cursor, Devin, ZCode, Claude Desktop, Claude Code, Google Antigravity, atau Gemini CLI.
+Router bisa menulis konfigurasi untuk client Anda. Satu entri berlaku untuk versi IDE, CLI, dan desktop dari setiap produk: VS Code (GitHub Copilot), GitHub Copilot CLI, OpenAI Codex (CLI, ekstensi IDE, aplikasi desktop), Cursor (IDE dan CLI), Devin (Desktop dan CLI), ZCode, Claude Desktop, Claude Code (CLI dan ekstensi IDE), Google Antigravity (aplikasi, IDE, dan CLI), dan Gemini CLI.
 
 ```powershell
-multi-plc-agent --config config.json --client list
-multi-plc-agent --config config.json --client claude-code                  # hanya menampilkan
-multi-plc-agent --config config.json --client claude-code --client-write   # menggabungkan ke file client, menyimpan .bak
+multi-plc-agent --config config.json --client list                        # client mana yang terpasang
+multi-plc-agent --config config.json --client all --client-write          # daftarkan di semua client yang terpasang, menyimpan .bak
+multi-plc-agent --config config.json --client claude-code                 # hanya menampilkan satu entri
+multi-plc-agent --config config.json --client cursor --scope project --project C:\work\line1 --client-write
+multi-plc-agent --config config.json --client status                      # di mana sudah terdaftar; kode keluar 1 jika entri usang
 ```
 
-Timeout tool diatur 15 menit pada client yang mendukungnya. File, timeout, dan batasan setiap client ada di [docs/clients.md](docs/clients.md) (bahasa Inggris). Dokumen itu juga menjelaskan mengapa agen cloud tidak bisa dipakai. Untuk client lain, sesuaikan konfigurasi `mcpServers` di [README bahasa Inggris](README.md#connect-an-mcp-client).
+Timeout tool diatur 15 menit pada client yang mendukungnya. File, timeout, dan batasan setiap client ada di [docs/clients.md](docs/clients.md) (bahasa Inggris). Dokumen itu juga menjelaskan mengapa agen cloud tidak bisa dipakai, dan pemeriksaan bulanan bahwa format konfigurasi vendor belum berubah. Untuk client lain, sesuaikan konfigurasi `mcpServers` di [README bahasa Inggris](README.md#connect-an-mcp-client).
 
 Minta agen memanggil `list_plc_backends` lebih dulu. Tool ini mengembalikan status setiap backend, identitas server, jumlah tool yang disajikan, dan tool yang ditahan.
 

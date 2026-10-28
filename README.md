@@ -108,15 +108,17 @@ The command exits with 0 only when every enabled backend reports `running`.
 
 ## Connect an MCP client
 
-The router writes the entry for your client: VS Code, GitHub Copilot CLI, OpenAI Codex, Cursor, Devin, ZCode, Claude Desktop, Claude Code, Google Antigravity or Gemini CLI.
+The router writes the entry for your client. One entry covers the IDE, CLI and desktop versions of each product: VS Code (GitHub Copilot), GitHub Copilot CLI, OpenAI Codex (CLI, IDE extension, desktop app), Cursor (IDE and CLI), Devin (Desktop and CLI), ZCode, Claude Desktop, Claude Code (CLI and IDE extensions), Google Antigravity (app, IDE and CLI) and Gemini CLI.
 
 ```powershell
-multi-plc-agent --config config.json --client list
-multi-plc-agent --config config.json --client claude-code                  # print only
-multi-plc-agent --config config.json --client claude-code --client-write   # merge into the client's file, keeps a .bak
+multi-plc-agent --config config.json --client list                        # which clients are installed
+multi-plc-agent --config config.json --client all --client-write          # register in every installed client, keeps a .bak
+multi-plc-agent --config config.json --client claude-code                 # print one entry only
+multi-plc-agent --config config.json --client cursor --scope project --project C:\work\line1 --client-write
+multi-plc-agent --config config.json --client status                      # where it is registered; exit 1 if an entry is stale
 ```
 
-It sets a 15-minute tool timeout where the client supports one. [docs/clients.md](docs/clients.md) has every client's file, timeout and limits, and explains why cloud agents can't be used. For any other client, adapt this entry:
+It sets a 15-minute tool timeout where the client supports one. [docs/clients.md](docs/clients.md) has every client's files, timeout and limits, explains why cloud agents can't be used, and describes the monthly check that the vendors' formats haven't changed. For any other client, adapt this entry:
 
 ```json
 {

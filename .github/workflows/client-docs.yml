@@ -1,0 +1,36 @@
+name: client-docs
+# Monthly check that the AI clients' MCP config documentation still matches multiplc/clients.py.
+on:
+  schedule:
+    - cron: "17 3 1 * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Fetch vendor pages
+        id: docs
+        run: |
+          set +e
+          python scripts/check_client_docs.py --markdown > report.md
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+          cat report.md
+      - name: Open or update the drift issue
+        if: steps.docs.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Client MCP documentation changed"
+          number=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh issue comment "$number" --body-file report.md
+          else
+            gh issue create --title "$title" --body-file report.md
+          fi

@@ -1,0 +1,16 @@
+{
+  "_comment": "Vendor pages behind multiplc/clients.py. scripts/check_client_docs.py fetches each page monthly (.github/workflows/client-docs.yml) and opens an issue when a page is gone or a marker disappears. Update 'checked' after re-reading a page.",
+  "checked": "2026-10-28",
+  "clients": {
+    "vscode": {"url": "https://code.visualstudio.com/docs/agents/reference/mcp-configuration", "markers": ["\"servers\"", "mcp.json"]},
+    "copilot-cli": {"url": "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers", "markers": ["mcp-config.json"]},
+    "codex": {"url": "https://learn.chatgpt.com/docs/extend/mcp", "markers": ["mcp_servers", "tool_timeout_sec"]},
+    "cursor": {"url": "https://cursor.com/docs/mcp", "markers": ["mcpServers", "mcp.json"]},
+    "devin": {"url": "https://docs.devin.ai/cli/extensibility/mcp/configuration", "markers": ["mcp_config.json"]},
+    "zcode": {"url": "https://zcode.z.ai/en/docs/mcp-services", "markers": [".zcode"]},
+    "claude-desktop": {"url": "https://modelcontextprotocol.io/docs/develop/connect-local-servers", "markers": ["claude_desktop_config.json"]},
+    "claude-code": {"url": "https://code.claude.com/docs/en/mcp", "markers": [".mcp.json", "add-json"]},
+    "antigravity": {"url": "https://antigravity.google/docs/mcp", "markers": ["mcp_config.json", "timeoutSeconds"]},
+    "gemini-cli": {"url": "https://geminicli.com/docs/tools/mcp-server", "markers": ["mcpServers", "timeout"]}
+  }
+}
