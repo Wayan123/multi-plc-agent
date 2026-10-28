@@ -506,7 +506,7 @@ def read_project(path: str | Path) -> dict[str, Any]:
                 "name": r.findtext("Name") or "",
                 "comment": r.findtext("MainComment") or "",
                 "il": [normalize_il(e.findtext("InstructionLine") or "") for e in r.findall("InstructionLines/InstructionLineEntity")],
-                "ladder": r.findtext("IsLadderSelected") == "true" and len(r.find("LadderElements") or []) > 0,
+                "ladder": r.findtext("IsLadderSelected") == "true" and len(r.findall("LadderElements/*")) > 0,
             })
         pous.append({"name": pou.findtext("Name") or "", "rungs": rungs})
     symbols, comments = {}, {}

@@ -16,6 +16,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--config", required=True, help="backends JSON file (see config.example.json)")
     parser.add_argument("--check", action="store_true",
                         help="start every backend, print status as JSON and exit")
+    parser.add_argument("--client", metavar="NAME",
+                        help="print the MCP registration for an AI client (vscode, codex, cursor, claude-code, ...; 'list' for all) and exit")
+    parser.add_argument("--client-write", action="store_true",
+                        help="with --client: merge the entry into that client's config file (keeps a .bak)")
+    parser.add_argument("--project", help="with --client vscode: project folder for .vscode/mcp.json (default: current folder)")
     parser.add_argument("--version", action="version", version=__version__)
     args = parser.parse_args(argv)
     try:
@@ -23,6 +28,13 @@ def main(argv: list[str] | None = None) -> int:
     except ConfigError as error:
         print(f"multi-plc-agent: {error}", file=sys.stderr)
         return 2
+    if args.client:
+        from .clients import run as client_run
+        try:
+            return client_run(args.config, args.client, args.client_write, args.project)
+        except ValueError as error:
+            print(f"multi-plc-agent: {error}", file=sys.stderr)
+            return 2
     router = Router(specs)
     if args.check:
         router.start({"name": "multi-plc-agent-check", "version": __version__})

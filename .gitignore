@@ -6,3 +6,20 @@ config.json
 *.egg-info/
 build/
 dist/
+
+# Media: videos go to the shared Drive folder (docs/media.md), never into Git
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.m4v
+media-for-gdrive/
+
+# Local engineering output and backups
+*.bak
+*.project
+*.gpc.bak
+*.smbp.bak
+*.dvp.bak
+demo.config.json

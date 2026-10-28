@@ -4,14 +4,25 @@ permissions:
   contents: read
 jobs:
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.10", "3.13"]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python }}
       - run: pip install pytest==8.3.3
       - run: python -m pytest tests backends -q -p no:cacheprovider
+  size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No videos, no files over 2 MB
+        run: python3 scripts/check_large_files.py --max-mb 2
   dco:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest

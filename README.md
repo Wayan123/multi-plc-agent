@@ -1,10 +1,7 @@
 # multi-plc-agent
 
-[English](#english) · [Bahasa Indonesia](#bahasa-indonesia)
+*Bahasa Indonesia: [README.id.md](README.id.md)*
 
----
-
-## English
 
 One MCP server that lets an AI agent write ladder logic in many PLC engineering tools: Mitsubishi GX Works2, Siemens TIA Portal, Omron CX-Programmer and Sysmac Studio, CODESYS, Schneider Machine Expert - Basic, Delta WPLSoft, Outseal Studio and Haiwell Happy.
 
@@ -12,7 +9,7 @@ multi-plc-agent starts one MCP server per tool, gives every tool a vendor prefix
 
 Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-### Supported software
+## Supported software
 
 | Vendor | Software | Backend | How it writes | Verified on |
 | --- | --- | --- | --- | --- |
@@ -29,7 +26,7 @@ Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 "Verified on" lists only what was actually run. Other CPUs, versions and UI languages may work, but they have not been tested. Planned tools (Beckhoff TwinCAT, Delta ISPSoft/DIADesigner, Rockwell, Keyence, Inovance, LS and more) are listed in [ROADMAP.md](ROADMAP.md).
 
-### Demo
+## Demo
 
 The agent wrote the same conveyor specification into each tool through this router:
 
@@ -39,45 +36,45 @@ The agent wrote the same conveyor specification into each tool through this rout
 
 Each recording is one continuous run: the agent's MCP calls appear in the log window, and the result is then checked in the vendor software. The GIFs play at 1.5× speed. Paths on the development machine are masked.
 
-#### Mitsubishi GX Works2 1.580 (FX3U)
+### Mitsubishi GX Works2 1.580 (FX3U)
 
 The agent imports 5 rungs and 11 device comments into MAIN, and Check Program reports "No error found".
 
 ![GX Works2 demo](docs/demo/demo-gxworks2.gif)
 
-#### Omron CX-Programmer 9.75 (CP1E-NA)
+### Omron CX-Programmer 9.75 (CP1E-NA)
 
 The agent writes 6 rungs and 9 symbols directly to the `.cxt`/`.cxp` project, which is then opened in CX-Programmer. Compile reports 0 errors and 0 warnings. The desktop is blurred while the agent writes the file, because CX-Programmer is not open yet at that point.
 
 ![CX-Programmer demo](docs/demo/demo-cxprogrammer.gif)
 
-#### Siemens TIA Portal V20 (S7-1200 1212C)
+### Siemens TIA Portal V20 (S7-1200 1212C)
 
 The agent creates 10 tags, an SCL FB for the timer and counter, a LAD FC and OB1 calls, and compile reports 0 errors and 0 warnings. FC_Conveyor and OB1 are then opened in the editor.
 
 ![TIA Portal demo](docs/demo/demo-tiaportal.gif)
 
-#### Outseal Studio 3.6 (Outseal PLC Nano V5)
+### Outseal Studio 3.6 (Outseal PLC Nano V5)
 
 The agent validates 7 rungs for the Nano V5 I/O range, writes the `.plc` file (read back identical), and Outseal Studio's Test reports 0 errors and builds the hex file.
 
 ![Outseal Studio demo](docs/demo/demo-outseal.gif)
 
-#### Haiwell Happy 2.2.13 (AT16S0T/P)
+### Haiwell Happy 2.2.13 (AT16S0T/P)
 
 The agent types 7 rungs with network and component comments into the LD editor, saves, and the IL exported by Haiwell Happy matches the expected IL line for line. Compile reports 0 errors and 0 warnings.
 
 ![Haiwell Happy demo](docs/demo/demo-haiwell.gif)
 
-#### CODESYS V3.5 SP21 (CODESYS Control Win V3 x64)
+### CODESYS V3.5 SP21 (CODESYS Control Win V3 x64)
 
 CODESYS runs headless while the agent creates the project, imports the LD program as PLCopen XML and builds it: "Compile complete -- 0 errors, 0 warnings", and the exported logic matches the request. The project is then opened in CODESYS to review PLC_PRG. The headless build is shown at 4× speed.
 
 ![CODESYS demo](docs/demo/demo-codesys.gif)
 
-Full-length MP4 videos (1080p) are attached to the [releases](https://github.com/Wayan123/multi-plc-agent/releases): `multi-plc-agent-demo.mp4`, `demo-gxworks2.mp4`, `demo-cxprogrammer.mp4` and `demo-tiaportal.mp4` (v0.1.0), `demo-outseal.mp4` and `demo-haiwell.mp4` (v0.2.0), and `demo-codesys.mp4` (v0.3.0). The Sysmac, Schneider and Delta backends have been verified by tool output; recordings will follow.
+Full-length MP4 videos (1080p) are kept on Google Drive, not on GitHub: see [docs/media.md](docs/media.md). The Sysmac, Schneider and Delta backends have been verified by tool output; recordings will follow.
 
-### Install (Windows)
+## Install (Windows)
 
 Install each third-party backend you need by following its own README, then:
 
@@ -109,7 +106,17 @@ multi-plc-agent --config config.json --check
 
 The command exits with 0 only when every enabled backend reports `running`.
 
-### Connect an MCP client
+## Connect an MCP client
+
+The router writes the entry for your client: VS Code, GitHub Copilot CLI, OpenAI Codex, Cursor, Devin, ZCode, Claude Desktop, Claude Code, Google Antigravity or Gemini CLI.
+
+```powershell
+multi-plc-agent --config config.json --client list
+multi-plc-agent --config config.json --client claude-code                  # print only
+multi-plc-agent --config config.json --client claude-code --client-write   # merge into the client's file, keeps a .bak
+```
+
+It sets a 15-minute tool timeout where the client supports one. [docs/clients.md](docs/clients.md) has every client's file, timeout and limits, and explains why cloud agents can't be used. For any other client, adapt this entry:
 
 ```json
 {
@@ -124,7 +131,7 @@ The command exits with 0 only when every enabled backend reports `running`.
 
 Ask the agent to call `list_plc_backends` first. It returns each backend's status, server identity, exposed tool count and the tools that were withheld.
 
-### What is not exposed
+## What is not exposed
 
 | Backend | Withheld by default | Why |
 | --- | --- | --- |
@@ -135,7 +142,7 @@ Ask the agent to call `list_plc_backends` first. It returns each backend's statu
 
 To expose a withheld tool on one backend, add `"allow": ["ToolName"]` to it. To withhold more tools, use `"deny"`.
 
-### Per-backend notes
+## Per-backend notes
 
 - **GX Works2.** Native compile and live ST/FBD sessions still require 1.635.0.1. On 1.580, only Ladder CSV import and export are enabled. Save the project in GX Works2 yourself, because the tool won't save an unnamed project. The 1.580 support lives in the fork; upstream focuses on editing `.gxw` files directly ([Arienax/gxworks-agent#11](https://github.com/Arienax/gxworks-agent/pull/11)).
 - **TIA Portal.** Add your Windows user to the `Siemens TIA Openness` group yourself and sign in again before the first start. Otherwise the server tries to do it through UAC and exits if that fails. TIA Portal asks for Openness access on every connect unless you choose "Yes to all".
@@ -149,11 +156,11 @@ To expose a withheld tool on one backend, add `"allow": ["ToolName"]` to it. To 
 
 Backends that drive a desktop program run one call at a time. Don't run two GUI backends at once on the same desktop.
 
-### Safety
+## Safety
 
 Generated ladder logic is a draft. Review it and test it in a simulator (GX Simulator2, PLCSIM, CX-Simulator, CODESYS Control Win, the M221 simulator, Haiwell Happy's offline simulator) before it reaches equipment. Emergency stop, guarding, two-hand control and overload protection must be implemented by independent safety hardware, not by AI-generated logic.
 
-### Development
+## Development
 
 ```powershell
 py -3 -m pip install pytest
@@ -162,129 +169,10 @@ py -3 -m pytest tests backends -q
 
 The router tests start fake stdio backends. The backend tests check file formats, validation, code generation and read-back comparison. None of them need PLC software. Set `OUTSEAL_SAMPLES` to a folder of Outseal Studio `.plc` files to round-trip them too.
 
-### Contributing
+## Contributing
 
 New backends, verification on other versions and translations are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first: commits need a DCO sign-off (`git commit -s`), and vendor manuals, DLLs, sample projects and customer data must never be committed. Report security issues privately ([SECURITY.md](SECURITY.md)).
 
-### License
+## License
 
 Apache-2.0, see [LICENSE](LICENSE). The GX Works2, TIA Portal and CX-Programmer backends are separate projects under their own licenses, see [NOTICE](NOTICE); this repository does not include or redistribute their code. The backends in `backends/` are part of this repository and under its license. The bundled templates are empty projects saved by a contributor, with vendor preset texts removed. Vendor product names are trademarks of their owners; this project is not affiliated with any vendor, and you need your own licensed installation of each tool.
-
----
-
-## Bahasa Indonesia
-
-Satu server MCP yang membuat agen AI bisa menulis program ladder di banyak software engineering PLC: Mitsubishi GX Works2, Siemens TIA Portal, Omron CX-Programmer dan Sysmac Studio, CODESYS, Schneider Machine Expert - Basic, Delta WPLSoft, Outseal Studio, dan Haiwell Happy.
-
-multi-plc-agent menjalankan satu server MCP per software, memberi setiap tool awalan vendor (`mitsubishi_`, `siemens_`, `omron_`, `sysmac_`, `codesys_`, `schneider_`, `delta_`, `outseal_`, `haiwell_`), lalu menyajikannya sebagai satu server. Setiap backend tetap memakai alur persetujuan dan pemeriksaan keamanannya sendiri. Router menambahkan satu aturan bersama: tool yang bekerja pada PLC yang sedang berjalan atau menghapus isi proyek tidak disajikan. Backend GX Works2, TIA Portal, dan CX-Programmer adalah proyek pihak ketiga; backend lainnya ada di [`backends/`](backends).
-
-Kontribusi sangat diterima: lihat [CONTRIBUTING.md](CONTRIBUTING.md).
-
-### Software yang didukung
-
-| Vendor | Software | Backend | Cara menulis | Diverifikasi di |
-| --- | --- | --- | --- | --- |
-| Mitsubishi | GX Works2 1.580 dan 1.635 | [Wayan123/gxworks-agent](https://github.com/Wayan123/gxworks-agent) (fork dari [Arienax/gxworks-agent](https://github.com/Arienax/gxworks-agent)) | Mengendalikan UI GX Works2: import CSV program dan komentar device | 1.580.0.1 UI Inggris, FX3U: program dan komentar masuk, Check Program "No error found" |
-| Siemens | TIA Portal V20 / V21 | [bulaofen0036-coder/TIA_Portal_Openness_MCP](https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP) v2.7.8 | API resmi TIA Openness: LAD sebagai teks S7DCL, timer/counter sebagai SCL external source | V20, S7-1200 1212C: FB + FC + OB1 + tag masuk, compile 0 error / 0 warning |
-| Omron | CX-Programmer 9.x, CP1E | [BlackUppsss/Cx-Proggrammer-MCP](https://github.com/BlackUppsss/Cx-Proggrammer-MCP) | Mengedit file proyek `.cxt`/`.cxp` langsung | 9.75, CP1E-NA: proyek terbuka, compile 0 error / 0 warning |
-| Omron | Sysmac Studio 1.47 (NX/NJ) | [`backends/sysmac`](backends/sysmac) | Membuat XML IEC 61131-10, mengimpornya lewat Tools > IEC 61131-10 XML > Import dengan UI Automation, build, lalu membaca balik ladder yang tersimpan | 1.47.0.64008, NX1P2-1040DT: 6 rung masuk (program baru dan pengganti), build 0 error / 0 warning, read-back cocok |
-| CODESYS | CODESYS V3.5 SP21 | [`backends/codesys`](backends/codesys) | ScriptEngine resmi tanpa jendela (`--noUI --runscript`): proyek baru, import LD PLCopen XML, build, ekspor balik | 3.5.21.0, Control Win V3 x64: 6 rung, "Compile complete -- 0 errors, 0 warnings", logika hasil ekspor cocok |
-| Schneider | EcoStruxure Machine Expert - Basic 1.3 (M221) | [`backends/schneider`](backends/schneider) | Menulis rung sebagai IL ke proyek XML `.smbp`, lalu compile di software lewat UI Automation (konversi IL → LD oleh software, opsional) | 1.3.0.215, TM221M16R: 6 rung, status "No error", read-back cocok |
-| Delta | WPLSoft 2.52 (DVP-ES2/SS2) | [`backends/delta`](backends/delta) | Menulis word program ke file `.dvp`, lalu menjalankan compile Instruction ⇄ Ladder di WPLSoft dan menyimpan | 2.52, DVP-SS2: 7 rung, 0 error, read-back IL identik |
-| Outseal | Outseal Studio 3.6 (board Nano / Mega) | [`backends/outseal`](backends/outseal) | Menulis file proyek `.plc` langsung, lalu menjalankan Test lewat UI Automation | V.3.6 Beta5, Nano V5: 7 rung, Test 0 error, file hex terbentuk; codec round-trip 18 contoh bawaan |
-| Haiwell | Haiwell Happy 2.2.13 (seri C/T/N/H) | [`backends/haiwell`](backends/haiwell) | Mengetik rung di editor LD dengan shortcut keyboard, lalu ekspor IL dan membandingkannya dengan IL yang diharapkan | V2.2.13.240603, AT16S0T/P: 7 rung, read-back IL identik, compile 0 error / 0 warning |
-| Mitsubishi | GX Works3 | belum ada | Rencana: editor ladder [Edit] → [Import File] CSV | Belum didukung. Di mesin pengembang GX Works3 1.055H crash saat [Project] > [New]; lihat [ROADMAP.md](ROADMAP.md) |
-
-Kolom "Diverifikasi di" hanya berisi yang benar-benar sudah dijalankan. CPU, versi, dan bahasa UI lain mungkin juga jalan, tetapi belum diuji. Software yang direncanakan (Beckhoff TwinCAT, Delta ISPSoft/DIADesigner, Rockwell, Keyence, Inovance, LS, dan lainnya) ada di [ROADMAP.md](ROADMAP.md).
-
-### Demo
-
-Agen menulis spesifikasi conveyor yang sama ke setiap software lewat router ini:
-
-- start/stop dengan E-stop
-- horn peringatan 3 detik sebelum motor jalan
-- berhenti setelah satu batch berisi 10 produk
-
-Setiap rekaman adalah satu kali jalan tanpa potongan: pemanggilan MCP oleh agen muncul di jendela log, lalu hasilnya dicek di software vendor. GIF diputar 1,5× lebih cepat. Path di mesin pengembang disamarkan. GIF dan video lengkap ada di bagian [Demo versi bahasa Inggris](#demo) dan di [halaman release](https://github.com/Wayan123/multi-plc-agent/releases), termasuk demo CODESYS (`demo-codesys.mp4`, v0.3.0). Backend Sysmac, Schneider, dan Delta sudah diverifikasi lewat output tool; rekamannya menyusul.
-
-### Instalasi (Windows)
-
-Pasang setiap backend pihak ketiga yang Anda perlukan sesuai README-nya masing-masing, lalu:
-
-```powershell
-git clone https://github.com/Wayan123/multi-plc-agent.git
-cd multi-plc-agent
-py -3 -m pip install .
-copy config.example.json config.json
-```
-
-Router tidak butuh paket di luar pustaka standar Python (3.10+). Backend di repo ini yang mengendalikan program desktop butuh Python Windows dengan `pywinauto` dan `pywin32` (`py -3 -m pip install pywinauto pywin32`). Backend CODESYS tidak butuh paket tambahan.
-
-Edit `config.json`, atau isi variabel yang dipakainya:
-
-| Variabel | Menunjuk ke |
-| --- | --- |
-| `GXWORKS_AGENT_DIR` | checkout gxworks-agent beserta `.venv-mcp` |
-| `TIA_MCP_DIR` | folder `TIA_MCP_Delivery_v*` hasil ekstrak |
-| `CX_MCP_DIR` | checkout Cx-Proggrammer-MCP beserta `.venv` |
-| `CX_PROJECT` | file `.cxt` yang diedit backend CX-Programmer |
-| `MULTIPLC_DIR` | checkout repo ini (untuk backend di dalam repo) |
-| `GUI_PYTHON` | `python.exe` Windows yang sudah terpasang `pywinauto` dan `pywin32` |
-
-Isi `"enabled": false` untuk backend yang tidak dipakai. Cek bahwa setiap backend bisa berjalan:
-
-```powershell
-multi-plc-agent --config config.json --check
-```
-
-Perintah ini keluar dengan kode 0 hanya jika semua backend yang aktif berstatus `running`.
-
-### Menghubungkan client MCP
-
-Gunakan konfigurasi `mcpServers` yang sama seperti di [versi bahasa Inggris](#connect-an-mcp-client). Minta agen memanggil `list_plc_backends` lebih dulu. Tool ini mengembalikan status setiap backend, identitas server, jumlah tool yang disajikan, dan tool yang ditahan.
-
-### Yang tidak disajikan
-
-| Backend | Ditahan secara default | Alasan |
-| --- | --- | --- |
-| Siemens | `DownloadToPlc`, `GoOnline`, `SetWatchTableModifyValue`, semua `Delete*`, `ClearExports`, `EnsureOpennessUserGroup`, `Doctor` | Menulis ke PLC, menghapus, dan mengubah grup user lewat UAC |
-| Siemens | Nama yang sama lewat `CallTool` | `CallTool` bisa memanggil tool yang tidak terdaftar, jadi router memeriksa nama di dalamnya |
-| Omron CX-Programmer | `delete_rung` | Menghapus |
-| Backend di repo ini | (tidak ada yang perlu ditahan) | Tidak punya tool untuk online, download, atau upload |
-
-Untuk membuka tool yang ditahan di satu backend, tambahkan `"allow": ["NamaTool"]`. Untuk menahan tool lain, pakai `"deny"`.
-
-### Catatan per backend
-
-- **GX Works2.** Compile native dan sesi live ST/FBD tetap butuh 1.635.0.1. Di 1.580 hanya import/ekspor CSV ladder yang aktif. Simpan proyek di GX Works2 sendiri, karena tool tidak menyimpan proyek tanpa nama. Dukungan 1.580 ada di fork; upstream fokus ke pengeditan file `.gxw` langsung ([Arienax/gxworks-agent#11](https://github.com/Arienax/gxworks-agent/pull/11)).
-- **TIA Portal.** Masukkan user Windows Anda ke grup `Siemens TIA Openness` sendiri, lalu login ulang sebelum pertama kali dijalankan. Kalau tidak, server mencoba lewat UAC dan berhenti jika gagal. TIA Portal menanyakan izin Openness setiap kali terhubung, kecuali Anda memilih "Yes to all".
-- **CX-Programmer.** Backend mengedit satu file proyek yang ditentukan `--project`. Tutup proyek di CX-Programmer sebelum agen commit. Jika sedang terbuka, tutup **tanpa menyimpan** lalu buka lagi. Backend ditulis untuk CP1E; pemeriksaan alamat dan instruksinya belum mencakup CP1L, CP1H, CJ, atau CS.
-- **Sysmac Studio.** Backend menjalankan Sysmac dengan `-elevate`, supaya Sysmac tetap di sesi user biasa dan bisa diotomasi (kalau dibuka biasa, Sysmac memulai ulang dirinya sebagai Administrator dan tidak bisa diotomasi lagi). Program ditulis ke proyek yang sedang terbuka, atau dibuatkan proyek NX1P2 jika belum ada. Read-back membaca listing ladder yang disimpan Sysmac (diamati di 1.47). Mapping I/O ke variabel dilakukan sendiri. Sekitar 1 menit per penulisan.
-- **CODESYS.** CODESYS dijalankan tanpa jendela dengan profile yang terpasang (`--profile`, default `CODESYS V3.5 SP21`). Setiap penulisan membuat `.project` baru (file lama hanya diganti dengan `overwrite=true`, dengan cadangan `.bak`). Variabel berupa variabel IEC bernama, opsional dengan alamat `%IX`/`%QX`. Sekitar 30 detik per penulisan. CODESYS 3.5 SP22+ juga punya add-on MCP Server resmi berlisensi; backend ini tidak membutuhkannya.
-- **Machine Expert - Basic.** Mengganti semua rung di POU pertama file `.smbp`. Template bawaan hanya TM221M16R; untuk M221 lain, simpan proyek kosong dari software lalu berikan path-nya. `compile` sekitar 1 menit (2,5 menit dengan `to_ladder`).
-- **WPLSoft.** Mengganti seluruh program di file `.dvp` dan menambahkan komentar device; komentar rung (segment) belum ditulis. Template bawaan hanya DVP-SS2. Menu diklik berdasarkan posisi di dalam jendela WPLSoft, jadi versi atau bahasa UI lain mungkin perlu penyesuaian.
-- **Outseal Studio.** `outseal_write_project` menulis file tanpa GUI; `outseal_compile` membukanya di Outseal Studio lalu menekan Test. Alamat dicek terhadap jumlah I/O board. Backend tidak pernah upload ke board.
-- **Haiwell Happy.** Tidak ada fitur import ladder, jadi `haiwell_write_ladder` mengetik langsung di editor. Jangan memakai keyboard atau mouse selama proses berjalan (sekitar 2 menit untuk 7 rung); proses berhenti jika jendela lain mengambil fokus. Blok program pertama diganti dan cadangan `.bak` disimpan. Didukung: kontak NO/NC, branch paralel (cabang pertama satu kontak, tanpa bertingkat), satu output per rung: OUT, SET, RST, TON (basis 1 detik), CTU. Template bawaan hanya AT16S0T/P; untuk CPU lain buat proyek di Haiwell Happy lalu berikan path-nya.
-
-Backend yang mengendalikan program desktop menjalankan satu panggilan dalam satu waktu. Jangan menjalankan dua backend GUI bersamaan di desktop yang sama.
-
-### Keselamatan
-
-Program ladder hasil AI adalah draf. Review dan uji di simulator (GX Simulator2, PLCSIM, CX-Simulator, CODESYS Control Win, simulator M221, simulator offline Haiwell Happy) sebelum dipakai di mesin. Emergency stop, pengaman (guarding), two-hand control, dan proteksi beban lebih harus ditangani perangkat safety terpisah, bukan oleh logika buatan AI.
-
-### Pengembangan
-
-```powershell
-py -3 -m pip install pytest
-py -3 -m pytest tests backends -q
-```
-
-Test router menjalankan backend stdio tiruan. Test backend memeriksa format file, validasi, pembuatan kode, dan perbandingan read-back. Tidak ada yang membutuhkan software PLC.
-
-### Berkontribusi
-
-Backend baru, verifikasi di versi lain, dan terjemahan sangat diterima. Baca [CONTRIBUTING.md](CONTRIBUTING.md) lebih dulu: commit harus diberi sign-off DCO (`git commit -s`), dan manual vendor, DLL, contoh proyek, serta data pelanggan tidak boleh di-commit. Laporkan masalah keamanan secara privat ([SECURITY.md](SECURITY.md)).
-
-### Lisensi
-
-Apache-2.0, lihat [LICENSE](LICENSE). Backend GX Works2, TIA Portal, dan CX-Programmer adalah proyek terpisah dengan lisensinya sendiri, lihat [NOTICE](NOTICE); repo ini tidak menyertakan atau mendistribusikan kodenya. Backend di `backends/` adalah bagian dari repo ini dan memakai lisensinya. Template bawaan adalah proyek kosong yang disimpan kontributor, dengan teks preset vendor dihapus. Nama produk vendor adalah merek dagang pemiliknya; proyek ini tidak berafiliasi dengan vendor mana pun, dan Anda butuh instalasi berlisensi sendiri untuk setiap software.

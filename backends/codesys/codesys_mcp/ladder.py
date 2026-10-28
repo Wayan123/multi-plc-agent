@@ -396,7 +396,8 @@ def parse_logic(xml_text: str, pou: str) -> list[dict[str, Any]]:
 
     def block_inputs(el: ET.Element) -> dict[str, list[tuple[str, str | None]]]:
         found = {}
-        for v in child(el, "inputVariables") or []:
+        inputs = child(el, "inputVariables")
+        for v in (inputs if inputs is not None else []):
             found[v.get("formalParameter")] = refs_of(child(v, "connectionPointIn"))
         return found
 

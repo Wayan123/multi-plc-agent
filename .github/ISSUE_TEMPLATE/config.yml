@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Security vulnerability / Kerentanan keamanan
+  - name: Security vulnerability
     url: https://github.com/Wayan123/multi-plc-agent/security/advisories/new
-    about: Report privately / Laporkan secara privat
+    about: Report privately
