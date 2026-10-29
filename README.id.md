@@ -163,6 +163,16 @@ Test router menjalankan backend stdio tiruan. Test backend memeriksa format file
 
 Backend baru, verifikasi di versi lain, dan terjemahan sangat diterima. Baca [CONTRIBUTING.md](CONTRIBUTING.md) lebih dulu: commit harus diberi sign-off DCO (`git commit -s`), dan manual vendor, DLL, contoh proyek, serta data pelanggan tidak boleh di-commit. Laporkan masalah keamanan secara privat ([SECURITY.md](SECURITY.md)).
 
+## Dukung proyek ini
+
+multi-plc-agent gratis dan dikelola oleh satu pengembang di Indonesia. Setiap backend baru butuh waktu dengan software vendor dan CPU asli. Kalau proyek ini membantu pekerjaan Anda, Anda bisa mendukungnya:
+
+- [Ko-fi: ko-fi.com/wayan123](https://ko-fi.com/wayan123)
+- Beri bintang di repo dan ceritakan ke engineer otomasi lain
+- Laporkan hasil uji di PLC, versi, atau bahasa UI yang belum diverifikasi
+
+Kontak: Wayan Dadang · [wayandadangunsri@gmail.com](mailto:wayandadangunsri@gmail.com) · [wayan123.github.io](https://wayan123.github.io/) · [LinkedIn](https://www.linkedin.com/in/wayan-dadang-801757116/) · [X @wayandadang](https://x.com/wayandadang) · [Medium](https://medium.com/@wayandadangunsri)
+
 ## Lisensi
 
 Apache-2.0, lihat [LICENSE](LICENSE). Backend GX Works2, TIA Portal, dan CX-Programmer adalah proyek terpisah dengan lisensinya sendiri, lihat [NOTICE](NOTICE); repo ini tidak menyertakan atau mendistribusikan kodenya. Backend di `backends/` adalah bagian dari repo ini dan memakai lisensinya. Template bawaan adalah proyek kosong yang disimpan kontributor, dengan teks preset vendor dihapus. Nama produk vendor adalah merek dagang pemiliknya; proyek ini tidak berafiliasi dengan vendor mana pun, dan Anda butuh instalasi berlisensi sendiri untuk setiap software.

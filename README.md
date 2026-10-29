@@ -213,6 +213,16 @@ The router tests start fake stdio backends. The backend tests check file formats
 
 New backends, verification on other versions and translations are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first: commits need a DCO sign-off (`git commit -s`), and vendor manuals, DLLs, sample projects and customer data must never be committed. Report security issues privately ([SECURITY.md](SECURITY.md)).
 
+## Support the project
+
+multi-plc-agent is free and maintained by one developer in Indonesia. Each new backend needs time with the vendor software and real CPUs. If it saves you work, you can support it:
+
+- [Ko-fi: ko-fi.com/wayan123](https://ko-fi.com/wayan123)
+- Star the repository and tell other automation engineers about it
+- Report a run on a PLC, version or UI language that isn't verified yet
+
+Contact: Wayan Dadang · [wayandadangunsri@gmail.com](mailto:wayandadangunsri@gmail.com) · [wayan123.github.io](https://wayan123.github.io/) · [LinkedIn](https://www.linkedin.com/in/wayan-dadang-801757116/) · [X @wayandadang](https://x.com/wayandadang) · [Medium](https://medium.com/@wayandadangunsri)
+
 ## License
 
 Apache-2.0, see [LICENSE](LICENSE). The GX Works2, TIA Portal and CX-Programmer backends are separate projects under their own licenses, see [NOTICE](NOTICE); this repository does not include or redistribute their code. The backends in `backends/` are part of this repository and under its license. The bundled templates are empty projects saved by a contributor, with vendor preset texts removed. Vendor product names are trademarks of their owners; this project is not affiliated with any vendor, and you need your own licensed installation of each tool.

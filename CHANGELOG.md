@@ -4,6 +4,9 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+### Added
+- Sponsor button (`.github/FUNDING.yml`: Ko-fi plus the maintainer's links) and a **Support the project** section in both READMEs.
+
 ### Changed
 - README (English and Indonesian): a **Status** checklist shows supported tools checked and planned tools unchecked. A test keeps it in line with the verified support table and between both languages.
 
