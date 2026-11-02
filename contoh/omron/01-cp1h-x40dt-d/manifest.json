@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "01-cp1h-x40dt-d",
+  "models": [
+    "CP1H-X40DT-D"
+  ],
+  "programs": [
+    "program.json"
+  ],
+  "artifacts": [
+    {
+      "program": "program.json",
+      "cxt": "mcp/CP1H_X40DT_D_01.cxt",
+      "cxp": "mcp/CP1H_X40DT_D_01.cxp",
+      "verification": "mcp/CP1H_X40DT_D_01.verification.json"
+    }
+  ],
+  "source_refs": [
+    {
+      "id": "omron-w450",
+      "url": "https://files.omron.eu/downloads/latest/manual/en/w450_cp1h_cpu_unit_operation_manual_en.pdf?v=1",
+      "location": "I/O sections4-2/4-3; analog5-5; Serial Gateway5-6 detailed tablespp346-347; AppendixG"
+    },
+    {
+      "id": "omron-w451",
+      "url": "https://files.omron.eu/downloads/latest/manual/en/w451_cp1_cpu_unit_programming_manual_en.pdf?v=1",
+      "location": "CP1 programming and signed comparisons3-6-1; MOV3-7-1"
+    },
+    {
+      "id": "omron-w474",
+      "url": "https://files.omron.eu/downloads/latest/manual/en/w474_cs_cj_nsj-series_plc,_sysmac_one_nsj_series_reference_manual_en.pdf?v=1",
+      "location": "MOVL(498),*(420),/L(431),-L(411),ANDW(034),ORW(035),SWAP(637)"
+    }
+  ],
+  "files": {
+    "README.md": "bd3139bda5323528800535273f3509e678263825bce85072dcb2af9defb35bdb",
+    "mcp/CP1H_X40DT_D_01.cxp": "59c28737672acbf16069a8324a9b4bc9f8175ddc18f099f6aa1077914cbd3926",
+    "mcp/CP1H_X40DT_D_01.cxt": "368285e4a84bc70993c692fb71d96d9ef9754a8fec02534ba2442416998805fa",
+    "mcp/CP1H_X40DT_D_01.verification.json": "60dd6cafd63e50d285e032f0b6308b04fea60c249d0887e8ecb45e381e4d1cca",
+    "program.il": "57541944c615d3eecbccf0c1dec2d205106a260d43ef1fc9f4da7a6f83faf477",
+    "program.json": "9d9cf57683fb579fe855fdc2bfea8c28be292e90ba469169927b4d8c8a156802",
+    "prompt.id.md": "c1fb3838461ff610ad88206c359118d7ad303651aa749cc6b59c5e996e9456b0",
+    "signals.csv": "b17156e756c0523f21ccd3cd8e2b41ff096b7c56ced994a0bc9ce072109b34c3",
+    "verification.json": "d8ec692a2d8364ab1d95ff713bc698f54bd9f245ee4d30870b5ab8788f9a540e"
+  },
+  "verification": {
+    "mcp_write": "passed",
+    "mcp_readback": "identical",
+    "native_compile": "passed",
+    "offline_scenarios_passed": 4,
+    "hardware": "not_run",
+    "cx_simulator": "not_run"
+  }
+}

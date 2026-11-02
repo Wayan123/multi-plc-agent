@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "06-cp2e-n30dt-d-xy-md02",
+  "models": [
+    "CP2E-N30DT-D"
+  ],
+  "programs": [
+    "program.json"
+  ],
+  "artifacts": [
+    {
+      "program": "program.json",
+      "cxt": "mcp/CP2E_N30DT_D_06.cxt",
+      "cxp": "mcp/CP2E_N30DT_D_06.cxp",
+      "verification": "mcp/CP2E_N30DT_D_06.verification.json"
+    }
+  ],
+  "source_refs": [
+    {
+      "id": "omron-w613",
+      "url": "https://assets.omron.eu/downloads/latest/manual/en/w613_cp2e_hardware_users_manual_en.pdf",
+      "location": "CP2E-N hardware model/serial option boards and wiring"
+    },
+    {
+      "id": "omron-w614",
+      "url": "https://assets.omron.eu/downloads/latest/manual/en/w614_cp2e_software_users_manual_en.pdf",
+      "location": "Modbus-RTU Easy Master command/response/status port1D1200/A640"
+    },
+    {
+      "id": "omron-w483",
+      "url": "https://assets.omron.eu/downloads/latest/manual/en/w483_cp1e_cp2e_cpu_unit_instructions_reference_manual_en.pdf",
+      "location": "CP2E instruction support ANDW/ORW/SWAP"
+    },
+    {
+      "id": "xy-md02-distributor",
+      "url": "https://www.sah.rs/media/sah/techdocs/xy-md02-manual.pdf",
+      "location": "Modbus FC04 input registers0001/0002;9600,8N1; clone/OEM not established"
+    }
+  ],
+  "files": {
+    "README.md": "b39221e0433dc6bc5ae5ff60d05b2a2be11830b25e313fa1ed5d33fb284815d0",
+    "mcp/CP2E_N30DT_D_06.cxp": "ea6ac8f5809b970b9303341a1580595e33ae8c4ac66f2064ca529f700c8dce0d",
+    "mcp/CP2E_N30DT_D_06.cxt": "74b7bbb77c24c9b7a28cac8fe395a2b8cea3a2a42dd62fa7d4d3241f980633e4",
+    "mcp/CP2E_N30DT_D_06.verification.json": "13d5370bf86c8f60454617039fe1422a5c493f91e4392f58b13cf8bd9f42428b",
+    "program.il": "fa3e39604b6dcdf33a5793ae1a7c77dad1702ed5e364797c7e29367cbb2540ac",
+    "program.json": "a819ecfdab96875903bd617e31e1dd5a494ef64ca8646f464fa3c921a1d34eea",
+    "prompt.id.md": "45b7696e0f6f54bba0aef9f2063ccba800c1d21d36afaa46d3e36f806a02b20e",
+    "signals.csv": "89a4e48f4131170227d7911d69704575581133963db07e3890eadbec2ba40520",
+    "verification.json": "b6ed42d53703a31a87fbdf6e80fafe406b35923939b96cba08448d81e27e7bd0"
+  },
+  "verification": {
+    "mcp_write": "passed",
+    "mcp_readback": "identical",
+    "native_compile": "passed",
+    "offline_scenarios_passed": 7,
+    "hardware": "not_run",
+    "cx_simulator": "not_run"
+  }
+}

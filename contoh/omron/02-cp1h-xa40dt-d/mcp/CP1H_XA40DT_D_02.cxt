@@ -1,0 +1,185 @@
+CXProgVer:="1.5";
+WrittenByCXPVersion:="9.73";
+FileType:=1;
+Name:="OmronTeachingExample";
+Core:=
+BEGIN
+ CDMPath:="";
+END;
+ResourceCount:=1;
+Resource[0]:=
+BEGIN
+ Name:="ExampleResource";
+ PLC:=
+ BEGIN
+  Name:="ExamplePLC";
+  Config:="[DEV]DEV:CP1H;CPU:XA;CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;UM:UM,0,43008,WORD,RW,1,RAM;";
+ END;
+ GlobalVariables:=
+ BEGIN
+  VariableList:=
+  BEGIN_LIST_$#[1]
+  END_LIST_$#[1];
+  VariableCount:=0;
+ END;
+ Programs:=
+ BEGIN
+  Program[0]:=
+  BEGIN
+   Name:="Main";
+   FileType:=2;
+   LocalVariables:=
+   BEGIN
+    VariableList:=
+    BEGIN_LIST_$#[2]
+    END_LIST_$#[2];
+    VariableCount:=0;
+   END;
+   TaskID:=256;
+   OpStart:=1;
+   Sections:=
+   BEGIN
+    SC:=3;
+    Sec[0]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="Section1";
+     ProgramData:=
+     BEGIN
+      RC:=0;
+     END;
+    END;
+    Sec[1]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="Motor_Prestart_Control";
+     ProgramData:=
+     BEGIN
+      RC:=5;
+      R[0]:=
+      BEGIN
+       Com:="Request seal-in; Stop, permissive loss, and first cycle always override Start and self-hold.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[4]
+'  R0
+LD 0.00
+AND W0.01
+OR W0.00
+AND 0.01
+AND 1.00
+ANDNOT A200.11
+OUT W0.00
+$?St$Bk?_#[4]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[1]:=
+      BEGIN
+       Com:="Arm only after Start is released while ready; clear while the request is active.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[5]
+'  R0
+LDNOT 0.00
+OR W0.01
+AND 0.01
+AND 1.00
+ANDNOT W0.00
+ANDNOT A200.11
+OUT W0.01
+$?St$Bk?_#[5]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[2]:=
+      BEGIN
+       Com:="TIM uses BCD preset 0030 x 0.1 s = 3 s; loss of the request resets the timer.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[6]
+'  R0
+LD W0.00
+TIM 0000 #0030
+$?St$Bk?_#[6]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[3]:=
+      BEGIN
+       Com:="Horn only during prestart; one writer for the physical horn output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[7]
+'  R0
+LD W0.00
+ANDNOT T0000
+OUT 100.00
+$?St$Bk?_#[7]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[4]:=
+      BEGIN
+       Com:="Motor only after the timer completes; one writer for the physical motor output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[8]
+'  R0
+LD W0.00
+AND T0000
+OUT 101.00
+$?St$Bk?_#[8]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+    Sec[2]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="END";
+     ProgramData:=
+     BEGIN
+      RC:=1;
+      R[0]:=
+      BEGIN
+       Com:="";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[3]
+END(001)
+$?St$Bk?_#[3]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+   END;
+  END;
+ END;
+END;

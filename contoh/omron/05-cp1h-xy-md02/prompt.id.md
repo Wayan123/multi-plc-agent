@@ -1,0 +1,11 @@
+# Complete prompt: CP1H-X40DT-D and CP1H-XA40DT-D with XY-MD02
+
+Use the multi-plc-agent repo and the omron_ backend from list_plc_backends. Create new LD only in the 05-cp1h-xy-md02 example folder; do not use the user's active project. Do not go online, download, change the sensor baud/ID, or access physical serial hardware.
+
+Target: CP1H-X40DT-D and CP1H-XA40DT-D, device=CP1H, CPU X or XA according to the variant. Do not select CP1E when the model/template is unavailable. RS485 board slot1; port1 = D32200/A641.*; PLC Setup Serial Gateway, 9600 8N1, timeout0=5s. All these settings are explicit prerequisites, not changes performed by the tool.
+
+For the sensor variant in the SAH XY-MD02 manual, read FC04 wire address 0001, count 2, ID1. Temperature data is signed x10 and humidity x10. Request command bytes 4, CRC added by the PLC. Retain the note that the OEM and response packing have not been tested on an actual unit.
+
+W10.00 enable; one request at a time; 1s interval after completion; do not write the command while busy and do not reset the execution bit. Evaluate owned completion before launch, prioritize error, validate ID/function/error0/byte length5/prefix04. Unpack three byte-stream words with ANDW/SWAP &1/ORW into D100 temperature and D101 humidity. Publish W20.01 data_valid; OFF while waiting, disabled, or in error; store the raw Omron code in D102 and a separate application response/completion validation error in D103, including malformed responses and completion with neither normal nor error flag. Each status bit has exactly one writer. Acknowledge the A-address conflict in the CP1H diagram if the target is CP1H.
+
+Use omron_add_section, omron_insert_rung, omron_validate_project, omron_commit_project(reload_cxp=false), omron_list_rungs for read-back through the router. Save JSON source, IL mnemonics, signals.csv, offline results and correct editor compile evidence if available. Test cold-start busy, stale normal, normal, negative, timeout, exception, malformed format, disable, and completion between scans. Do not equate evaluator results with simulator/hardware. Do not claim compile/hardware passed without actual output. This prompt is a repeatable specification, not a transcript of the old demo prompt.

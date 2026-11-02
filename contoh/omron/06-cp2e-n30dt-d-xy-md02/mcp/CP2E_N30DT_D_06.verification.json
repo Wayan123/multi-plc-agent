@@ -1,0 +1,29 @@
+{
+  "model": "CP2E-N30DT-D",
+  "device": "CP2E-N",
+  "cpu": "N",
+  "seed": "original_text_seed_not_CP1E_template",
+  "mcp_write": "passed",
+  "mcp_readback": "identical",
+  "native_compile": "passed",
+  "native_errors": 0,
+  "native_warnings": 0,
+  "native_compiler": "CX-Programmer 9.75 (9.7.5.6)",
+  "native_unit_check": "1.0 (editor output)",
+  "hardware": "not_run",
+  "cx_simulator": "not_run",
+  "compile_output": [
+    "---------------- PLC: 'ExamplePLC' (PLC Model 'CP2E N' ) ----------------",
+    "Compiling...",
+    "[PLC/Program Name : ExamplePLC/Main]",
+    "[Ladder Section Name : Section1]",
+    "[Ladder Section Name : XY_MD02]",
+    "[Ladder Section Name : END]",
+    "",
+    "ExamplePLC - 0 errors, 0 warnings.",
+    "The programs have been checked with the program check option set to Unit Ver.1.0."
+  ],
+  "program_sha256": "a819ecfdab96875903bd617e31e1dd5a494ef64ca8646f464fa3c921a1d34eea",
+  "cxt_sha256": "74b7bbb77c24c9b7a28cac8fe395a2b8cea3a2a42dd62fa7d4d3241f980633e4",
+  "cxp_sha256": "ea6ac8f5809b970b9303341a1580595e33ae8c4ac66f2064ca529f700c8dce0d"
+}

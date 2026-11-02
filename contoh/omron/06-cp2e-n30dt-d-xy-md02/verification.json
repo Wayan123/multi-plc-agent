@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "example_id": "06-cp2e-n30dt-d-xy-md02",
+  "verified_on": "2026-10-31",
+  "offline_engine": "limited mnemonic model, not Omron compiler/simulator",
+  "programs": [
+    {
+      "program": "program.json",
+      "model": "CP2E-N30DT-D",
+      "scenarios": [
+        {
+          "scenario": "normal_completion_then_disable_marks_last_good_stale",
+          "scans": 5,
+          "passed": true
+        },
+        {
+          "scenario": "signed_negative_temperature_and_nonzero_padding",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "timeout_overrides_normal_flag_preserves_last_good",
+          "scans": 5,
+          "passed": true
+        },
+        {
+          "scenario": "slave_exception_is_not_temperature",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "wrong_byte_count_is_a_format_error",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "wrong_slave_id_cannot_publish",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "busy_at_startup_is_not_cleared_or_overwritten",
+          "scans": 3,
+          "passed": true
+        }
+      ],
+      "native_evidence": "mcp/CP2E_N30DT_D_06.verification.json"
+    }
+  ],
+  "hardware": "not_run",
+  "cx_simulator": "not_run"
+}

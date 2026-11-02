@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "example_id": "03-cp1h-xa-analog",
+  "verified_on": "2026-10-31",
+  "offline_engine": "limited mnemonic model, not Omron compiler/simulator",
+  "programs": [
+    {
+      "program": "program.json",
+      "model": "CP1H-XA40DT-D",
+      "scenarios": [
+        {
+          "scenario": "first_cycle_ready_wait_nominal_endpoints_midpoint",
+          "scans": 5,
+          "passed": true
+        },
+        {
+          "scenario": "signed_output_nominal_clamps_and_input_extended_domain",
+          "scans": 4,
+          "passed": true
+        },
+        {
+          "scenario": "system_error_and_ready_loss_clear_published_values_not_stale",
+          "scans": 6,
+          "passed": true
+        },
+        {
+          "scenario": "current_open_circuit_and_8000_on_each_channel_force_low",
+          "scans": 9,
+          "passed": true
+        }
+      ],
+      "native_evidence": "mcp/CP1H_XA40DT_D_03.verification.json"
+    }
+  ],
+  "hardware": "not_run",
+  "cx_simulator": "not_run"
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "example_id": "07-cp1h-x40dt-d-traffic-light",
+  "offline_engine": "limited mnemonic model, not Omron compiler/simulator",
+  "programs": [
+    {
+      "program": "program.json",
+      "model": "CP1H-X40DT-D",
+      "scenarios": [
+        {
+          "scenario": "startup_retained_phase_and_delay",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "complete_cycle_and_recurrence",
+          "scans": 18,
+          "passed": true
+        },
+        {
+          "scenario": "all_phase_output_exclusivity_and_pedestrian",
+          "scans": 10,
+          "passed": true
+        }
+      ],
+      "native_evidence": "mcp/CP1H_X40DT_D_07.verification.json"
+    }
+  ],
+  "hardware": "not_run",
+  "cx_simulator": "not_run"
+}

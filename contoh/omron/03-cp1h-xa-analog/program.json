@@ -1,0 +1,605 @@
+{
+  "schema_version": 1,
+  "id": "03-cp1h-xa-analog",
+  "model": "CP1H-XA40DT-D",
+  "device": "CP1H",
+  "cpu": "XA",
+  "sections": [
+    {
+      "name": "Analog_Validity",
+      "rungs": [
+        {
+          "comment": "Valid AI0: ready, not first scan/error/#8000.",
+          "instructions": [
+            "LD A434.04",
+            "ANDNOT A315.14",
+            "ANDNOT A200.11",
+            "AND<>(305) 200 #8000",
+            "OUT W0.00"
+          ]
+        },
+        {
+          "comment": "Valid AI1: ready, not first scan/error/#8000; reject open circuit.",
+          "instructions": [
+            "LD A434.04",
+            "ANDNOT A315.14",
+            "ANDNOT A200.11",
+            "AND<>(305) 201 #8000",
+            "ANDNOT A434.01",
+            "OUT W0.01"
+          ]
+        },
+        {
+          "comment": "Valid AI2: ready, not first scan/error/#8000.",
+          "instructions": [
+            "LD A434.04",
+            "ANDNOT A315.14",
+            "ANDNOT A200.11",
+            "AND<>(305) 202 #8000",
+            "OUT W0.02"
+          ]
+        },
+        {
+          "comment": "Valid AI3: ready, not first scan/error/#8000; reject open circuit.",
+          "instructions": [
+            "LD A434.04",
+            "ANDNOT A315.14",
+            "ANDNOT A200.11",
+            "AND<>(305) 203 #8000",
+            "ANDNOT A434.03",
+            "OUT W0.03"
+          ]
+        },
+        {
+          "comment": "All AI channels must be valid to enable both AO channels; a fault on either channel drives both low.",
+          "instructions": [
+            "LD W0.00",
+            "AND W0.01",
+            "AND W0.02",
+            "AND W0.03",
+            "OUT W0.04"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HMI_Input_Publication",
+      "rungs": [
+        {
+          "comment": "Clear the AI0 published value every scan; invalid data does not remain as a valid value.",
+          "instructions": [
+            "LD P_On",
+            "MOV(021) &0 D100"
+          ]
+        },
+        {
+          "comment": "Copy AI0 only when validity is ON.",
+          "instructions": [
+            "LD W0.00",
+            "MOV(021) 200 D100"
+          ]
+        },
+        {
+          "comment": "Clear the AI1 published value every scan; invalid data does not remain as a valid value.",
+          "instructions": [
+            "LD P_On",
+            "MOV(021) &0 D101"
+          ]
+        },
+        {
+          "comment": "Copy AI1 only when validity is ON.",
+          "instructions": [
+            "LD W0.01",
+            "MOV(021) 201 D101"
+          ]
+        },
+        {
+          "comment": "Clear the AI2 published value every scan; invalid data does not remain as a valid value.",
+          "instructions": [
+            "LD P_On",
+            "MOV(021) &0 D102"
+          ]
+        },
+        {
+          "comment": "Copy AI2 only when validity is ON.",
+          "instructions": [
+            "LD W0.02",
+            "MOV(021) 202 D102"
+          ]
+        },
+        {
+          "comment": "Clear the AI3 published value every scan; invalid data does not remain as a valid value.",
+          "instructions": [
+            "LD P_On",
+            "MOV(021) &0 D103"
+          ]
+        },
+        {
+          "comment": "Copy AI3 only when validity is ON.",
+          "instructions": [
+            "LD W0.03",
+            "MOV(021) 203 D103"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AO_Command_Arbitration",
+      "rungs": [
+        {
+          "comment": "Default scratch AO0=0 every scan; startup, fault, or a negative command selects low.",
+          "instructions": [
+            "LD P_On",
+            "MOV(021) &0 D210"
+          ]
+        },
+        {
+          "comment": "Signed AO0 command within nominal 0..6000 is passed through.",
+          "instructions": [
+            "LD W0.04",
+            "AND>=S(327) D200 &0",
+            "AND<=S(317) D200 &6000",
+            "MOV(021) D200 D210"
+          ]
+        },
+        {
+          "comment": "AO0 commands above 6000 are saturated; signed comparison prevents -1 from becoming a positive overrange.",
+          "instructions": [
+            "LD W0.04",
+            "AND>S(322) D200 &6000",
+            "MOV(021) &6000 D210"
+          ]
+        },
+        {
+          "comment": "Default scratch AO1=0 every scan; startup, fault, or a negative command selects low.",
+          "instructions": [
+            "LD P_On",
+            "MOV(021) &0 D211"
+          ]
+        },
+        {
+          "comment": "Signed AO1 command within nominal 0..6000 is passed through.",
+          "instructions": [
+            "LD W0.04",
+            "AND>=S(327) D201 &0",
+            "AND<=S(317) D201 &6000",
+            "MOV(021) D201 D211"
+          ]
+        },
+        {
+          "comment": "AO1 commands above 6000 are saturated; signed comparison prevents -1 from becoming a positive overrange.",
+          "instructions": [
+            "LD W0.04",
+            "AND>S(322) D201 &6000",
+            "MOV(021) &6000 D211"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Final_AO_Writers",
+      "rungs": [
+        {
+          "comment": "Sole CIO210 writer; raw 0 means 0 V.",
+          "instructions": [
+            "LD P_On",
+            "MOV(021) D210 210"
+          ]
+        },
+        {
+          "comment": "Sole CIO211 writer; raw 0 means 4 mA in the normal configuration.",
+          "instructions": [
+            "LD P_On",
+            "MOV(021) D211 211"
+          ]
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "first_cycle_ready_wait_nominal_endpoints_midpoint",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.04": true,
+            "A315.14": false,
+            "A434.01": false,
+            "A434.03": false,
+            "200": 6000,
+            "201": 6000,
+            "202": 6000,
+            "203": 6000,
+            "D200": 6000,
+            "D201": 6000
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "W0.02": false,
+            "W0.03": false,
+            "W0.04": false,
+            "D100": 0,
+            "D101": 0,
+            "D102": 0,
+            "D103": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.04": false
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "W0.02": false,
+            "W0.03": false,
+            "W0.04": false,
+            "D100": 0,
+            "D101": 0,
+            "D102": 0,
+            "D103": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.04": true,
+            "200": 0,
+            "201": 0,
+            "D200": 0
+          },
+          "expect": {
+            "W0.00": true,
+            "W0.01": true,
+            "W0.02": true,
+            "W0.03": true,
+            "W0.04": true,
+            "D100": 0,
+            "D101": 0,
+            "D102": 6000,
+            "D103": 6000,
+            "210": 0,
+            "211": 6000
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "200": 3000,
+            "201": 3000,
+            "202": 3000,
+            "203": 3000,
+            "D200": 3000,
+            "D201": 3000
+          },
+          "expect": {
+            "W0.00": true,
+            "W0.01": true,
+            "W0.02": true,
+            "W0.03": true,
+            "W0.04": true,
+            "D100": 3000,
+            "D101": 3000,
+            "D102": 3000,
+            "D103": 3000,
+            "210": 3000,
+            "211": 3000
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "200": 6000,
+            "201": 6000,
+            "D200": 6000,
+            "D201": 0
+          },
+          "expect": {
+            "D100": 6000,
+            "D101": 6000,
+            "210": 6000,
+            "211": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "signed_output_nominal_clamps_and_input_extended_domain",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.04": true,
+            "A315.14": false,
+            "A434.01": false,
+            "A434.03": false,
+            "200": 65236,
+            "201": 65236,
+            "202": 6300,
+            "203": 6300,
+            "D200": 65535,
+            "D201": 6300
+          },
+          "expect": {}
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {},
+          "expect": {
+            "W0.00": true,
+            "W0.01": true,
+            "W0.02": true,
+            "W0.03": true,
+            "W0.04": true,
+            "D100": 65236,
+            "D101": 65236,
+            "D102": 6300,
+            "D103": 6300,
+            "D210": 0,
+            "D211": 6000,
+            "210": 0,
+            "211": 6000
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D200": 32768,
+            "D201": 32767
+          },
+          "expect": {
+            "210": 0,
+            "211": 6000
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D200": 6001,
+            "D201": 65535
+          },
+          "expect": {
+            "210": 6000,
+            "211": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "system_error_and_ready_loss_clear_published_values_not_stale",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.04": true,
+            "A315.14": false,
+            "A434.01": false,
+            "A434.03": false,
+            "200": 1111,
+            "201": 2222,
+            "202": 3333,
+            "203": 4444,
+            "D200": 5000,
+            "D201": 4000
+          },
+          "expect": {}
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {},
+          "expect": {
+            "D100": 1111,
+            "D101": 2222,
+            "D102": 3333,
+            "D103": 4444,
+            "210": 5000,
+            "211": 4000,
+            "W0.04": true
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A315.14": true
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "W0.02": false,
+            "W0.03": false,
+            "W0.04": false,
+            "D100": 0,
+            "D101": 0,
+            "D102": 0,
+            "D103": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A315.14": false
+          },
+          "expect": {
+            "W0.00": true,
+            "W0.01": true,
+            "W0.02": true,
+            "W0.03": true,
+            "W0.04": true,
+            "D100": 1111,
+            "D101": 2222,
+            "210": 5000,
+            "211": 4000
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.04": false
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "W0.02": false,
+            "W0.03": false,
+            "W0.04": false,
+            "D100": 0,
+            "D101": 0,
+            "D102": 0,
+            "D103": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.04": true
+          },
+          "expect": {
+            "W0.00": true,
+            "W0.01": true,
+            "W0.02": true,
+            "W0.03": true,
+            "W0.04": true,
+            "D103": 4444,
+            "210": 5000,
+            "211": 4000
+          }
+        }
+      ]
+    },
+    {
+      "name": "current_open_circuit_and_8000_on_each_channel_force_low",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.04": true,
+            "A315.14": false,
+            "A434.01": false,
+            "A434.03": false,
+            "200": 1000,
+            "201": 2000,
+            "202": 3000,
+            "203": 4000,
+            "D200": 6000,
+            "D201": 6000
+          },
+          "expect": {}
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {},
+          "expect": {}
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.01": true
+          },
+          "expect": {
+            "W0.00": true,
+            "W0.01": false,
+            "W0.02": true,
+            "W0.03": true,
+            "W0.04": false,
+            "D101": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.01": false,
+            "A434.03": true
+          },
+          "expect": {
+            "W0.01": true,
+            "W0.03": false,
+            "W0.04": false,
+            "D103": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "A434.03": false,
+            "201": 32768
+          },
+          "expect": {
+            "W0.01": false,
+            "D101": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "201": 2000,
+            "203": 32768
+          },
+          "expect": {
+            "W0.03": false,
+            "D103": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "203": 4000,
+            "200": 32768
+          },
+          "expect": {
+            "W0.00": false,
+            "D100": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "200": 1000,
+            "202": 32768
+          },
+          "expect": {
+            "W0.02": false,
+            "D102": 0,
+            "210": 0,
+            "211": 0
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "202": 3000
+          },
+          "expect": {
+            "W0.00": true,
+            "W0.01": true,
+            "W0.02": true,
+            "W0.03": true,
+            "W0.04": true,
+            "210": 6000,
+            "211": 6000
+          }
+        }
+      ]
+    }
+  ]
+}

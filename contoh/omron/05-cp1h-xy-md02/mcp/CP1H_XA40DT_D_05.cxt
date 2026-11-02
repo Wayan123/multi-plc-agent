@@ -1,0 +1,381 @@
+CXProgVer:="1.5";
+WrittenByCXPVersion:="9.73";
+FileType:=1;
+Name:="OmronTeachingExample";
+Core:=
+BEGIN
+ CDMPath:="";
+END;
+ResourceCount:=1;
+Resource[0]:=
+BEGIN
+ Name:="ExampleResource";
+ PLC:=
+ BEGIN
+  Name:="ExamplePLC";
+  Config:="[DEV]DEV:CP1H;CPU:XA;CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;UM:UM,0,43008,WORD,RW,1,RAM;";
+ END;
+ GlobalVariables:=
+ BEGIN
+  VariableList:=
+  BEGIN_LIST_$#[1]
+  END_LIST_$#[1];
+  VariableCount:=0;
+ END;
+ Programs:=
+ BEGIN
+  Program[0]:=
+  BEGIN
+   Name:="Main";
+   FileType:=2;
+   LocalVariables:=
+   BEGIN
+    VariableList:=
+    BEGIN_LIST_$#[2]
+    END_LIST_$#[2];
+    VariableCount:=0;
+   END;
+   TaskID:=256;
+   OpStart:=1;
+   Sections:=
+   BEGIN
+    SC:=3;
+    Sec[0]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="Section1";
+     ProgramData:=
+     BEGIN
+      RC:=0;
+     END;
+    END;
+    Sec[1]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="XY_MD02";
+     ProgramData:=
+     BEGIN
+      RC:=15;
+      R[0]:=
+      BEGIN
+       Com:="Startup: reset application state, never reset the system execution bit";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[4]
+'  R0
+LD A200.11
+MOV(021) #0000 D100
+MOV(021) #0000 D101
+MOV(021) #0000 D102
+MOV(021) #0000 D103
+$?St$Bk?_#[4]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[1]:=
+      BEGIN
+       Com:="Mask byte count without modifying the live response";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[5]
+'  R0
+LD P_On
+ANDW(034) D32254 #FF00 D114
+$?St$Bk?_#[5]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[2]:=
+      BEGIN
+       Com:="Owned completion is evaluated BEFORE any new request";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[6]
+'  R0
+LD W20.00
+ANDNOT A641.00
+ANDNOT A200.11
+OUT W21.00
+$?St$Bk?_#[6]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[3]:=
+      BEGIN
+       Com:="Validate success flags, ID, function, length and byte count";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[7]
+'  R0
+LD W21.00
+AND A641.01
+ANDNOT A641.02
+AND=(300) D32250 #0001
+AND=(300) D32251 #0004
+AND=(300) D32252 #0000
+AND=(300) D32253 #0005
+AND=(300) D114 #0400
+OUT W21.01
+$?St$Bk?_#[7]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[4]:=
+      BEGIN
+       Com:="Completed but not valid: includes protocol shape errors";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[8]
+'  R0
+LD W21.00
+ANDNOT W21.01
+OUT W21.02
+$?St$Bk?_#[8]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[5]:=
+      BEGIN
+       Com:="Preserve raw Omron execution error separately";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[9]
+'  R0
+LD W21.00
+MOV(021) D32252 D102
+$?St$Bk?_#[9]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[6]:=
+      BEGIN
+       Com:="Assemble signed temperature and humidity from fresh scratch bytes";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[10]
+'  R0
+LD W21.01
+ANDW(034) D32254 #00FF D110
+SWAP(637) &1 D110
+ANDW(034) D32255 #FF00 D111
+SWAP(637) &1 D111
+ORW(035) D110 D111 D100
+ANDW(034) D32255 #00FF D112
+SWAP(637) &1 D112
+ANDW(034) D32256 #FF00 D113
+SWAP(637) &1 D113
+ORW(035) D112 D113 D101
+MOV(021) #0000 D103
+$?St$Bk?_#[10]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[7]:=
+      BEGIN
+       Com:="Application response or completion validation error; not an Omron error code";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[11]
+'  R0
+LD W21.02
+ANDNOT A641.02
+MOV(021) #0001 D103
+$?St$Bk?_#[11]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[8]:=
+      BEGIN
+       Com:="A system-reported slave or transport error is not an application validation error";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[12]
+'  R0
+LD W21.02
+AND A641.02
+MOV(021) #0000 D103
+$?St$Bk?_#[12]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[9]:=
+      BEGIN
+       Com:="Wait one second BETWEEN completed requests; do not overlap the 5s system timeout";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[13]
+'  R0
+LD W10.00
+ANDNOT W20.00
+ANDNOT W21.00
+TIM 0001 #0010
+$?St$Bk?_#[13]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[10]:=
+      BEGIN
+       Com:="Start only when application AND system are idle";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[14]
+'  R0
+LD W10.00
+AND T0001
+ANDNOT W20.00
+ANDNOT A641.00
+ANDNOT A200.11
+OUT W21.03
+$?St$Bk?_#[14]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[11]:=
+      BEGIN
+       Com:="FC04 input-register read: wire start 0001 quantity 0002, CRC generated by PLC";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[15]
+'  R0
+LD W21.03
+MOV(021) #0000 D103
+MOV(021) #0001 D32200
+MOV(021) #0004 D32201
+MOV(021) #0004 D32202
+MOV(021) #0001 D32203
+MOV(021) #0002 D32204
+SET A641.00
+$?St$Bk?_#[15]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[12]:=
+      BEGIN
+       Com:="One writer: owned transaction next state";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[16]
+'  R0
+LD W20.00
+ANDNOT W21.00
+OR W21.03
+ANDNOT A200.11
+OUT W20.00
+$?St$Bk?_#[16]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[13]:=
+      BEGIN
+       Com:="One writer: fresh values valid only after success and while enabled";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[17]
+'  R0
+LD W20.01
+OR W21.01
+ANDNOT W21.02
+ANDNOT W21.03
+AND W10.00
+ANDNOT A200.11
+OUT W20.01
+$?St$Bk?_#[17]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[14]:=
+      BEGIN
+       Com:="One writer: retain last failure until next poll";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[18]
+'  R0
+LD W20.02
+OR W21.02
+ANDNOT W21.03
+ANDNOT A200.11
+OUT W20.02
+$?St$Bk?_#[18]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+    Sec[2]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="END";
+     ProgramData:=
+     BEGIN
+      RC:=1;
+      R[0]:=
+      BEGIN
+       Com:="";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[3]
+END(001)
+$?St$Bk?_#[3]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+   END;
+  END;
+ END;
+END;

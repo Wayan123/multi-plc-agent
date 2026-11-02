@@ -1,0 +1,45 @@
+signal,address,type,unit,hmi_access,description
+start_pb,0.00,BOOL,bool,read,NO Start button; ON means pressed.
+stop_ok,0.01,BOOL,bool,read,Normally closed Stop circuit; ON means normal operation permitted.
+spare_input_0_02,0.02,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_03,0.03,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_04,0.04,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_05,0.05,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_06,0.06,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_07,0.07,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_08,0.08,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_09,0.09,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_10,0.10,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_0_11,0.11,BOOL,bool,read,Spare input terminal; not used by ladder.
+permissive_ok,1.00,BOOL,bool,read,Non-safety process permission; ON means process ready.
+spare_input_1_01,1.01,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_02,1.02,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_03,1.03,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_04,1.04,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_05,1.05,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_06,1.06,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_07,1.07,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_08,1.08,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_09,1.09,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_10,1.10,BOOL,bool,read,Spare input terminal; not used by ladder.
+spare_input_1_11,1.11,BOOL,bool,read,Spare input terminal; not used by ladder.
+horn,100.00,BOOL,bool,read,Horn command during three-second prestart.
+spare_output_100_01,100.01,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_100_02,100.02,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_100_03,100.03,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_100_04,100.04,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_100_05,100.05,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_100_06,100.06,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_100_07,100.07,BOOL,bool,read,Spare output terminal; not written by ladder.
+motor,101.00,BOOL,bool,read,Motor contactor command after prestart; not contactor feedback.
+spare_output_101_01,101.01,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_101_02,101.02,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_101_03,101.03,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_101_04,101.04,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_101_05,101.05,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_101_06,101.06,BOOL,bool,read,Spare output terminal; not written by ladder.
+spare_output_101_07,101.07,BOOL,bool,read,Spare output terminal; not written by ladder.
+run_request,W0.00,BOOL,bool,read,Operating request latched by seal-in.
+start_armed,W0.01,BOOL,bool,read,Start released while ready; may accept a new press.
+prestart_done,T0000,BOOL,bool,read,Prestart timer completion flag.
+first_cycle,A200.11,BOOL,bool,read,Read-only flag; ON during first operation cycle.

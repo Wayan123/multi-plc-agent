@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "id": "01-cp1h-x40dt-d",
+  "model": "CP1H-X40DT-D",
+  "device": "CP1H",
+  "cpu": "X",
+  "sections": [
+    {
+      "name": "Motor_Prestart_Control",
+      "rungs": [
+        {
+          "comment": "Request seal-in; Stop, permissive loss, and first cycle always override Start and self-hold.",
+          "instructions": [
+            "LD 0.00",
+            "AND W0.01",
+            "OR W0.00",
+            "AND 0.01",
+            "AND 1.00",
+            "ANDNOT A200.11",
+            "OUT W0.00"
+          ]
+        },
+        {
+          "comment": "Arm only after Start is released while ready; clear while the request is active.",
+          "instructions": [
+            "LDNOT 0.00",
+            "OR W0.01",
+            "AND 0.01",
+            "AND 1.00",
+            "ANDNOT W0.00",
+            "ANDNOT A200.11",
+            "OUT W0.01"
+          ]
+        },
+        {
+          "comment": "TIM uses BCD preset 0030 x 0.1 s = 3 s; loss of the request resets the timer.",
+          "instructions": [
+            "LD W0.00",
+            "TIM 0000 #0030"
+          ]
+        },
+        {
+          "comment": "Horn only during prestart; one writer for the physical horn output.",
+          "instructions": [
+            "LD W0.00",
+            "ANDNOT T0000",
+            "OUT 100.00"
+          ]
+        },
+        {
+          "comment": "Motor only after the timer completes; one writer for the physical motor output.",
+          "instructions": [
+            "LD W0.00",
+            "AND T0000",
+            "OUT 101.00"
+          ]
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "self_hold_3s_stop_priority_release_before_restart",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": false,
+            "0.01": true,
+            "1.00": true
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "100.00": false,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {},
+          "expect": {
+            "W0.01": true
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true
+          },
+          "expect": {
+            "W0.00": true,
+            "W0.01": false,
+            "100.00": true,
+            "101.00": false,
+            "T0000": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": false
+          },
+          "expect": {
+            "W0.00": true,
+            "100.00": true,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 2700,
+          "inputs": {},
+          "expect": {
+            "100.00": true,
+            "101.00": false,
+            "T0000": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {},
+          "expect": {
+            "100.00": false,
+            "101.00": true,
+            "T0000": true
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true,
+            "0.01": false
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "100.00": false,
+            "101.00": false,
+            "T0000": false
+          }
+        },
+        {
+          "dt_ms": 5000,
+          "inputs": {
+            "0.01": true
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "100.00": false,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": false
+          },
+          "expect": {
+            "W0.01": true,
+            "W0.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true
+          },
+          "expect": {
+            "W0.00": true,
+            "100.00": true,
+            "101.00": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "start_held_at_first_cycle_does_not_autostart",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true,
+            "0.01": true,
+            "1.00": true
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "100.00": false,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 4000,
+          "inputs": {},
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "100.00": false,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": false
+          },
+          "expect": {
+            "W0.01": true,
+            "W0.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true
+          },
+          "expect": {
+            "W0.00": true,
+            "100.00": true,
+            "101.00": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "permissive_loss_during_prestart_cancels_and_restarts_full_delay",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": false,
+            "0.01": true,
+            "1.00": true
+          },
+          "expect": {}
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {},
+          "expect": {}
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true
+          },
+          "expect": {
+            "100.00": true,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "1.00": false
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "100.00": false,
+            "101.00": false,
+            "T0000": false
+          }
+        },
+        {
+          "dt_ms": 4000,
+          "inputs": {
+            "1.00": true
+          },
+          "expect": {
+            "W0.00": false,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": false
+          },
+          "expect": {
+            "W0.01": true
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true
+          },
+          "expect": {
+            "100.00": true,
+            "101.00": false,
+            "T0000": false
+          }
+        },
+        {
+          "dt_ms": 2800,
+          "inputs": {
+            "0.00": false
+          },
+          "expect": {
+            "100.00": true,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {},
+          "expect": {
+            "100.00": false,
+            "101.00": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "permissive_loss_while_motor_running_and_simultaneous_stop_start",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": false,
+            "0.01": true,
+            "1.00": true
+          },
+          "expect": {}
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {},
+          "expect": {}
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true
+          },
+          "expect": {}
+        },
+        {
+          "dt_ms": 2900,
+          "inputs": {
+            "0.00": false
+          },
+          "expect": {
+            "101.00": true
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "1.00": false
+          },
+          "expect": {
+            "W0.00": false,
+            "100.00": false,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true,
+            "1.00": true,
+            "0.01": false
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.01": true
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "101.00": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": false
+          },
+          "expect": {
+            "W0.01": true
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "0.00": true,
+            "0.01": false
+          },
+          "expect": {
+            "W0.00": false,
+            "W0.01": false,
+            "100.00": false,
+            "101.00": false
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "example_id": "02-cp1h-xa40dt-d",
+  "verified_on": "2026-10-31",
+  "offline_engine": "limited mnemonic model, not Omron compiler/simulator",
+  "programs": [
+    {
+      "program": "program.json",
+      "model": "CP1H-XA40DT-D",
+      "scenarios": [
+        {
+          "scenario": "self_hold_3s_stop_priority_release_before_restart",
+          "scans": 10,
+          "passed": true
+        },
+        {
+          "scenario": "start_held_at_first_cycle_does_not_autostart",
+          "scans": 4,
+          "passed": true
+        },
+        {
+          "scenario": "permissive_loss_during_prestart_cancels_and_restarts_full_delay",
+          "scans": 9,
+          "passed": true
+        },
+        {
+          "scenario": "permissive_loss_while_motor_running_and_simultaneous_stop_start",
+          "scans": 9,
+          "passed": true
+        }
+      ],
+      "native_evidence": "mcp/CP1H_XA40DT_D_02.verification.json"
+    }
+  ],
+  "hardware": "not_run",
+  "cx_simulator": "not_run"
+}

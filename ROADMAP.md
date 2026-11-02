@@ -63,7 +63,7 @@ Ranked by how often they appear in Indonesian and Asian machine building and by 
 
 | Target | Note |
 | --- | --- |
-| Omron CP1L / CP1H / CJ2 | The Cx-Proggrammer-MCP file format already works. Address ranges and the instruction set must be added. That backend has no published licence; an in-repo Omron CX-Programmer backend would remove the dependency |
+| Omron CP1L / CJ2; wider CP1H / CP2E coverage | CP1H X/XA and CP2E N have [seven original examples, eight MCP/native-compiled projects](contoh/omron/), not blanket instruction/hardware support. Remaining: physical analog/XY-MD02 tests, resolution of CP1H port1 status-bit documentation conflict, broader instructions and an independently licensed in-repo backend; the external backend has no published licence |
 | Siemens TIA Portal V21 | Supported by the backend (`runtime/v21`). Not yet run here |
 | Sysmac Studio: XML export read-back, `.smc2` export, I/O mapping | XML export is licence-gated on the development machine; read-back currently parses the stored listing |
 | Machine Expert - Basic: comparisons, word operations, CTD, more templates | Codec supports bit logic, TON/TOF/TP and CTU only |

@@ -1,0 +1,634 @@
+CXProgVer:="1.5";
+WrittenByCXPVersion:="9.73";
+FileType:=1;
+Name:="OmronTeachingExample";
+Core:=
+BEGIN
+ CDMPath:="";
+END;
+ResourceCount:=1;
+Resource[0]:=
+BEGIN
+ Name:="ExampleResource";
+ PLC:=
+ BEGIN
+  Name:="ExamplePLC";
+  Config:="[DEV]DEV:CP1H;CPU:X;CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;UM:UM,0,43008,WORD,RW,1,RAM;";
+ END;
+ GlobalVariables:=
+ BEGIN
+  VariableList:=
+  BEGIN_LIST_$#[1]
+  END_LIST_$#[1];
+  VariableCount:=0;
+ END;
+ Programs:=
+ BEGIN
+  Program[0]:=
+  BEGIN
+   Name:="Main";
+   FileType:=2;
+   LocalVariables:=
+   BEGIN
+    VariableList:=
+    BEGIN_LIST_$#[2]
+    END_LIST_$#[2];
+    VariableCount:=0;
+   END;
+   TaskID:=256;
+   OpStart:=1;
+   Sections:=
+   BEGIN
+    SC:=3;
+    Sec[0]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="Section1";
+     ProgramData:=
+     BEGIN
+      RC:=0;
+     END;
+    END;
+    Sec[1]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="Traffic_Light";
+     ProgramData:=
+     BEGIN
+      RC:=33;
+      R[0]:=
+      BEGIN
+       Com:="The first scan initializes the initial all-red stage, ignoring the retained D0 value.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[4]
+'  R0
+LD A200.11
+MOV #0000 D0
+$?St$Bk?_#[4]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[1]:=
+      BEGIN
+       Com:="Stage 0 timer: initial all-red, 2 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[5]
+'  R0
+LD= D0 #0000
+TIM 0000 #0020
+$?St$Bk?_#[5]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[2]:=
+      BEGIN
+       Com:="Stage 1 timer: north-south green, 10 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[6]
+'  R0
+LD= D0 #0001
+TIM 0001 #0100
+$?St$Bk?_#[6]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[3]:=
+      BEGIN
+       Com:="Stage 2 timer: north-south yellow, 3 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[7]
+'  R0
+LD= D0 #0002
+TIM 0002 #0030
+$?St$Bk?_#[7]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[4]:=
+      BEGIN
+       Com:="Stage 3 timer: all-red transition, 2 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[8]
+'  R0
+LD= D0 #0003
+TIM 0003 #0020
+$?St$Bk?_#[8]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[5]:=
+      BEGIN
+       Com:="Stage 4 timer: east-west green, 10 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[9]
+'  R0
+LD= D0 #0004
+TIM 0004 #0100
+$?St$Bk?_#[9]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[6]:=
+      BEGIN
+       Com:="Stage 5 timer: east-west yellow, 3 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[10]
+'  R0
+LD= D0 #0005
+TIM 0005 #0030
+$?St$Bk?_#[10]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[7]:=
+      BEGIN
+       Com:="Stage 6 timer: pedestrian transition, 2 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[11]
+'  R0
+LD= D0 #0006
+TIM 0006 #0020
+$?St$Bk?_#[11]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[8]:=
+      BEGIN
+       Com:="Stage 7 timer: pedestrian green, 5 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[12]
+'  R0
+LD= D0 #0007
+TIM 0007 #0050
+$?St$Bk?_#[12]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[9]:=
+      BEGIN
+       Com:="Stage 8 timer: all-red after pedestrian stage, 2 seconds; BCD preset in 0.1-second units.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[13]
+'  R0
+LD= D0 #0008
+TIM 0008 #0020
+$?St$Bk?_#[13]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[10]:=
+      BEGIN
+       Com:="After the stage 0 timer completes, advance to stage 1.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[14]
+'  R0
+LD= D0 #0000
+AND T0000
+MOV #0001 D0
+$?St$Bk?_#[14]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[11]:=
+      BEGIN
+       Com:="After the stage 1 timer completes, advance to stage 2.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[15]
+'  R0
+LD= D0 #0001
+AND T0001
+MOV #0002 D0
+$?St$Bk?_#[15]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[12]:=
+      BEGIN
+       Com:="After the stage 2 timer completes, advance to stage 3.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[16]
+'  R0
+LD= D0 #0002
+AND T0002
+MOV #0003 D0
+$?St$Bk?_#[16]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[13]:=
+      BEGIN
+       Com:="After the stage 3 timer completes, advance to stage 4.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[17]
+'  R0
+LD= D0 #0003
+AND T0003
+MOV #0004 D0
+$?St$Bk?_#[17]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[14]:=
+      BEGIN
+       Com:="After the stage 4 timer completes, advance to stage 5.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[18]
+'  R0
+LD= D0 #0004
+AND T0004
+MOV #0005 D0
+$?St$Bk?_#[18]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[15]:=
+      BEGIN
+       Com:="After the stage 5 timer completes, advance to stage 6.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[19]
+'  R0
+LD= D0 #0005
+AND T0005
+MOV #0006 D0
+$?St$Bk?_#[19]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[16]:=
+      BEGIN
+       Com:="After the stage 6 timer completes, advance to stage 7.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[20]
+'  R0
+LD= D0 #0006
+AND T0006
+MOV #0007 D0
+$?St$Bk?_#[20]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[17]:=
+      BEGIN
+       Com:="After the stage 7 timer completes, advance to stage 8.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[21]
+'  R0
+LD= D0 #0007
+AND T0007
+MOV #0008 D0
+$?St$Bk?_#[21]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[18]:=
+      BEGIN
+       Com:="After the stage 8 timer completes, advance to stage 1.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[22]
+'  R0
+LD= D0 #0008
+AND T0008
+MOV #0001 D0
+$?St$Bk?_#[22]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[19]:=
+      BEGIN
+       Com:="North red output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[23]
+'  R0
+LD<> D0 #0001
+AND<> D0 #0002
+OUT 100.00
+$?St$Bk?_#[23]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[20]:=
+      BEGIN
+       Com:="South red output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[24]
+'  R0
+LD<> D0 #0001
+AND<> D0 #0002
+OUT 100.03
+$?St$Bk?_#[24]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[21]:=
+      BEGIN
+       Com:="North yellow output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[25]
+'  R0
+LD= D0 #0002
+OUT 100.01
+$?St$Bk?_#[25]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[22]:=
+      BEGIN
+       Com:="South yellow output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[26]
+'  R0
+LD= D0 #0002
+OUT 100.04
+$?St$Bk?_#[26]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[23]:=
+      BEGIN
+       Com:="North green output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[27]
+'  R0
+LD= D0 #0001
+OUT 100.02
+$?St$Bk?_#[27]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[24]:=
+      BEGIN
+       Com:="South green output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[28]
+'  R0
+LD= D0 #0001
+OUT 100.05
+$?St$Bk?_#[28]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[25]:=
+      BEGIN
+       Com:="East red output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[29]
+'  R0
+LD<> D0 #0004
+AND<> D0 #0005
+OUT 100.06
+$?St$Bk?_#[29]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[26]:=
+      BEGIN
+       Com:="West red output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[30]
+'  R0
+LD<> D0 #0004
+AND<> D0 #0005
+OUT 101.01
+$?St$Bk?_#[30]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[27]:=
+      BEGIN
+       Com:="East yellow output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[31]
+'  R0
+LD= D0 #0005
+OUT 100.07
+$?St$Bk?_#[31]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[28]:=
+      BEGIN
+       Com:="West yellow output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[32]
+'  R0
+LD= D0 #0005
+OUT 101.02
+$?St$Bk?_#[32]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[29]:=
+      BEGIN
+       Com:="East green output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[33]
+'  R0
+LD= D0 #0004
+OUT 101.00
+$?St$Bk?_#[33]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[30]:=
+      BEGIN
+       Com:="West green output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[34]
+'  R0
+LD= D0 #0004
+OUT 101.03
+$?St$Bk?_#[34]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[31]:=
+      BEGIN
+       Com:="Pedestrian red output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[35]
+'  R0
+LD<> D0 #0007
+OUT 101.04
+$?St$Bk?_#[35]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[32]:=
+      BEGIN
+       Com:="Pedestrian green output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[36]
+'  R0
+LD= D0 #0007
+OUT 101.05
+$?St$Bk?_#[36]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+    Sec[2]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="END";
+     ProgramData:=
+     BEGIN
+      RC:=1;
+      R[0]:=
+      BEGIN
+       Com:="";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[3]
+END(001)
+$?St$Bk?_#[3]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+   END;
+  END;
+ END;
+END;

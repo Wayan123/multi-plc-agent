@@ -1,0 +1,925 @@
+{
+  "schema_version": 1,
+  "id": "07-cp1h-x40dt-d-traffic-light",
+  "model": "CP1H-X40DT-D",
+  "device": "CP1H",
+  "cpu": "X",
+  "sections": [
+    {
+      "name": "Traffic_Light",
+      "rungs": [
+        {
+          "comment": "The first scan initializes the initial all-red stage, ignoring the retained D0 value.",
+          "instructions": [
+            "LD A200.11",
+            "MOV #0000 D0"
+          ]
+        },
+        {
+          "comment": "Stage 0 timer: initial all-red, 2 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0000",
+            "TIM 0000 #0020"
+          ]
+        },
+        {
+          "comment": "Stage 1 timer: north-south green, 10 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0001",
+            "TIM 0001 #0100"
+          ]
+        },
+        {
+          "comment": "Stage 2 timer: north-south yellow, 3 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0002",
+            "TIM 0002 #0030"
+          ]
+        },
+        {
+          "comment": "Stage 3 timer: all-red transition, 2 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0003",
+            "TIM 0003 #0020"
+          ]
+        },
+        {
+          "comment": "Stage 4 timer: east-west green, 10 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0004",
+            "TIM 0004 #0100"
+          ]
+        },
+        {
+          "comment": "Stage 5 timer: east-west yellow, 3 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0005",
+            "TIM 0005 #0030"
+          ]
+        },
+        {
+          "comment": "Stage 6 timer: pedestrian transition, 2 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0006",
+            "TIM 0006 #0020"
+          ]
+        },
+        {
+          "comment": "Stage 7 timer: pedestrian green, 5 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0007",
+            "TIM 0007 #0050"
+          ]
+        },
+        {
+          "comment": "Stage 8 timer: all-red after pedestrian stage, 2 seconds; BCD preset in 0.1-second units.",
+          "instructions": [
+            "LD= D0 #0008",
+            "TIM 0008 #0020"
+          ]
+        },
+        {
+          "comment": "After the stage 0 timer completes, advance to stage 1.",
+          "instructions": [
+            "LD= D0 #0000",
+            "AND T0000",
+            "MOV #0001 D0"
+          ]
+        },
+        {
+          "comment": "After the stage 1 timer completes, advance to stage 2.",
+          "instructions": [
+            "LD= D0 #0001",
+            "AND T0001",
+            "MOV #0002 D0"
+          ]
+        },
+        {
+          "comment": "After the stage 2 timer completes, advance to stage 3.",
+          "instructions": [
+            "LD= D0 #0002",
+            "AND T0002",
+            "MOV #0003 D0"
+          ]
+        },
+        {
+          "comment": "After the stage 3 timer completes, advance to stage 4.",
+          "instructions": [
+            "LD= D0 #0003",
+            "AND T0003",
+            "MOV #0004 D0"
+          ]
+        },
+        {
+          "comment": "After the stage 4 timer completes, advance to stage 5.",
+          "instructions": [
+            "LD= D0 #0004",
+            "AND T0004",
+            "MOV #0005 D0"
+          ]
+        },
+        {
+          "comment": "After the stage 5 timer completes, advance to stage 6.",
+          "instructions": [
+            "LD= D0 #0005",
+            "AND T0005",
+            "MOV #0006 D0"
+          ]
+        },
+        {
+          "comment": "After the stage 6 timer completes, advance to stage 7.",
+          "instructions": [
+            "LD= D0 #0006",
+            "AND T0006",
+            "MOV #0007 D0"
+          ]
+        },
+        {
+          "comment": "After the stage 7 timer completes, advance to stage 8.",
+          "instructions": [
+            "LD= D0 #0007",
+            "AND T0007",
+            "MOV #0008 D0"
+          ]
+        },
+        {
+          "comment": "After the stage 8 timer completes, advance to stage 1.",
+          "instructions": [
+            "LD= D0 #0008",
+            "AND T0008",
+            "MOV #0001 D0"
+          ]
+        },
+        {
+          "comment": "North red output.",
+          "instructions": [
+            "LD<> D0 #0001",
+            "AND<> D0 #0002",
+            "OUT 100.00"
+          ]
+        },
+        {
+          "comment": "South red output.",
+          "instructions": [
+            "LD<> D0 #0001",
+            "AND<> D0 #0002",
+            "OUT 100.03"
+          ]
+        },
+        {
+          "comment": "North yellow output.",
+          "instructions": [
+            "LD= D0 #0002",
+            "OUT 100.01"
+          ]
+        },
+        {
+          "comment": "South yellow output.",
+          "instructions": [
+            "LD= D0 #0002",
+            "OUT 100.04"
+          ]
+        },
+        {
+          "comment": "North green output.",
+          "instructions": [
+            "LD= D0 #0001",
+            "OUT 100.02"
+          ]
+        },
+        {
+          "comment": "South green output.",
+          "instructions": [
+            "LD= D0 #0001",
+            "OUT 100.05"
+          ]
+        },
+        {
+          "comment": "East red output.",
+          "instructions": [
+            "LD<> D0 #0004",
+            "AND<> D0 #0005",
+            "OUT 100.06"
+          ]
+        },
+        {
+          "comment": "West red output.",
+          "instructions": [
+            "LD<> D0 #0004",
+            "AND<> D0 #0005",
+            "OUT 101.01"
+          ]
+        },
+        {
+          "comment": "East yellow output.",
+          "instructions": [
+            "LD= D0 #0005",
+            "OUT 100.07"
+          ]
+        },
+        {
+          "comment": "West yellow output.",
+          "instructions": [
+            "LD= D0 #0005",
+            "OUT 101.02"
+          ]
+        },
+        {
+          "comment": "East green output.",
+          "instructions": [
+            "LD= D0 #0004",
+            "OUT 101.00"
+          ]
+        },
+        {
+          "comment": "West green output.",
+          "instructions": [
+            "LD= D0 #0004",
+            "OUT 101.03"
+          ]
+        },
+        {
+          "comment": "Pedestrian red output.",
+          "instructions": [
+            "LD<> D0 #0007",
+            "OUT 101.04"
+          ]
+        },
+        {
+          "comment": "Pedestrian green output.",
+          "instructions": [
+            "LD= D0 #0007",
+            "OUT 101.05"
+          ]
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "startup_retained_phase_and_delay",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 7
+          },
+          "expect": {
+            "D0": 0,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 1800,
+          "expect": {
+            "D0": 0,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 1,
+            "100.00": false,
+            "100.03": false,
+            "100.01": false,
+            "100.04": false,
+            "100.02": true,
+            "100.05": true,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "complete_cycle_and_recurrence",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 0,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 1900,
+          "expect": {
+            "D0": 1,
+            "100.00": false,
+            "100.03": false,
+            "100.01": false,
+            "100.04": false,
+            "100.02": true,
+            "100.05": true,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 9900,
+          "expect": {
+            "D0": 1,
+            "100.00": false,
+            "100.03": false,
+            "100.01": false,
+            "100.04": false,
+            "100.02": true,
+            "100.05": true,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 2,
+            "100.00": false,
+            "100.03": false,
+            "100.01": true,
+            "100.04": true,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 2900,
+          "expect": {
+            "D0": 2,
+            "100.00": false,
+            "100.03": false,
+            "100.01": true,
+            "100.04": true,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 3,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 1900,
+          "expect": {
+            "D0": 3,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 4,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": false,
+            "101.01": false,
+            "100.07": false,
+            "101.02": false,
+            "101.00": true,
+            "101.03": true,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 9900,
+          "expect": {
+            "D0": 4,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": false,
+            "101.01": false,
+            "100.07": false,
+            "101.02": false,
+            "101.00": true,
+            "101.03": true,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 5,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": false,
+            "101.01": false,
+            "100.07": true,
+            "101.02": true,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 2900,
+          "expect": {
+            "D0": 5,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": false,
+            "101.01": false,
+            "100.07": true,
+            "101.02": true,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 6,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 1900,
+          "expect": {
+            "D0": 6,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 7,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": false,
+            "101.05": true
+          }
+        },
+        {
+          "dt_ms": 4900,
+          "expect": {
+            "D0": 7,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": false,
+            "101.05": true
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 8,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 1900,
+          "expect": {
+            "D0": 8,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 1,
+            "100.00": false,
+            "100.03": false,
+            "100.01": false,
+            "100.04": false,
+            "100.02": true,
+            "100.05": true,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "all_phase_output_exclusivity_and_pedestrian",
+      "scans": [
+        {
+          "dt_ms": 100,
+          "expect": {
+            "D0": 0,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 1
+          },
+          "expect": {
+            "D0": 1,
+            "100.00": false,
+            "100.03": false,
+            "100.01": false,
+            "100.04": false,
+            "100.02": true,
+            "100.05": true,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 2
+          },
+          "expect": {
+            "D0": 2,
+            "100.00": false,
+            "100.03": false,
+            "100.01": true,
+            "100.04": true,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 3
+          },
+          "expect": {
+            "D0": 3,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 4
+          },
+          "expect": {
+            "D0": 4,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": false,
+            "101.01": false,
+            "100.07": false,
+            "101.02": false,
+            "101.00": true,
+            "101.03": true,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 5
+          },
+          "expect": {
+            "D0": 5,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": false,
+            "101.01": false,
+            "100.07": true,
+            "101.02": true,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 6
+          },
+          "expect": {
+            "D0": 6,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 7
+          },
+          "expect": {
+            "D0": 7,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": false,
+            "101.05": true
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 8
+          },
+          "expect": {
+            "D0": 8,
+            "100.00": true,
+            "100.03": true,
+            "100.01": false,
+            "100.04": false,
+            "100.02": false,
+            "100.05": false,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        },
+        {
+          "dt_ms": 100,
+          "inputs": {
+            "D0": 1
+          },
+          "expect": {
+            "D0": 1,
+            "100.00": false,
+            "100.03": false,
+            "100.01": false,
+            "100.04": false,
+            "100.02": true,
+            "100.05": true,
+            "100.06": true,
+            "101.01": true,
+            "100.07": false,
+            "101.02": false,
+            "101.00": false,
+            "101.03": false,
+            "101.04": true,
+            "101.05": false
+          }
+        }
+      ]
+    }
+  ]
+}

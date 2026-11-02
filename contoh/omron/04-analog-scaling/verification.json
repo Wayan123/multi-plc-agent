@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "example_id": "04-analog-scaling",
+  "verified_on": "2026-10-31",
+  "offline_engine": "limited mnemonic model, not Omron compiler/simulator",
+  "programs": [
+    {
+      "program": "program.json",
+      "model": "CP1H-XA40DT-D",
+      "scenarios": [
+        {
+          "scenario": "nominal_endpoints_midpoint_and_32bit_product",
+          "scans": 4,
+          "passed": true
+        },
+        {
+          "scenario": "signed_negative_result_and_division_remainder",
+          "scans": 4,
+          "passed": true
+        },
+        {
+          "scenario": "signed_preclamps_prevent_invalid_math_and_overflow",
+          "scans": 6,
+          "passed": true
+        },
+        {
+          "scenario": "fault_ready_and_open_circuit_clear_output_not_stale",
+          "scans": 9,
+          "passed": true
+        }
+      ],
+      "native_evidence": "mcp/CP1H_XA40DT_D_04.verification.json"
+    }
+  ],
+  "hardware": "not_run",
+  "cx_simulator": "not_run"
+}
