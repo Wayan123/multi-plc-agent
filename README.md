@@ -19,7 +19,7 @@ A box is checked only after the tool was run on real software: program written, 
 
 - [x] Mitsubishi GX Works2 (FX3U)
 - [x] Siemens TIA Portal V20 (S7-1200)
-- [x] Omron CX-Programmer (CP1E; CP1H X/XA and CP2E N via [seven examples](contoh/omron/), hardware not tested)
+- [x] Omron CX-Programmer (CP1E; [CP1H X/XA, CP2E N, CP1L M/L/L10 and CJ2M-CPU31 probes](contoh/omron/cpu-probes/); native verified with local backend corrections, hardware not tested)
 - [x] Omron Sysmac Studio (NX/NJ)
 - [x] CODESYS V3.5
 - [x] Schneider EcoStruxure Machine Expert - Basic (M221)
@@ -31,7 +31,7 @@ A box is checked only after the tool was run on real software: program written, 
 
 - [ ] Mitsubishi GX Works3 (iQ-F / iQ-R): blocked, GX Works3 crashes on the development machine
 - [ ] Siemens TIA Portal V21: backend supports it, not yet run here
-- [ ] Omron CP1L / CJ2 and broader CP1H/CP2E instruction coverage
+- [ ] Omron: remaining CP1L / CJ2 variants and broader instruction/runtime coverage
 - [ ] Beckhoff TwinCAT 3
 - [ ] Delta ISPSoft
 - [ ] Delta DIADesigner
@@ -53,7 +53,7 @@ A box is checked only after the tool was run on real software: program written, 
 | --- | --- | --- | --- | --- |
 | Mitsubishi | GX Works2 1.580 and 1.635 | [Wayan123/gxworks-agent](https://github.com/Wayan123/gxworks-agent) (fork of [Arienax/gxworks-agent](https://github.com/Arienax/gxworks-agent)) | Drives the GX Works2 UI: CSV import of the program and device comments | 1.580.0.1 English UI, FX3U: program and comments imported, Check Program "No error found" |
 | Siemens | TIA Portal V20 / V21 | [bulaofen0036-coder/TIA_Portal_Openness_MCP](https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP) v2.7.8 | Official TIA Openness API: LAD as S7DCL text, timers/counters as SCL external source | V20, S7-1200 1212C: FB + FC + OB1 + tags imported, compile 0 errors / 0 warnings |
-| Omron | CX-Programmer 9.x, CP1E / CP1H X/XA / CP2E N | [BlackUppsss/Cx-Proggrammer-MCP](https://github.com/BlackUppsss/Cx-Proggrammer-MCP) | Edits `.cxt`/`.cxp`; [original examples and guarded MCP loader](contoh/omron/) | 9.75: CP1E-NA plus eight CP1H X/XA/CP2E N example projects, native compile 0 errors / 0 warnings; example instruction read-back identical; no physical PLC/CX-Simulator test |
+| Omron | CX-Programmer 9.x, CP1E / CP1H X/XA / CP2E N / CP1L M/L/L10 / CJ2M-CPU31 | [BlackUppsss/Cx-Proggrammer-MCP](https://github.com/BlackUppsss/Cx-Proggrammer-MCP); local CPU corrections not bundled | Edits `.cxt`/`.cxp`; [original examples and guarded MCP loader](contoh/omron/) | 9.75: previous CP1E/eight teaching projects plus [seven CPU probes](contoh/omron/cpu-probes/), native compile 0 errors / 0 warnings; probes saved/reopened/recompiled and normalized saved-CXP MCP read-back matches; no physical PLC/CX-Simulator test |
 | Omron | Sysmac Studio 1.47 (NX/NJ) | [`backends/sysmac`](backends/sysmac) | Generates IEC 61131-10 XML, imports it with Tools > IEC 61131-10 XML > Import through UI Automation, builds, reads the stored ladder back | 1.47.0.64008, NX1P2-1040DT: 6 rungs imported (new and replaced program), build 0 errors / 0 warnings, read-back matches |
 | CODESYS | CODESYS V3.5 SP21 | [`backends/codesys`](backends/codesys) | Official ScriptEngine, headless (`--noUI --runscript`): new project, PLCopen XML LD import, build, export back | 3.5.21.0, Control Win V3 x64: 6 rungs, "Compile complete -- 0 errors, 0 warnings", exported logic matches |
 | Schneider | EcoStruxure Machine Expert - Basic 1.3 (M221) | [`backends/schneider`](backends/schneider) | Writes the rungs as IL into the `.smbp` XML project, then compiles in the tool through UI Automation (optional IL → LD conversion by the tool) | 1.3.0.215, TM221M16R: 6 rungs, status "No error", read-back matches |
@@ -79,6 +79,14 @@ The [Omron examples guide](contoh/omron/) contains source instructions, CX-Progr
 | [07 — Traffic light](contoh/omron/07-cp1h-x40dt-d-traffic-light/) | CP1H-X40DT-D | Four approaches and a pedestrian phase |
 
 These are educational examples. Native compilation and offline scenarios do **not** establish physical operation or functional safety; see each example's hardware and simulator limitations before use.
+
+Additional [seven CPU instruction probes](contoh/omron/cpu-probes/) cover CP1H
+X/XA, CP2E N, CP1L M/L/L10 and CJ2M-CPU31. Each has a ready native CXP project,
+compiler output, source-pinned saved-project MCP read-back and a privacy-reviewed
+GIF of two actual native step captures. All compiled with **0 errors / 0 warnings**;
+none was run in CX-Simulator or on hardware. Rebuilding through MCP requires the
+documented local external-backend corrections; opening the supplied projects does
+not. Other variants and broader runtime coverage remain planned.
 
 ## Demo
 

@@ -38,6 +38,15 @@ python3 -m unittest discover -s tests -p test_omron_examples.py -v
 
 The offline model rejects unsupported opcodes. Timers use a discrete 100 ms model; auxiliary inputs, analog data and gateway responses are supplied as stimuli. This tests logic and arithmetic, not physical scan timing, the Modbus driver, UART, PLC-calculated CRC, ADC/DAC, firmware or safety.
 
+The [2026-11-02 CPU validation record](../../docs/operations/omron-cpu-validation.md)
+documents local CPU/interval corrections and [seven additional instruction probes](cpu-probes/)
+for CP1H X/XA, CP2E N, CP1L M/L/L10 and CJ2M-CPU31. All seven passed native compile
+with 0 errors/0 warnings, save/reopen/recompile and matching saved-CXP MCP
+read-back. Ready CXP projects, compiler output and actual native step GIFs are
+included. They remain separate from the seven teaching-case manifests and HMI
+bindings. Runtime behavior is unverified and the external backend corrections are
+not redistributed.
+
 ## Rebuilding through the installed MCP
 
 Prepare Windows with a licensed CX-Programmer and the external Omron backend already installed. This repo does not include an unlicensed implementation of the external backend. Use your local router configuration; do not commit machine paths/credentials. The following command uses placeholder paths that **must be replaced**:

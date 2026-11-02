@@ -1,0 +1,9 @@
+---------------- PLC: 'ExamplePLC' (PLC Model 'CP1H X' ) ----------------
+Compiling...
+[PLC/Program Name : ExamplePLC/Main]
+[Ladder Section Name : Section1]
+[Ladder Section Name : Instruction_Probe]
+[Ladder Section Name : END]
+
+ExamplePLC - 0 errors, 0 warnings.
+The programs have been checked with the program check option set to Unit Ver.1.3.

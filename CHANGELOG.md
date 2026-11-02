@@ -5,6 +5,7 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 ## [Unreleased]
 
 ### Added
+- Seven original [Omron CPU instruction probes](contoh/omron/cpu-probes/) for CP1H X/XA, CP2E N, CP1L M/L/L10 and CJ2M-CPU31, with explicit variant profiles, ready native CXP projects, decoded CXT references, exact compiler output and privacy-reviewed native step GIFs. Each passed CX-Programmer 9.75 compile (0 errors/0 warnings), save/reopen/recompile and fresh saved-CXP MCP instruction read-back. No simulator/hardware result is claimed; the locally corrected external implementation is not bundled.
 - Revised the educational CP1H traffic light to use separate outputs for all 12 vehicle lamps and two pedestrian lamps, while retaining paired opposite-direction phases; rebuilt through MCP and compiled in CX-Programmer.
 - Educational CP1H-X40DT-D four-approach traffic light with a dedicated pedestrian phase, startup/all-red clearance, original LD and offline scenarios. MCP read-back matches; CX-Programmer9.75 compile 0 errors/0 warnings. Not tested on hardware or CX-Simulator; not a certified traffic controller.
 - Six original [Omron teaching cases](contoh/omron/): CP1H X/XA digital I/O, XA built-in analog, signed analog scaling, XY-MD02 Modbus for both CP1H models, and CP2E-N30DT-D Modbus. Includes full case prompts, signal contracts, seven CXT/CXP projects created through the installed Omron MCP backend, identical instruction read-back, and CX-Programmer9.75 compile evidence (all 0 errors/0 warnings). No physical PLC or CX-Simulator test is claimed.
@@ -14,6 +15,10 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 ### Changed
 - Check DCO against the pull request head rather than GitHub's synthetic merge commit.
 - README (English and Indonesian): a **Status** checklist shows supported tools checked and planned tools unchecked. A test keeps it in line with the verified support table and between both languages.
+
+### Fixed
+- The original Omron MCP example client's tool selector no longer collides with a tool payload's `name` field. Binary timer/counter probe seeds now explicitly select the native Binary resource mode and use the initial-seed `TIMX`/`CNTX` spelling; templates with a mismatched mode are rejected before writing. Native failure/correction evidence and local CPU validation findings are documented in [the CPU validation record](docs/operations/omron-cpu-validation.md); external backend changes are not bundled.
+- Correct the Omron workflow documentation: simulator/physical PLC tests are separate evidence levels, not prerequisites for commits, GIFs or publication. Runner-specific GUI preconditions are not project-wide release gates; real compiler diagnostics remain necessary for new native-verified support claims.
 
 ## [0.5.0] - 2026-10-28
 

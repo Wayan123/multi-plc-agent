@@ -1,0 +1,10 @@
+---------------- PLC: 'ExamplePLC' (PLC Model 'CJ2M CPU31' ) ----------------
+Compiling...
+[PLC/Symbols(Net. Variable) : ExamplePLC/Symbols]
+[PLC/Program Name : ExamplePLC/Main]
+[Ladder Section Name : Section1]
+[Ladder Section Name : Instruction_Probe]
+[Ladder Section Name : END]
+
+ExamplePLC - 0 errors, 0 warnings.
+The programs have been checked with the program check option set to Unit Ver.2.1.

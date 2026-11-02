@@ -20,6 +20,18 @@ import threading
 
 ROOT = Path(__file__).resolve().parents[2]
 
+# Original seed facts read from installed CX-Server StaticInfo.xml, not vendor files.
+# These are draft construction profiles, not native compiler acceptance.
+CPU_SEED_SETTINGS = {
+    ('CP1H', 'X'): 'CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;UM:UM,0,43008,WORD,RW,1,RAM;',
+    ('CP1H', 'XA'): 'CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;UM:UM,0,43008,WORD,RW,1,RAM;',
+    ('CP2E-N', 'N'): 'CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;UM:UM,0,43008,WORD,RW,1,RAM;',
+    ('CP1L', 'M'): 'UM:UM,0,22528,WORD,RW,1,RAM;CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;',
+    ('CP1L', 'L'): 'UM:UM,0,12288,WORD,RW,1,RAM;CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;',
+    ('CP1L', 'L10'): 'UM:UM,0,12288,WORD,RW,1,RAM;CLOCK:TRUE;GATE:FALSE;REMOTE:FALSE;',
+    ('CJ2M', 'CPU31'): 'UM:UM,0,53248,WORD,RW,1,RAM;CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;EM:E,0,32768,WORD,RW,1,RAM;',
+}
+
 
 def cpu_identity(text: str) -> tuple[str, str]:
     configs = re.findall(r'Config:="([^"\r\n]+)";', text)
@@ -32,12 +44,11 @@ def cpu_identity(text: str) -> tuple[str, str]:
     return dev[1], cpu[1]
 
 
-def draft_seed(device: str, cpu: str) -> str:
-    if (device, cpu) not in {('CP1H', 'X'), ('CP1H', 'XA'), ('CP2E-N', 'N')}:
+def draft_seed(device: str, cpu: str, binary_timers: bool = False) -> str:
+    settings = CPU_SEED_SETTINGS.get((device, cpu))
+    if settings is None:
         raise ValueError('No evidenced draft CPU profile; require a native exported template')
-    # CPU identifiers/default UM allocation observed in Omron CX-Server StaticInfo.xml.
-    # No vendor template, binary, CDM or third-party implementation is copied.
-    config = f'[DEV]DEV:{device};CPU:{cpu};CLOCK:TRUE;GATE:TRUE;REMOTE:TRUE;UM:UM,0,43008,WORD,RW,1,RAM;'
+    config = f'[DEV]DEV:{device};CPU:{cpu};{settings}'
     return f'''CXProgVer:="1.5";
 WrittenByCXPVersion:="9.73";
 FileType:=1;
@@ -50,6 +61,7 @@ ResourceCount:=1;
 Resource[0]:=
 BEGIN
  Name:="ExampleResource";
+ TCSettingBinary:={1 if binary_timers else 0};
  PLC:=
  BEGIN
   Name:="ExamplePLC";
@@ -159,8 +171,8 @@ class Rpc:
             raise RuntimeError(response['error'])
         return response['result']
 
-    def tool(self, name: str, **arguments):
-        result = self.request('tools/call', {'name': name, 'arguments': arguments})
+    def tool(self, tool_name: str, **arguments):
+        result = self.request('tools/call', {'name': tool_name, 'arguments': arguments})
         texts = [c['text'] for c in result.get('content', []) if c.get('type') == 'text']
         payload = json.loads(texts[0]) if len(texts) == 1 else texts
         if result.get('isError'):
@@ -190,14 +202,20 @@ def build(config_path: Path, program_path: Path, output: Path, template: Path | 
         protected.add(template.resolve())
     if receipt.is_symlink() or receipt.resolve() in protected:
         raise ValueError('Receipt must not alias the output, program, template or config')
+    timer_counter_mode = program.get('timer_counter_mode', 'bcd')
+    if timer_counter_mode not in {'bcd', 'binary'}:
+        raise ValueError('Unknown timer/counter mode; require bcd or binary')
     if template:
         text = template.read_text(encoding='utf-8-sig')
     elif use_draft:
-        text = draft_seed(program['device'], program['cpu'])
+        text = draft_seed(program['device'], program['cpu'], timer_counter_mode == 'binary')
     else:
         raise ValueError('Supply --template or explicitly select --draft-seed (not native validation)')
     if cpu_identity(text) != (program['device'], program['cpu']):
         raise ValueError(f"CPU mismatch: {cpu_identity(text)} is not {(program['device'], program['cpu'])}")
+    binary_timers = bool(re.search(r'^\s*TCSettingBinary:=1;\s*$', text, re.M))
+    if binary_timers != (timer_counter_mode == 'binary'):
+        raise ValueError('Template timer/counter mode differs from the authored program')
     if len(re.findall(r'^\s*Program\[\d+\]:=', text, re.M)) != 1:
         raise ValueError('Template must contain exactly one program; refusing to retain other control code')
     config = json.loads(config_path.read_text(encoding='utf-8'))

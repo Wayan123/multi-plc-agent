@@ -1,0 +1,381 @@
+CXProgVer:="1.5";
+WrittenByCXPVersion:="9.75";
+FileType:=1;
+Created:="2 11 2026 23 37 28";
+Modified:="2 11 2026 23 37 33";
+Name:="OmronTeachingExample";
+Core:=
+BEGIN
+ CDMPath:="";
+END;
+ResourceCount:=1;
+Resource[0]:=
+BEGIN
+ Name:="ExampleResource";
+ TCSettingBinary:=1;
+ FBMemory:=
+ BEGIN
+  BR[0]:="T3072,1024";
+  BR[1]:="C3072,1024";
+  BR[3]:="H512,896";
+  BR[4]:="H1408,128";
+  NumRegisters:=5;
+  StackSettings:=
+  BEGIN
+   StartAddress:="D0";
+   WordSize:=1472;
+   BitSize:=64;
+  END;
+ END;
+ SFCMemory:=
+ BEGIN
+  BR[0]:=",-1";
+  BR[1]:=",-1";
+  NumRegisters:=2;
+ END;
+ PLC:=
+ BEGIN
+  Name:="ExamplePLC";
+  Config:="[DEV]DEV:CP1L;CLOCK:TRUE;CPU:M;GATE:TRUE;REMOTE:TRUE;UM:UM,0,22528,WORD,RW,1,RAM;[DRVR]PORT:OMR0;[NET]FRAME:1004;NET:SPMAUSB;TMO:2000;";
+  ProgramCheckOptions:=
+  BEGIN
+   CheckLevel:=0;
+   DuplicatedOutputBit:=true;
+   DuplicatedOutputWord:=true;
+   DuplicatedTIMCNT:=true;
+   BlockProgram:=true;
+   Subroutine:=true;
+   JMPJME:=true;
+   FORNEXT:=true;
+   STEPSNXT:=true;
+   ILILC:=true;
+   IFIEND:=true;
+   LOOPLEND:=true;
+   Stack:=true;
+   FALFALS:=true;
+   Marks:=true;
+   NoFuncCheck:=false;
+   Writetoarray:=false;
+   FORNEXT2:=false;
+  END;
+ END;
+ GlobalVariables:=
+ BEGIN
+  VariableList:=
+  BEGIN_LIST_$#[1]
+  END_LIST_$#[1];
+  VariableCount:=0;
+  VariableMultiCommentList:=
+  BEGIN_LIST_$#[2]
+  END_LIST_$#[2];
+  VariableMultiCommentCount:=0;
+  VariableMultiCommentTypeCount:=16;
+  VariablePredefinedMultiCommentList:=
+  BEGIN_LIST_$#[3]
+  END_LIST_$#[3];
+  VariablePredefinedMultiCommentCount:=0;
+  POUInstances:=
+  BEGIN
+   NumInstances:=0;
+  END;
+ END;
+ FunctionBlocks:=
+ BEGIN
+ END;
+ Programs:=
+ BEGIN
+  Program[0]:=
+  BEGIN
+   Name:="Main";
+   FileType:=2;
+   Created:="2 11 2026 23 37 29";
+   Modified:="2 11 2026 23 37 33";
+   Protection:=
+   BEGIN
+    Enabled:=0;
+   END;
+   LocalVariables:=
+   BEGIN
+    VariableList:=
+    BEGIN_LIST_$#[4]
+    END_LIST_$#[4];
+    VariableCount:=0;
+    VariableMultiCommentList:=
+    BEGIN_LIST_$#[5]
+    END_LIST_$#[5];
+    VariableMultiCommentCount:=0;
+    VariableMultiCommentTypeCount:=16;
+    POUInstances:=
+    BEGIN
+     NumInstances:=0;
+    END;
+   END;
+   TaskID:=256;
+   OpStart:=1;
+   Sections:=
+   BEGIN
+    SC:=3;
+    Sec[0]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="Section1";
+     ProgramData:=
+     BEGIN
+      RC:=1;
+      R[0]:=
+      BEGIN
+       Com:="";
+       Flags:="1,0";
+       FBversion:="";
+       SL:="";
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+    Sec[1]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="Instruction_Probe";
+     ProgramData:=
+     BEGIN
+      RC:=12;
+      R[0]:=
+      BEGIN
+       Com:="Binary 100 ms timer; decimal preset 10 is one second.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[6]
+'  R0
+LD W0.00
+TIMX(550) 0000 &10
+$?St$Bk?_#[6]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[1]:=
+      BEGIN
+       Com:="Binary down counter; reset dominates count and initializes on first cycle.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[7]
+'  R0
+LD W0.01
+LD W0.02
+OR P_First_Cycle
+CNTX(546) 0001 &3
+$?St$Bk?_#[7]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[2]:=
+      BEGIN
+       Com:="Expose timer completion in an internal bit, not a physical output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[8]
+'  R0
+LD T0000
+OUT W0.03
+$?St$Bk?_#[8]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[3]:=
+      BEGIN
+       Com:="Expose counter completion in an internal bit.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[9]
+'  R0
+LD C0001
+OUT W0.04
+$?St$Bk?_#[9]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[4]:=
+      BEGIN
+       Com:="One-cycle rising-edge pulse.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[10]
+'  R0
+LD W0.05
+DIFU(013) W0.06
+$?St$Bk?_#[10]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[5]:=
+      BEGIN
+       Com:="One-cycle falling-edge pulse.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[11]
+'  R0
+LD W0.05
+DIFD(014) W0.07
+$?St$Bk?_#[11]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[6]:=
+      BEGIN
+       Com:="Reset-dominant internal latch; initialized off on the first cycle.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[12]
+'  R0
+LD W0.08
+LD W0.09
+OR P_First_Cycle
+KEEP(011) W0.10
+$?St$Bk?_#[12]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[7]:=
+      BEGIN
+       Com:="Inverted internal output.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[13]
+'  R0
+LD W0.05
+OUTNOT W0.11
+$?St$Bk?_#[13]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[8]:=
+      BEGIN
+       Com:="Read the last work bit and write the last holding bit. No physical I/O.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[14]
+'  R0
+LD W511.15
+OUT H511.15
+$?St$Bk?_#[14]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[9]:=
+      BEGIN
+       Com:="Write a constant to the last data-memory word. Offline synthetic example only.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[15]
+'  R0
+LD P_On
+MOV(021) &1234 D32767
+$?St$Bk?_#[15]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[10]:=
+      BEGIN
+       Com:="Read an allowed DM segment and copy to internal data memory.";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[16]
+'  R0
+LD P_On
+MOV(021) D20000 D100
+$?St$Bk?_#[16]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[11]:=
+      BEGIN
+       Com:="";
+       Flags:="1,0";
+       FBversion:="";
+       SL:="";
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+    Sec[2]:=
+    BEGIN
+     IEC1131Type:=11;
+     CompileInline:=0;
+     SecType:=0;
+     SecName:="END";
+     ProgramData:=
+     BEGIN
+      RC:=2;
+      R[0]:=
+      BEGIN
+       Com:="";
+       Flags:="1,0";
+       FBversion:="";
+       SL:=
+$?St$Bk?_#[17]
+END(001)
+$?St$Bk?_#[17]
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+      R[1]:=
+      BEGIN
+       Com:="";
+       Flags:="1,0";
+       FBversion:="";
+       SL:="";
+       AtchCmts:=
+       BEGIN
+        CC:=0;
+       END;
+      END;
+     END;
+    END;
+   END;
+  END;
+ END;
+END;

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "id": "cpu-variant-probe",
+  "model": "CP1L-L20DT-D",
+  "device": "CP1L",
+  "cpu": "L",
+  "timer_counter_mode": "binary",
+  "sections": [
+    {
+      "name": "Instruction_Probe",
+      "rungs": [
+        {
+          "comment": "Binary 100 ms timer; decimal preset 10 is one second.",
+          "instructions": [
+            "LD W0.00",
+            "TIMX 0000 &10"
+          ]
+        },
+        {
+          "comment": "Binary down counter; reset dominates count and initializes on first cycle.",
+          "instructions": [
+            "LD W0.01",
+            "LD W0.02",
+            "OR A200.11",
+            "CNTX 0001 &3"
+          ]
+        },
+        {
+          "comment": "Expose timer completion in an internal bit, not a physical output.",
+          "instructions": [
+            "LD T0000",
+            "OUT W0.03"
+          ]
+        },
+        {
+          "comment": "Expose counter completion in an internal bit.",
+          "instructions": [
+            "LD C0001",
+            "OUT W0.04"
+          ]
+        },
+        {
+          "comment": "One-cycle rising-edge pulse.",
+          "instructions": [
+            "LD W0.05",
+            "DIFU(013) W0.06"
+          ]
+        },
+        {
+          "comment": "One-cycle falling-edge pulse.",
+          "instructions": [
+            "LD W0.05",
+            "DIFD(014) W0.07"
+          ]
+        },
+        {
+          "comment": "Reset-dominant internal latch; initialized off on the first cycle.",
+          "instructions": [
+            "LD W0.08",
+            "LD W0.09",
+            "OR A200.11",
+            "KEEP(011) W0.10"
+          ]
+        },
+        {
+          "comment": "Inverted internal output.",
+          "instructions": [
+            "LD W0.05",
+            "OUTNOT W0.11"
+          ]
+        },
+        {
+          "comment": "Read the last work bit and write the last holding bit. No physical I/O.",
+          "instructions": [
+            "LD W511.15",
+            "OUT H511.15"
+          ]
+        },
+        {
+          "comment": "Write a constant to the last data-memory word. Offline synthetic example only.",
+          "instructions": [
+            "LD P_On",
+            "MOV &1234 D32767"
+          ]
+        },
+        {
+          "comment": "Read an allowed DM segment and copy to internal data memory.",
+          "instructions": [
+            "LD P_On",
+            "MOV D32000 D100"
+          ]
+        }
+      ]
+    }
+  ]
+}
