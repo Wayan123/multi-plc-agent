@@ -18,7 +18,7 @@ Kotak dicentang hanya setelah software benar-benar dijalankan: program ditulis, 
 
 - [x] Mitsubishi GX Works2 (FX3U)
 - [x] Siemens TIA Portal V20 (S7-1200)
-- [x] Omron CX-Programmer (CP1E; CP1H X/XA and CP2E N via [seven examples](contoh/omron/), hardware not tested)
+- [x] Omron CX-Programmer (CP1E; [CP1H X/XA, CP2E N, CP1L M/L/L10 and CJ2M-CPU31 probes](contoh/omron/cpu-probes/); native verified with local backend corrections, hardware not tested)
 - [x] Omron Sysmac Studio (NX/NJ)
 - [x] CODESYS V3.5
 - [x] Schneider EcoStruxure Machine Expert - Basic (M221)
@@ -30,7 +30,7 @@ Kotak dicentang hanya setelah software benar-benar dijalankan: program ditulis, 
 
 - [ ] Mitsubishi GX Works3 (iQ-F / iQ-R): terblokir, GX Works3 crash di mesin pengembang
 - [ ] Siemens TIA Portal V21: didukung backend, belum dijalankan di sini
-- [ ] Omron CP1L / CJ2 serta cakupan instruksi CP1H/CP2E lebih luas
+- [ ] Omron: varian CP1L / CJ2 lainnya serta cakupan instruksi/runtime yang lebih luas
 - [ ] Beckhoff TwinCAT 3
 - [ ] Delta ISPSoft
 - [ ] Delta DIADesigner
@@ -52,7 +52,7 @@ Kotak dicentang hanya setelah software benar-benar dijalankan: program ditulis, 
 | --- | --- | --- | --- | --- |
 | Mitsubishi | GX Works2 1.580 dan 1.635 | [Wayan123/gxworks-agent](https://github.com/Wayan123/gxworks-agent) (fork dari [Arienax/gxworks-agent](https://github.com/Arienax/gxworks-agent)) | Mengendalikan UI GX Works2: import CSV program dan komentar device | 1.580.0.1 UI Inggris, FX3U: program dan komentar masuk, Check Program "No error found" |
 | Siemens | TIA Portal V20 / V21 | [bulaofen0036-coder/TIA_Portal_Openness_MCP](https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP) v2.7.8 | API resmi TIA Openness: LAD sebagai teks S7DCL, timer/counter sebagai SCL external source | V20, S7-1200 1212C: FB + FC + OB1 + tag masuk, compile 0 error / 0 warning |
-| Omron | CX-Programmer 9.x, CP1E / CP1H X/XA / CP2E N | [BlackUppsss/Cx-Proggrammer-MCP](https://github.com/BlackUppsss/Cx-Proggrammer-MCP) | Mengedit `.cxt`/`.cxp`; [contoh asli dan loader MCP ber-guard](contoh/omron/) | 9.75: CP1E-NA ditambah delapan proyek contoh CP1H X/XA/CP2E N, compile native 0 error / 0 warning dan read-back instruksi identik; hardware/CX-Simulator belum diuji |
+| Omron | CX-Programmer 9.x, CP1E / CP1H X/XA / CP2E N / CP1L M/L/L10 / CJ2M-CPU31 | [BlackUppsss/Cx-Proggrammer-MCP](https://github.com/BlackUppsss/Cx-Proggrammer-MCP); koreksi CPU lokal tidak dibundel | Mengedit `.cxt`/`.cxp`; [contoh asli dan loader MCP ber-guard](contoh/omron/) | 9.75: proyek CP1E/delapan proyek pembelajaran sebelumnya ditambah [tujuh probe CPU](contoh/omron/cpu-probes/), compile native 0 error / 0 warning; probe disimpan/dibuka ulang/di-compile ulang dan read-back MCP dari CXP tersimpan cocok setelah normalisasi; hardware/CX-Simulator belum diuji |
 | Omron | Sysmac Studio 1.47 (NX/NJ) | [`backends/sysmac`](backends/sysmac) | Membuat XML IEC 61131-10, mengimpornya lewat Tools > IEC 61131-10 XML > Import dengan UI Automation, build, lalu membaca balik ladder yang tersimpan | 1.47.0.64008, NX1P2-1040DT: 6 rung masuk (program baru dan pengganti), build 0 error / 0 warning, read-back cocok |
 | CODESYS | CODESYS V3.5 SP21 | [`backends/codesys`](backends/codesys) | ScriptEngine resmi tanpa jendela (`--noUI --runscript`): proyek baru, import LD PLCopen XML, build, ekspor balik | 3.5.21.0, Control Win V3 x64: 6 rung, "Compile complete -- 0 errors, 0 warnings", logika hasil ekspor cocok |
 | Schneider | EcoStruxure Machine Expert - Basic 1.3 (M221) | [`backends/schneider`](backends/schneider) | Menulis rung sebagai IL ke proyek XML `.smbp`, lalu compile di software lewat UI Automation (konversi IL → LD oleh software, opsional) | 1.3.0.215, TM221M16R: 6 rung, status "No error", read-back cocok |
@@ -62,6 +62,11 @@ Kotak dicentang hanya setelah software benar-benar dijalankan: program ditulis, 
 | Mitsubishi | GX Works3 | belum ada | Rencana: editor ladder [Edit] → [Import File] CSV | Belum didukung. Di mesin pengembang GX Works3 1.055H crash saat [Project] > [New]; lihat [ROADMAP.md](ROADMAP.md) |
 
 Kolom "Diverifikasi di" hanya berisi yang benar-benar sudah dijalankan. CPU, versi, dan bahasa UI lain mungkin juga jalan, tetapi belum diuji. Software yang direncanakan (Beckhoff TwinCAT, Delta ISPSoft/DIADesigner, Rockwell, Keyence, Inovance, LS, dan lainnya) ada di [ROADMAP.md](ROADMAP.md).
+
+Tujuh probe CPU tersebut menyertakan proyek CXP siap dibuka, output compiler,
+hash sumber dan GIF dari dua tangkapan langkah native yang benar-benar dijalankan.
+GIF bukan rekaman simulasi. Rebuild lewat MCP membutuhkan koreksi backend lokal
+yang didokumentasikan; membuka CXP yang disertakan tidak membutuhkan backend itu.
 
 ## Demo
 

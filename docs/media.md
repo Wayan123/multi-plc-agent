@@ -16,9 +16,15 @@ The full-length demo videos (MP4, 1080p) are kept outside GitHub so that the rep
 
 The folder contains `SHA256SUMS.txt` with a checksum for each file.
 
+The [Omron CPU instruction probes](../contoh/omron/cpu-probes/) include seven
+`omron-cpu-*.gif` previews in `docs/demo/`. Each uses two actual native window
+captures, before save and after reopen/recompile, cropped/resized and checked for
+private content. These are labelled step captures, not continuous recordings,
+runtime simulation or physical PLC evidence.
+
 ## Rules for media
 
 - Don't commit videos or other large binaries. CI rejects any tracked file over 2 MB and any `.mp4`, `.mov`, `.mkv`, `.avi` or `.webm` file.
 - Don't attach videos to GitHub releases. Put them in the shared Drive folder and link them here.
 - Before publishing a recording, minimize every other window, cover the desktop, and check the frames: no browser, billing pages, paths, user names or customer data.
-- GIF previews: at most 2 MB each, 960 px wide, 8 fps.
+- GIF previews: at most 2 MB each, 960 px wide, 8 fps or lower.

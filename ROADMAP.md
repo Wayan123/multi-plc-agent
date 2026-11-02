@@ -63,7 +63,7 @@ Ranked by how often they appear in Indonesian and Asian machine building and by 
 
 | Target | Note |
 | --- | --- |
-| Omron CP1L / CJ2; wider CP1H / CP2E coverage | CP1H X/XA and CP2E N have [seven original examples, eight MCP/native-compiled projects](contoh/omron/), not blanket instruction/hardware support. Remaining: physical analog/XY-MD02 tests, resolution of CP1H port1 status-bit documentation conflict, broader instructions and an independently licensed in-repo backend; the external backend has no published licence |
+| Wider Omron CP1H / CP2E coverage, then CP1L, then CJ2 | Completed in order: CP1H X/XA and CP2E N, CP1L M/L/L10, CJ2M CPU31. All [seven original instruction probes](contoh/omron/cpu-probes/) were generated through MCP, compiled in CX-Programmer 9.75 with 0 errors/0 warnings, saved/reopened/recompiled and matched by fresh saved-CXP MCP read-back. Ready projects and native step GIFs are included; see the [validation record](docs/operations/omron-cpu-validation.md). Other variants, broader instruction coverage, simulator timing and physical tests remain planned. The external backend's local corrections are not bundled without a redistribution license |
 | Siemens TIA Portal V21 | Supported by the backend (`runtime/v21`). Not yet run here |
 | Sysmac Studio: XML export read-back, `.smc2` export, I/O mapping | XML export is licence-gated on the development machine; read-back currently parses the stored listing |
 | Machine Expert - Basic: comparisons, word operations, CTD, more templates | Codec supports bit logic, TON/TOF/TP and CTU only |

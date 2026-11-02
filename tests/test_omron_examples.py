@@ -187,6 +187,21 @@ class OmronArtifactBoundaries(unittest.TestCase):
 
 
 class OmronReviewedGuards(unittest.TestCase):
+    def test_binary_timer_probe_rejects_bcd_template_before_writing(self):
+        from mcp_build import build, draft_seed
+        program = json.loads((ROOT/'contoh'/'omron'/'cpu-probes'/'CP1L_M.json').read_text())
+        program['timer_counter_mode'] = 'binary'
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            source = folder/'program.json'
+            source.write_text(json.dumps(program), encoding='utf-8')
+            template = folder/'bcd.cxt'
+            template.write_text(draft_seed('CP1L', 'M'), encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'timer/counter mode'):
+                build(folder/'not-needed-config.json', source, folder/'new.cxt',
+                      template, False, folder/'receipt.json')
+            self.assertFalse((folder/'new.cxt').exists())
+
     def test_receipt_cannot_overwrite_program_input(self):
         from mcp_build import build
         program = ROOT/'contoh'/'omron'/'01-cp1h-x40dt-d'/'program.json'
