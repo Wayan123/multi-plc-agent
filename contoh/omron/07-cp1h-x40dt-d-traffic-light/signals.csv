@@ -1,0 +1,26 @@
+signal,address,type,unit,hmi_access,description
+north_red,100.00,BOOL,bool,read,North red.
+north_yellow,100.01,BOOL,bool,read,North yellow.
+north_green,100.02,BOOL,bool,read,North green.
+south_red,100.03,BOOL,bool,read,South red.
+south_yellow,100.04,BOOL,bool,read,South yellow.
+south_green,100.05,BOOL,bool,read,South green.
+east_red,100.06,BOOL,bool,read,East red.
+east_yellow,100.07,BOOL,bool,read,East yellow.
+east_green,101.00,BOOL,bool,read,East green.
+west_red,101.01,BOOL,bool,read,West red.
+west_yellow,101.02,BOOL,bool,read,West yellow.
+west_green,101.03,BOOL,bool,read,West green.
+ped_red,101.04,BOOL,bool,read,Pedestrian red.
+ped_green,101.05,BOOL,bool,read,Pedestrian green.
+first_cycle,A200.11,BOOL,bool,read,CPU first-cycle flag.
+phase,D0,WORD,stage,read,BCD stage number; written only by ladder.
+timer_0,T0000,BOOL,bool,read,Stage 0 timer completion flag: initial all red.
+timer_1,T0001,BOOL,bool,read,Stage 1 timer completion flag: north south green.
+timer_2,T0002,BOOL,bool,read,Stage 2 timer completion flag: north south yellow.
+timer_3,T0003,BOOL,bool,read,Stage 3 timer completion flag: all-red transition.
+timer_4,T0004,BOOL,bool,read,Stage 4 timer completion flag: east west green.
+timer_5,T0005,BOOL,bool,read,Stage 5 timer completion flag: east west yellow.
+timer_6,T0006,BOOL,bool,read,Stage 6 timer completion flag: pedestrian transition.
+timer_7,T0007,BOOL,bool,read,Stage 7 timer completion flag: pedestrians green.
+timer_8,T0008,BOOL,bool,read,Stage 8 timer completion flag: all red after pedestrians.

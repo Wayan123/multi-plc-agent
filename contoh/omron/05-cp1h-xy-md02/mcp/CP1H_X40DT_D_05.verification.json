@@ -1,0 +1,29 @@
+{
+  "model": "CP1H-X40DT-D",
+  "device": "CP1H",
+  "cpu": "X",
+  "seed": "original_text_seed_not_CP1E_template",
+  "mcp_write": "passed",
+  "mcp_readback": "identical",
+  "native_compile": "passed",
+  "native_errors": 0,
+  "native_warnings": 0,
+  "native_compiler": "CX-Programmer 9.75 (9.7.5.6)",
+  "native_unit_check": "1.3 (editor output)",
+  "hardware": "not_run",
+  "cx_simulator": "not_run",
+  "compile_output": [
+    "---------------- PLC: 'ExamplePLC' (PLC Model 'CP1H X' ) ----------------",
+    "Compiling...",
+    "[PLC/Program Name : ExamplePLC/Main]",
+    "[Ladder Section Name : Section1]",
+    "[Ladder Section Name : XY_MD02]",
+    "[Ladder Section Name : END]",
+    "",
+    "ExamplePLC - 0 errors, 0 warnings.",
+    "The programs have been checked with the program check option set to Unit Ver.1.3."
+  ],
+  "program_sha256": "97150a3ed80ae69a500d58e5b88f81ef77edd5974a1f239ba873baa397222169",
+  "cxt_sha256": "7cf0fdba6d0e12ae2497c4256b830c4885f181be7867b82368438aa0c9176557",
+  "cxp_sha256": "35d9460eadcdcb87fecbdeeb91bdaf47be2acfdb4e038f0a224221447bc0828e"
+}

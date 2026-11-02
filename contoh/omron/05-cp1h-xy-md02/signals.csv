@@ -1,0 +1,9 @@
+signal,address,type,unit,hmi_access,description
+poll_enable,W10.00,BOOL,,read_write,Enable polling; changed manually only during authorized commissioning
+temperature,D100,INT,0.1 degC,read,"Signed x10, meaningful only when data_valid"
+humidity,D101,UINT,0.1 %RH,read,"x10, meaningful only when data_valid"
+data_valid,W20.01,BOOL,,read,Fresh successful response; false while waiting/disabled/error
+comm_error,W20.02,BOOL,,read,"Failed transaction, transport or payload shape"
+omron_error,D102,WORD,hex,read,"Raw Omron completion code, distinct from sensor exception"
+format_error,D103,UINT,,read,Application response/completion validation error; 1 includes malformed response or neither completion flag
+request_owned,W20.00,BOOL,,read,Application owns outstanding transaction

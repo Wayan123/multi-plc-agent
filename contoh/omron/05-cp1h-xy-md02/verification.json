@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "example_id": "05-cp1h-xy-md02",
+  "verified_on": "2026-10-31",
+  "offline_engine": "limited mnemonic model, not Omron compiler/simulator",
+  "programs": [
+    {
+      "program": "cp1h-x40dt-d.json",
+      "model": "CP1H-X40DT-D",
+      "scenarios": [
+        {
+          "scenario": "normal_completion_then_disable_marks_last_good_stale",
+          "scans": 5,
+          "passed": true
+        },
+        {
+          "scenario": "signed_negative_temperature_and_nonzero_padding",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "timeout_overrides_normal_flag_preserves_last_good",
+          "scans": 5,
+          "passed": true
+        },
+        {
+          "scenario": "slave_exception_is_not_temperature",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "wrong_byte_count_is_a_format_error",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "wrong_slave_id_cannot_publish",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "busy_at_startup_is_not_cleared_or_overwritten",
+          "scans": 3,
+          "passed": true
+        }
+      ],
+      "native_evidence": "mcp/CP1H_X40DT_D_05.verification.json"
+    },
+    {
+      "program": "cp1h-xa40dt-d.json",
+      "model": "CP1H-XA40DT-D",
+      "scenarios": [
+        {
+          "scenario": "normal_completion_then_disable_marks_last_good_stale",
+          "scans": 5,
+          "passed": true
+        },
+        {
+          "scenario": "signed_negative_temperature_and_nonzero_padding",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "timeout_overrides_normal_flag_preserves_last_good",
+          "scans": 5,
+          "passed": true
+        },
+        {
+          "scenario": "slave_exception_is_not_temperature",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "wrong_byte_count_is_a_format_error",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "wrong_slave_id_cannot_publish",
+          "scans": 3,
+          "passed": true
+        },
+        {
+          "scenario": "busy_at_startup_is_not_cleared_or_overwritten",
+          "scans": 3,
+          "passed": true
+        }
+      ],
+      "native_evidence": "mcp/CP1H_XA40DT_D_05.verification.json"
+    }
+  ],
+  "hardware": "not_run",
+  "cx_simulator": "not_run"
+}

@@ -19,7 +19,7 @@ A box is checked only after the tool was run on real software: program written, 
 
 - [x] Mitsubishi GX Works2 (FX3U)
 - [x] Siemens TIA Portal V20 (S7-1200)
-- [x] Omron CX-Programmer (CP1E)
+- [x] Omron CX-Programmer (CP1E; CP1H X/XA and CP2E N via [seven examples](contoh/omron/), hardware not tested)
 - [x] Omron Sysmac Studio (NX/NJ)
 - [x] CODESYS V3.5
 - [x] Schneider EcoStruxure Machine Expert - Basic (M221)
@@ -31,7 +31,7 @@ A box is checked only after the tool was run on real software: program written, 
 
 - [ ] Mitsubishi GX Works3 (iQ-F / iQ-R): blocked, GX Works3 crashes on the development machine
 - [ ] Siemens TIA Portal V21: backend supports it, not yet run here
-- [ ] Omron CP1L / CP1H / CJ2 in CX-Programmer
+- [ ] Omron CP1L / CJ2 and broader CP1H/CP2E instruction coverage
 - [ ] Beckhoff TwinCAT 3
 - [ ] Delta ISPSoft
 - [ ] Delta DIADesigner
@@ -53,7 +53,7 @@ A box is checked only after the tool was run on real software: program written, 
 | --- | --- | --- | --- | --- |
 | Mitsubishi | GX Works2 1.580 and 1.635 | [Wayan123/gxworks-agent](https://github.com/Wayan123/gxworks-agent) (fork of [Arienax/gxworks-agent](https://github.com/Arienax/gxworks-agent)) | Drives the GX Works2 UI: CSV import of the program and device comments | 1.580.0.1 English UI, FX3U: program and comments imported, Check Program "No error found" |
 | Siemens | TIA Portal V20 / V21 | [bulaofen0036-coder/TIA_Portal_Openness_MCP](https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP) v2.7.8 | Official TIA Openness API: LAD as S7DCL text, timers/counters as SCL external source | V20, S7-1200 1212C: FB + FC + OB1 + tags imported, compile 0 errors / 0 warnings |
-| Omron | CX-Programmer 9.x, CP1E | [BlackUppsss/Cx-Proggrammer-MCP](https://github.com/BlackUppsss/Cx-Proggrammer-MCP) | Edits `.cxt`/`.cxp` project files directly | 9.75, CP1E-NA: project opened, compile 0 errors / 0 warnings |
+| Omron | CX-Programmer 9.x, CP1E / CP1H X/XA / CP2E N | [BlackUppsss/Cx-Proggrammer-MCP](https://github.com/BlackUppsss/Cx-Proggrammer-MCP) | Edits `.cxt`/`.cxp`; [original examples and guarded MCP loader](contoh/omron/) | 9.75: CP1E-NA plus eight CP1H X/XA/CP2E N example projects, native compile 0 errors / 0 warnings; example instruction read-back identical; no physical PLC/CX-Simulator test |
 | Omron | Sysmac Studio 1.47 (NX/NJ) | [`backends/sysmac`](backends/sysmac) | Generates IEC 61131-10 XML, imports it with Tools > IEC 61131-10 XML > Import through UI Automation, builds, reads the stored ladder back | 1.47.0.64008, NX1P2-1040DT: 6 rungs imported (new and replaced program), build 0 errors / 0 warnings, read-back matches |
 | CODESYS | CODESYS V3.5 SP21 | [`backends/codesys`](backends/codesys) | Official ScriptEngine, headless (`--noUI --runscript`): new project, PLCopen XML LD import, build, export back | 3.5.21.0, Control Win V3 x64: 6 rungs, "Compile complete -- 0 errors, 0 warnings", exported logic matches |
 | Schneider | EcoStruxure Machine Expert - Basic 1.3 (M221) | [`backends/schneider`](backends/schneider) | Writes the rungs as IL into the `.smbp` XML project, then compiles in the tool through UI Automation (optional IL → LD conversion by the tool) | 1.3.0.215, TM221M16R: 6 rungs, status "No error", read-back matches |
@@ -63,6 +63,22 @@ A box is checked only after the tool was run on real software: program written, 
 | Mitsubishi | GX Works3 | none yet | Planned: ladder editor [Edit] → [Import File] CSV | Not supported. On the development machine GX Works3 1.055H crashes on [Project] > [New]; see [ROADMAP.md](ROADMAP.md) |
 
 "Verified on" lists only what was actually run. Other CPUs, versions and UI languages may work, but they have not been tested. Planned tools (Beckhoff TwinCAT, Delta ISPSoft/DIADesigner, Rockwell, Keyence, Inovance, LS and more) are listed in [ROADMAP.md](ROADMAP.md).
+
+## Ready-to-use examples
+
+The [Omron examples guide](contoh/omron/) contains source instructions, CX-Programmer projects, setup details, and reproducible checks:
+
+| Example | PLC | Topic |
+| --- | --- | --- |
+| [01 — Digital I/O](contoh/omron/01-cp1h-x40dt-d/) | CP1H-X40DT-D | Start/stop, interlock and warning horn |
+| [02 — Digital I/O](contoh/omron/02-cp1h-xa40dt-d/) | CP1H-XA40DT-D | Start/stop and warning horn |
+| [03 — Analog I/O](contoh/omron/03-cp1h-xa-analog/) | CP1H-XA40DT-D | Four analog inputs and two outputs |
+| [04 — Analog scaling](contoh/omron/04-analog-scaling/) | CP1H-XA40DT-D | Input and output scaling |
+| [05 — XY-MD02 Modbus](contoh/omron/05-cp1h-xy-md02/) | CP1H-X40DT-D and CP1H-XA40DT-D | Sensor reads, errors and stale data |
+| [06 — XY-MD02 Modbus](contoh/omron/06-cp2e-n30dt-d-xy-md02/) | CP2E-N30DT-D | Sensor communication |
+| [07 — Traffic light](contoh/omron/07-cp1h-x40dt-d-traffic-light/) | CP1H-X40DT-D | Four approaches and a pedestrian phase |
+
+These are educational examples. Native compilation and offline scenarios do **not** establish physical operation or functional safety; see each example's hardware and simulator limitations before use.
 
 ## Demo
 

@@ -5,9 +5,14 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 ## [Unreleased]
 
 ### Added
+- Revised the educational CP1H traffic light to use separate outputs for all 12 vehicle lamps and two pedestrian lamps, while retaining paired opposite-direction phases; rebuilt through MCP and compiled in CX-Programmer.
+- Educational CP1H-X40DT-D four-approach traffic light with a dedicated pedestrian phase, startup/all-red clearance, original LD and offline scenarios. MCP read-back matches; CX-Programmer9.75 compile 0 errors/0 warnings. Not tested on hardware or CX-Simulator; not a certified traffic controller.
+- Six original [Omron teaching cases](contoh/omron/): CP1H X/XA digital I/O, XA built-in analog, signed analog scaling, XY-MD02 Modbus for both CP1H models, and CP2E-N30DT-D Modbus. Includes full case prompts, signal contracts, seven CXT/CXP projects created through the installed Omron MCP backend, identical instruction read-back, and CX-Programmer9.75 compile evidence (all 0 errors/0 warnings). No physical PLC or CX-Simulator test is claimed.
+- Standalone limited-mnemonic scenario runner, source/evidence hashes, guarded MCP rebuild command and fail-closed checks for optional local Content Studio/HMI-AI references. HMI bindings are read-only logical references, not a native HMI project; six tutorials remain unscheduled backlog.
 - Sponsor button (`.github/FUNDING.yml`: Ko-fi plus the maintainer's links) and a **Support the project** section in both READMEs.
 
 ### Changed
+- Check DCO against the pull request head rather than GitHub's synthetic merge commit.
 - README (English and Indonesian): a **Status** checklist shows supported tools checked and planned tools unchecked. A test keeps it in line with the verified support table and between both languages.
 
 ## [0.5.0] - 2026-10-28

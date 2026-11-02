@@ -1,0 +1,32 @@
+{
+  "model": "CP1H-XA40DT-D",
+  "device": "CP1H",
+  "cpu": "XA",
+  "seed": "original_text_seed_not_CP1E_template",
+  "mcp_write": "passed",
+  "mcp_readback": "identical",
+  "native_compile": "passed",
+  "native_errors": 0,
+  "native_warnings": 0,
+  "native_compiler": "CX-Programmer 9.75 (9.7.5.6)",
+  "native_unit_check": "1.3 (editor output)",
+  "hardware": "not_run",
+  "cx_simulator": "not_run",
+  "compile_output": [
+    "---------------- PLC: 'ExamplePLC' (PLC Model 'CP1H XA' ) ----------------",
+    "Compiling...",
+    "[PLC/Program Name : ExamplePLC/Main]",
+    "[Ladder Section Name : Section1]",
+    "[Ladder Section Name : Analog_Validity]",
+    "[Ladder Section Name : HMI_Input_Publication]",
+    "[Ladder Section Name : AO_Command_Arbitration]",
+    "[Ladder Section Name : Final_AO_Writers]",
+    "[Ladder Section Name : END]",
+    "",
+    "ExamplePLC - 0 errors, 0 warnings.",
+    "The programs have been checked with the program check option set to Unit Ver.1.3."
+  ],
+  "program_sha256": "411a443e8f738b793b50e4e277ab369db825bee9704cbaafb06837906d8a8d43",
+  "cxt_sha256": "2f0bd511c7f373ef438196f6ae5aedf9f7bd8e7385a0bc1d2751c437966bddcb",
+  "cxp_sha256": "00db4c8a52b430d71cdde30eb283006e44b44e497146a39c89109a8eb4dae938"
+}

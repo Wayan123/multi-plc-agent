@@ -1,0 +1,25 @@
+signal,address,type,unit,hmi_access,description
+analog_input_0,D100,INT,count,read,AI0 0-10 V copy; nominal 0..6000; use only with analog_valid_0. Cleared to 0 when invalid.
+analog_valid_0,W0.00,BOOL,bool,read,AI0 publication validity; false during initialization/first scan/system error/#8000.
+analog_raw_0,200,INT,count,read,Device AI0 word; may be extended or #8000; not automatically valid data.
+analog_input_1,D101,INT,count,read,AI1 4-20 mA copy; nominal 0..6000; use only with analog_valid_1. Cleared to 0 when invalid.
+analog_valid_1,W0.01,BOOL,bool,read,AI1 publication validity; false during initialization/first scan/system error/#8000/open circuit.
+analog_raw_1,201,INT,count,read,Device AI1 word; may be extended or #8000; not automatically valid data.
+analog_input_2,D102,INT,count,read,AI2 0-10 V copy; nominal 0..6000; use only with analog_valid_2. Cleared to 0 when invalid.
+analog_valid_2,W0.02,BOOL,bool,read,AI2 publication validity; false during initialization/first scan/system error/#8000.
+analog_raw_2,202,INT,count,read,Device AI2 word; may be extended or #8000; not automatically valid data.
+analog_input_3,D103,INT,count,read,AI3 4-20 mA copy; nominal 0..6000; use only with analog_valid_3. Cleared to 0 when invalid.
+analog_valid_3,W0.03,BOOL,bool,read,AI3 publication validity; false during initialization/first scan/system error/#8000/open circuit.
+analog_raw_3,203,INT,count,read,Device AI3 word; may be extended or #8000; not automatically valid data.
+analog_output_0,210,INT,count,read,AO0 raw command 0..6000; mode 0-10V: 0=0V.
+analog_output_1,211,INT,count,read,AO1 raw command 0..6000; mode 4-20mA: 0=4mA not 0mA.
+output_valid,W0.04,BOOL,bool,read,Normal output publication permission; all 4 AI valid.
+analog_ready,A434.04,BOOL,bool,read,Read-only ON means initialization completed.
+analog_error,A315.14,BOOL,bool,read,Read-only built-in analog I/O error.
+open_circuit_1,A434.01,BOOL,bool,read,Read-only AI1 open circuit at 4-20mA.
+open_circuit_3,A434.03,BOOL,bool,read,Read-only AI3 open circuit at 4-20mA.
+first_cycle,A200.11,BOOL,bool,read,Read-only first operation cycle.
+output_command_0,D200,INT,count,read_write,Signed raw AO0 command; application clamp 0..6000.
+output_command_1,D201,INT,count,read_write,Signed raw AO1 command; application clamp 0..6000.
+output_command_clamped_0,D210,INT,count,read,AO0 scratch command after gate and clamp.
+output_command_clamped_1,D211,INT,count,read,AO1 scratch command after gate and clamp.
