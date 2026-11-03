@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Any
 
 from . import __version__
-from .ladder import OUTPUTS, TYPES, expected_logic, parse_logic, to_plcopen, validate
+from multiplc.iec_ld import OUTPUTS, TYPES, expected_logic, parse_logic, to_plcopen, validate
 
 PROTOCOL_VERSION = "2025-06-18"
 JOB_SCRIPT = Path(__file__).with_name("codesys_job.py")

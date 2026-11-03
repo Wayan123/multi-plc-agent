@@ -15,7 +15,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from codesys_mcp import server  # noqa: E402
-from codesys_mcp.ladder import expected_logic, parse_logic, to_plcopen, validate  # noqa: E402
+from multiplc.iec_ld import expected_logic, parse_logic, to_plcopen, validate  # noqa: E402
 
 
 def c(name, kind="NO"):

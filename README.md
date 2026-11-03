@@ -3,9 +3,9 @@
 *Bahasa Indonesia: [README.id.md](README.id.md)*
 
 
-One MCP server that lets an AI agent write ladder logic in many PLC engineering tools: Mitsubishi GX Works2, Siemens TIA Portal, Omron CX-Programmer and Sysmac Studio, CODESYS, Schneider Machine Expert - Basic, Delta WPLSoft, Outseal Studio and Haiwell Happy.
+One MCP server that lets an AI agent write ladder logic in many PLC engineering tools: Mitsubishi GX Works2, Siemens TIA Portal, Omron CX-Programmer and Sysmac Studio, CODESYS, Schneider Machine Expert - Basic, Delta WPLSoft, Beckhoff TwinCAT, Outseal Studio and Haiwell Happy.
 
-multi-plc-agent starts one MCP server per tool, gives every tool a vendor prefix (`mitsubishi_`, `siemens_`, `omron_`, `sysmac_`, `codesys_`, `schneider_`, `delta_`, `outseal_`, `haiwell_`) and exposes them as one server. Each backend keeps its own approval flow and safety checks. The router adds one shared rule on top: tools that act on a live PLC or delete project content are not exposed. The GX Works2, TIA Portal and CX-Programmer backends are existing third-party projects; the other backends live in [`backends/`](backends).
+multi-plc-agent starts one MCP server per tool, gives every tool a vendor prefix (`mitsubishi_`, `siemens_`, `omron_`, `sysmac_`, `codesys_`, `schneider_`, `delta_`, `beckhoff_`, `outseal_`, `haiwell_`) and exposes them as one server. Each backend keeps its own approval flow and safety checks. The router adds one shared rule on top: tools that act on a live PLC or delete project content are not exposed. The GX Works2, TIA Portal and CX-Programmer backends are existing third-party projects; the other backends live in [`backends/`](backends).
 
 Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -15,7 +15,7 @@ Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 A box is checked only after the tool was run on real software: program written, compile/build with 0 errors, and read-back matched. Unchecked boxes are planned; they get checked in the PR that adds and verifies the backend.
 
-**Supported (9 tools, 7 vendors)**
+**Supported (10 tools, 9 vendors/platforms)**
 
 - [x] Mitsubishi GX Works2 (FX3U)
 - [x] Siemens TIA Portal V20 (S7-1200)
@@ -26,15 +26,16 @@ A box is checked only after the tool was run on real software: program written, 
 - [x] Delta WPLSoft (DVP)
 - [x] Outseal Studio (Nano / Mega)
 - [x] Haiwell Happy (C/T/N/H)
+- [x] Beckhoff TwinCAT 3 (TwinCAT RT x64, offline LD engineering; CX7000, simulation and hardware not verified)
 
 **Planned**
 
 - [ ] Mitsubishi GX Works3 (iQ-F / iQ-R): blocked, GX Works3 crashes on the development machine
 - [ ] Siemens TIA Portal V21: backend supports it, not yet run here
 - [ ] Omron: remaining CP1L / CJ2 variants and broader instruction/runtime coverage
-- [ ] Beckhoff TwinCAT 3
-- [ ] Delta ISPSoft
-- [ ] Delta DIADesigner
+- [ ] Beckhoff CX7000 / ARM and physical I/O configuration — separate from the verified TwinCAT RT x64 engineering target
+- [ ] Delta ISPSoft — separate target, installation and verification pending
+- [ ] Delta DIADesigner — DVP28SV3 (catalog, agent-created project/POU/task and native export verified; LD write/readback seam still unverified)
 - [ ] Schneider EcoStruxure Machine Expert (M241/M251/M262)
 - [ ] Rockwell Connected Components Workbench (Micro800)
 - [ ] Rockwell Studio 5000 (ControlLogix/CompactLogix)
@@ -57,12 +58,13 @@ A box is checked only after the tool was run on real software: program written, 
 | Omron | Sysmac Studio 1.47 (NX/NJ) | [`backends/sysmac`](backends/sysmac) | Generates IEC 61131-10 XML, imports it with Tools > IEC 61131-10 XML > Import through UI Automation, builds, reads the stored ladder back | 1.47.0.64008, NX1P2-1040DT: 6 rungs imported (new and replaced program), build 0 errors / 0 warnings, read-back matches |
 | CODESYS | CODESYS V3.5 SP21 | [`backends/codesys`](backends/codesys) | Official ScriptEngine, headless (`--noUI --runscript`): new project, PLCopen XML LD import, build, export back | 3.5.21.0, Control Win V3 x64: 6 rungs, "Compile complete -- 0 errors, 0 warnings", exported logic matches |
 | Schneider | EcoStruxure Machine Expert - Basic 1.3 (M221) | [`backends/schneider`](backends/schneider) | Writes the rungs as IL into the `.smbp` XML project, then compiles in the tool through UI Automation (optional IL → LD conversion by the tool) | 1.3.0.215, TM221M16R: 6 rungs, status "No error", read-back matches |
-| Delta | WPLSoft 2.52 (DVP-ES2/SS2) | [`backends/delta`](backends/delta) | Writes the program words into the `.dvp` file, then runs WPLSoft's Instruction ⇄ Ladder compile and saves | 2.52, DVP-SS2: 7 rungs, 0 errors, IL read-back identical |
+| Delta | WPLSoft 2.52 (DVP-ES2/SS2) | [`backends/delta`](backends/delta) | Writes the program words into the `.dvp` file, then runs WPLSoft's Instruction ⇄ Ladder compile and saves | 2.52.0.0, DVP-SS2: [7-rung conveyor](contoh/delta/01-dvp-ss2-conveyor/), native save, matching saved IL/aliases, fresh reopen/recompile, 0 grammar errors; warning count unavailable; no simulator/hardware claim |
+| Beckhoff | TwinCAT XAE 4026.27 / PLC integration 7.1.3 | [`backends/beckhoff`](backends/beckhoff) | Public Automation Interface: fresh native solution, PLCopen LD import, save/reopen, native compile and independent export | TwinCAT RT (x64): [6-rung conveyor](contoh/beckhoff/01-twincat-rt-x64-conveyor/), 11 declarations and 10 ms task match; router write/export/rebuild in three fresh hosts, 0 errors / 0 warnings; no simulation, hardware or CX7000 claim |
 | Outseal | Outseal Studio 3.6 (Nano / Mega boards) | [`backends/outseal`](backends/outseal) | Writes the `.plc` project file directly, then runs Studio's Test through UI Automation | V.3.6 Beta5, Nano V5: 7 rungs written, Test 0 errors, hex generated; codec round-trips all 18 bundled examples |
 | Haiwell | Haiwell Happy 2.2.13 (C/T/N/H series) | [`backends/haiwell`](backends/haiwell) | Types rungs into the LD editor with its keyboard shortcuts, then exports IL and compares it with the expected IL | V2.2.13.240603, AT16S0T/P: 7 rungs written, IL read-back identical, compile 0 errors / 0 warnings |
 | Mitsubishi | GX Works3 | none yet | Planned: ladder editor [Edit] → [Import File] CSV | Not supported. On the development machine GX Works3 1.055H crashes on [Project] > [New]; see [ROADMAP.md](ROADMAP.md) |
 
-"Verified on" lists only what was actually run. Other CPUs, versions and UI languages may work, but they have not been tested. Planned tools (Beckhoff TwinCAT, Delta ISPSoft/DIADesigner, Rockwell, Keyence, Inovance, LS and more) are listed in [ROADMAP.md](ROADMAP.md).
+"Verified on" lists only what was actually run. Other CPUs, versions and UI languages may work, but they have not been tested. Planned targets (Beckhoff CX7000/ARM, Delta ISPSoft/DIADesigner, Rockwell, Keyence, Inovance, LS and more) are listed in [ROADMAP.md](ROADMAP.md).
 
 ## Ready-to-use examples
 
@@ -88,6 +90,11 @@ none was run in CX-Simulator or on hardware. Rebuilding through MCP requires the
 documented local external-backend corrections; opening the supplied projects does
 not. Other variants and broader runtime coverage remain planned.
 
+The [Beckhoff conveyor example](contoh/beckhoff/01-twincat-rt-x64-conveyor/) includes reusable rung JSON, a native source-only TwinCAT solution, sanitized actual MCP/native receipts and a reviewed two-step GIF. It was authored through `beckhoff_write_ladder`, reopened/exported and rebuilt in fresh native hosts. This proves offline TwinCAT RT x64 engineering, not CX7000, runtime execution, physical I/O or safety.
+The [Delta DVP-SS2 conveyor example](contoh/delta/01-dvp-ss2-conveyor/) contains the native `.dvp`, seven-rung request, saved IL, device aliases, source pins, native receipts and a reviewed LD/IL step GIF. It reuses the existing WPLSoft MCP backend; it does not claim SV3/DIADesigner support or increase the supported-tool count.
+
+
+
 ## Demo
 
 The agent wrote the same conveyor specification into each tool through this router:
@@ -96,7 +103,7 @@ The agent wrote the same conveyor specification into each tool through this rout
 - a 3 s warning horn before the motor starts
 - a stop after a batch of 10 products
 
-Each recording is one continuous run: the agent's MCP calls appear in the log window, and the result is then checked in the vendor software. The GIFs play at 1.5× speed. Paths on the development machine are masked.
+The original recordings below are continuous runs: the agent's MCP calls appear in the log window, and the result is then checked in the vendor software. Those GIFs play at 1.5× speed; development-machine paths are masked. The separately linked Beckhoff example uses two actual native step captures, not a continuous run or simulation.
 
 ### Mitsubishi GX Works2 1.580 (FX3U)
 
@@ -134,7 +141,7 @@ CODESYS runs headless while the agent creates the project, imports the LD progra
 
 ![CODESYS demo](docs/demo/demo-codesys.gif)
 
-Full-length MP4 videos (1080p) are kept on Google Drive, not on GitHub: see [docs/media.md](docs/media.md). The Sysmac, Schneider and Delta backends have been verified by tool output; recordings will follow.
+Full-length MP4 videos (1080p) are kept on Google Drive, not on GitHub: see [docs/media.md](docs/media.md). Sysmac and Schneider recordings remain pending. The new [Delta](contoh/delta/01-dvp-ss2-conveyor/) and [Beckhoff](contoh/beckhoff/01-twincat-rt-x64-conveyor/) GIFs are explicitly native step captures, not continuous authoring videos or simulations.
 
 ## Install (Windows)
 
@@ -147,7 +154,7 @@ py -3 -m pip install .
 copy config.example.json config.json
 ```
 
-The router has no dependencies outside the Python standard library (3.10+). The in-repo backends that drive a desktop program need a Windows Python with `pywinauto` and `pywin32` (`py -3 -m pip install pywinauto pywin32`). The CODESYS backend needs no extra packages.
+The router has no dependencies outside the Python standard library (3.10+). The in-repo backends that drive a desktop program need a Windows Python with `pywinauto` and `pywin32` (`py -3 -m pip install pywinauto pywin32`). CODESYS and Beckhoff need no extra Python packages; Beckhoff requires its installed public engineering SDK and standard libraries, detailed in [its setup guide](backends/beckhoff/). The shared IEC codec is installed with the root package; source-only backend launches can instead put this checkout root on `PYTHONPATH`.
 
 Edit `config.json`, or set the variables it refers to:
 

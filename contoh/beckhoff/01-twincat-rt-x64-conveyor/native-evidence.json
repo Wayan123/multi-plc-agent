@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-03",
+  "target": "TwinCAT RT (x64), offline engineering only",
+  "native_build": "3.1.4026.27",
+  "plc_integration_package": "7.1.3",
+  "protocol": "2025-06-18",
+  "through_router": true,
+  "pou": "MAIN",
+  "task": "PlcTask",
+  "cycle_us": 10000,
+  "rungs": 6,
+  "declarations": 11,
+  "operations": [
+    {
+      "tool": "beckhoff_write_ladder",
+      "ok": true,
+      "platform": "TwinCAT RT (x64)",
+      "saved_closed_reopened": true,
+      "errors": 0,
+      "warnings": 0,
+      "failed_projects": 0,
+      "logic_matches": true,
+      "declarations_match": true,
+      "task_bound": true,
+      "owned_host_exited": true,
+      "online_operations": 0,
+      "native_export_sha256": "4939aaa7d06c249553d954f1da89cbf1658eaf7e2e5072ef581a5402552ad025",
+      "native_build_output": "The application is up to date\r\nBuild complete -- 0 errors, 0 warnings : Ready for download\r\nGenerate TMC information ...\r\nImport symbol information ...\r\n\r\n------ Build started: Project: Engineering, Configuration: Release TwinCAT RT (x64) ------\r\n========== Build: 2 succeeded or up-to-date, 0 failed, 0 skipped ==========\r\n========== Build completed at 10:24 and took 01,440 seconds ==========\r\n"
+    },
+    {
+      "tool": "beckhoff_export_pou",
+      "ok": true,
+      "platform": "TwinCAT RT (x64)",
+      "owned_host_exited": true,
+      "online_operations": 0,
+      "native_export_sha256": "d9a6370add34d610b8377211c08b452230ab8b620292a0a62c9525a9c405a54f"
+    },
+    {
+      "tool": "beckhoff_build",
+      "ok": true,
+      "platform": "TwinCAT RT (x64)",
+      "errors": 0,
+      "warnings": 0,
+      "failed_projects": 0,
+      "owned_host_exited": true,
+      "online_operations": 0,
+      "native_export_sha256": "2c34e380994afc4ae1d73e96813e1f0f8909042883c9636d7bffa52d0e79f55c",
+      "native_build_output": "The application is up to date\r\nBuild complete -- 0 errors, 0 warnings : Ready for download\r\nGenerate TMC information ...\r\nImport symbol information ...\r\n\r\n------ Build started: Project: Engineering, Configuration: Release TwinCAT RT (x64) ------\r\n========== Build: 2 succeeded or up-to-date, 0 failed, 0 skipped ==========\r\n========== Build completed at 10:25 and took 00,727 seconds ==========\r\n"
+    }
+  ],
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "cx7000_verified": false,
+  "limitations": [
+    "No runtime activation, download, force, or physical I/O test was performed.",
+    "Logical inputs and outputs are not mapped to physical terminals.",
+    "Factory I/O and safety validation were not performed."
+  ],
+  "portable_source_only": {
+    "bundled_vendor_libraries": false,
+    "bundled_compiler_caches": false,
+    "bundled_ide_state": false,
+    "build": {
+      "ok": true,
+      "previous_platform": "TwinCAT OS (x64)",
+      "platform": "TwinCAT RT (x64)",
+      "errors": 0,
+      "warnings": 0,
+      "failed_projects": 0,
+      "owned_host_exited": true,
+      "native_build_output": "The application is up to date\r\nBuild complete -- 0 errors, 0 warnings : Ready for download\r\nGenerate TMC information ...\r\nImport symbol information ...\r\n\r\n------ Build started: Project: Engineering, Configuration: Release TwinCAT RT (x64) ------\r\n========== Build: 2 succeeded or up-to-date, 0 failed, 0 skipped ==========\r\n========== Build completed at 10:53 and took 00,748 seconds ==========\r\n"
+    },
+    "readback_matches": true,
+    "export_host_exited": true,
+    "write_without_opt_in_denied": true,
+    "workspace_escape_denied": true,
+    "denied_destination_created": false
+  }
+}

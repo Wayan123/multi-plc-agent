@@ -1,0 +1,8 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "request.json": "90a167588b298c190a8e4aec25636a6b2044cb22b9f21125f5f0e0e524ea67d5",
+    "program.il": "b6c093d070fd847c2329ed0ffa4593b5832cfefb1916dd21e91edaed176c39d2",
+    "native/Delta_SS2_Conveyor_20261103.dvp": "9374184fd736e7e73f09e439f133cbd3dbc2bee51223a6b65c828c646cdeb09c"
+  }
+}

@@ -2,9 +2,9 @@
 
 *English (default): [README.md](README.md)*
 
-Satu server MCP yang membuat agen AI bisa menulis program ladder di banyak software engineering PLC: Mitsubishi GX Works2, Siemens TIA Portal, Omron CX-Programmer dan Sysmac Studio, CODESYS, Schneider Machine Expert - Basic, Delta WPLSoft, Outseal Studio, dan Haiwell Happy.
+Satu server MCP yang membuat agen AI bisa menulis program ladder di banyak software engineering PLC: Mitsubishi GX Works2, Siemens TIA Portal, Omron CX-Programmer dan Sysmac Studio, CODESYS, Schneider Machine Expert - Basic, Delta WPLSoft, Beckhoff TwinCAT, Outseal Studio, dan Haiwell Happy.
 
-multi-plc-agent menjalankan satu server MCP per software, memberi setiap tool awalan vendor (`mitsubishi_`, `siemens_`, `omron_`, `sysmac_`, `codesys_`, `schneider_`, `delta_`, `outseal_`, `haiwell_`), lalu menyajikannya sebagai satu server. Setiap backend tetap memakai alur persetujuan dan pemeriksaan keamanannya sendiri. Router menambahkan satu aturan bersama: tool yang bekerja pada PLC yang sedang berjalan atau menghapus isi proyek tidak disajikan. Backend GX Works2, TIA Portal, dan CX-Programmer adalah proyek pihak ketiga; backend lainnya ada di [`backends/`](backends).
+multi-plc-agent menjalankan satu server MCP per software, memberi setiap tool awalan vendor (`mitsubishi_`, `siemens_`, `omron_`, `sysmac_`, `codesys_`, `schneider_`, `delta_`, `beckhoff_`, `outseal_`, `haiwell_`), lalu menyajikannya sebagai satu server. Setiap backend tetap memakai alur persetujuan dan pemeriksaan keamanannya sendiri. Router menambahkan satu aturan bersama: tool yang bekerja pada PLC yang sedang berjalan atau menghapus isi proyek tidak disajikan. Backend GX Works2, TIA Portal, dan CX-Programmer adalah proyek pihak ketiga; backend lainnya ada di [`backends/`](backends).
 
 Kontribusi sangat diterima: lihat [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -14,7 +14,7 @@ Kontribusi sangat diterima: lihat [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Kotak dicentang hanya setelah software benar-benar dijalankan: program ditulis, compile/build 0 error, dan read-back cocok. Kotak yang belum dicentang adalah rencana; kotak itu dicentang di PR yang menambahkan dan memverifikasi backend-nya.
 
-**Sudah didukung (9 software, 7 vendor)**
+**Sudah didukung (10 software, 9 vendor/platform)**
 
 - [x] Mitsubishi GX Works2 (FX3U)
 - [x] Siemens TIA Portal V20 (S7-1200)
@@ -25,15 +25,16 @@ Kotak dicentang hanya setelah software benar-benar dijalankan: program ditulis, 
 - [x] Delta WPLSoft (DVP)
 - [x] Outseal Studio (Nano / Mega)
 - [x] Haiwell Happy (C/T/N/H)
+- [x] Beckhoff TwinCAT 3 (TwinCAT RT x64, offline LD engineering; CX7000, simulation and hardware not verified)
 
 **Direncanakan**
 
 - [ ] Mitsubishi GX Works3 (iQ-F / iQ-R): terblokir, GX Works3 crash di mesin pengembang
 - [ ] Siemens TIA Portal V21: didukung backend, belum dijalankan di sini
 - [ ] Omron: varian CP1L / CJ2 lainnya serta cakupan instruksi/runtime yang lebih luas
-- [ ] Beckhoff TwinCAT 3
-- [ ] Delta ISPSoft
-- [ ] Delta DIADesigner
+- [ ] Beckhoff CX7000 / ARM and physical I/O configuration — separate from the verified TwinCAT RT x64 engineering target
+- [ ] Delta ISPSoft — target terpisah, instalasi dan verifikasi belum dikonfirmasi
+- [ ] Delta DIADesigner — DVP28SV3 (catalog, agent-created project/POU/task and native export verified; LD write/readback seam still unverified)
 - [ ] Schneider EcoStruxure Machine Expert (M241/M251/M262)
 - [ ] Rockwell Connected Components Workbench (Micro800)
 - [ ] Rockwell Studio 5000 (ControlLogix/CompactLogix)
@@ -56,17 +57,23 @@ Kotak dicentang hanya setelah software benar-benar dijalankan: program ditulis, 
 | Omron | Sysmac Studio 1.47 (NX/NJ) | [`backends/sysmac`](backends/sysmac) | Membuat XML IEC 61131-10, mengimpornya lewat Tools > IEC 61131-10 XML > Import dengan UI Automation, build, lalu membaca balik ladder yang tersimpan | 1.47.0.64008, NX1P2-1040DT: 6 rung masuk (program baru dan pengganti), build 0 error / 0 warning, read-back cocok |
 | CODESYS | CODESYS V3.5 SP21 | [`backends/codesys`](backends/codesys) | ScriptEngine resmi tanpa jendela (`--noUI --runscript`): proyek baru, import LD PLCopen XML, build, ekspor balik | 3.5.21.0, Control Win V3 x64: 6 rung, "Compile complete -- 0 errors, 0 warnings", logika hasil ekspor cocok |
 | Schneider | EcoStruxure Machine Expert - Basic 1.3 (M221) | [`backends/schneider`](backends/schneider) | Menulis rung sebagai IL ke proyek XML `.smbp`, lalu compile di software lewat UI Automation (konversi IL → LD oleh software, opsional) | 1.3.0.215, TM221M16R: 6 rung, status "No error", read-back cocok |
-| Delta | WPLSoft 2.52 (DVP-ES2/SS2) | [`backends/delta`](backends/delta) | Menulis word program ke file `.dvp`, lalu menjalankan compile Instruction ⇄ Ladder di WPLSoft dan menyimpan | 2.52, DVP-SS2: 7 rung, 0 error, read-back IL identik |
+| Delta | WPLSoft 2.52 (DVP-ES2/SS2) | [`backends/delta`](backends/delta) | Menulis program `.dvp`, lalu compile dan simpan melalui WPLSoft | 2.52.0.0, DVP-SS2: [7-rung conveyor](contoh/delta/01-dvp-ss2-conveyor/), native save/reopen/recompile, matching saved IL/aliases, 0 grammar errors; warning count unavailable; no simulation/hardware claim |
+| Beckhoff | TwinCAT XAE 4026.27 / PLC integration 7.1.3 | [`backends/beckhoff`](backends/beckhoff) | Public Automation Interface: native solution, PLCopen LD import, save/reopen, build and independent export | TwinCAT RT x64: [6-rung conveyor](contoh/beckhoff/01-twincat-rt-x64-conveyor/), 11 declarations and 10 ms task match; actual router/native 0 errors / 0 warnings; no simulation, hardware or CX7000 claim |
 | Outseal | Outseal Studio 3.6 (board Nano / Mega) | [`backends/outseal`](backends/outseal) | Menulis file proyek `.plc` langsung, lalu menjalankan Test lewat UI Automation | V.3.6 Beta5, Nano V5: 7 rung, Test 0 error, file hex terbentuk; codec round-trip 18 contoh bawaan |
 | Haiwell | Haiwell Happy 2.2.13 (seri C/T/N/H) | [`backends/haiwell`](backends/haiwell) | Mengetik rung di editor LD dengan shortcut keyboard, lalu ekspor IL dan membandingkannya dengan IL yang diharapkan | V2.2.13.240603, AT16S0T/P: 7 rung, read-back IL identik, compile 0 error / 0 warning |
 | Mitsubishi | GX Works3 | belum ada | Rencana: editor ladder [Edit] → [Import File] CSV | Belum didukung. Di mesin pengembang GX Works3 1.055H crash saat [Project] > [New]; lihat [ROADMAP.md](ROADMAP.md) |
 
-Kolom "Diverifikasi di" hanya berisi yang benar-benar sudah dijalankan. CPU, versi, dan bahasa UI lain mungkin juga jalan, tetapi belum diuji. Software yang direncanakan (Beckhoff TwinCAT, Delta ISPSoft/DIADesigner, Rockwell, Keyence, Inovance, LS, dan lainnya) ada di [ROADMAP.md](ROADMAP.md).
+Kolom "Diverifikasi di" hanya berisi yang benar-benar sudah dijalankan. CPU, versi, dan bahasa UI lain mungkin juga jalan, tetapi belum diuji. Software yang direncanakan (Beckhoff CX7000/ARM, Delta ISPSoft/DIADesigner, Rockwell, Keyence, Inovance, LS, dan lainnya) ada di [ROADMAP.md](ROADMAP.md).
 
 Tujuh probe CPU tersebut menyertakan proyek CXP siap dibuka, output compiler,
 hash sumber dan GIF dari dua tangkapan langkah native yang benar-benar dijalankan.
 GIF bukan rekaman simulasi. Rebuild lewat MCP membutuhkan koreksi backend lokal
 yang didokumentasikan; membuka CXP yang disertakan tidak membutuhkan backend itu.
+
+The [Beckhoff example](contoh/beckhoff/01-twincat-rt-x64-conveyor/) includes original native source, reusable rung JSON, actual MCP/native receipts and a reviewed two-step GIF. It proves offline TwinCAT RT x64 engineering, not CX7000, simulation, hardware or functional safety.
+The [Delta SS2 example](contoh/delta/01-dvp-ss2-conveyor/) includes a native project, reusable request, saved IL, source pins, native receipts and reviewed LD/IL GIF through the existing WPLSoft MCP backend. SV3/DIADesigner remains unverified.
+
+
 
 ## Demo
 
@@ -76,7 +83,10 @@ Agen menulis spesifikasi conveyor yang sama ke setiap software lewat router ini:
 - horn peringatan 3 detik sebelum motor jalan
 - berhenti setelah satu batch berisi 10 produk
 
-Setiap rekaman adalah satu kali jalan tanpa potongan: pemanggilan MCP oleh agen muncul di jendela log, lalu hasilnya dicek di software vendor. GIF diputar 1,5× lebih cepat. Path di mesin pengembang disamarkan. Pratinjau GIF ada di [README bahasa Inggris](README.md#demo). Video MP4 lengkap disimpan di Google Drive, bukan di GitHub: lihat [docs/media.md](docs/media.md). Backend Sysmac, Schneider, dan Delta sudah diverifikasi lewat output tool; rekamannya menyusul.
+Rekaman demo lama merupakan proses berkelanjutan; GIF-nya diputar 1,5× lebih cepat dan path pengembang disamarkan. Contoh Beckhoff dan Delta SS2 yang baru memakai dua tangkapan langkah native, bukan rekaman berkelanjutan atau simulasi. Pratinjau ada di [README bahasa Inggris](README.md#demo); video MP4 tetap di luar GitHub, lihat [docs/media.md](docs/media.md).
+
+The Beckhoff GIF is explicitly two actual native step captures, not a continuous authoring recording or runtime simulation. Setup and installed public-SDK requirements are in [backends/beckhoff](backends/beckhoff/).
+
 
 ## Instalasi (Windows)
 

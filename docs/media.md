@@ -1,6 +1,6 @@
 # Demo videos
 
-The full-length demo videos (MP4, 1080p) are kept outside GitHub so that the repository and its releases stay small. Only short GIF previews live in [`docs/demo/`](demo).
+The full-length demo videos (MP4, 1080p) are kept outside GitHub so that the repository and its releases stay small. Short GIF previews live in [`docs/demo/`](demo) and the source-linked example directories.
 
 **Video folder (Google Drive):** MEDIA_LINK: *link coming soon*
 
@@ -21,6 +21,14 @@ The [Omron CPU instruction probes](../contoh/omron/cpu-probes/) include seven
 captures, before save and after reopen/recompile, cropped/resized and checked for
 private content. These are labelled step captures, not continuous recordings,
 runtime simulation or physical PLC evidence.
+
+The [Beckhoff conveyor](../contoh/beckhoff/01-twincat-rt-x64-conveyor/) and
+[Delta SS2 conveyor](../contoh/delta/01-dvp-ss2-conveyor/) each include a
+`native-evidence.gif`: two actual owned native-window step captures, inspected
+frame by frame. Beckhoff shows LD/native build; Delta shows saved LD and IL with
+the native compile-complete message. Neither is continuous authoring, runtime
+simulation or hardware evidence.
+
 
 ## Rules for media
 

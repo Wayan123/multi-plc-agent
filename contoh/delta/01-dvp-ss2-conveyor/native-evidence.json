@@ -1,0 +1,136 @@
+{
+  "date": "2026-11-03",
+  "software": "Delta WPLSoft 2.52.0.0",
+  "project_model": "DVP-SS2",
+  "through_router": true,
+  "rungs": 7,
+  "write": {
+    "ok": true,
+    "error_count": 0,
+    "errors": [],
+    "instruction_to_ladder": {
+      "errors": [],
+      "other_dialogs": [],
+      "messages": [
+        "Diagram is complete!"
+      ]
+    },
+    "ladder_to_instruction": {
+      "errors": [],
+      "other_dialogs": [],
+      "messages": []
+    },
+    "saved": true,
+    "il": [
+      "LD X0",
+      "OR M0",
+      "AND X1",
+      "AND X2",
+      "ANI C0",
+      "OUT M0",
+      "LD M0",
+      "TMR T0 K30",
+      "LD M0",
+      "ANI T0",
+      "OUT Y1",
+      "LD M0",
+      "AND T0",
+      "OUT Y0",
+      "LD Y0",
+      "AND X3",
+      "CNT C0 K10",
+      "LD X4",
+      "RST C0",
+      "LD C0",
+      "OUT Y2",
+      "END"
+    ],
+    "il_matches": true,
+    "written": true,
+    "rungs": 7,
+    "rung_comments_written": false
+  },
+  "saved_readback": {
+    "il": [
+      "LD X0",
+      "OR M0",
+      "AND X1",
+      "AND X2",
+      "ANI C0",
+      "OUT M0",
+      "LD M0",
+      "TMR T0 K30",
+      "LD M0",
+      "ANI T0",
+      "OUT Y1",
+      "LD M0",
+      "AND T0",
+      "OUT Y0",
+      "LD Y0",
+      "AND X3",
+      "CNT C0 K10",
+      "LD X4",
+      "RST C0",
+      "LD C0",
+      "OUT Y2",
+      "END"
+    ],
+    "device_comments": {
+      "X0": "Start request",
+      "X1": "Stop permissive TRUE healthy",
+      "X2": "E-stop status TRUE healthy, not safety-rated",
+      "X3": "Part sensor pulse",
+      "X4": "Batch reset",
+      "Y0": "Conveyor motor command",
+      "Y1": "Start warning horn",
+      "Y2": "Batch-complete lamp",
+      "M0": "Run request seal-in",
+      "T0": "Start delay 100 ms x K30",
+      "C0": "Batch counter preset 10"
+    },
+    "segment_comments": []
+  },
+  "fresh_native_compile": {
+    "ok": true,
+    "error_count": 0,
+    "errors": [],
+    "instruction_to_ladder": {
+      "errors": [],
+      "other_dialogs": [],
+      "messages": [
+        "Diagram is complete!"
+      ]
+    },
+    "ladder_to_instruction": {
+      "errors": [],
+      "other_dialogs": [],
+      "messages": []
+    },
+    "saved": false
+  },
+  "visual_compile": {
+    "phase": "native_compile_observed",
+    "instruction_to_ladder": {
+      "errors": [],
+      "other_dialogs": [],
+      "messages": [
+        "Diagram is complete!"
+      ]
+    },
+    "ladder_to_instruction": {
+      "errors": [],
+      "other_dialogs": [],
+      "messages": []
+    }
+  },
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "diadesigner_sv3_verified": false,
+  "warnings": null,
+  "limitations": [
+    "WPLSoft grammar-error count is 0; no separate warning count is exposed by this driver.",
+    "Native device family is SS2, not a verified exact physical PLC ordering code.",
+    "Rung comments remain in request.json; device aliases are stored in the native project.",
+    "GIF contains two actual native step captures, not a continuous recording or simulation."
+  ]
+}

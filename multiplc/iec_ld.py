@@ -1,4 +1,4 @@
-"""Rung JSON -> PLCopen XML (CODESYS LD dialect) and back to logic for verification.
+"""Rung JSON -> PLCopen XML LD and back to independently exported native logic.
 
 Rung JSON:
     {"comment": "Run request",
@@ -17,8 +17,8 @@ Timer and counter instances are declared automatically from the rungs that use t
 
 The verification compares logic, not XML: each network becomes
 (output kind, target, boolean expression[, parameters]) both from the rung JSON
-and from the PLCopen XML that CODESYS exports after import, so localId
-renumbering or layout data added by CODESYS does not matter.
+and from the PLCopen XML that the native engineering software exports after import.
+LocalId renumbering and vendor-added layout do not affect the comparison.
 """
 from __future__ import annotations
 
@@ -267,7 +267,7 @@ def to_plcopen(pou: str, variables: list[dict[str, Any]], rungs: list[dict[str, 
     body.append(f'<rightPowerRail localId="{RIGHT_RAIL}"><position x="0" y="0"/><connectionPointIn/></rightPowerRail>')
     return ('<?xml version="1.0" encoding="utf-8"?>'
             f'<project xmlns="{PLCOPEN}">'
-            '<fileHeader companyName="" productName="multi-plc-agent" productVersion="codesys_mcp" '
+            '<fileHeader companyName="" productName="multi-plc-agent" productVersion="iec_ld" '
             'creationDateTime="2000-01-01T00:00:00"/>'
             f'<contentHeader name="{escape(pou)}"><coordinateInfo><fbd><scaling x="1" y="1"/></fbd>'
             '<ld><scaling x="1" y="1"/></ld><sfc><scaling x="1" y="1"/></sfc></coordinateInfo></contentHeader>'
@@ -348,7 +348,7 @@ def _local(tag: str) -> str:
 
 
 def parse_logic(xml_text: str, pou: str) -> list[dict[str, Any]]:
-    """Logic signature of an LD POU in a PLCopen XML export (CODESYS dialect)."""
+    """Logic signature of an LD POU in a native PLCopen XML export."""
     root = ET.fromstring(xml_text.lstrip("\ufeff").encode("utf-8"))
     target = next((p for p in root.iter() if _local(p.tag) == "pou" and p.get("name") == pou), None)
     if target is None:

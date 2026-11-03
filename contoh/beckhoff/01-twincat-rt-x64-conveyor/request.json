@@ -1,0 +1,197 @@
+{
+  "variables": [
+    {
+      "name": "StartPB",
+      "type": "BOOL"
+    },
+    {
+      "name": "StopNC",
+      "type": "BOOL"
+    },
+    {
+      "name": "EStopHealthy",
+      "type": "BOOL"
+    },
+    {
+      "name": "PartSensor",
+      "type": "BOOL"
+    },
+    {
+      "name": "CountReset",
+      "type": "BOOL"
+    },
+    {
+      "name": "RunReq",
+      "type": "BOOL"
+    },
+    {
+      "name": "Horn",
+      "type": "BOOL"
+    },
+    {
+      "name": "Motor",
+      "type": "BOOL"
+    },
+    {
+      "name": "BatchLamp",
+      "type": "BOOL"
+    }
+  ],
+  "rungs": [
+    {
+      "comment": "Start/stop seal-in with E-stop permissive",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "StartPB"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "RunReq"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StopNC"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "EStopHealthy"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "BatchCounter.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "RunReq"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Three-second start delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunReq"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StartDelay",
+            "T#3S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Horn during start delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunReq"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StartDelay.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Horn"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Motor after start delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunReq"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StartDelay.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Motor"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Count ten parts; independent reset",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Motor"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "PartSensor"
+          ]
+        },
+        {
+          "kind": "CTU",
+          "args": [
+            "BatchCounter",
+            "10",
+            "CountReset"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Batch-complete lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "BatchCounter.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "BatchLamp"
+          ]
+        }
+      ]
+    }
+  ]
+}

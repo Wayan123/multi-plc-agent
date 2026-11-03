@@ -5,6 +5,8 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 ## [Unreleased]
 
 ### Added
+- Original Beckhoff TwinCAT stdio backend (`beckhoff_`) using the public Automation Interface, with guarded workspace/overwrite, native compiler diagnostics and independent LD/declaration/task readback. The six-rung TwinCAT RT x64 conveyor passed router write, save/reopen, fresh-host export and rebuild with 0 errors / 0 warnings. Includes native source, sanitized receipts and a reviewed two-step GIF; CX7000, simulation and hardware remain unverified.
+- Reproducible Delta DVP-SS2/WPLSoft conveyor example through the existing MCP backend: seven rungs, native project/save/reopen/recompile, identical saved IL and aliases, zero grammar errors, source pins and reviewed native LD/IL step GIF. This is not DVP28SV3/DIADesigner support; the driver exposes no separate warning count.
 - Seven original [Omron CPU instruction probes](contoh/omron/cpu-probes/) for CP1H X/XA, CP2E N, CP1L M/L/L10 and CJ2M-CPU31, with explicit variant profiles, ready native CXP projects, decoded CXT references, exact compiler output and privacy-reviewed native step GIFs. Each passed CX-Programmer 9.75 compile (0 errors/0 warnings), save/reopen/recompile and fresh saved-CXP MCP instruction read-back. No simulator/hardware result is claimed; the locally corrected external implementation is not bundled.
 - Revised the educational CP1H traffic light to use separate outputs for all 12 vehicle lamps and two pedestrian lamps, while retaining paired opposite-direction phases; rebuilt through MCP and compiled in CX-Programmer.
 - Educational CP1H-X40DT-D four-approach traffic light with a dedicated pedestrian phase, startup/all-red clearance, original LD and offline scenarios. MCP read-back matches; CX-Programmer9.75 compile 0 errors/0 warnings. Not tested on hardware or CX-Simulator; not a certified traffic controller.
@@ -13,8 +15,10 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 - Sponsor button (`.github/FUNDING.yml`: Ko-fi plus the maintainer's links) and a **Support the project** section in both READMEs.
 
 ### Changed
+- Verify TwinCAT RT x64 offline engineering with the installed XAE/PLC SDK and three explicitly approved standard-library packages. DIADesigner SV3 project/device/POU/task creation and native export are observed, but its LD write/readback seam and CX7000 hardware configuration remain unverified.
+- Share the proven CODESYS/TwinCAT PLCopen LD codec in `multiplc.iec_ld`; source-only CODESYS launches now use the root package or checkout `PYTHONPATH`.
 - Check DCO against the pull request head rather than GitHub's synthetic merge commit.
-- README (English and Indonesian): a **Status** checklist shows supported tools checked and planned tools unchecked. A test keeps it in line with the verified support table and between both languages.
+- README (English and Indonesian): update the support checklist from actual native acceptance. Human-prose status consistency is reviewed alongside evidence rather than tested through exact README wording.
 
 ### Fixed
 - The original Omron MCP example client's tool selector no longer collides with a tool payload's `name` field. Binary timer/counter probe seeds now explicitly select the native Binary resource mode and use the initial-seed `TIMX`/`CNTX` spelling; templates with a mismatched mode are rejected before writing. Native failure/correction evidence and local CPU validation findings are documented in [the CPU validation record](docs/operations/omron-cpu-validation.md); external backend changes are not bundled.
