@@ -51,12 +51,12 @@ Read-only registry inventory, 2026-11-03: Windows account `wayandadang`, input d
 
 Raw probes, process manifests and diagnostics remain local under `_scratch/twincat-20261103/` and `_scratch/delta-diadesigner-20261103/`. Fresh-process tests use the existing authorized account; the former profile-isolation-only block is not a project-wide prerequisite.
 
-## Remaining delivery work
+## Delivery outcome
 
-- Beckhoff and the user-approved Delta WPLSoft case are complete locally: actual native router acceptance, reusable examples, reviewed step GIFs and English documentation. Review the final publication snapshot and CI before reporting publication.
+- Both approved targets are published in [PR #5](https://github.com/Wayan123/multi-plc-agent/pull/5), signed source commit `f60f3058cd19f56f262bc4667dfdded05faad5d1`. GitHub reports signature VALID and the DCO check passes. No protected-main merge or release was performed.
 - DIADesigner SV3 remains planned; it is not required for the explicitly approved SS2 deliverable and no placeholder adapter is included.
 - HMI-AI remains a read-only consumer; no guessed hardware bindings or live transport claims.
 
 ## Current support disposition
 
-Beckhoff's bounded RT x64 support is checked from actual native MCP acceptance. Delta WPLSoft remains checked with the new SS2 example; DIADesigner/SV3 and CX7000 remain unchecked. No simulation, physical operation or functional-safety claim is made. Both real native step GIFs are included locally; commit/PR delivery is the remaining phase.
+Beckhoff's bounded RT x64 support is checked from actual native MCP acceptance. Delta WPLSoft remains checked with the new SS2 example; DIADesigner/SV3 and CX7000 remain unchecked. Both reviewed native step GIFs and English examples are included. The [PR workflow](https://github.com/Wayan123/multi-plc-agent/actions/runs/41583795482) passed all six jobs: Linux/Windows on Python 3.10/3.13, size and DCO. Local GUI Python lacks pytest; Windows native engineering was exercised locally and the Windows regression matrix passed on GitHub. No simulation, physical operation or functional-safety claim is made. BMAD Build/review/publication for the approved targets is complete; maintainer merge is separate.
