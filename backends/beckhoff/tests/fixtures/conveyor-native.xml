@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="Beckhoff Automation GmbH" productName="TwinCAT PLC Control" productVersion="3.5.21.61" creationDateTime="2026-11-03T10:24:45.563819" />
+  <contentHeader name="AgentPLC" modificationDateTime="2026-11-03T10:24:45.5668157">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation />
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous />
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+  <addData>
+    <data name="http://www.3s-software.com/plcopenxml/application" handleUnknown="implementation">
+      <resource name="AgentPLC">
+        <task name="PlcTask" interval="PT0S" priority="20">
+          <pouInstance name="MAIN" typeName="">
+            <documentation>
+              <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+            </documentation>
+          </pouInstance>
+          <addData>
+            <data name="http://www.3s-software.com/plcopenxml/tasksettings" handleUnknown="implementation">
+              <TaskSettings KindOfTask="Cyclic" Interval="10000" IntervalUnit="us" WithinSPSTimeSlicing="true">
+                <Watchdog Enabled="false" TimeUnit="ms" />
+              </TaskSettings>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+              <ObjectId>fbae51f9-0136-48b5-9246-a1be1601f84a</ObjectId>
+            </data>
+          </addData>
+        </task>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
+            <pou name="MAIN" pouType="program">
+              <interface>
+                <localVars>
+                  <variable name="StartPB">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="StopNC">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="EStopHealthy">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="PartSensor">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="CountReset">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="RunReq">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="Horn">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="Motor">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="BatchLamp">
+                    <type>
+                      <BOOL />
+                    </type>
+                  </variable>
+                  <variable name="StartDelay">
+                    <type>
+                      <derived name="TON" />
+                    </type>
+                  </variable>
+                  <variable name="BatchCounter">
+                    <type>
+                      <derived name="CTU" />
+                    </type>
+                  </variable>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+                      <InterfaceAsPlainText>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">PROGRAM MAIN
+VAR
+	StartPB : BOOL;
+	StopNC : BOOL;
+	EStopHealthy : BOOL;
+	PartSensor : BOOL;
+	CountReset : BOOL;
+	RunReq : BOOL;
+	Horn : BOOL;
+	Motor : BOOL;
+	BatchLamp : BOOL;
+	StartDelay : TON;
+	BatchCounter : CTU;
+END_VAR
+</xhtml>
+                      </InterfaceAsPlainText>
+                    </data>
+                  </addData>
+                </localVars>
+              </interface>
+              <body>
+                <LD>
+                  <!--ObjectVersion: LD2-->
+                  <leftPowerRail localId="0">
+                    <position x="0" y="0" />
+                    <connectionPointOut formalParameter="none" />
+                  </leftPowerRail>
+                  <comment localId="3" height="0" width="0">
+                    <position x="0" y="0" />
+                    <content>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml">Start/stop seal-in with E-stop permissive</xhtml>
+                    </content>
+                  </comment>
+                  <vendorElement localId="2">
+                    <position x="0" y="0" />
+                    <alternativeText>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+                    </alternativeText>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                        <ElementType xmlns="">networktitle</ElementType>
+                      </data>
+                    </addData>
+                  </vendorElement>
+                  <contact localId="5">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="0" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>StartPB</variable>
+                  </contact>
+                  <contact localId="6">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="0" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>RunReq</variable>
+                  </contact>
+                  <contact localId="7">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="5" />
+                      <connection refLocalId="6" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>StopNC</variable>
+                  </contact>
+                  <contact localId="8">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="7" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>EStopHealthy</variable>
+                  </contact>
+                  <contact localId="9" negated="true">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="8" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>BatchCounter.Q</variable>
+                  </contact>
+                  <coil localId="10">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="9" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>RunReq</variable>
+                  </coil>
+                  <vendorElement localId="4">
+                    <position x="0" y="0" />
+                    <alternativeText>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml">ParallelBranch</xhtml>
+                    </alternativeText>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/ldparallelbranch" handleUnknown="implementation">
+                        <ParallelBranch mode="sce" xmlns="">
+                          <BranchInput>
+                            <connectionPointIn>
+                              <connection refLocalId="0" />
+                            </connectionPointIn>
+                          </BranchInput>
+                          <BranchTrees>
+                            <Tree>
+                              <connectionPointIn>
+                                <connection refLocalId="5" />
+                              </connectionPointIn>
+                            </Tree>
+                            <Tree>
+                              <connectionPointIn>
+                                <connection refLocalId="6" />
+                              </connectionPointIn>
+                            </Tree>
+                          </BranchTrees>
+                        </ParallelBranch>
+                      </data>
+                    </addData>
+                  </vendorElement>
+                  <comment localId="13" height="0" width="0">
+                    <position x="0" y="0" />
+                    <content>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml">Three-second start delay</xhtml>
+                    </content>
+                  </comment>
+                  <vendorElement localId="12">
+                    <position x="0" y="0" />
+                    <alternativeText>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+                    </alternativeText>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                        <ElementType xmlns="">networktitle</ElementType>
+                      </data>
+                    </addData>
+                  </vendorElement>
+                  <contact localId="14">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="0" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>RunReq</variable>
+                  </contact>
+                  <inVariable localId="16">
+                    <position x="0" y="0" />
+                    <connectionPointOut />
+                    <expression>T#3S</expression>
+                  </inVariable>
+                  <block localId="15" typeName="TON" instanceName="StartDelay">
+                    <position x="0" y="0" />
+                    <inputVariables>
+                      <variable formalParameter="IN">
+                        <connectionPointIn>
+                          <connection refLocalId="14" />
+                        </connectionPointIn>
+                      </variable>
+                      <variable formalParameter="PT">
+                        <connectionPointIn>
+                          <connection refLocalId="16" />
+                        </connectionPointIn>
+                      </variable>
+                    </inputVariables>
+                    <inOutVariables />
+                    <outputVariables>
+                      <variable formalParameter="Q">
+                        <connectionPointOut />
+                      </variable>
+                    </outputVariables>
+                  </block>
+                  <comment localId="19" height="0" width="0">
+                    <position x="0" y="0" />
+                    <content>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml">Horn during start delay</xhtml>
+                    </content>
+                  </comment>
+                  <vendorElement localId="18">
+                    <position x="0" y="0" />
+                    <alternativeText>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+                    </alternativeText>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                        <ElementType xmlns="">networktitle</ElementType>
+                      </data>
+                    </addData>
+                  </vendorElement>
+                  <contact localId="20">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="0" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>RunReq</variable>
+                  </contact>
+                  <contact localId="21" negated="true">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="20" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>StartDelay.Q</variable>
+                  </contact>
+                  <coil localId="22">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="21" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>Horn</variable>
+                  </coil>
+                  <comment localId="25" height="0" width="0">
+                    <position x="0" y="0" />
+                    <content>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml">Motor after start delay</xhtml>
+                    </content>
+                  </comment>
+                  <vendorElement localId="24">
+                    <position x="0" y="0" />
+                    <alternativeText>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+                    </alternativeText>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                        <ElementType xmlns="">networktitle</ElementType>
+                      </data>
+                    </addData>
+                  </vendorElement>
+                  <contact localId="26">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="0" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>RunReq</variable>
+                  </contact>
+                  <contact localId="27">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="26" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>StartDelay.Q</variable>
+                  </contact>
+                  <coil localId="28">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="27" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>Motor</variable>
+                  </coil>
+                  <comment localId="31" height="0" width="0">
+                    <position x="0" y="0" />
+                    <content>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml">Count ten parts; independent reset</xhtml>
+                    </content>
+                  </comment>
+                  <vendorElement localId="30">
+                    <position x="0" y="0" />
+                    <alternativeText>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+                    </alternativeText>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                        <ElementType xmlns="">networktitle</ElementType>
+                      </data>
+                    </addData>
+                  </vendorElement>
+                  <contact localId="32">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="0" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>Motor</variable>
+                  </contact>
+                  <contact localId="33">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="32" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>PartSensor</variable>
+                  </contact>
+                  <inVariable localId="35">
+                    <position x="0" y="0" />
+                    <connectionPointOut />
+                    <expression>CountReset</expression>
+                  </inVariable>
+                  <inVariable localId="36">
+                    <position x="0" y="0" />
+                    <connectionPointOut />
+                    <expression>10</expression>
+                  </inVariable>
+                  <block localId="34" typeName="CTU" instanceName="BatchCounter">
+                    <position x="0" y="0" />
+                    <inputVariables>
+                      <variable formalParameter="CU">
+                        <connectionPointIn>
+                          <connection refLocalId="33" />
+                        </connectionPointIn>
+                      </variable>
+                      <variable formalParameter="RESET">
+                        <connectionPointIn>
+                          <connection refLocalId="35" />
+                        </connectionPointIn>
+                      </variable>
+                      <variable formalParameter="PV">
+                        <connectionPointIn>
+                          <connection refLocalId="36" />
+                        </connectionPointIn>
+                      </variable>
+                    </inputVariables>
+                    <inOutVariables />
+                    <outputVariables>
+                      <variable formalParameter="Q">
+                        <connectionPointOut />
+                      </variable>
+                    </outputVariables>
+                  </block>
+                  <comment localId="39" height="0" width="0">
+                    <position x="0" y="0" />
+                    <content>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml">Batch-complete lamp</xhtml>
+                    </content>
+                  </comment>
+                  <vendorElement localId="38">
+                    <position x="0" y="0" />
+                    <alternativeText>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+                    </alternativeText>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/fbdelementtype" handleUnknown="implementation">
+                        <ElementType xmlns="">networktitle</ElementType>
+                      </data>
+                    </addData>
+                  </vendorElement>
+                  <contact localId="40">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="0" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>BatchCounter.Q</variable>
+                  </contact>
+                  <coil localId="41">
+                    <position x="0" y="0" />
+                    <connectionPointIn>
+                      <connection refLocalId="40" />
+                    </connectionPointIn>
+                    <connectionPointOut />
+                    <variable>BatchLamp</variable>
+                  </coil>
+                  <rightPowerRail localId="2147483647">
+                    <position x="0" y="0" />
+                    <connectionPointIn />
+                  </rightPowerRail>
+                </LD>
+              </body>
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/interfaceasplaintext" handleUnknown="implementation">
+                  <InterfaceAsPlainText>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">PROGRAM MAIN
+VAR
+	StartPB : BOOL;
+	StopNC : BOOL;
+	EStopHealthy : BOOL;
+	PartSensor : BOOL;
+	CountReset : BOOL;
+	RunReq : BOOL;
+	Horn : BOOL;
+	Motor : BOOL;
+	BatchLamp : BOOL;
+	StartDelay : TON;
+	BatchCounter : CTU;
+END_VAR
+</xhtml>
+                  </InterfaceAsPlainText>
+                </data>
+                <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                  <ObjectId>c3d44923-70db-4d37-8025-790ceb3558ec</ObjectId>
+                </data>
+              </addData>
+            </pou>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/libraries" handleUnknown="implementation">
+            <Libraries>
+              <Library Name="#Tc2_Standard" Namespace="Tc2_Standard" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="Tc2_Standard, * (Beckhoff Automation GmbH)" />
+              <Library Name="#Tc2_System" Namespace="Tc2_System" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="Tc2_System, * (Beckhoff Automation GmbH)" />
+              <Library Name="#Tc3_Module" Namespace="Tc3_Module" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="Tc3_Module, * (Beckhoff Automation GmbH)" />
+              <Library Name="#Tc3_GlobalTypes" Namespace="Tc3_GlobalTypes" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="true" SystemLibrary="true" LinkAllContent="false" DefaultResolution="Tc3_GlobalTypes, * (Beckhoff Automation GmbH)" ResolverGuid="9502eb1f-c858-410f-a431-cf1e6abed6ff" />
+              <addData>
+                <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                  <ObjectId>4e4ec758-2f15-45d5-b662-79c51da4cfba</ObjectId>
+                </data>
+              </addData>
+            </Libraries>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+            <ObjectId>f66e9970-35e0-46cf-a076-571cda33ea0e</ObjectId>
+          </data>
+        </addData>
+      </resource>
+    </data>
+    <data name="http://www.3s-software.com/plcopenxml/projectstructure" handleUnknown="discard">
+      <ProjectStructure>
+        <Object Name="AgentPLC" ObjectId="f66e9970-35e0-46cf-a076-571cda33ea0e">
+          <Object Name="Library Manager" ObjectId="4e4ec758-2f15-45d5-b662-79c51da4cfba" />
+          <Object Name="MAIN" ObjectId="c3d44923-70db-4d37-8025-790ceb3558ec" />
+          <Object Name="PlcTask" ObjectId="fbae51f9-0136-48b5-9246-a1be1601f84a" />
+        </Object>
+      </ProjectStructure>
+    </data>
+  </addData>
+</project>

@@ -62,6 +62,11 @@ VENDOR_DEFAULTS: dict[str, dict[str, Any]] = {
         "deny": [],
         "proxy_tools": [],
     },
+    "beckhoff": {
+        "prefix": "beckhoff_",
+        "deny": [],
+        "proxy_tools": [],
+    },
 }
 
 

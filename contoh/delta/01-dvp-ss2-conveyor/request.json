@@ -1,0 +1,188 @@
+{
+  "rungs": [
+    {
+      "comment": "Run request; healthy stop and E-stop; stop at batch ten",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "X0"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M0"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X1"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X2"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "C0"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M0"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Three-second start delay, T0 base 100 ms",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M0"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T0",
+            "K30"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Warning horn before motor starts",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M0"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T0"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Y1"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Motor after the delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M0"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T0"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Y0"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Count product sensor rising edges while motor runs",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Y0"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X3"
+          ]
+        },
+        {
+          "kind": "CNT",
+          "args": [
+            "C0",
+            "K10"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Independent batch counter reset",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "X4"
+          ]
+        },
+        {
+          "kind": "RST",
+          "args": [
+            "C0"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Batch-complete lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "C0"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Y2"
+          ]
+        }
+      ]
+    }
+  ],
+  "aliases": {
+    "X0": "Start request",
+    "X1": "Stop permissive TRUE healthy",
+    "X2": "E-stop status TRUE healthy, not safety-rated",
+    "X3": "Part sensor pulse",
+    "X4": "Batch reset",
+    "M0": "Run request seal-in",
+    "T0": "Start delay 100 ms x K30",
+    "C0": "Batch counter preset 10",
+    "Y0": "Conveyor motor command",
+    "Y1": "Start warning horn",
+    "Y2": "Batch-complete lamp"
+  }
+}

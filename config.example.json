@@ -39,7 +39,8 @@
       "software": "CODESYS V3.5 SP21",
       "command": "${GUI_PYTHON}",
       "args": ["-m", "codesys_mcp", "--allow-write", "--codesys-exe", "C:\\Program Files\\CODESYS 3.5.21.0\\CODESYS\\Common\\CODESYS.exe", "--profile", "CODESYS V3.5 SP21"],
-      "cwd": "${MULTIPLC_DIR}\\backends\\codesys"
+      "cwd": "${MULTIPLC_DIR}\\backends\\codesys",
+      "env": {"PYTHONPATH": "${MULTIPLC_DIR}"}
     },
     "sysmac": {
       "vendor": "sysmac",
@@ -61,6 +62,14 @@
       "command": "${GUI_PYTHON}",
       "args": ["-m", "delta_mcp", "--allow-write", "--gui-python", "${GUI_PYTHON}"],
       "cwd": "${MULTIPLC_DIR}\\backends\\delta"
+    },
+    "twincat": {
+      "vendor": "beckhoff",
+      "software": "TwinCAT XAE 4026.27 (offline TwinCAT RT x64)",
+      "command": "${GUI_PYTHON}",
+      "args": ["-m", "beckhoff_mcp", "--allow-write"],
+      "cwd": "${MULTIPLC_DIR}\\backends\\beckhoff",
+      "env": {"PYTHONPATH": "${MULTIPLC_DIR}"}
     },
     "gxworks3": {
       "enabled": false,

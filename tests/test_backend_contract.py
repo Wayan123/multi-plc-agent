@@ -4,6 +4,7 @@ A new backend under backends/<vendor>/<vendor>_mcp is picked up automatically.
 """
 from __future__ import annotations
 
+import os
 import json
 import re
 import subprocess
@@ -23,7 +24,8 @@ WRITE = re.compile(r"^(write|new)_")
 def rpc(vendor: str, messages: list[dict], *args: str) -> list[dict]:
     proc = subprocess.run([sys.executable, "-m", f"{vendor}_mcp", *args],
                           input="".join(json.dumps(m) + "\n" for m in messages).encode(),
-                          cwd=ROOT / "backends" / vendor, capture_output=True, timeout=60)
+                          cwd=ROOT / "backends" / vendor, capture_output=True, timeout=60,
+                          env={**os.environ, "PYTHONPATH": str(ROOT) + os.pathsep + os.environ.get("PYTHONPATH", "")})
     assert proc.returncode == 0, proc.stderr.decode(errors="replace")[-2000:]
     return [json.loads(line) for line in proc.stdout.decode("utf-8").splitlines() if line.strip()]
 

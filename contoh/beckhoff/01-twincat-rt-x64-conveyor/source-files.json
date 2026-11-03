@@ -1,0 +1,12 @@
+{
+  "algorithm": "sha256",
+  "base": "native",
+  "files": {
+    "Conveyor.sln": "74a3ceaaf8e967788bee4d10303c0458a2e0ed97b9169785177850c81f7b978a",
+    "Engineering/Engineering.tsproj": "ee8ddaf7d0d36bf7fb7f44cd33d2fb9522a79485a4b607ef148fb74d7872d7c6",
+    "Engineering/AgentPLC/AgentPLC.plcproj": "75d93a1cdb553470e105892098edb7cd4f6dba42182b7b54e8d1640a57cfd19c",
+    "Engineering/AgentPLC/MAIN.TcPOU": "81b42ce62d53900dcc5d031334d3cc87c56314d903078f62a18b1413f0af211a",
+    "Engineering/AgentPLC/PlcTask.TcTTO": "8d07ac752b74c3bff26c2db1eee068ce58dd92e53d84f156738e00eed05f6695",
+    ".beckhoff-mcp.json": "ccb358efbe3451d5e6e0a34db67a2307da6e366411ca61962ec7ac5b09563b1f"
+  }
+}
