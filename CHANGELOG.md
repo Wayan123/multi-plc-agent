@@ -16,6 +16,7 @@ All notable changes to this project. The format follows [Keep a Changelog](https
 - Sponsor button (`.github/FUNDING.yml`: Ko-fi plus the maintainer's links) and a **Support the project** section in both READMEs.
 
 ### Changed
+- List every available teaching example and each Omron CPU instruction probe directly under README's Ready-to-use examples, grouped by vendor with individual links, targets and topics.
 - Verify TwinCAT RT x64 offline engineering with the installed XAE/PLC SDK and three explicitly approved standard-library packages. DIADesigner SV3 project/device/POU/task creation and native export are observed, but its LD write/readback seam and CX7000 hardware configuration remain unverified.
 - Share the proven CODESYS/TwinCAT PLCopen LD codec in `multiplc.iec_ld`; source-only CODESYS launches now use the root package or checkout `PYTHONPATH`.
 - Check DCO against the pull request head rather than GitHub's synthetic merge commit.
