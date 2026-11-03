@@ -68,6 +68,14 @@ A box is checked only after the tool was run on real software: program written, 
 
 ## Ready-to-use examples
 
+Choose a vendor: [Omron](#omron-examples) · [Siemens](#siemens-examples) · [Outseal](#outseal-examples) · [Haiwell](#haiwell-examples) · [Delta](#delta-examples) · [Schneider](#schneider-examples) · [CODESYS](#codesys-examples) · [Beckhoff](#beckhoff-examples).
+
+Every available example is linked below. The [full capability catalog](contoh/README.md) also lists unavailable and planned combinations, which remain unchecked rather than being presented as ready examples.
+
+These are educational examples. Native compilation, saved readback and offline scenarios do **not** establish vendor-simulator behavior, physical operation or functional safety. Read each example's evidence and limitations before use; fourteen traffic-lamp commands do not automatically mean fourteen physical output terminals.
+
+### Omron examples
+
 The [Omron examples guide](contoh/omron/) contains source instructions, CX-Programmer projects, setup details, and reproducible checks:
 
 | Example | PLC | Topic |
@@ -80,7 +88,7 @@ The [Omron examples guide](contoh/omron/) contains source instructions, CX-Progr
 | [06 — XY-MD02 Modbus](contoh/omron/06-cp2e-n30dt-d-xy-md02/) | CP2E-N30DT-D | Sensor communication |
 | [07 — Traffic light](contoh/omron/07-cp1h-x40dt-d-traffic-light/) | CP1H-X40DT-D | Four approaches and a pedestrian phase |
 
-These are educational examples. Native compilation and offline scenarios do **not** establish physical operation or functional safety; see each example's hardware and simulator limitations before use.
+#### Omron CPU instruction probes
 
 Additional [seven CPU instruction probes](contoh/omron/cpu-probes/) cover CP1H
 X/XA, CP2E N, CP1L M/L/L10 and CJ2M-CPU31. Each has a ready native CXP project,
@@ -90,12 +98,85 @@ none was run in CX-Simulator or on hardware. Rebuilding through MCP requires the
 documented local external-backend corrections; opening the supplied projects does
 not. Other variants and broader runtime coverage remain planned.
 
-The [Beckhoff conveyor example](contoh/beckhoff/01-twincat-rt-x64-conveyor/) includes reusable rung JSON, a native source-only TwinCAT solution, sanitized actual MCP/native receipts and a reviewed two-step GIF. It was authored through `beckhoff_write_ladder`, reopened/exported and rebuilt in fresh native hosts. This proves offline TwinCAT RT x64 engineering, not CX7000, runtime execution, physical I/O or safety.
-The [Delta DVP-SS2 conveyor example](contoh/delta/01-dvp-ss2-conveyor/) contains the native `.dvp`, seven-rung request, saved IL, device aliases, source pins, native receipts and a reviewed LD/IL step GIF. It reuses the existing WPLSoft MCP backend; it does not claim SV3/DIADesigner support or increase the supported-tool count.
+| Probe source | Representative PLC | Topic |
+| --- | --- | --- |
+| [CP1H X](contoh/omron/cpu-probes/CP1H_X.json) | CP1H-X40DT-D | Binary timers/counters, edges, latch and memory boundaries |
+| [CP1H XA](contoh/omron/cpu-probes/CP1H_XA.json) | CP1H-XA40DT-D | Binary timers/counters, edges, latch and memory boundaries |
+| [CP2E N](contoh/omron/cpu-probes/CP2E_N.json) | CP2E-N30DT-D | Binary timers/counters, edges, latch and memory boundaries |
+| [CP1L M](contoh/omron/cpu-probes/CP1L_M.json) | CP1L-M40DT-D | Instruction probe and allowed DM-segment read |
+| [CP1L L](contoh/omron/cpu-probes/CP1L_L.json) | CP1L-L20DT-D | Instruction probe and split DM boundaries |
+| [CP1L L10](contoh/omron/cpu-probes/CP1L_L10.json) | CP1L-L10DT-D | Instruction probe and split DM boundaries |
+| [CJ2M CPU31](contoh/omron/cpu-probes/CJ2M_CPU31.json) | CJ2M-CPU31 | Instruction probe and extended read-only Auxiliary access |
 
-The [cross-vendor teaching catalog](contoh/README.md) adds **23 native-accepted examples**: interlocked start/stop, start warning, and four-approach/pedestrian traffic logic for Siemens, Outseal, Haiwell, Delta WPLSoft, Schneider M221, CODESYS and Beckhoff; plus Siemens four-AI/two-AO and scaling cases. Each has English instructions, read-only signal maps, source pins and actual native receipts. The catalog leaves unavailable analog/XY-MD02/target combinations unchecked. Native compilation and saved readback do **not** establish simulator or physical-PLC behavior; fourteen logical traffic lamps do not imply fourteen physical terminals.
+The [probe guide](contoh/omron/cpu-probes/) links each native CXP project, compiler evidence and step GIF. These boundary probes use internal memory and must not be downloaded to equipment.
 
+### Siemens examples
 
+TIA Portal V20 examples use genuine LAD networks with SCL timer/cycle helpers. Analog cases require the documented SM1231 AI4 and SM1232 AQ2 configuration; electrical ranges remain uncommissioned, and their hardware compile retains one protection-level warning.
+
+| Example | PLC / offline configuration | Topic |
+| --- | --- | --- |
+| [01 - Digital I/O](contoh/siemens/01-digital-interlock/) | S7-1200 CPU 1212C | Start/stop, interlock and warning horn |
+| [02 - Digital I/O](contoh/siemens/02-digital-start-stop/) | S7-1200 CPU 1212C | Start/stop and warning horn |
+| [03 - Analog I/O](contoh/siemens/03-analog-io/) | CPU 1212C + SM1231 AI4 + SM1232 AQ2 | Four raw analog inputs and two output commands |
+| [04 - Analog scaling](contoh/siemens/04-analog-scaling/) | CPU 1212C + SM1231 AI4 + SM1232 AQ2 | Clamped input/output scaling with DINT intermediates |
+| [07 - Traffic light](contoh/siemens/07-traffic-light/) | S7-1200 CPU 1212C; logical lamp signals | Four approaches and a pedestrian phase |
+
+### Outseal examples
+
+| Example | PLC / offline configuration | Topic |
+| --- | --- | --- |
+| [01 - Digital I/O](contoh/outseal/01-digital-interlock/) | Nano V5 | Start/stop, interlock and warning horn |
+| [02 - Digital I/O](contoh/outseal/02-digital-start-stop/) | Nano V5 | Start/stop and warning horn |
+| [07 - Traffic light](contoh/outseal/07-traffic-light/) | Mega V3; fourteen separate output addresses | Four approaches and a pedestrian phase |
+
+### Haiwell examples
+
+| Example | PLC / offline configuration | Topic |
+| --- | --- | --- |
+| [01 - Digital I/O](contoh/haiwell/01-digital-interlock/) | AT16S0T/P | Start/stop, interlock and warning horn |
+| [02 - Digital I/O](contoh/haiwell/02-digital-start-stop/) | AT16S0T/P | Start/stop and warning horn |
+| [07 - Traffic light](contoh/haiwell/07-traffic-light/) | AT16S0T/P; internal lamp relays | Four approaches and a pedestrian phase |
+
+### Delta examples
+
+These examples use **WPLSoft DVP-SS2**, not the unverified SV3/DIADesigner target. The conveyor includes a native project, saved IL, device aliases and an actual native step GIF.
+
+| Example | PLC / offline configuration | Topic |
+| --- | --- | --- |
+| [Conveyor](contoh/delta/01-dvp-ss2-conveyor/) | DVP-SS2 | Start/stop, 3 s warning horn and 10-part batch |
+| [01 - Digital I/O](contoh/delta/01-digital-interlock/) | DVP-SS2 | Start/stop, interlock and warning horn |
+| [02 - Digital I/O](contoh/delta/02-digital-start-stop/) | DVP-SS2 | Start/stop and warning horn |
+| [07 - Traffic light](contoh/delta/07-traffic-light/) | DVP-SS2; internal lamp relays | Four approaches and a pedestrian phase |
+
+### Schneider examples
+
+| Example | PLC / offline configuration | Topic |
+| --- | --- | --- |
+| [01 - Digital I/O](contoh/schneider/01-digital-interlock/) | M221 TM221M16R/G | Start/stop, interlock and warning horn |
+| [02 - Digital I/O](contoh/schneider/02-digital-start-stop/) | M221 TM221M16R/G | Start/stop and warning horn |
+| [07 - Traffic light](contoh/schneider/07-traffic-light/) | M221 TM221M16R/G; internal lamp bits | Four approaches and a pedestrian phase |
+
+### CODESYS examples
+
+These use the **Control Win V3 x64 software-PLC fixture**. Named signals are logical variables, not a verified physical I/O configuration.
+
+| Example | PLC / offline configuration | Topic |
+| --- | --- | --- |
+| [01 - Digital I/O](contoh/codesys/01-digital-interlock/) | CODESYS Control Win V3 x64 | Start/stop, interlock and warning horn |
+| [02 - Digital I/O](contoh/codesys/02-digital-start-stop/) | CODESYS Control Win V3 x64 | Start/stop and warning horn |
+| [07 - Traffic light](contoh/codesys/07-traffic-light/) | CODESYS Control Win V3 x64; logical lamp signals | Four approaches and a pedestrian phase |
+
+### Beckhoff examples
+
+These use **TwinCAT RT x64**, not CX7000/ARM. Named signals are logical variables without verified terminal mapping. The conveyor includes a native source-only solution, fresh-host build/readback receipts and an actual native step GIF.
+
+| Example | PLC / offline configuration | Topic |
+| --- | --- | --- |
+| [Conveyor](contoh/beckhoff/01-twincat-rt-x64-conveyor/) | TwinCAT RT x64 | Start/stop, 3 s warning horn and 10-part batch |
+| [01 - Digital I/O](contoh/beckhoff/01-digital-interlock/) | TwinCAT RT x64 | Start/stop, interlock and warning horn |
+| [02 - Digital I/O](contoh/beckhoff/02-digital-start-stop/) | TwinCAT RT x64 | Start/stop and warning horn |
+| [07 - Traffic light](contoh/beckhoff/07-traffic-light/) | TwinCAT RT x64; logical lamp signals | Four approaches and a pedestrian phase |
 
 ## Demo
 
