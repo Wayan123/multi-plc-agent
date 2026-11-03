@@ -1,0 +1,203 @@
+{
+  "date": "2026-11-03",
+  "software": "TIA Portal V20",
+  "model": "6ES7212-1AE40-0XB0",
+  "configured_firmware": "V4.7",
+  "authorship": "TIA Portal MCP in an isolated owned headless instance",
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "scaffold": {
+      "ok": true,
+      "projectName": "Example07_TrafficLight",
+      "directoryPath": "$SCRATCH\\siemens",
+      "compileState": "Success",
+      "compileErrorCount": 0,
+      "compileWarningCount": 0,
+      "steps": [
+        {
+          "step": "connect",
+          "status": "skipped",
+          "detail": "already connected"
+        },
+        {
+          "step": "createProject",
+          "status": "ok",
+          "detail": "$SCRATCH\\siemens"
+        },
+        {
+          "step": "addDevicePlc",
+          "status": "ok",
+          "detail": "PLC_1 6ES7212-1AE40-0XB0"
+        },
+        {
+          "step": "scl",
+          "status": "ok",
+          "detail": "DataAndTimers.scl"
+        },
+        {
+          "step": "lad",
+          "status": "ok",
+          "detail": "Logic07"
+        },
+        {
+          "step": "compile",
+          "status": "ok",
+          "detail": "state=Success errors=0 warnings=0"
+        },
+        {
+          "step": "save",
+          "status": "ok"
+        }
+      ],
+      "message": "ScaffoldProject 'Example07_TrafficLight': 6 ok, 0 failed; compile state=Success errors=0.",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:55.0516951+07:00",
+        "success": true
+      }
+    },
+    "instance": {
+      "ok": true,
+      "data": {
+        "softwarePath": "PLC_1",
+        "fbName": "Timers07",
+        "dbName": "Timers07_DB",
+        "dbNumber": 2,
+        "autoNumber": true,
+        "blockPath": "Program blocks/Timers07_DB",
+        "instanceOfName": "Timers07",
+        "verified": true
+      },
+      "message": "已为 FB 'Timers07' 建背景 DB 'Timers07_DB'（DB2）。已读回确认它是这个 FB 的背景 DB。记得 SaveProject。",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:55.1994216+07:00",
+        "verified": true
+      }
+    },
+    "import_call": {
+      "message": "PLC external source imported",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:55.218481+07:00",
+        "success": true
+      }
+    },
+    "generate_call": {
+      "message": "Blocks generated from external source 'CallCase.scl'",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:55.2685716+07:00",
+        "success": true
+      }
+    },
+    "main_import": {
+      "message": "Imported 'Main' from '$REPO\\contoh\\siemens\\07-traffic-light' (verified)",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:55.3415331+07:00",
+        "success": true,
+        "verified": true,
+        "verifyDetail": "block 'Main' present after import",
+        "warnings": []
+      }
+    },
+    "compile": {
+      "state": "Success",
+      "errorCount": 0,
+      "warningCount": 0,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        "State=Success; Description=Block was successfully compiled.; Path=Main (OB1); DateTime=03/11/2026 07:34:55",
+        "State=Success; Description=Block was successfully compiled.; Path=CallCase07 (FC2); DateTime=03/11/2026 07:34:55",
+        "State=Success; Description=Block was successfully compiled.; Path=Timers07_DB (DB2); DateTime=03/11/2026 07:34:55"
+      ],
+      "rawMessages": [
+        "State=Success; Path=PLC_1; DateTime=03/11/2026 07:34:55",
+        "State=Success; Path=Program blocks; DateTime=03/11/2026 07:34:55",
+        "State=Success; Description=Block was successfully compiled.; Path=Main (OB1); DateTime=03/11/2026 07:34:55",
+        "State=Success; Description=Block was successfully compiled.; Path=CallCase07 (FC2); DateTime=03/11/2026 07:34:55",
+        "State=Success; Description=Block was successfully compiled.; Path=Timers07_DB (DB2); DateTime=03/11/2026 07:34:55",
+        "State=Success; Description=Compiling finished (errors: 0; warnings: 0); DateTime=03/11/2026 07:34:55"
+      ],
+      "message": "Software 'PLC_1' compiled. State=Success Errors=0 Warnings=0",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:55.5582364+07:00",
+        "success": true,
+        "errorDetailCount": 0,
+        "warningDetailCount": 0,
+        "diagnosticsComplete": true
+      }
+    },
+    "cold_compile": {
+      "state": "Success",
+      "errorCount": 0,
+      "warningCount": 0,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        "State=Information; Description=No block was compiled. All blocks are up-to-date.; DateTime=03/11/2026 07:34:57"
+      ],
+      "rawMessages": [
+        "State=Information; Path=PLC_1; DateTime=03/11/2026 07:34:56",
+        "State=Information; Path=Program blocks; DateTime=03/11/2026 07:34:57",
+        "State=Information; Description=No block was compiled. All blocks are up-to-date.; DateTime=03/11/2026 07:34:57",
+        "State=Success; Description=Compiling finished (errors: 0; warnings: 0); DateTime=03/11/2026 07:34:57"
+      ],
+      "message": "Software 'PLC_1' compiled. State=Success Errors=0 Warnings=0",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:57.3051864+07:00",
+        "success": true,
+        "errorDetailCount": 0,
+        "warningDetailCount": 0,
+        "diagnosticsComplete": true
+      }
+    },
+    "readback": {
+      "Logic07": {
+        "blockPath": "Logic07",
+        "language": "LAD",
+        "readable": "── 程序段 1  [LAD]\n   \"State07\".Hold0 ( )  ⇐  \"State07\".Stage0 · /\"State07\".StageTimer0Q\n\n── 程序段 2  [LAD]\n   \"State07\".Advance0 ( )  ⇐  \"State07\".Stage0 · \"State07\".StageTimer0Q\n\n── 程序段 3  [LAD]\n   \"State07\".Hold1 ( )  ⇐  \"State07\".Stage1 · /\"State07\".StageTimer1Q\n\n── 程序段 4  [LAD]\n   \"State07\".Advance1 ( )  ⇐  \"State07\".Stage1 · \"State07\".StageTimer1Q\n\n── 程序段 5  [LAD]\n   \"State07\".Hold2 ( )  ⇐  \"State07\".Stage2 · /\"State07\".StageTimer2Q\n\n── 程序段 6  [LAD]\n   \"State07\".Advance2 ( )  ⇐  \"State07\".Stage2 · \"State07\".StageTimer2Q\n\n── 程序段 7  [LAD]\n   \"State07\".Hold3 ( )  ⇐  \"State07\".Stage3 · /\"State07\".StageTimer3Q\n\n── 程序段 8  [LAD]\n   \"State07\".Advance3 ( )  ⇐  \"State07\".Stage3 · \"State07\".StageTimer3Q\n\n── 程序段 9  [LAD]\n   \"State07\".Hold4 ( )  ⇐  \"State07\".Stage4 · /\"State07\".StageTimer4Q\n\n── 程序段 10  [LAD]\n   \"State07\".Advance4 ( )  ⇐  \"State07\".Stage4 · \"State07\".StageTimer4Q\n\n── 程序段 11  [LAD]\n   \"State07\".Hold5 ( )  ⇐  \"State07\".Stage5 · /\"State07\".StageTimer5Q\n\n── 程序段 12  [LAD]\n   \"State07\".Advance5 ( )  ⇐  \"State07\".Stage5 · \"State07\".StageTimer5Q\n\n── 程序段 13  [LAD]\n   \"State07\".Hold6 ( )  ⇐  \"State07\".Stage6 · /\"State07\".StageTimer6Q\n\n── 程序段 14  [LAD]\n   \"State07\".Advance6 ( )  ⇐  \"State07\".Stage6 · \"State07\".StageTimer6Q\n\n── 程序段 15  [LAD]\n   \"State07\".Hold7 ( )  ⇐  \"State07\".Stage7 · /\"State07\".StageTimer7Q\n\n── 程序段 16  [LAD]\n   \"State07\".Advance7 ( )  ⇐  \"State07\".Stage7 · \"State07\".StageTimer7Q\n\n── 程序段 17  [LAD]\n   \"State07\".Stage0 ( )  ⇐  (\"State07\".Hold0 + \"State07\".Advance7 + /\"State07\".Initialised)\n\n── 程序段 18  [LAD]\n   \"State07\".Stage1 ( )  ⇐  (\"State07\".Hold1 + \"State07\".Advance0)\n\n── 程序段 19  [LAD]\n   \"State07\".Stage2 ( )  ⇐  (\"State07\".Hold2 + \"State07\".Advance1)\n\n── 程序段 20  [LAD]\n   \"State07\".Stage3 ( )  ⇐  (\"State07\".Hold3 + \"State07\".Advance2)\n\n── 程序段 21  [LAD]\n   \"State07\".Stage4 ( )  ⇐  (\"State07\".Hold4 + \"State07\".Advance3)\n\n── 程序段 22  [LAD]\n   \"State07\".Stage5 ( )  ⇐  (\"State07\".Hold5 + \"State07\".Advance4)\n\n── 程序段 23  [LAD]\n   \"State07\".Stage6 ( )  ⇐  (\"State07\".Hold6 + \"State07\".Advance5)\n\n── 程序段 24  [LAD]\n   \"State07\".Stage7 ( )  ⇐  (\"State07\".Hold7 + \"State07\".Advance6)\n\n── 程序段 25  [LAD]\n   \"State07\".Initialised (S)  ⇐  /\"State07\".Initialised\n\n── 程序段 26  [LAD]\n   \"State07\".NSGreenPermit ( )  ⇐  \"State07\".Stage1 · /\"State07\".Stage0 · /\"State07\".Stage2 · /\"State07\".Stage3 · /\"State07\".Stage4 · /\"State07\".Stage5 · /\"State07\".Stage6 · /\"State07\".Stage7\n\n── 程序段 27  [LAD]\n   \"State07\".NSYellowPermit ( )  ⇐  \"State07\".Stage2 · /\"State07\".Stage0 · /\"State07\".Stage1 · /\"State07\".Stage3 · /\"State07\".Stage4 · /\"State07\".Stage5 · /\"State07\".Stage6 · /\"State07\".Stage7\n\n── 程序段 28  [LAD]\n   \"State07\".EWGreenPermit ( )  ⇐  \"State07\".Stage4 · /\"State07\".Stage0 · /\"State07\".Stage1 · /\"State07\".Stage2 · /\"State07\".Stage3 · /\"State07\".Stage5 · /\"State07\".Stage6 · /\"State07\".Stage7\n\n── 程序段 29  [LAD]\n   \"State07\".EWYellowPermit ( )  ⇐  \"State07\".Stage5 · /\"State07\".Stage0 · /\"State07\".Stage1 · /\"State07\".Stage2 · /\"State07\".Stage3 · /\"State07\".Stage4 · /\"State07\".Stage6 · /\"State07\".Stage7\n\n── 程序段 30  [LAD]\n   \"State07\".PedGreenPermit ( )  ⇐  \"State07\".Stage7 · /\"State07\".Stage0 · /\"State07\".Stage1 · /\"State07\".Stage2 · /\"State07\".Stage3 · /\"State07\".Stage4 · /\"State07\".Stage5 · /\"State07\".Stage6\n\n── 程序段 31  [LAD]\n   \"State07\".NorthRed ( )  ⇐  /\"State07\".NSGreenPermit · /\"State07\".NSYellowPermit\n\n── 程序段 32  [LAD]\n   \"State07\".NorthYellow ( )  ⇐  \"State07\".NSYellowPermit\n\n── 程序段 33  [LAD]\n   \"State07\".NorthGreen ( )  ⇐  \"State07\".NSGreenPermit\n\n── 程序段 34  [LAD]\n   \"State07\".SouthRed ( )  ⇐  /\"State07\".NSGreenPermit · /\"State07\".NSYellowPermit\n\n── 程序段 35  [LAD]\n   \"State07\".SouthYellow ( )  ⇐  \"State07\".NSYellowPermit\n\n── 程序段 36  [LAD]\n   \"State07\".SouthGreen ( )  ⇐  \"State07\".NSGreenPermit\n\n── 程序段 37  [LAD]\n   \"State07\".EastRed ( )  ⇐  /\"State07\".EWGreenPermit · /\"State07\".EWYellowPermit\n\n── 程序段 38  [LAD]\n   \"State07\".EastYellow ( )  ⇐  \"State07\".EWYellowPermit\n\n── 程序段 39  [LAD]\n   \"State07\".EastGreen ( )  ⇐  \"State07\".EWGreenPermit\n\n── 程序段 40  [LAD]\n   \"State07\".WestRed ( )  ⇐  /\"State07\".EWGreenPermit · /\"State07\".EWYellowPermit\n\n── 程序段 41  [LAD]\n   \"State07\".WestYellow ( )  ⇐  \"State07\".EWYellowPermit\n\n── 程序段 42  [LAD]\n   \"State07\".WestGreen ( )  ⇐  \"State07\".EWGreenPermit\n\n── 程序段 43  [LAD]\n   \"State07\".PedRed ( )  ⇐  /\"State07\".PedGreenPermit\n\n── 程序段 44  [LAD]\n   \"State07\".PedGreen ( )  ⇐  \"State07\".PedGreenPermit\n",
+        "message": "Logic of 'Logic07' [LAD] decoded. Series contacts joined with ' · ', parallel branches with ' + '; '⟨常量⟩' marks a contact wired to a literal constant (disabled/forced rung).",
+        "meta": {
+          "timestamp": "2026-11-03T14:34:57.6225009+07:00",
+          "success": true,
+          "language": "LAD"
+        }
+      },
+      "Timers07": {
+        "blockPath": "Timers07",
+        "language": "SCL",
+        "readable": "── 程序段 1  [SCL]\n   \n   #Timer0(IN := #Enable0,\n           PT := T#2S);\n   #Done0 := #Timer0.Q;\n   #Timer1(IN := #Enable1,\n           PT := T#10S);\n   #Done1 := #Timer1.Q;\n   #Timer2(IN := #Enable2,\n           PT := T#3S);\n   #Done2 := #Timer2.Q;\n   #Timer3(IN := #Enable3,\n           PT := T#2S);\n   #Done3 := #Timer3.Q;\n   #Timer4(IN := #Enable4,\n           PT := T#10S);\n   #Done4 := #Timer4.Q;\n   #Timer5(IN := #Enable5,\n           PT := T#3S);\n   #Done5 := #Timer5.Q;\n   #Timer6(IN := #Enable6,\n           PT := T#2S);\n   #Done6 := #Timer6.Q;\n   #Timer7(IN := #Enable7,\n           PT := T#5S);\n   #Done7 := #Timer7.Q;\n",
+        "message": "Logic of 'Timers07' [SCL] decoded. Series contacts joined with ' · ', parallel branches with ' + '; '⟨常量⟩' marks a contact wired to a literal constant (disabled/forced rung).",
+        "meta": {
+          "timestamp": "2026-11-03T14:34:57.6766628+07:00",
+          "success": true,
+          "language": "SCL"
+        }
+      },
+      "CallCase07": {
+        "blockPath": "CallCase07",
+        "language": "SCL",
+        "readable": "── 程序段 1  [SCL]\n   \n   \"Timers07_DB\"(Enable0 := \"State07\".Stage0,\n                 Done0 => \"State07\".StageTimer0Q,\n                 Enable1 := \"State07\".Stage1,\n                 Done1 => \"State07\".StageTimer1Q,\n                 Enable2 := \"State07\".Stage2,\n                 Done2 => \"State07\".StageTimer2Q,\n                 Enable3 := \"State07\".Stage3,\n                 Done3 => \"State07\".StageTimer3Q,\n                 Enable4 := \"State07\".Stage4,\n                 Done4 => \"State07\".StageTimer4Q,\n                 Enable5 := \"State07\".Stage5,\n                 Done5 => \"State07\".StageTimer5Q,\n                 Enable6 := \"State07\".Stage6,\n                 Done6 => \"State07\".StageTimer6Q,\n                 Enable7 := \"State07\".Stage7,\n                 Done7 => \"State07\".StageTimer7Q);\n   \"Logic07\"();\n",
+        "message": "Logic of 'CallCase07' [SCL] decoded. Series contacts joined with ' · ', parallel branches with ' + '; '⟨常量⟩' marks a contact wired to a literal constant (disabled/forced rung).",
+        "meta": {
+          "timestamp": "2026-11-03T14:34:57.7364289+07:00",
+          "success": true,
+          "language": "SCL"
+        }
+      }
+    },
+    "main_export": {
+      "message": "Documents exported from 'Main' to '$SCRATCH\\siemens\\case07-native-readback'",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:57.7610498+07:00",
+        "success": true
+      }
+    }
+  },
+  "limitations": [
+    "LAD Main calls the generated SCL cycle/helper. This is a mixed LAD/SCL example, not an all-LAD implementation.",
+    "DescribeBlockLogic may report an FC-call-only LAD network as empty; actual native-readback/Main.s7dcl independently proves the OB1 call.",
+    "Software compile is zero errors / zero warnings. This receipt does not claim a hardware-configuration compile.",
+    "All fourteen lamp commands are logical State07 DB fields, not fourteen physical outputs on the six-output CPU."
+  ]
+}

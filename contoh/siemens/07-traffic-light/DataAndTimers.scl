@@ -1,0 +1,111 @@
+DATA_BLOCK "State07"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR
+    Initialised : Bool := FALSE;
+    Stage0 : Bool := FALSE;
+    Stage1 : Bool := FALSE;
+    Stage2 : Bool := FALSE;
+    Stage3 : Bool := FALSE;
+    Stage4 : Bool := FALSE;
+    Stage5 : Bool := FALSE;
+    Stage6 : Bool := FALSE;
+    Stage7 : Bool := FALSE;
+    Hold0 : Bool := FALSE;
+    Hold1 : Bool := FALSE;
+    Hold2 : Bool := FALSE;
+    Hold3 : Bool := FALSE;
+    Hold4 : Bool := FALSE;
+    Hold5 : Bool := FALSE;
+    Hold6 : Bool := FALSE;
+    Hold7 : Bool := FALSE;
+    Advance0 : Bool := FALSE;
+    Advance1 : Bool := FALSE;
+    Advance2 : Bool := FALSE;
+    Advance3 : Bool := FALSE;
+    Advance4 : Bool := FALSE;
+    Advance5 : Bool := FALSE;
+    Advance6 : Bool := FALSE;
+    Advance7 : Bool := FALSE;
+    NSGreenPermit : Bool := FALSE;
+    NSYellowPermit : Bool := FALSE;
+    EWGreenPermit : Bool := FALSE;
+    EWYellowPermit : Bool := FALSE;
+    PedGreenPermit : Bool := FALSE;
+    NorthRed : Bool := FALSE;
+    NorthYellow : Bool := FALSE;
+    NorthGreen : Bool := FALSE;
+    SouthRed : Bool := FALSE;
+    SouthYellow : Bool := FALSE;
+    SouthGreen : Bool := FALSE;
+    EastRed : Bool := FALSE;
+    EastYellow : Bool := FALSE;
+    EastGreen : Bool := FALSE;
+    WestRed : Bool := FALSE;
+    WestYellow : Bool := FALSE;
+    WestGreen : Bool := FALSE;
+    PedRed : Bool := FALSE;
+    PedGreen : Bool := FALSE;
+    StageTimer0Q : Bool := FALSE;
+    StageTimer1Q : Bool := FALSE;
+    StageTimer2Q : Bool := FALSE;
+    StageTimer3Q : Bool := FALSE;
+    StageTimer4Q : Bool := FALSE;
+    StageTimer5Q : Bool := FALSE;
+    StageTimer6Q : Bool := FALSE;
+    StageTimer7Q : Bool := FALSE;
+END_VAR
+BEGIN
+END_DATA_BLOCK
+
+FUNCTION_BLOCK "Timers07"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR_INPUT
+    Enable0 : Bool;
+    Enable1 : Bool;
+    Enable2 : Bool;
+    Enable3 : Bool;
+    Enable4 : Bool;
+    Enable5 : Bool;
+    Enable6 : Bool;
+    Enable7 : Bool;
+END_VAR
+VAR_OUTPUT
+    Done0 : Bool;
+    Done1 : Bool;
+    Done2 : Bool;
+    Done3 : Bool;
+    Done4 : Bool;
+    Done5 : Bool;
+    Done6 : Bool;
+    Done7 : Bool;
+END_VAR
+VAR
+    Timer0 : TON_TIME;
+    Timer1 : TON_TIME;
+    Timer2 : TON_TIME;
+    Timer3 : TON_TIME;
+    Timer4 : TON_TIME;
+    Timer5 : TON_TIME;
+    Timer6 : TON_TIME;
+    Timer7 : TON_TIME;
+END_VAR
+BEGIN
+    #Timer0(IN := #Enable0, PT := T#2S);
+    #Done0 := #Timer0.Q;
+    #Timer1(IN := #Enable1, PT := T#10S);
+    #Done1 := #Timer1.Q;
+    #Timer2(IN := #Enable2, PT := T#3S);
+    #Done2 := #Timer2.Q;
+    #Timer3(IN := #Enable3, PT := T#2S);
+    #Done3 := #Timer3.Q;
+    #Timer4(IN := #Enable4, PT := T#10S);
+    #Done4 := #Timer4.Q;
+    #Timer5(IN := #Enable5, PT := T#3S);
+    #Done5 := #Timer5.Q;
+    #Timer6(IN := #Enable6, PT := T#2S);
+    #Done6 := #Timer6.Q;
+    #Timer7(IN := #Enable7, PT := T#5S);
+    #Done7 := #Timer7.Q;
+END_FUNCTION_BLOCK

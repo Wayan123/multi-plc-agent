@@ -1,0 +1,36 @@
+{
+  "case": 3,
+  "cpu": "6ES7212-1AE40-0XB0",
+  "firmware": "V4.2",
+  "modules": [
+    {
+      "order_number": "6ES7231-4HD32-0XB0",
+      "version": "V2.1",
+      "slot": 2,
+      "input_words": [
+        96,
+        98,
+        100,
+        102
+      ]
+    },
+    {
+      "order_number": "6ES7232-4HB32-0XB0",
+      "version": "V2.1",
+      "slot": 3,
+      "output_words": [
+        112,
+        114
+      ]
+    }
+  ],
+  "enable": "I0.0",
+  "numeric_raw_domain": [
+    -27648,
+    27648
+  ],
+  "engineering_domain": null,
+  "electrical_channel_range_verified": false,
+  "simulation_verified": false,
+  "hardware_verified": false
+}

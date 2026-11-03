@@ -1,0 +1,182 @@
+{
+  "rungs": [
+    {
+      "comment": "Arm after start release with all permissives healthy",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M0"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NC",
+                "args": [
+                  "X0"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X1"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X2"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X3"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M0"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Seal in run; permissive loss immediately drops run",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M1"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "X0"
+                ]
+              },
+              {
+                "kind": "NO",
+                "args": [
+                  "M0"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X1"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X2"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "X3"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M1"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Three-second start warning delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M1"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "T0",
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Horn sounds only while the start delay is incomplete",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M1"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T0"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Y1"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Motor starts only after the warning delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M1"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T0"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Y0"
+          ]
+        }
+      ]
+    }
+  ],
+  "aliases": {
+    "X0": "StartPB",
+    "X1": "StopHealthy",
+    "X2": "EStopHealthy",
+    "X3": "GuardHealthy",
+    "M0": "Armed",
+    "M1": "RunRequest",
+    "Y0": "Motor",
+    "Y1": "Horn"
+  }
+}

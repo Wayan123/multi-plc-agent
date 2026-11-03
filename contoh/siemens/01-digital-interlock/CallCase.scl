@@ -1,0 +1,13 @@
+FUNCTION "CallCase01" : Void
+VERSION : 0.1
+BEGIN
+    "State01".StartPB := %I0.0;
+    "State01".StopHealthy := %I0.1;
+    "State01".EStopHealthy := %I0.2;
+    "State01".GuardHealthy := %I0.3;
+    "Request01"();
+    "Timers01_DB"(Enable0 := "State01".RunRequest, Done0 => "State01".StartDelayQ);
+    "Outputs01"();
+    %Q0.0 := "State01".Motor;
+    %Q0.1 := "State01".Horn;
+END_FUNCTION

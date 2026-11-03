@@ -1,0 +1,13 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "Analog.scl": "86eb1c93f6b5b9a86b0a69c34b8dc421dea8dbaa48704ff3a68c391b21fe3268",
+    "Main.s7dcl": "983bb23027630587b2a49343df310bbabb633134730de5cd78f97d4f38920df0",
+    "README.md": "b3bb549ad39aa7ab63a2bcde6da7edb54af3ec7421a95f7646f5b75cee078199",
+    "native-evidence.json": "658d8ef5ec6cea41651c3bcae19ade0d6e8cca3a8aa43ce4733cb3035218949e",
+    "native-readback/Main.s7dcl": "083ef924026fe4cbd2f8198b3f58ea2f5538e09cabc202c0c3cdd6b517034209",
+    "native-readback/Main.s7res": "94762c0c441c12f30515b49e1c8f05265b08e81751aff3e368087cb256a1474b",
+    "signals.csv": "314fecabcfc66944300bd16e768283b8c6daa200100c93e60e54411b107a17ea",
+    "specification.json": "4478323b30cb678f35d605f1597f5e8fc10aaccb9704a23fd208aa6824a25751"
+  }
+}

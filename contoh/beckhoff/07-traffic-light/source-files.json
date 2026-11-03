@@ -1,0 +1,15 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "README.md": "71f74d4ef3c9daa14234f811f3aceab528adbeb42f88af452c3e02111eea1dd0",
+    "native/.beckhoff-mcp.json": "fed1d835004208b65c3f2277a4c5d69f667e254b0af30933bbb3be173cba25b1",
+    "native/Case07.sln": "cd00faccb8d53048a6678a4137fe17ed257bcdc3a99ddce1c981be77a2a20054",
+    "native/Engineering/AgentPLC/AgentPLC.plcproj": "854d77da0a96e28e29ab388a3d5cf8f5bcb47f7d38123525c70dfb0bf7bccd3d",
+    "native/Engineering/AgentPLC/MAIN.TcPOU": "7772525a320089ddce515c36e4f3b7a6ac82094a267b9840ee0847ba1c033fcc",
+    "native/Engineering/AgentPLC/PlcTask.TcTTO": "e90bf21a37427b853d241ac4d0a2d01f51979f727ccc96fa3b7ef4202db6600d",
+    "native/Engineering/Engineering.tsproj": "720117cd2d31a137833056e8c4cf3c076bc5a5dcd81693b58e7020458cca5077",
+    "native-evidence.json": "cf0c03bae840f5855c747cc91614babae9e6765e2a8c9c5b39e7957342f43032",
+    "request.json": "25e99f9bbaccb588472e15a633fa4d10c731e2465668156377f19d552286a10f",
+    "signals.csv": "26d1900c49b9e6db7108ab135f8beaeb46dcfdaf0be1c780ed9b2b784f1ed067"
+  }
+}

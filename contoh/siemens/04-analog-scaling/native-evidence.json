@@ -1,0 +1,363 @@
+{
+  "date": "2026-11-03",
+  "software": "TIA Portal V20",
+  "model": "6ES7212-1AE40-0XB0",
+  "configured_firmware": "V4.2",
+  "authorship": "TIA Portal MCP in an isolated owned headless instance",
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "create": {
+      "message": "Project 'Example04_AnalogScaling_V42' created in '$SCRATCH\\siemens'",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:02.4908805+07:00",
+        "success": true
+      }
+    },
+    "cpu": {
+      "ok": true,
+      "deviceName": "PLC_1",
+      "family": "S7-1200",
+      "mlfbUsed": "6ES7212-1AE40-0XB0",
+      "versionUsed": "V4.2",
+      "attempts": [
+        "6ES7212-1AE40-0XB0 V4.2 -> OK"
+      ],
+      "message": "Device 'PLC_1' added (fallback)",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:12.5305353+07:00",
+        "success": true,
+        "name": "PLC_1"
+      }
+    },
+    "hardware_insertion": [
+      {
+        "dry_run": {
+          "message": "[dryRun] 预检通过：可以把 'OrderNumber:6ES7231-4HD32-0XB0/V2.1' 以名字 'AnalogInputs' 插到 'PLC_1/Rack_0' 的槽位 2。用 dryRun=false 实际写入。插完如果要改起始地址（例如让输入从 %I2.0 开始），用已有的 SetDeviceItemIoAddress，不要在这里传地址。",
+          "meta": {
+            "timestamp": "2026-11-03T14:41:12.7136269+07:00",
+            "dryRun": true,
+            "reason": null,
+            "verified": true,
+            "deviceItemPath": "PLC_1/Rack_0",
+            "orderNumber": "6ES7231-4HD32-0XB0",
+            "version": "V2.1",
+            "requestedPositionNumber": 2,
+            "resolvedTypeIdentifier": "OrderNumber:6ES7231-4HD32-0XB0/V2.1",
+            "resolvedPositionNumber": 2,
+            "attempts": [
+              "slot=2 OrderNumber:6ES7231-4HD32-0XB0/V2.1 -> CanPlugNew=True"
+            ],
+            "freeSlots": [
+              {
+                "positionNumber": 2,
+                "label": "2"
+              },
+              {
+                "positionNumber": 3,
+                "label": "3"
+              },
+              {
+                "positionNumber": 101,
+                "label": "101"
+              },
+              {
+                "positionNumber": 102,
+                "label": "102"
+              },
+              {
+                "positionNumber": 103,
+                "label": "103"
+              }
+            ]
+          }
+        },
+        "insert": {
+          "message": "⚠ 未验证：读回验证失败：槽位 2 上没有读到任何模块。PlugNew 已返回对象但组态里没落位，请在 TIA 界面里核对。 —— PlugNew 已经调用过，模块**可能已经插进去了**，但读回确认失败，所以无法判定结果。请用 GetDevicePlugLocations 或 TIA 界面核对后再继续，不要直接重试（会重复插入）。",
+          "meta": {
+            "timestamp": "2026-11-03T14:41:12.9576148+07:00",
+            "dryRun": false,
+            "reason": "VerifyFailed",
+            "verified": false,
+            "deviceItemPath": "PLC_1/Rack_0",
+            "orderNumber": "6ES7231-4HD32-0XB0",
+            "version": "V2.1",
+            "requestedPositionNumber": 2,
+            "resolvedTypeIdentifier": "OrderNumber:6ES7231-4HD32-0XB0/V2.1",
+            "resolvedPositionNumber": 2,
+            "attempts": [
+              "slot=2 OrderNumber:6ES7231-4HD32-0XB0/V2.1 -> CanPlugNew=True"
+            ],
+            "freeSlots": [
+              {
+                "positionNumber": 2,
+                "label": "2"
+              },
+              {
+                "positionNumber": 3,
+                "label": "3"
+              },
+              {
+                "positionNumber": 101,
+                "label": "101"
+              },
+              {
+                "positionNumber": 102,
+                "label": "102"
+              },
+              {
+                "positionNumber": 103,
+                "label": "103"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "dry_run": {
+          "message": "[dryRun] 预检通过：可以把 'OrderNumber:6ES7232-4HB32-0XB0/V2.1' 以名字 'AnalogOutputs' 插到 'PLC_1/Rack_0' 的槽位 3。用 dryRun=false 实际写入。插完如果要改起始地址（例如让输入从 %I2.0 开始），用已有的 SetDeviceItemIoAddress，不要在这里传地址。",
+          "meta": {
+            "timestamp": "2026-11-03T14:41:13.0032725+07:00",
+            "dryRun": true,
+            "reason": null,
+            "verified": true,
+            "deviceItemPath": "PLC_1/Rack_0",
+            "orderNumber": "6ES7232-4HB32-0XB0",
+            "version": "V2.1",
+            "requestedPositionNumber": 3,
+            "resolvedTypeIdentifier": "OrderNumber:6ES7232-4HB32-0XB0/V2.1",
+            "resolvedPositionNumber": 3,
+            "attempts": [
+              "slot=3 OrderNumber:6ES7232-4HB32-0XB0/V2.1 -> CanPlugNew=True"
+            ],
+            "freeSlots": [
+              {
+                "positionNumber": 3,
+                "label": "3"
+              },
+              {
+                "positionNumber": 101,
+                "label": "101"
+              },
+              {
+                "positionNumber": 102,
+                "label": "102"
+              },
+              {
+                "positionNumber": 103,
+                "label": "103"
+              }
+            ]
+          }
+        },
+        "insert": {
+          "message": "⚠ 未验证：读回验证失败：槽位 3 上没有读到任何模块。PlugNew 已返回对象但组态里没落位，请在 TIA 界面里核对。 —— PlugNew 已经调用过，模块**可能已经插进去了**，但读回确认失败，所以无法判定结果。请用 GetDevicePlugLocations 或 TIA 界面核对后再继续，不要直接重试（会重复插入）。",
+          "meta": {
+            "timestamp": "2026-11-03T14:41:13.1657522+07:00",
+            "dryRun": false,
+            "reason": "VerifyFailed",
+            "verified": false,
+            "deviceItemPath": "PLC_1/Rack_0",
+            "orderNumber": "6ES7232-4HB32-0XB0",
+            "version": "V2.1",
+            "requestedPositionNumber": 3,
+            "resolvedTypeIdentifier": "OrderNumber:6ES7232-4HB32-0XB0/V2.1",
+            "resolvedPositionNumber": 3,
+            "attempts": [
+              "slot=3 OrderNumber:6ES7232-4HB32-0XB0/V2.1 -> CanPlugNew=True"
+            ],
+            "freeSlots": [
+              {
+                "positionNumber": 3,
+                "label": "3"
+              },
+              {
+                "positionNumber": 101,
+                "label": "101"
+              },
+              {
+                "positionNumber": 102,
+                "label": "102"
+              },
+              {
+                "positionNumber": 103,
+                "label": "103"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "source_import": {
+      "message": "PLC external source imported",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:13.2165679+07:00",
+        "success": true
+      }
+    },
+    "source_generate": {
+      "message": "Blocks generated from external source 'Analog.scl'",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:13.6474779+07:00",
+        "success": true
+      }
+    },
+    "main_import": {
+      "message": "Imported 'Main' from '$REPO\\contoh\\siemens\\04-analog-scaling' (verified)",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:13.7181373+07:00",
+        "success": true,
+        "verified": true,
+        "verifyDetail": "block 'Main' present after import",
+        "warnings": []
+      }
+    },
+    "compile": {
+      "state": "Warning",
+      "errorCount": 0,
+      "warningCount": 6,
+      "errors": [],
+      "warnings": [
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=3; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=13; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=23; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=33; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=55; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=68; DateTime=03/11/2026 07:41:13"
+      ],
+      "info": [
+        "State=Success; Description=Block was successfully compiled.; Path=Main (OB1); DateTime=03/11/2026 07:41:13",
+        "State=Success; Description=Block was successfully compiled.; DateTime=03/11/2026 07:41:13"
+      ],
+      "rawMessages": [
+        "State=Warning; Path=PLC_1; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Path=Program blocks; DateTime=03/11/2026 07:41:13",
+        "State=Success; Description=Block was successfully compiled.; Path=Main (OB1); DateTime=03/11/2026 07:41:13",
+        "State=Warning; Path=AnalogCycle04 (FC1); DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=3; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=13; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=23; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=33; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=55; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=The sign or the accuracy of the value may be lost.; Path=68; DateTime=03/11/2026 07:41:13",
+        "State=Success; Description=Block was successfully compiled.; DateTime=03/11/2026 07:41:13",
+        "State=Warning; Description=Compiling finished (errors: 0; warnings: 6); DateTime=03/11/2026 07:41:13"
+      ],
+      "message": "Software 'PLC_1' compiled. State=Warning Errors=0 Warnings=6",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:14.1486065+07:00",
+        "success": true,
+        "errorDetailCount": 0,
+        "warningDetailCount": 6,
+        "diagnosticsComplete": true
+      }
+    },
+    "hardware": {
+      "ok": true,
+      "data": {
+        "devicePath": "PLC_1",
+        "compiledVia": "Device PLC_1",
+        "state": "Warning",
+        "errorCount": 0,
+        "warningCount": 1,
+        "collectFailures": []
+      },
+      "errors": [],
+      "warnings": [
+        "State=Warning; Description=PLC_1 does not contain a configured protection level; DateTime=03/11/2026 07:41:14"
+      ],
+      "message": "硬件编译完成（Device PLC_1）：State=Warning，错误 0、警告 1。",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:14.8693001+07:00",
+        "errorCount": 0
+      }
+    },
+    "addresses": {
+      "AnalogInputs": {
+        "message": "设备项 'PLC_1/AnalogInputs/AnalogInputs' 上有 1 条 I/O 地址。",
+        "meta": {
+          "timestamp": "2026-11-03T14:41:14.8828134+07:00",
+          "deviceItemPath": "PLC_1/AnalogInputs/AnalogInputs",
+          "addressCount": 1,
+          "addresses": [
+            {
+              "ioType": "Input",
+              "startAddress": 96,
+              "length": 64
+            }
+          ],
+          "childItemsWithAddresses": [],
+          "note": "startAddress/length 是引擎原值，未做任何换算。startAddress 为字节偏移。"
+        }
+      },
+      "AnalogOutputs": {
+        "message": "设备项 'PLC_1/AnalogOutputs/AnalogOutputs' 上有 1 条 I/O 地址。",
+        "meta": {
+          "timestamp": "2026-11-03T14:41:14.8978346+07:00",
+          "deviceItemPath": "PLC_1/AnalogOutputs/AnalogOutputs",
+          "addressCount": 1,
+          "addresses": [
+            {
+              "ioType": "Output",
+              "startAddress": 112,
+              "length": 32
+            }
+          ],
+          "childItemsWithAddresses": [],
+          "note": "startAddress/length 是引擎原值，未做任何换算。startAddress 为字节偏移。"
+        }
+      }
+    },
+    "project_path": "$SCRATCH\\siemens\\Example04_AnalogScaling_V42\\Example04_AnalogScaling_V42.ap20",
+    "cold_compile": {
+      "state": "Success",
+      "errorCount": 0,
+      "warningCount": 0,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        "State=Information; Description=No block was compiled. All blocks are up-to-date.; DateTime=03/11/2026 07:41:16"
+      ],
+      "rawMessages": [
+        "State=Information; Path=PLC_1; DateTime=03/11/2026 07:41:16",
+        "State=Information; Path=Program blocks; DateTime=03/11/2026 07:41:16",
+        "State=Information; Description=No block was compiled. All blocks are up-to-date.; DateTime=03/11/2026 07:41:16",
+        "State=Success; Description=Compiling finished (errors: 0; warnings: 0); DateTime=03/11/2026 07:41:16"
+      ],
+      "message": "Software 'PLC_1' compiled. State=Success Errors=0 Warnings=0",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:16.7040286+07:00",
+        "success": true,
+        "errorDetailCount": 0,
+        "warningDetailCount": 0,
+        "diagnosticsComplete": true
+      }
+    },
+    "readback": {
+      "blockPath": "AnalogCycle04",
+      "language": "SCL",
+      "readable": "── 程序段 1  [SCL]\n   \n   \"AnalogState04\".Enabled := \"Tag__639292884735546768\";\n   \"AnalogState04\".RawIn0 := \"Tag__639292884735612100\";\n   \"AnalogState04\".InRange0 := (\"AnalogState04\".RawIn0 >= -27648) AND (\"AnalogState04\".RawIn0 <= 27648);\n   #Value := INT_TO_DINT(\"AnalogState04\".RawIn0);\n   IF #Value < -27648 THEN\n       #Value := -27648;\n   END_IF;\n   IF #Value > 27648 THEN\n       #Value := 27648;\n   END_IF;\n   \"AnalogState04\".ScaledIn0 := (#Value * 1000) / 27648;\n   \"AnalogState04\".RawIn1 := \"Tag__639292884735747567\";\n   \"AnalogState04\".InRange1 := (\"AnalogState04\".RawIn1 >= -27648) AND (\"AnalogState04\".RawIn1 <= 27648);\n   #Value := INT_TO_DINT(\"AnalogState04\".RawIn1);\n   IF #Value < -27648 THEN\n       #Value := -27648;\n   END_IF;\n   IF #Value > 27648 THEN\n       #Value := 27648;\n   END_IF;\n   \"AnalogState04\".ScaledIn1 := (#Value * 1000) / 27648;\n   \"AnalogState04\".RawIn2 := \"Tag__639292884735797565\";\n   \"AnalogState04\".InRange2 := (\"AnalogState04\".RawIn2 >= -27648) AND (\"AnalogState04\".RawIn2 <= 27648);\n   #Value := INT_TO_DINT(\"AnalogState04\".RawIn2);\n   IF #Value < -27648 THEN\n       #Value := -27648;\n   END_IF;\n   IF #Value > 27648 THEN\n       #Value := 27648;\n   END_IF;\n   \"AnalogState04\".ScaledIn2 := (#Value * 1000) / 27648;\n   \"AnalogState04\".RawIn3 := \"Tag__639292884735857640\";\n   \"AnalogState04\".InRange3 := (\"AnalogState04\".RawIn3 >= -27648) AND (\"AnalogState04\".RawIn3 <= 27648);\n   #Value := INT_TO_DINT(\"AnalogState04\".RawIn3);\n   IF #Value < -27648 THEN\n       #Value := -27648;\n   END_IF;\n   IF #Value > 27648 THEN\n       #Value := 27648;\n   END_IF;\n   \"AnalogState04\".ScaledIn3 := (#Value * 1000) / 27648;\n   #Value := \"AnalogState04\".CommandEU0;\n   IF #Value < -1000 THEN\n       #Value := -1000;\n   END_IF;\n   IF #Value > 1000 THEN\n       #Value := 1000;\n   END_IF;\n   #Value := (#Value * 27648) / 1000;\n   IF NOT \"AnalogState04\".Enabled THEN\n       #Value := 0;\n   END_IF;\n   \"AnalogState04\".RawOut0 := DINT_TO_INT(#Value);\n   \"Tag__639292884735958085\" := \"AnalogState04\".RawOut0;\n   #Value := \"AnalogState04\".CommandEU1;\n   IF #Value < -1000 THEN\n       #Value := -1000;\n   END_IF;\n   IF #Value > 1000 THEN\n       #Value := 1000;\n   END_IF;\n   #Value := (#Value * 27648) / 1000;\n   IF NOT \"AnalogState04\".Enabled THEN\n       #Value := 0;\n   END_IF;\n   \"AnalogState04\".RawOut1 := DINT_TO_INT(#Value);\n   \"Tag__639292884736013229\" := \"AnalogState04\".RawOut1;\n",
+      "message": "Logic of 'AnalogCycle04' [SCL] decoded. Series contacts joined with ' · ', parallel branches with ' + '; '⟨常量⟩' marks a contact wired to a literal constant (disabled/forced rung).",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:17.096815+07:00",
+        "success": true,
+        "language": "SCL"
+      }
+    },
+    "main_export": {
+      "message": "Documents exported from 'Main' to '$SCRATCH\\siemens\\case04-native-readback'",
+      "meta": {
+        "timestamp": "2026-11-03T14:41:17.132505+07:00",
+        "success": true
+      }
+    }
+  },
+  "limitations": [
+    "LAD Main calls the generated SCL cycle/helper. This is a mixed LAD/SCL example, not an all-LAD implementation.",
+    "DescribeBlockLogic may report an FC-call-only LAD network as empty; actual native-readback/Main.s7dcl independently proves the OB1 call.",
+    "CPU V4.2 is an explicit offline engineering configuration, not the firmware identification of a connected CPU.",
+    "Hardware compile: zero errors, one warning that PLC protection level is not configured. Do not deploy this offline scratch configuration.",
+    "Electrical measurement ranges and channel diagnostics were not independently verified. Numeric +/-27648 limits are example assumptions, not a wiring or commissioning configuration."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-03",
+  "software": "Haiwell Happy V2.2.13.240603",
+  "model": "AT16S0T/P",
+  "authorship": "Existing vendor MCP backend through multi-plc-agent stdio router",
+  "canonical_rungs": 5,
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "created": {
+      "ok": true,
+      "path": "$SCRATCH\\haiwell\\Case02.gpc",
+      "template": "AT16S0T",
+      "block": "MainLD"
+    },
+    "write": {
+      "project": "$SCRATCH\\haiwell\\Case02.gpc",
+      "block": "PGB:MainLD",
+      "ok": true,
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case02.gpc]",
+      "il_matches": true,
+      "il": [
+        "LD          M0",
+        "ORI         X0",
+        "AND         X1",
+        "AND         X2",
+        "OUT         M0",
+        "LD          M1",
+        "LD          X0",
+        "AND         M0",
+        "ORB",
+        "AND         X1",
+        "AND         X2",
+        "OUT         M1",
+        "LD          M1",
+        "TON.1s      3, T0, TV0",
+        "LD          M1",
+        "ANDI        T0",
+        "OUT         Y1",
+        "LD          M1",
+        "AND         T0",
+        "OUT         Y0"
+      ],
+      "backup": "$SCRATCH\\haiwell\\Case02.gpc.bak",
+      "rungs": 5,
+      "aliases_not_used_in_ladder": []
+    },
+    "compile": {
+      "project": "$SCRATCH\\haiwell\\Case02.gpc",
+      "ok": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "messages": [],
+      "summary": [
+        "Error number:0    Warning number:0",
+        "Hardware configuration:79    Program:155    Used capacity:234",
+        "CPU Module:AT16S0T/P    Program capacity:48000"
+      ],
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case02.gpc]"
+    },
+    "readback": {
+      "project": "$SCRATCH\\haiwell\\Case02.gpc",
+      "il": "Main program: [PGB:MainLD]\nLD          M0\nORI         X0\nAND         X1\nAND         X2\nOUT         M0\nLD          M1\nLD          X0\nAND         M0\nORB         \nAND         X1\nAND         X2\nOUT         M1\nLD          M1\nTON.1s      3, T0, TV0\nLD          M1\nANDI        T0\nOUT         Y1\nLD          M1\nAND         T0\nOUT         Y0\n\nEND\n",
+      "ok": true,
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case02.gpc]"
+    },
+    "saved_il_matches": true,
+    "cold_readback": {
+      "project": "$SCRATCH\\haiwell\\Case02.gpc",
+      "il": "Main program: [PGB:MainLD]\nLD          M0\nORI         X0\nAND         X1\nAND         X2\nOUT         M0\nLD          M1\nLD          X0\nAND         M0\nORB         \nAND         X1\nAND         X2\nOUT         M1\nLD          M1\nTON.1s      3, T0, TV0\nLD          M1\nANDI        T0\nOUT         Y1\nLD          M1\nAND         T0\nOUT         Y0\n\nEND\n",
+      "ok": true,
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case02.gpc]"
+    },
+    "cold_compile": {
+      "project": "$SCRATCH\\haiwell\\Case02.gpc",
+      "ok": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "messages": [],
+      "summary": [
+        "Error number:0    Warning number:0",
+        "Hardware configuration:79    Program:155    Used capacity:234",
+        "CPU Module:AT16S0T/P    Program capacity:48000"
+      ],
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case02.gpc]"
+    },
+    "cold_saved_il_matches": true
+  },
+  "limitations": []
+}

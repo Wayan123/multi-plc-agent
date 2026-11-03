@@ -1,0 +1,1300 @@
+{
+  "date": "2026-11-03",
+  "software": "EcoStruxure Machine Expert - Basic",
+  "model": "TM221M16R/G",
+  "authorship": "Existing vendor MCP backend through multi-plc-agent stdio router",
+  "canonical_rungs": 52,
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "write": {
+      "ok": true,
+      "written": true,
+      "path": "$SCRATCH\\schneider\\Case07.smbp",
+      "backup": "$SCRATCH\\schneider\\Case07.smbp.bak",
+      "rungs": 52,
+      "il": [
+        [
+          "BLK %TM0",
+          "LD %M11",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM1",
+          "LD %M12",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM2",
+          "LD %M13",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM3",
+          "LD %M14",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM4",
+          "LD %M15",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM5",
+          "LD %M16",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM6",
+          "LD %M17",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM7",
+          "LD %M18",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "LD %M11",
+          "ANDN %TM0.Q",
+          "ST %M19"
+        ],
+        [
+          "LD %M11",
+          "AND %TM0.Q",
+          "ST %M27"
+        ],
+        [
+          "LD %M12",
+          "ANDN %TM1.Q",
+          "ST %M20"
+        ],
+        [
+          "LD %M12",
+          "AND %TM1.Q",
+          "ST %M28"
+        ],
+        [
+          "LD %M13",
+          "ANDN %TM2.Q",
+          "ST %M21"
+        ],
+        [
+          "LD %M13",
+          "AND %TM2.Q",
+          "ST %M29"
+        ],
+        [
+          "LD %M14",
+          "ANDN %TM3.Q",
+          "ST %M22"
+        ],
+        [
+          "LD %M14",
+          "AND %TM3.Q",
+          "ST %M30"
+        ],
+        [
+          "LD %M15",
+          "ANDN %TM4.Q",
+          "ST %M23"
+        ],
+        [
+          "LD %M15",
+          "AND %TM4.Q",
+          "ST %M31"
+        ],
+        [
+          "LD %M16",
+          "ANDN %TM5.Q",
+          "ST %M24"
+        ],
+        [
+          "LD %M16",
+          "AND %TM5.Q",
+          "ST %M32"
+        ],
+        [
+          "LD %M17",
+          "ANDN %TM6.Q",
+          "ST %M25"
+        ],
+        [
+          "LD %M17",
+          "AND %TM6.Q",
+          "ST %M33"
+        ],
+        [
+          "LD %M18",
+          "ANDN %TM7.Q",
+          "ST %M26"
+        ],
+        [
+          "LD %M18",
+          "AND %TM7.Q",
+          "ST %M34"
+        ],
+        [
+          "LD %M19",
+          "OR %M34",
+          "ORN %M10",
+          "ST %M11"
+        ],
+        [
+          "LD %M20",
+          "OR %M27",
+          "ST %M12"
+        ],
+        [
+          "LD %M21",
+          "OR %M28",
+          "ST %M13"
+        ],
+        [
+          "LD %M22",
+          "OR %M29",
+          "ST %M14"
+        ],
+        [
+          "LD %M23",
+          "OR %M30",
+          "ST %M15"
+        ],
+        [
+          "LD %M24",
+          "OR %M31",
+          "ST %M16"
+        ],
+        [
+          "LD %M25",
+          "OR %M32",
+          "ST %M17"
+        ],
+        [
+          "LD %M26",
+          "OR %M33",
+          "ST %M18"
+        ],
+        [
+          "LDN %M10",
+          "S %M10"
+        ],
+        [
+          "LD %M12",
+          "ANDN %M11",
+          "ANDN %M13",
+          "ANDN %M14",
+          "ANDN %M15",
+          "ANDN %M16",
+          "ANDN %M17",
+          "ANDN %M18",
+          "ST %M35"
+        ],
+        [
+          "LD %M13",
+          "ANDN %M11",
+          "ANDN %M12",
+          "ANDN %M14",
+          "ANDN %M15",
+          "ANDN %M16",
+          "ANDN %M17",
+          "ANDN %M18",
+          "ST %M36"
+        ],
+        [
+          "LD %M15",
+          "ANDN %M11",
+          "ANDN %M12",
+          "ANDN %M13",
+          "ANDN %M14",
+          "ANDN %M16",
+          "ANDN %M17",
+          "ANDN %M18",
+          "ST %M37"
+        ],
+        [
+          "LD %M16",
+          "ANDN %M11",
+          "ANDN %M12",
+          "ANDN %M13",
+          "ANDN %M14",
+          "ANDN %M15",
+          "ANDN %M17",
+          "ANDN %M18",
+          "ST %M38"
+        ],
+        [
+          "LD %M18",
+          "ANDN %M11",
+          "ANDN %M12",
+          "ANDN %M13",
+          "ANDN %M14",
+          "ANDN %M15",
+          "ANDN %M16",
+          "ANDN %M17",
+          "ST %M39"
+        ],
+        [
+          "LDN %M35",
+          "ANDN %M36",
+          "ST %M100"
+        ],
+        [
+          "LD %M36",
+          "ST %M101"
+        ],
+        [
+          "LD %M35",
+          "ST %M102"
+        ],
+        [
+          "LDN %M35",
+          "ANDN %M36",
+          "ST %M103"
+        ],
+        [
+          "LD %M36",
+          "ST %M104"
+        ],
+        [
+          "LD %M35",
+          "ST %M105"
+        ],
+        [
+          "LDN %M37",
+          "ANDN %M38",
+          "ST %M106"
+        ],
+        [
+          "LD %M38",
+          "ST %M107"
+        ],
+        [
+          "LD %M37",
+          "ST %M108"
+        ],
+        [
+          "LDN %M37",
+          "ANDN %M38",
+          "ST %M109"
+        ],
+        [
+          "LD %M38",
+          "ST %M110"
+        ],
+        [
+          "LD %M37",
+          "ST %M111"
+        ],
+        [
+          "LDN %M39",
+          "ST %M112"
+        ],
+        [
+          "LD %M39",
+          "ST %M113"
+        ]
+      ],
+      "il_matches": true,
+      "differences": []
+    },
+    "compile": {
+      "path": "$SCRATCH\\schneider\\Case07.smbp",
+      "status": "No error",
+      "ui_il": [
+        [
+          "BLK %TM0",
+          "LD STAGE0",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM1",
+          "LD STAGE1",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM2",
+          "LD STAGE2",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM3",
+          "LD STAGE3",
+          "IN"
+        ],
+        [
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM5",
+          "LD STAGE5",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM6",
+          "LD STAGE6",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "BLK %TM7",
+          "LD STAGE7",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "LD STAGE0"
+        ],
+        [
+          "AND %TM0.Q",
+          "ST ADVANCE0"
+        ],
+        [
+          "LD STAGE1",
+          "ANDN %TM1.Q",
+          "ST HOLD1"
+        ],
+        [
+          "LD STAGE1",
+          "AND %TM1.Q",
+          "ST ADVANCE1"
+        ],
+        [
+          "LD STAGE2",
+          "ANDN %TM2.Q",
+          "ST HOLD2"
+        ],
+        [
+          "LD STAGE2",
+          "AND %TM2.Q",
+          "ST ADVANCE2"
+        ],
+        [
+          "LD STAGE3",
+          "AND %TM3.Q",
+          "ST ADVANCE3"
+        ],
+        [
+          "LD STAGE4",
+          "ANDN %TM4.Q",
+          "ST HOLD4"
+        ],
+        [
+          "LD STAGE4",
+          "AND %TM4.Q",
+          "ST ADVANCE4"
+        ],
+        [
+          "LD STAGE5",
+          "ANDN %TM5.Q",
+          "ST HOLD5"
+        ],
+        [
+          "LD STAGE5",
+          "AND %TM5.Q",
+          "ST ADVANCE5"
+        ],
+        [],
+        [
+          "LD STAGE6",
+          "AND %TM6.Q",
+          "ST ADVANCE6"
+        ],
+        [
+          "LD STAGE7",
+          "ANDN %TM7.Q",
+          "ST HOLD7"
+        ],
+        [
+          "LD STAGE7",
+          "AND %TM7.Q",
+          "ST ADVANCE7"
+        ],
+        [
+          "LD HOLD0",
+          "OR ADVANCE7",
+          "ORN INITIALISED",
+          "ST STAGE0"
+        ],
+        [
+          "LD HOLD1"
+        ],
+        [
+          "OR ADVANCE1",
+          "ST STAGE2"
+        ],
+        [
+          "LD HOLD3",
+          "OR ADVANCE2",
+          "ST STAGE3"
+        ],
+        [
+          "LD HOLD4",
+          "OR ADVANCE3",
+          "ST STAGE4"
+        ],
+        [
+          "LD HOLD5",
+          "OR ADVANCE4",
+          "ST STAGE5"
+        ],
+        [
+          "LD HOLD6",
+          "OR ADVANCE5",
+          "ST STAGE6"
+        ],
+        [
+          "LDN INITIALISED",
+          "S INITIALISED"
+        ],
+        [
+          "LD STAGE1",
+          "ANDN STAGE0",
+          "ANDN STAGE2",
+          "ANDN STAGE3",
+          "ANDN STAGE4",
+          "ANDN STAGE5",
+          "ANDN STAGE6",
+          "ANDN STAGE7",
+          "ST NSGREENPERMIT"
+        ],
+        [
+          "LD STAGE2",
+          "ANDN STAGE0",
+          "ANDN STAGE1",
+          "ANDN STAGE3",
+          "ANDN STAGE4",
+          "ST NSYELLOWPERMIT"
+        ],
+        [
+          "LD STAGE4",
+          "ANDN STAGE0",
+          "ANDN STAGE1",
+          "ANDN STAGE2",
+          "ANDN STAGE3",
+          "ANDN STAGE5",
+          "ANDN STAGE6",
+          "ANDN STAGE7",
+          "ST EWGREENPERMIT"
+        ],
+        [
+          "LD STAGE5",
+          "ANDN STAGE0",
+          "ANDN STAGE1",
+          "ANDN STAGE2",
+          "ANDN STAGE3",
+          "ANDN STAGE4",
+          "ANDN STAGE6"
+        ],
+        [
+          "ANDN STAGE0",
+          "ANDN STAGE1",
+          "ANDN STAGE2",
+          "ANDN STAGE3",
+          "ANDN STAGE4",
+          "ANDN STAGE5",
+          "ANDN STAGE6",
+          "ST PEDGREENPERMIT"
+        ],
+        [
+          "LDN NSGREENPERMIT",
+          "ANDN NSYELLOWPERMIT",
+          "ST NORTHRED"
+        ],
+        [
+          "LD NSYELLOWPERMIT",
+          "ST NORTHYELLOW"
+        ],
+        [
+          "LD NSGREENPERMIT",
+          "ST NORTHGREEN"
+        ],
+        [
+          "ST SOUTHRED"
+        ],
+        [
+          "LD NSYELLOWPERMIT",
+          "ST SOUTHYELLOW"
+        ],
+        [
+          "LD NSGREENPERMIT",
+          "ST SOUTHGREEN"
+        ],
+        [
+          "LDN EWGREENPERMIT",
+          "ANDN EWYELLOWPERMIT",
+          "ST EASTRED"
+        ],
+        [
+          "LD EWYELLOWPERMIT",
+          "ST EASTYELLOW"
+        ],
+        [
+          "LD EWGREENPERMIT"
+        ],
+        [
+          "ANDN EWYELLOWPERMIT",
+          "ST WESTRED"
+        ],
+        [
+          "LD EWYELLOWPERMIT",
+          "ST WESTYELLOW"
+        ],
+        [
+          "LD EWGREENPERMIT",
+          "ST WESTGREEN"
+        ],
+        [
+          "LDN PEDGREENPERMIT",
+          "ST PEDRED"
+        ],
+        [
+          "LD PEDGREENPERMIT",
+          "ST PEDGREEN"
+        ]
+      ],
+      "error_lines": [],
+      "error_count": 0,
+      "advisory": false,
+      "ok": true,
+      "languages": {
+        "0": "LD",
+        "1": "LD",
+        "2": "LD",
+        "3": "LD",
+        "4": "LD",
+        "5": "LD",
+        "6": "LD",
+        "7": "LD",
+        "8": "LD",
+        "9": "LD",
+        "10": "LD",
+        "11": "LD",
+        "12": "LD",
+        "13": "LD",
+        "14": "LD",
+        "15": "LD",
+        "16": "LD",
+        "17": "LD",
+        "18": "LD",
+        "19": "LD",
+        "20": "LD",
+        "21": "LD",
+        "22": "LD",
+        "23": "LD",
+        "24": "LD",
+        "25": "LD",
+        "26": "LD",
+        "27": "LD",
+        "28": "LD",
+        "29": "LD",
+        "30": "LD",
+        "31": "LD",
+        "32": "LD",
+        "33": "LD",
+        "34": "LD",
+        "35": "LD",
+        "36": "LD",
+        "37": "LD",
+        "38": "LD",
+        "39": "LD",
+        "40": "LD",
+        "41": "LD",
+        "42": "LD",
+        "43": "LD",
+        "44": "LD",
+        "45": "LD",
+        "46": "LD",
+        "47": "LD",
+        "48": "LD",
+        "49": "LD",
+        "50": "LD",
+        "51": "LD"
+      },
+      "status_after_ladder": "No error",
+      "saved": true,
+      "ui_il_matches": false,
+      "ladder_rungs": 52,
+      "il_matches": true,
+      "differences": []
+    },
+    "readback": {
+      "name": "Case07",
+      "cpu": "TM221M16R/G",
+      "pous": [
+        {
+          "name": "New POU",
+          "rungs": [
+            {
+              "name": "",
+              "comment": "Phase 0: nominal 2 seconds",
+              "il": [
+                "BLK %TM0",
+                "LD %M11",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Phase 1: nominal 10 seconds",
+              "il": [
+                "BLK %TM1",
+                "LD %M12",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Phase 2: nominal 3 seconds",
+              "il": [
+                "BLK %TM2",
+                "LD %M13",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Phase 3: nominal 2 seconds",
+              "il": [
+                "BLK %TM3",
+                "LD %M14",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Phase 4: nominal 10 seconds",
+              "il": [
+                "BLK %TM4",
+                "LD %M15",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Phase 5: nominal 3 seconds",
+              "il": [
+                "BLK %TM5",
+                "LD %M16",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Phase 6: nominal 2 seconds",
+              "il": [
+                "BLK %TM6",
+                "LD %M17",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Phase 7: nominal 5 seconds",
+              "il": [
+                "BLK %TM7",
+                "LD %M18",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Hold phase 0 until its timer finishes",
+              "il": [
+                "LD %M11",
+                "ANDN %TM0.Q",
+                "ST %M19"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Capture completed phase 0",
+              "il": [
+                "LD %M11",
+                "AND %TM0.Q",
+                "ST %M27"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Hold phase 1 until its timer finishes",
+              "il": [
+                "LD %M12",
+                "ANDN %TM1.Q",
+                "ST %M20"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Capture completed phase 1",
+              "il": [
+                "LD %M12",
+                "AND %TM1.Q",
+                "ST %M28"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Hold phase 2 until its timer finishes",
+              "il": [
+                "LD %M13",
+                "ANDN %TM2.Q",
+                "ST %M21"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Capture completed phase 2",
+              "il": [
+                "LD %M13",
+                "AND %TM2.Q",
+                "ST %M29"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Hold phase 3 until its timer finishes",
+              "il": [
+                "LD %M14",
+                "ANDN %TM3.Q",
+                "ST %M22"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Capture completed phase 3",
+              "il": [
+                "LD %M14",
+                "AND %TM3.Q",
+                "ST %M30"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Hold phase 4 until its timer finishes",
+              "il": [
+                "LD %M15",
+                "ANDN %TM4.Q",
+                "ST %M23"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Capture completed phase 4",
+              "il": [
+                "LD %M15",
+                "AND %TM4.Q",
+                "ST %M31"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Hold phase 5 until its timer finishes",
+              "il": [
+                "LD %M16",
+                "ANDN %TM5.Q",
+                "ST %M24"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Capture completed phase 5",
+              "il": [
+                "LD %M16",
+                "AND %TM5.Q",
+                "ST %M32"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Hold phase 6 until its timer finishes",
+              "il": [
+                "LD %M17",
+                "ANDN %TM6.Q",
+                "ST %M25"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Capture completed phase 6",
+              "il": [
+                "LD %M17",
+                "AND %TM6.Q",
+                "ST %M33"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Hold phase 7 until its timer finishes",
+              "il": [
+                "LD %M18",
+                "ANDN %TM7.Q",
+                "ST %M26"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Capture completed phase 7",
+              "il": [
+                "LD %M18",
+                "AND %TM7.Q",
+                "ST %M34"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Update phase 0 from captured conditions only",
+              "il": [
+                "LD %M19",
+                "OR %M34",
+                "ORN %M10",
+                "ST %M11"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Update phase 1 from captured conditions only",
+              "il": [
+                "LD %M20",
+                "OR %M27",
+                "ST %M12"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Update phase 2 from captured conditions only",
+              "il": [
+                "LD %M21",
+                "OR %M28",
+                "ST %M13"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Update phase 3 from captured conditions only",
+              "il": [
+                "LD %M22",
+                "OR %M29",
+                "ST %M14"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Update phase 4 from captured conditions only",
+              "il": [
+                "LD %M23",
+                "OR %M30",
+                "ST %M15"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Update phase 5 from captured conditions only",
+              "il": [
+                "LD %M24",
+                "OR %M31",
+                "ST %M16"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Update phase 6 from captured conditions only",
+              "il": [
+                "LD %M25",
+                "OR %M32",
+                "ST %M17"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Update phase 7 from captured conditions only",
+              "il": [
+                "LD %M26",
+                "OR %M33",
+                "ST %M18"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Initialise non-retained zero-start example state once",
+              "il": [
+                "LDN %M10",
+                "S %M10"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "NSGreenPermit: reject overlapping or corrupt phase bits",
+              "il": [
+                "LD %M12",
+                "ANDN %M11",
+                "ANDN %M13",
+                "ANDN %M14",
+                "ANDN %M15",
+                "ANDN %M16",
+                "ANDN %M17",
+                "ANDN %M18",
+                "ST %M35"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "NSYellowPermit: reject overlapping or corrupt phase bits",
+              "il": [
+                "LD %M13",
+                "ANDN %M11",
+                "ANDN %M12",
+                "ANDN %M14",
+                "ANDN %M15",
+                "ANDN %M16",
+                "ANDN %M17",
+                "ANDN %M18",
+                "ST %M36"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "EWGreenPermit: reject overlapping or corrupt phase bits",
+              "il": [
+                "LD %M15",
+                "ANDN %M11",
+                "ANDN %M12",
+                "ANDN %M13",
+                "ANDN %M14",
+                "ANDN %M16",
+                "ANDN %M17",
+                "ANDN %M18",
+                "ST %M37"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "EWYellowPermit: reject overlapping or corrupt phase bits",
+              "il": [
+                "LD %M16",
+                "ANDN %M11",
+                "ANDN %M12",
+                "ANDN %M13",
+                "ANDN %M14",
+                "ANDN %M15",
+                "ANDN %M17",
+                "ANDN %M18",
+                "ST %M38"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "PedGreenPermit: reject overlapping or corrupt phase bits",
+              "il": [
+                "LD %M18",
+                "ANDN %M11",
+                "ANDN %M12",
+                "ANDN %M13",
+                "ANDN %M14",
+                "ANDN %M15",
+                "ANDN %M16",
+                "ANDN %M17",
+                "ST %M39"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "North red: no permitted green or yellow",
+              "il": [
+                "LDN %M35",
+                "ANDN %M36",
+                "ST %M100"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "North independent yellow lamp",
+              "il": [
+                "LD %M36",
+                "ST %M101"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "North independent green lamp",
+              "il": [
+                "LD %M35",
+                "ST %M102"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "South red: no permitted green or yellow",
+              "il": [
+                "LDN %M35",
+                "ANDN %M36",
+                "ST %M103"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "South independent yellow lamp",
+              "il": [
+                "LD %M36",
+                "ST %M104"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "South independent green lamp",
+              "il": [
+                "LD %M35",
+                "ST %M105"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "East red: no permitted green or yellow",
+              "il": [
+                "LDN %M37",
+                "ANDN %M38",
+                "ST %M106"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "East independent yellow lamp",
+              "il": [
+                "LD %M38",
+                "ST %M107"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "East independent green lamp",
+              "il": [
+                "LD %M37",
+                "ST %M108"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "West red: no permitted green or yellow",
+              "il": [
+                "LDN %M37",
+                "ANDN %M38",
+                "ST %M109"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "West independent yellow lamp",
+              "il": [
+                "LD %M38",
+                "ST %M110"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "West independent green lamp",
+              "il": [
+                "LD %M37",
+                "ST %M111"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Pedestrian red outside the dedicated pedestrian phase",
+              "il": [
+                "LDN %M39",
+                "ST %M112"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Pedestrian green only with all vehicle phases inhibited",
+              "il": [
+                "LD %M39",
+                "ST %M113"
+              ],
+              "ladder": true
+            }
+          ]
+        }
+      ],
+      "timers": [
+        {
+          "address": "%TM0",
+          "type": "TON",
+          "preset": 2,
+          "base": "1s"
+        },
+        {
+          "address": "%TM1",
+          "type": "TON",
+          "preset": 10,
+          "base": "1s"
+        },
+        {
+          "address": "%TM2",
+          "type": "TON",
+          "preset": 3,
+          "base": "1s"
+        },
+        {
+          "address": "%TM3",
+          "type": "TON",
+          "preset": 2,
+          "base": "1s"
+        },
+        {
+          "address": "%TM4",
+          "type": "TON",
+          "preset": 10,
+          "base": "1s"
+        },
+        {
+          "address": "%TM5",
+          "type": "TON",
+          "preset": 3,
+          "base": "1s"
+        },
+        {
+          "address": "%TM6",
+          "type": "TON",
+          "preset": 2,
+          "base": "1s"
+        },
+        {
+          "address": "%TM7",
+          "type": "TON",
+          "preset": 5,
+          "base": "1s"
+        }
+      ],
+      "counters": [],
+      "symbols": {
+        "%M10": "Initialised",
+        "%M11": "Stage0",
+        "%M12": "Stage1",
+        "%M13": "Stage2",
+        "%M14": "Stage3",
+        "%M15": "Stage4",
+        "%M16": "Stage5",
+        "%M17": "Stage6",
+        "%M18": "Stage7",
+        "%M19": "Hold0",
+        "%M20": "Hold1",
+        "%M21": "Hold2",
+        "%M22": "Hold3",
+        "%M23": "Hold4",
+        "%M24": "Hold5",
+        "%M25": "Hold6",
+        "%M26": "Hold7",
+        "%M27": "Advance0",
+        "%M28": "Advance1",
+        "%M29": "Advance2",
+        "%M30": "Advance3",
+        "%M31": "Advance4",
+        "%M32": "Advance5",
+        "%M33": "Advance6",
+        "%M34": "Advance7",
+        "%M35": "NSGreenPermit",
+        "%M36": "NSYellowPermit",
+        "%M37": "EWGreenPermit",
+        "%M38": "EWYellowPermit",
+        "%M39": "PedGreenPermit",
+        "%M100": "NorthRed",
+        "%M101": "NorthYellow",
+        "%M102": "NorthGreen",
+        "%M103": "SouthRed",
+        "%M104": "SouthYellow",
+        "%M105": "SouthGreen",
+        "%M106": "EastRed",
+        "%M107": "EastYellow",
+        "%M108": "EastGreen",
+        "%M109": "WestRed",
+        "%M110": "WestYellow",
+        "%M111": "WestGreen",
+        "%M112": "PedRed",
+        "%M113": "PedGreen"
+      },
+      "comments": {}
+    },
+    "ui_symbols_resolved_match": false,
+    "persisted_il_matches": true,
+    "ui_readback_limitation": "The virtualized native IL view returned partial rows. Full native-saved .smbp readback matches all 52 rungs; raw UI comparison is not claimed to match."
+  },
+  "limitations": [
+    "The raw UI-only IL match is false. Complete native saved-file IL matches the request. Digital UI aliases resolve through saved symbol mappings; traffic UI rows are virtualized/incomplete.",
+    "Fourteen lamp commands are logical variables/internal relays; this is not a verified fourteen-physical-output configuration."
+  ]
+}

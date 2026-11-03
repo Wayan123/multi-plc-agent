@@ -1,0 +1,218 @@
+{
+  "date": "2026-11-03",
+  "software": "TIA Portal V20",
+  "model": "6ES7212-1AE40-0XB0",
+  "configured_firmware": "V4.7",
+  "authorship": "TIA Portal MCP in an isolated owned headless instance",
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "scaffold": {
+      "ok": true,
+      "projectName": "Example02_Digital_StartStop",
+      "directoryPath": "$SCRATCH\\siemens",
+      "compileState": "Success",
+      "compileErrorCount": 0,
+      "compileWarningCount": 0,
+      "steps": [
+        {
+          "step": "connect",
+          "status": "skipped",
+          "detail": "already connected"
+        },
+        {
+          "step": "createProject",
+          "status": "ok",
+          "detail": "$SCRATCH\\siemens"
+        },
+        {
+          "step": "addDevicePlc",
+          "status": "ok",
+          "detail": "PLC_1 6ES7212-1AE40-0XB0"
+        },
+        {
+          "step": "scl",
+          "status": "ok",
+          "detail": "DataAndTimers.scl"
+        },
+        {
+          "step": "lad",
+          "status": "ok",
+          "detail": "Request02"
+        },
+        {
+          "step": "lad",
+          "status": "ok",
+          "detail": "Outputs02"
+        },
+        {
+          "step": "compile",
+          "status": "ok",
+          "detail": "state=Success errors=0 warnings=0"
+        },
+        {
+          "step": "save",
+          "status": "ok"
+        }
+      ],
+      "message": "ScaffoldProject 'Example02_Digital_StartStop': 7 ok, 0 failed; compile state=Success errors=0.",
+      "meta": {
+        "timestamp": "2026-11-03T14:33:39.6836416+07:00",
+        "success": true
+      }
+    },
+    "instance": {
+      "ok": true,
+      "data": {
+        "softwarePath": "PLC_1",
+        "fbName": "Timers02",
+        "dbName": "Timers02_DB",
+        "dbNumber": 2,
+        "autoNumber": true,
+        "blockPath": "Program blocks/Timers02_DB",
+        "instanceOfName": "Timers02",
+        "verified": true
+      },
+      "message": "已为 FB 'Timers02' 建背景 DB 'Timers02_DB'（DB2）。已读回确认它是这个 FB 的背景 DB。记得 SaveProject。",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:23.2570406+07:00",
+        "verified": true
+      }
+    },
+    "import_call": {
+      "message": "PLC external source imported",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:23.2750873+07:00",
+        "success": true
+      }
+    },
+    "generate_call": {
+      "message": "Blocks generated from external source 'CallCase.scl'",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:23.3578473+07:00",
+        "success": true
+      }
+    },
+    "main_import": {
+      "message": "Imported 'Main' from '$REPO\\contoh\\siemens\\02-digital-start-stop' (verified)",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:23.4552807+07:00",
+        "success": true,
+        "verified": true,
+        "verifyDetail": "block 'Main' present after import",
+        "warnings": []
+      }
+    },
+    "compile": {
+      "state": "Success",
+      "errorCount": 0,
+      "warningCount": 0,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        "State=Success; Description=Block was successfully compiled.; Path=Main (OB1); DateTime=03/11/2026 07:34:23",
+        "State=Success; Description=Block was successfully compiled.; Path=CallCase02 (FC3); DateTime=03/11/2026 07:34:23",
+        "State=Success; Description=Block was successfully compiled.; Path=Timers02_DB (DB2); DateTime=03/11/2026 07:34:23"
+      ],
+      "rawMessages": [
+        "State=Success; Path=PLC_1; DateTime=03/11/2026 07:34:23",
+        "State=Success; Path=Program blocks; DateTime=03/11/2026 07:34:23",
+        "State=Success; Description=Block was successfully compiled.; Path=Main (OB1); DateTime=03/11/2026 07:34:23",
+        "State=Success; Description=Block was successfully compiled.; Path=CallCase02 (FC3); DateTime=03/11/2026 07:34:23",
+        "State=Success; Description=Block was successfully compiled.; Path=Timers02_DB (DB2); DateTime=03/11/2026 07:34:23",
+        "State=Success; Description=Compiling finished (errors: 0; warnings: 0); DateTime=03/11/2026 07:34:23"
+      ],
+      "message": "Software 'PLC_1' compiled. State=Success Errors=0 Warnings=0",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:23.695319+07:00",
+        "success": true,
+        "errorDetailCount": 0,
+        "warningDetailCount": 0,
+        "diagnosticsComplete": true
+      }
+    },
+    "cold_compile": {
+      "state": "Success",
+      "errorCount": 0,
+      "warningCount": 0,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        "State=Information; Description=No block was compiled. All blocks are up-to-date.; DateTime=03/11/2026 07:34:25"
+      ],
+      "rawMessages": [
+        "State=Information; Path=PLC_1; DateTime=03/11/2026 07:34:24",
+        "State=Information; Path=Program blocks; DateTime=03/11/2026 07:34:25",
+        "State=Information; Description=No block was compiled. All blocks are up-to-date.; DateTime=03/11/2026 07:34:25",
+        "State=Success; Description=Compiling finished (errors: 0; warnings: 0); DateTime=03/11/2026 07:34:25"
+      ],
+      "message": "Software 'PLC_1' compiled. State=Success Errors=0 Warnings=0",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:25.4110174+07:00",
+        "success": true,
+        "errorDetailCount": 0,
+        "warningDetailCount": 0,
+        "diagnosticsComplete": true
+      }
+    },
+    "readback": {
+      "Request02": {
+        "blockPath": "Request02",
+        "language": "LAD",
+        "readable": "── 程序段 1  [LAD]\n   \"State02\".Armed ( )  ⇐  (\"State02\".Armed + /\"State02\".StartPB) · \"State02\".StopHealthy · \"State02\".EStopHealthy\n\n── 程序段 2  [LAD]\n   \"State02\".RunRequest ( )  ⇐  (\"State02\".RunRequest + \"State02\".StartPB · \"State02\".Armed) · \"State02\".StopHealthy · \"State02\".EStopHealthy\n",
+        "message": "Logic of 'Request02' [LAD] decoded. Series contacts joined with ' · ', parallel branches with ' + '; '⟨常量⟩' marks a contact wired to a literal constant (disabled/forced rung).",
+        "meta": {
+          "timestamp": "2026-11-03T14:34:25.6470542+07:00",
+          "success": true,
+          "language": "LAD"
+        }
+      },
+      "Outputs02": {
+        "blockPath": "Outputs02",
+        "language": "LAD",
+        "readable": "── 程序段 1  [LAD]\n   \"State02\".Horn ( )  ⇐  \"State02\".RunRequest · /\"State02\".StartDelayQ\n\n── 程序段 2  [LAD]\n   \"State02\".Motor ( )  ⇐  \"State02\".RunRequest · \"State02\".StartDelayQ\n",
+        "message": "Logic of 'Outputs02' [LAD] decoded. Series contacts joined with ' · ', parallel branches with ' + '; '⟨常量⟩' marks a contact wired to a literal constant (disabled/forced rung).",
+        "meta": {
+          "timestamp": "2026-11-03T14:34:25.7147572+07:00",
+          "success": true,
+          "language": "LAD"
+        }
+      },
+      "Timers02": {
+        "blockPath": "Timers02",
+        "language": "SCL",
+        "readable": "── 程序段 1  [SCL]\n   \n   #Timer0(IN := #Enable0,\n           PT := T#3S);\n   #Done0 := #Timer0.Q;\n",
+        "message": "Logic of 'Timers02' [SCL] decoded. Series contacts joined with ' · ', parallel branches with ' + '; '⟨常量⟩' marks a contact wired to a literal constant (disabled/forced rung).",
+        "meta": {
+          "timestamp": "2026-11-03T14:34:25.7615858+07:00",
+          "success": true,
+          "language": "SCL"
+        }
+      },
+      "CallCase02": {
+        "blockPath": "CallCase02",
+        "language": "SCL",
+        "readable": "── 程序段 1  [SCL]\n   \n   \"State02\".StartPB := \"Tag__639292880632986819\";\n   \"State02\".StopHealthy := \"Tag__639292880633070881\";\n   \"State02\".EStopHealthy := \"Tag__639292880633100838\";\n   \"Request02\"();\n   \"Timers02_DB\"(Enable0 := \"State02\".RunRequest,\n                 Done0 => \"State02\".StartDelayQ);\n   \"Outputs02\"();\n   \"Tag__639292880633186339\" := \"State02\".Motor;\n   \"Tag__639292880633226422\" := \"State02\".Horn;\n",
+        "message": "Logic of 'CallCase02' [SCL] decoded. Series contacts joined with ' · ', parallel branches with ' + '; '⟨常量⟩' marks a contact wired to a literal constant (disabled/forced rung).",
+        "meta": {
+          "timestamp": "2026-11-03T14:34:26.1598718+07:00",
+          "success": true,
+          "language": "SCL"
+        }
+      }
+    },
+    "main_export": {
+      "message": "Documents exported from 'Main' to '$SCRATCH\\siemens\\case02-native-readback'",
+      "meta": {
+        "timestamp": "2026-11-03T14:34:26.1999785+07:00",
+        "success": true
+      }
+    }
+  },
+  "limitations": [
+    "LAD Main calls the generated SCL cycle/helper. This is a mixed LAD/SCL example, not an all-LAD implementation.",
+    "DescribeBlockLogic may report an FC-call-only LAD network as empty; actual native-readback/Main.s7dcl independently proves the OB1 call.",
+    "Software compile is zero errors / zero warnings. This receipt does not claim a hardware-configuration compile."
+  ]
+}

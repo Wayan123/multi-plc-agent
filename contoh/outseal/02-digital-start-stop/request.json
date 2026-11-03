@@ -1,0 +1,208 @@
+{
+  "name": "Case02",
+  "board": "Nano V5",
+  "main": [
+    {
+      "comment": "Arm after start release with all permissives healthy",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "B.1"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NC",
+                "args": [
+                  "S.1"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "S.2"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "S.3"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "B.1"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Seal in run; permissive loss immediately drops run",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "B.2"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "S.1"
+                ]
+              },
+              {
+                "kind": "NO",
+                "args": [
+                  "B.1"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "S.2"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "S.3"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "B.2"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Three-second start warning delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "B.2"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "T.1",
+            "1000",
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Horn sounds only while the start delay is incomplete",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "B.2"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T.1.DN"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "R.2"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Motor starts only after the warning delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "B.2"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T.1.DN"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "R.1"
+          ]
+        }
+      ]
+    }
+  ],
+  "initial": [
+    {
+      "comment": "Clear non-retained example state at startup",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "B.1"
+          ]
+        },
+        {
+          "kind": "OUTU",
+          "args": [
+            "B.1"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Clear non-retained example state at startup",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "B.2"
+          ]
+        },
+        {
+          "kind": "OUTU",
+          "args": [
+            "B.2"
+          ]
+        }
+      ]
+    }
+  ],
+  "aliases": {
+    "S.1": "StartPB",
+    "S.2": "StopHealthy",
+    "S.3": "EStopHealthy",
+    "B.1": "Armed",
+    "B.2": "RunRequest",
+    "R.1": "Motor",
+    "R.2": "Horn"
+  }
+}

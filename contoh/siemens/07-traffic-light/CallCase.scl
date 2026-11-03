@@ -1,0 +1,6 @@
+FUNCTION "CallCase07" : Void
+VERSION : 0.1
+BEGIN
+    "Timers07_DB"(Enable0 := "State07".Stage0, Done0 => "State07".StageTimer0Q, Enable1 := "State07".Stage1, Done1 => "State07".StageTimer1Q, Enable2 := "State07".Stage2, Done2 => "State07".StageTimer2Q, Enable3 := "State07".Stage3, Done3 => "State07".StageTimer3Q, Enable4 := "State07".Stage4, Done4 => "State07".StageTimer4Q, Enable5 := "State07".Stage5, Done5 => "State07".StageTimer5Q, Enable6 := "State07".Stage6, Done6 => "State07".StageTimer6Q, Enable7 := "State07".Stage7, Done7 => "State07".StageTimer7Q);
+    "Logic07"();
+END_FUNCTION

@@ -1,0 +1,190 @@
+{
+  "variables": [
+    {
+      "name": "StartPB",
+      "type": "BOOL"
+    },
+    {
+      "name": "StopHealthy",
+      "type": "BOOL"
+    },
+    {
+      "name": "EStopHealthy",
+      "type": "BOOL"
+    },
+    {
+      "name": "Armed",
+      "type": "BOOL"
+    },
+    {
+      "name": "RunRequest",
+      "type": "BOOL"
+    },
+    {
+      "name": "Motor",
+      "type": "BOOL"
+    },
+    {
+      "name": "Horn",
+      "type": "BOOL"
+    }
+  ],
+  "rungs": [
+    {
+      "comment": "Arm after start release with all permissives healthy",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Armed"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NC",
+                "args": [
+                  "StartPB"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StopHealthy"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "EStopHealthy"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Armed"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Seal in run; permissive loss immediately drops run",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "RunRequest"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "StartPB"
+                ]
+              },
+              {
+                "kind": "NO",
+                "args": [
+                  "Armed"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StopHealthy"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "EStopHealthy"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "RunRequest"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Three-second start warning delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunRequest"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StartDelay",
+            "T#3S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Horn sounds only while the start delay is incomplete",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunRequest"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StartDelay.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Horn"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Motor starts only after the warning delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunRequest"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StartDelay.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Motor"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,431 @@
+{
+  "date": "2026-11-03",
+  "software": "CODESYS V3.5 SP21",
+  "model": "CODESYS Control Win V3 x64",
+  "authorship": "Existing vendor MCP backend through multi-plc-agent stdio router",
+  "canonical_rungs": 52,
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "write": {
+      "messages": [
+        {
+          "severity": "Text",
+          "text": "------ Build started: Application: Device.Application -------",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Typify code...",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Compile complete -- 0 errors, 0 warnings",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Additional code checks ...",
+          "category": "Additional code checks"
+        },
+        {
+          "severity": "Text",
+          "text": "Additional code checks complete -- 0 errors",
+          "category": "Additional code checks"
+        }
+      ],
+      "project": "$SCRATCH\\codesys\\Case07.project",
+      "warning_count": 0,
+      "ok": true,
+      "error_count": 0,
+      "compile_line": "Compile complete -- 0 errors, 0 warnings",
+      "op": "write",
+      "backup": null,
+      "logic_matches": true,
+      "rungs": 52
+    },
+    "reopened_build": {
+      "messages": [
+        {
+          "severity": "Text",
+          "text": "------ Build started: Application: Device.Application -------",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Typify code...",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Compile complete -- 0 errors, 0 warnings",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Additional code checks ...",
+          "category": "Additional code checks"
+        },
+        {
+          "severity": "Text",
+          "text": "Additional code checks complete -- 0 errors",
+          "category": "Additional code checks"
+        }
+      ],
+      "project": "$SCRATCH\\codesys\\Case07.project",
+      "warning_count": 0,
+      "ok": true,
+      "error_count": 0,
+      "compile_line": "Compile complete -- 0 errors, 0 warnings",
+      "op": "build"
+    },
+    "readback": {
+      "project": "$SCRATCH\\codesys\\Case07.project",
+      "ok": true,
+      "op": "export",
+      "logic": [
+        {
+          "comment": "Phase 0: nominal 2 seconds",
+          "kind": "TON",
+          "target": "StageTimer0",
+          "logic": "Stage0",
+          "params": {
+            "PT": "T#2S"
+          }
+        },
+        {
+          "comment": "Phase 1: nominal 10 seconds",
+          "kind": "TON",
+          "target": "StageTimer1",
+          "logic": "Stage1",
+          "params": {
+            "PT": "T#10S"
+          }
+        },
+        {
+          "comment": "Phase 2: nominal 3 seconds",
+          "kind": "TON",
+          "target": "StageTimer2",
+          "logic": "Stage2",
+          "params": {
+            "PT": "T#3S"
+          }
+        },
+        {
+          "comment": "Phase 3: nominal 2 seconds",
+          "kind": "TON",
+          "target": "StageTimer3",
+          "logic": "Stage3",
+          "params": {
+            "PT": "T#2S"
+          }
+        },
+        {
+          "comment": "Phase 4: nominal 10 seconds",
+          "kind": "TON",
+          "target": "StageTimer4",
+          "logic": "Stage4",
+          "params": {
+            "PT": "T#10S"
+          }
+        },
+        {
+          "comment": "Phase 5: nominal 3 seconds",
+          "kind": "TON",
+          "target": "StageTimer5",
+          "logic": "Stage5",
+          "params": {
+            "PT": "T#3S"
+          }
+        },
+        {
+          "comment": "Phase 6: nominal 2 seconds",
+          "kind": "TON",
+          "target": "StageTimer6",
+          "logic": "Stage6",
+          "params": {
+            "PT": "T#2S"
+          }
+        },
+        {
+          "comment": "Phase 7: nominal 5 seconds",
+          "kind": "TON",
+          "target": "StageTimer7",
+          "logic": "Stage7",
+          "params": {
+            "PT": "T#5S"
+          }
+        },
+        {
+          "comment": "Hold phase 0 until its timer finishes",
+          "kind": "OUT",
+          "target": "Hold0",
+          "logic": "NOT StageTimer0.Q AND Stage0"
+        },
+        {
+          "comment": "Capture completed phase 0",
+          "kind": "OUT",
+          "target": "Advance0",
+          "logic": "Stage0 AND StageTimer0.Q"
+        },
+        {
+          "comment": "Hold phase 1 until its timer finishes",
+          "kind": "OUT",
+          "target": "Hold1",
+          "logic": "NOT StageTimer1.Q AND Stage1"
+        },
+        {
+          "comment": "Capture completed phase 1",
+          "kind": "OUT",
+          "target": "Advance1",
+          "logic": "Stage1 AND StageTimer1.Q"
+        },
+        {
+          "comment": "Hold phase 2 until its timer finishes",
+          "kind": "OUT",
+          "target": "Hold2",
+          "logic": "NOT StageTimer2.Q AND Stage2"
+        },
+        {
+          "comment": "Capture completed phase 2",
+          "kind": "OUT",
+          "target": "Advance2",
+          "logic": "Stage2 AND StageTimer2.Q"
+        },
+        {
+          "comment": "Hold phase 3 until its timer finishes",
+          "kind": "OUT",
+          "target": "Hold3",
+          "logic": "NOT StageTimer3.Q AND Stage3"
+        },
+        {
+          "comment": "Capture completed phase 3",
+          "kind": "OUT",
+          "target": "Advance3",
+          "logic": "Stage3 AND StageTimer3.Q"
+        },
+        {
+          "comment": "Hold phase 4 until its timer finishes",
+          "kind": "OUT",
+          "target": "Hold4",
+          "logic": "NOT StageTimer4.Q AND Stage4"
+        },
+        {
+          "comment": "Capture completed phase 4",
+          "kind": "OUT",
+          "target": "Advance4",
+          "logic": "Stage4 AND StageTimer4.Q"
+        },
+        {
+          "comment": "Hold phase 5 until its timer finishes",
+          "kind": "OUT",
+          "target": "Hold5",
+          "logic": "NOT StageTimer5.Q AND Stage5"
+        },
+        {
+          "comment": "Capture completed phase 5",
+          "kind": "OUT",
+          "target": "Advance5",
+          "logic": "Stage5 AND StageTimer5.Q"
+        },
+        {
+          "comment": "Hold phase 6 until its timer finishes",
+          "kind": "OUT",
+          "target": "Hold6",
+          "logic": "NOT StageTimer6.Q AND Stage6"
+        },
+        {
+          "comment": "Capture completed phase 6",
+          "kind": "OUT",
+          "target": "Advance6",
+          "logic": "Stage6 AND StageTimer6.Q"
+        },
+        {
+          "comment": "Hold phase 7 until its timer finishes",
+          "kind": "OUT",
+          "target": "Hold7",
+          "logic": "NOT StageTimer7.Q AND Stage7"
+        },
+        {
+          "comment": "Capture completed phase 7",
+          "kind": "OUT",
+          "target": "Advance7",
+          "logic": "Stage7 AND StageTimer7.Q"
+        },
+        {
+          "comment": "Update phase 0 from captured conditions only",
+          "kind": "OUT",
+          "target": "Stage0",
+          "logic": "Advance7 OR Hold0 OR NOT Initialised"
+        },
+        {
+          "comment": "Update phase 1 from captured conditions only",
+          "kind": "OUT",
+          "target": "Stage1",
+          "logic": "Advance0 OR Hold1"
+        },
+        {
+          "comment": "Update phase 2 from captured conditions only",
+          "kind": "OUT",
+          "target": "Stage2",
+          "logic": "Advance1 OR Hold2"
+        },
+        {
+          "comment": "Update phase 3 from captured conditions only",
+          "kind": "OUT",
+          "target": "Stage3",
+          "logic": "Advance2 OR Hold3"
+        },
+        {
+          "comment": "Update phase 4 from captured conditions only",
+          "kind": "OUT",
+          "target": "Stage4",
+          "logic": "Advance3 OR Hold4"
+        },
+        {
+          "comment": "Update phase 5 from captured conditions only",
+          "kind": "OUT",
+          "target": "Stage5",
+          "logic": "Advance4 OR Hold5"
+        },
+        {
+          "comment": "Update phase 6 from captured conditions only",
+          "kind": "OUT",
+          "target": "Stage6",
+          "logic": "Advance5 OR Hold6"
+        },
+        {
+          "comment": "Update phase 7 from captured conditions only",
+          "kind": "OUT",
+          "target": "Stage7",
+          "logic": "Advance6 OR Hold7"
+        },
+        {
+          "comment": "Initialise non-retained zero-start example state once",
+          "kind": "SET",
+          "target": "Initialised",
+          "logic": "NOT Initialised"
+        },
+        {
+          "comment": "NSGreenPermit: reject overlapping or corrupt phase bits",
+          "kind": "OUT",
+          "target": "NSGreenPermit",
+          "logic": "NOT Stage0 AND NOT Stage2 AND NOT Stage3 AND NOT Stage4 AND NOT Stage5 AND NOT Stage6 AND NOT Stage7 AND Stage1"
+        },
+        {
+          "comment": "NSYellowPermit: reject overlapping or corrupt phase bits",
+          "kind": "OUT",
+          "target": "NSYellowPermit",
+          "logic": "NOT Stage0 AND NOT Stage1 AND NOT Stage3 AND NOT Stage4 AND NOT Stage5 AND NOT Stage6 AND NOT Stage7 AND Stage2"
+        },
+        {
+          "comment": "EWGreenPermit: reject overlapping or corrupt phase bits",
+          "kind": "OUT",
+          "target": "EWGreenPermit",
+          "logic": "NOT Stage0 AND NOT Stage1 AND NOT Stage2 AND NOT Stage3 AND NOT Stage5 AND NOT Stage6 AND NOT Stage7 AND Stage4"
+        },
+        {
+          "comment": "EWYellowPermit: reject overlapping or corrupt phase bits",
+          "kind": "OUT",
+          "target": "EWYellowPermit",
+          "logic": "NOT Stage0 AND NOT Stage1 AND NOT Stage2 AND NOT Stage3 AND NOT Stage4 AND NOT Stage6 AND NOT Stage7 AND Stage5"
+        },
+        {
+          "comment": "PedGreenPermit: reject overlapping or corrupt phase bits",
+          "kind": "OUT",
+          "target": "PedGreenPermit",
+          "logic": "NOT Stage0 AND NOT Stage1 AND NOT Stage2 AND NOT Stage3 AND NOT Stage4 AND NOT Stage5 AND NOT Stage6 AND Stage7"
+        },
+        {
+          "comment": "North red: no permitted green or yellow",
+          "kind": "OUT",
+          "target": "NorthRed",
+          "logic": "NOT NSGreenPermit AND NOT NSYellowPermit"
+        },
+        {
+          "comment": "North independent yellow lamp",
+          "kind": "OUT",
+          "target": "NorthYellow",
+          "logic": "NSYellowPermit"
+        },
+        {
+          "comment": "North independent green lamp",
+          "kind": "OUT",
+          "target": "NorthGreen",
+          "logic": "NSGreenPermit"
+        },
+        {
+          "comment": "South red: no permitted green or yellow",
+          "kind": "OUT",
+          "target": "SouthRed",
+          "logic": "NOT NSGreenPermit AND NOT NSYellowPermit"
+        },
+        {
+          "comment": "South independent yellow lamp",
+          "kind": "OUT",
+          "target": "SouthYellow",
+          "logic": "NSYellowPermit"
+        },
+        {
+          "comment": "South independent green lamp",
+          "kind": "OUT",
+          "target": "SouthGreen",
+          "logic": "NSGreenPermit"
+        },
+        {
+          "comment": "East red: no permitted green or yellow",
+          "kind": "OUT",
+          "target": "EastRed",
+          "logic": "NOT EWGreenPermit AND NOT EWYellowPermit"
+        },
+        {
+          "comment": "East independent yellow lamp",
+          "kind": "OUT",
+          "target": "EastYellow",
+          "logic": "EWYellowPermit"
+        },
+        {
+          "comment": "East independent green lamp",
+          "kind": "OUT",
+          "target": "EastGreen",
+          "logic": "EWGreenPermit"
+        },
+        {
+          "comment": "West red: no permitted green or yellow",
+          "kind": "OUT",
+          "target": "WestRed",
+          "logic": "NOT EWGreenPermit AND NOT EWYellowPermit"
+        },
+        {
+          "comment": "West independent yellow lamp",
+          "kind": "OUT",
+          "target": "WestYellow",
+          "logic": "EWYellowPermit"
+        },
+        {
+          "comment": "West independent green lamp",
+          "kind": "OUT",
+          "target": "WestGreen",
+          "logic": "EWGreenPermit"
+        },
+        {
+          "comment": "Pedestrian red outside the dedicated pedestrian phase",
+          "kind": "OUT",
+          "target": "PedRed",
+          "logic": "NOT PedGreenPermit"
+        },
+        {
+          "comment": "Pedestrian green only with all vehicle phases inhibited",
+          "kind": "OUT",
+          "target": "PedGreen",
+          "logic": "PedGreenPermit"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Fourteen lamp commands are logical variables/internal relays; this is not a verified fourteen-physical-output configuration."
+  ]
+}

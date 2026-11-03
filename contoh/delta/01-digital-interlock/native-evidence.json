@@ -1,0 +1,120 @@
+{
+  "date": "2026-11-03",
+  "software": "WPLSoft 2.52",
+  "model": "DVP-SS2",
+  "authorship": "Existing vendor MCP backend through multi-plc-agent stdio router",
+  "canonical_rungs": 5,
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "write": {
+      "ok": true,
+      "error_count": 0,
+      "errors": [],
+      "instruction_to_ladder": {
+        "errors": [],
+        "other_dialogs": [],
+        "messages": [
+          "Diagram is complete!"
+        ]
+      },
+      "ladder_to_instruction": {
+        "errors": [],
+        "other_dialogs": [],
+        "messages": []
+      },
+      "saved": true,
+      "il": [
+        "LD M0",
+        "ORI X0",
+        "AND X1",
+        "AND X2",
+        "AND X3",
+        "OUT M0",
+        "LD M1",
+        "LD X0",
+        "AND M0",
+        "ORB",
+        "AND X1",
+        "AND X2",
+        "AND X3",
+        "OUT M1",
+        "LD M1",
+        "TMR T0 K30",
+        "LD M1",
+        "ANI T0",
+        "OUT Y1",
+        "LD M1",
+        "AND T0",
+        "OUT Y0",
+        "END"
+      ],
+      "il_matches": true,
+      "written": true,
+      "backup": "$SCRATCH\\delta\\Case01.dvp.bak",
+      "rungs": 5,
+      "rung_comments_written": false
+    },
+    "compile": {
+      "ok": true,
+      "error_count": 0,
+      "errors": [],
+      "instruction_to_ladder": {
+        "errors": [],
+        "other_dialogs": [],
+        "messages": [
+          "Diagram is complete!"
+        ]
+      },
+      "ladder_to_instruction": {
+        "errors": [],
+        "other_dialogs": [],
+        "messages": []
+      },
+      "saved": false
+    },
+    "readback": {
+      "il": [
+        "LD M0",
+        "ORI X0",
+        "AND X1",
+        "AND X2",
+        "AND X3",
+        "OUT M0",
+        "LD M1",
+        "LD X0",
+        "AND M0",
+        "ORB",
+        "AND X1",
+        "AND X2",
+        "AND X3",
+        "OUT M1",
+        "LD M1",
+        "TMR T0 K30",
+        "LD M1",
+        "ANI T0",
+        "OUT Y1",
+        "LD M1",
+        "AND T0",
+        "OUT Y0",
+        "END"
+      ],
+      "device_comments": {
+        "X0": "StartPB",
+        "X1": "StopHealthy",
+        "X2": "EStopHealthy",
+        "X3": "GuardHealthy",
+        "Y0": "Motor",
+        "Y1": "Horn",
+        "M0": "Armed",
+        "M1": "RunRequest"
+      },
+      "segment_comments": []
+    }
+  },
+  "limitations": [
+    "Grammar error count is zero; the driver does not expose a separate warning count.",
+    "WPLSoft SS2 family only; not SV3 or DIADesigner."
+  ]
+}
