@@ -1,0 +1,32 @@
+DATA_BLOCK "State02"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR
+    StartPB : Bool := FALSE;
+    StopHealthy : Bool := FALSE;
+    EStopHealthy : Bool := FALSE;
+    Armed : Bool := FALSE;
+    RunRequest : Bool := FALSE;
+    Motor : Bool := FALSE;
+    Horn : Bool := FALSE;
+    StartDelayQ : Bool := FALSE;
+END_VAR
+BEGIN
+END_DATA_BLOCK
+
+FUNCTION_BLOCK "Timers02"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR_INPUT
+    Enable0 : Bool;
+END_VAR
+VAR_OUTPUT
+    Done0 : Bool;
+END_VAR
+VAR
+    Timer0 : TON_TIME;
+END_VAR
+BEGIN
+    #Timer0(IN := #Enable0, PT := T#3S);
+    #Done0 := #Timer0.Q;
+END_FUNCTION_BLOCK

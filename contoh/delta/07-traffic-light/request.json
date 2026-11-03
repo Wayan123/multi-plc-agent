@@ -1,0 +1,1392 @@
+{
+  "rungs": [
+    {
+      "comment": "Phase 0: nominal 2 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M11"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T0",
+            "K20"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 1: nominal 10 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M12"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T1",
+            "K100"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 2: nominal 3 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M13"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T2",
+            "K30"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 3: nominal 2 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M14"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T3",
+            "K20"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 4: nominal 10 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M15"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T4",
+            "K100"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 5: nominal 3 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M16"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T5",
+            "K30"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 6: nominal 2 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M17"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T6",
+            "K20"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 7: nominal 5 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M18"
+          ]
+        },
+        {
+          "kind": "TMR",
+          "args": [
+            "T7",
+            "K50"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 0 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M11"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T0"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M19"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 0",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M11"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T0"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M27"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 1 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M12"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T1"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M20"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 1",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M12"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T1"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M28"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 2 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M13"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T2"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M21"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 2",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M13"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T2"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M29"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 3 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M14"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T3"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M22"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 3",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M14"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T3"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M30"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 4 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M15"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T4"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M23"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 4",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M15"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T4"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M31"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 5 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M16"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T5"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M24"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 5",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M16"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T5"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M32"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 6 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M17"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T6"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M25"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 6",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M17"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T6"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M33"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 7 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M18"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "T7"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M26"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 7",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M18"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "T7"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M34"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 0 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M19"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M34"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NC",
+                "args": [
+                  "M10"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M11"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 1 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M20"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M27"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M12"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 2 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M21"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M28"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M13"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 3 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M22"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M29"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M14"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 4 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M23"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M30"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M15"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 5 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M24"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M31"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M16"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 6 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M25"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M32"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M17"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 7 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M26"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "M33"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M18"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Initialise non-retained zero-start example state once",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "M10"
+          ]
+        },
+        {
+          "kind": "SET",
+          "args": [
+            "M10"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "NSGreenPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M12"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M11"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M13"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M14"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M15"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M16"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M17"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M18"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M35"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "NSYellowPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M13"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M11"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M12"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M14"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M15"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M16"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M17"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M18"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M36"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "EWGreenPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M15"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M11"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M12"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M13"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M14"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M16"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M17"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M18"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M37"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "EWYellowPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M16"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M11"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M12"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M13"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M14"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M15"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M17"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M18"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M38"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "PedGreenPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M18"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M11"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M12"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M13"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M14"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M15"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M16"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M17"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M39"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "North red: no permitted green or yellow",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "M35"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M36"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M100"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "North independent yellow lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M36"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M101"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "North independent green lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M35"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M102"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "South red: no permitted green or yellow",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "M35"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M36"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M103"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "South independent yellow lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M36"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M104"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "South independent green lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M35"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M105"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "East red: no permitted green or yellow",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "M37"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M38"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M106"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "East independent yellow lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M38"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M107"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "East independent green lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M37"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M108"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "West red: no permitted green or yellow",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "M37"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "M38"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M109"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "West independent yellow lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M38"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M110"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "West independent green lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M37"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M111"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Pedestrian red outside the dedicated pedestrian phase",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "M39"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M112"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Pedestrian green only with all vehicle phases inhibited",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "M39"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "M113"
+          ]
+        }
+      ]
+    }
+  ],
+  "aliases": {
+    "M10": "Initialised",
+    "M11": "Stage0",
+    "M12": "Stage1",
+    "M13": "Stage2",
+    "M14": "Stage3",
+    "M15": "Stage4",
+    "M16": "Stage5",
+    "M17": "Stage6",
+    "M18": "Stage7",
+    "M19": "Hold0",
+    "M20": "Hold1",
+    "M21": "Hold2",
+    "M22": "Hold3",
+    "M23": "Hold4",
+    "M24": "Hold5",
+    "M25": "Hold6",
+    "M26": "Hold7",
+    "M27": "Advance0",
+    "M28": "Advance1",
+    "M29": "Advance2",
+    "M30": "Advance3",
+    "M31": "Advance4",
+    "M32": "Advance5",
+    "M33": "Advance6",
+    "M34": "Advance7",
+    "M35": "NSGreenPermit",
+    "M36": "NSYellowPermit",
+    "M37": "EWGreenPermit",
+    "M38": "EWYellowPermit",
+    "M39": "PedGreenPermit",
+    "M100": "NorthRed",
+    "M101": "NorthYellow",
+    "M102": "NorthGreen",
+    "M103": "SouthRed",
+    "M104": "SouthYellow",
+    "M105": "SouthGreen",
+    "M106": "EastRed",
+    "M107": "EastYellow",
+    "M108": "EastGreen",
+    "M109": "WestRed",
+    "M110": "WestYellow",
+    "M111": "WestGreen",
+    "M112": "PedRed",
+    "M113": "PedGreen"
+  }
+}

@@ -1,0 +1,1405 @@
+{
+  "inputs": [],
+  "outputs": [
+    "NorthRed",
+    "NorthYellow",
+    "NorthGreen",
+    "SouthRed",
+    "SouthYellow",
+    "SouthGreen",
+    "EastRed",
+    "EastYellow",
+    "EastGreen",
+    "WestRed",
+    "WestYellow",
+    "WestGreen",
+    "PedRed",
+    "PedGreen"
+  ],
+  "bits": [
+    "Initialised",
+    "Stage0",
+    "Stage1",
+    "Stage2",
+    "Stage3",
+    "Stage4",
+    "Stage5",
+    "Stage6",
+    "Stage7",
+    "Hold0",
+    "Hold1",
+    "Hold2",
+    "Hold3",
+    "Hold4",
+    "Hold5",
+    "Hold6",
+    "Hold7",
+    "Advance0",
+    "Advance1",
+    "Advance2",
+    "Advance3",
+    "Advance4",
+    "Advance5",
+    "Advance6",
+    "Advance7",
+    "NSGreenPermit",
+    "NSYellowPermit",
+    "EWGreenPermit",
+    "EWYellowPermit",
+    "PedGreenPermit"
+  ],
+  "timers": [
+    "StageTimer0",
+    "StageTimer1",
+    "StageTimer2",
+    "StageTimer3",
+    "StageTimer4",
+    "StageTimer5",
+    "StageTimer6",
+    "StageTimer7"
+  ],
+  "rungs": [
+    {
+      "comment": "Phase 0: nominal 2 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage0"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StageTimer0",
+            "T#2S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 1: nominal 10 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage1"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StageTimer1",
+            "T#10S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 2: nominal 3 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage2"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StageTimer2",
+            "T#3S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 3: nominal 2 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage3"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StageTimer3",
+            "T#2S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 4: nominal 10 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage4"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StageTimer4",
+            "T#10S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 5: nominal 3 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage5"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StageTimer5",
+            "T#3S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 6: nominal 2 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage6"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StageTimer6",
+            "T#2S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Phase 7: nominal 5 seconds",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage7"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StageTimer7",
+            "T#5S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 0 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage0"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StageTimer0.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Hold0"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 0",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage0"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StageTimer0.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Advance0"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 1 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage1"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StageTimer1.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Hold1"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 1",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage1"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StageTimer1.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Advance1"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 2 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage2"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StageTimer2.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Hold2"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 2",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage2"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StageTimer2.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Advance2"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 3 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage3"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StageTimer3.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Hold3"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 3",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage3"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StageTimer3.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Advance3"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 4 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage4"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StageTimer4.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Hold4"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 4",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage4"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StageTimer4.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Advance4"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 5 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage5"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StageTimer5.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Hold5"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 5",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage5"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StageTimer5.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Advance5"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 6 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage6"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StageTimer6.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Hold6"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 6",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage6"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StageTimer6.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Advance6"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Hold phase 7 until its timer finishes",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage7"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StageTimer7.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Hold7"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Capture completed phase 7",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage7"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StageTimer7.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Advance7"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 0 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Hold0"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Advance7"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NC",
+                "args": [
+                  "Initialised"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Stage0"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 1 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Hold1"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Advance0"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Stage1"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 2 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Hold2"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Advance1"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Stage2"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 3 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Hold3"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Advance2"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Stage3"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 4 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Hold4"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Advance3"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Stage4"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 5 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Hold5"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Advance4"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Stage5"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 6 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Hold6"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Advance5"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Stage6"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Update phase 7 from captured conditions only",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Hold7"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "Advance6"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Stage7"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Initialise non-retained zero-start example state once",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "Initialised"
+          ]
+        },
+        {
+          "kind": "SET",
+          "args": [
+            "Initialised"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "NSGreenPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage1"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage0"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage2"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage3"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage4"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage5"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage6"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage7"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "NSGreenPermit"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "NSYellowPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage2"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage0"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage1"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage3"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage4"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage5"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage6"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage7"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "NSYellowPermit"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "EWGreenPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage4"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage0"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage1"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage2"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage3"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage5"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage6"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage7"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "EWGreenPermit"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "EWYellowPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage5"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage0"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage1"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage2"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage3"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage4"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage6"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage7"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "EWYellowPermit"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "PedGreenPermit: reject overlapping or corrupt phase bits",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Stage7"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage0"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage1"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage2"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage3"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage4"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage5"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "Stage6"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "PedGreenPermit"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "North red: no permitted green or yellow",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "NSGreenPermit"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "NSYellowPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "NorthRed"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "North independent yellow lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "NSYellowPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "NorthYellow"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "North independent green lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "NSGreenPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "NorthGreen"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "South red: no permitted green or yellow",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "NSGreenPermit"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "NSYellowPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "SouthRed"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "South independent yellow lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "NSYellowPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "SouthYellow"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "South independent green lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "NSGreenPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "SouthGreen"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "East red: no permitted green or yellow",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "EWGreenPermit"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "EWYellowPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "EastRed"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "East independent yellow lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "EWYellowPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "EastYellow"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "East independent green lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "EWGreenPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "EastGreen"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "West red: no permitted green or yellow",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "EWGreenPermit"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "EWYellowPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "WestRed"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "West independent yellow lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "EWYellowPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "WestYellow"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "West independent green lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "EWGreenPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "WestGreen"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Pedestrian red outside the dedicated pedestrian phase",
+      "elements": [
+        {
+          "kind": "NC",
+          "args": [
+            "PedGreenPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "PedRed"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Pedestrian green only with all vehicle phases inhibited",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "PedGreenPermit"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "PedGreen"
+          ]
+        }
+      ]
+    }
+  ]
+}

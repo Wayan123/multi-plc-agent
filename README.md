@@ -93,6 +93,8 @@ not. Other variants and broader runtime coverage remain planned.
 The [Beckhoff conveyor example](contoh/beckhoff/01-twincat-rt-x64-conveyor/) includes reusable rung JSON, a native source-only TwinCAT solution, sanitized actual MCP/native receipts and a reviewed two-step GIF. It was authored through `beckhoff_write_ladder`, reopened/exported and rebuilt in fresh native hosts. This proves offline TwinCAT RT x64 engineering, not CX7000, runtime execution, physical I/O or safety.
 The [Delta DVP-SS2 conveyor example](contoh/delta/01-dvp-ss2-conveyor/) contains the native `.dvp`, seven-rung request, saved IL, device aliases, source pins, native receipts and a reviewed LD/IL step GIF. It reuses the existing WPLSoft MCP backend; it does not claim SV3/DIADesigner support or increase the supported-tool count.
 
+The [cross-vendor teaching catalog](contoh/README.md) adds **23 native-accepted examples**: interlocked start/stop, start warning, and four-approach/pedestrian traffic logic for Siemens, Outseal, Haiwell, Delta WPLSoft, Schneider M221, CODESYS and Beckhoff; plus Siemens four-AI/two-AO and scaling cases. Each has English instructions, read-only signal maps, source pins and actual native receipts. The catalog leaves unavailable analog/XY-MD02/target combinations unchecked. Native compilation and saved readback do **not** establish simulator or physical-PLC behavior; fourteen logical traffic lamps do not imply fourteen physical terminals.
+
 
 
 ## Demo

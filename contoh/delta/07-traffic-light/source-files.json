@@ -1,0 +1,10 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "README.md": "9f50458d9b998fd06922e02b54d1fe5c1f7050041b95f311ea30f05fe8f64dc8",
+    "native/Case07.dvp": "2795228864eeb47c4a0c3048d1b2dda309266aff7e6c3102b1e384e9a6abea1a",
+    "native-evidence.json": "43260accb9c04898fdece912048b0e307e172e4e975987e4b09789826225d1cc",
+    "request.json": "c3395b2217cf012398d78ca64f9ebc8bd96c714374f24a74e8ece7bd235fa049",
+    "signals.csv": "0c300bd0797d83f92baa0c4da45121e7b73b35989026304c5e258791de03138a"
+  }
+}

@@ -1,0 +1,9 @@
+﻿{ S7_Optimized := "TRUE"; S7_Language := "LAD" }
+ORGANIZATION_BLOCK "Main"
+    { S7_Language := "LAD" }
+    NETWORK
+        RUNG wire#powerrail
+            "CallCase01"()
+        END_RUNG
+    END_NETWORK
+END_ORGANIZATION_BLOCK

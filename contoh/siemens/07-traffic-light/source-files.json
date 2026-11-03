@@ -1,0 +1,17 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "CallCase.scl": "2c2dbd89e2e28811a991e3fc9152e1ed9c4281aaf42a2ed643588fe7550b3305",
+    "DataAndTimers.scl": "9d565b5d86ee123a6e092a3181143a7a39465e28a04cde547aae25b392e3ff58",
+    "Logic07.s7dcl": "f5496bea7840d97682615360ba9c1ee9d7cbc1217f9ab24ad404b34e0b2308d2",
+    "Main.s7dcl": "59da306f036056b0d4ebe6620358012f9b75679daf6fee5eab3cc2cc7d92b601",
+    "README.md": "c8c709c987c11938304fd726491efbf2290cb875af59540768865853ac7d28b1",
+    "native-evidence.json": "6be678750738220b0fc7ab73949fbb64fa05d9a648dc933106876b1f737674a3",
+    "native-readback/Logic07.s7dcl": "2d873ece6d8266f87879edc74f846fb416a20dcd8877b06c0ba19a03873ff3db",
+    "native-readback/Logic07.s7res": "94762c0c441c12f30515b49e1c8f05265b08e81751aff3e368087cb256a1474b",
+    "native-readback/Main.s7dcl": "8ffb0dd8b1edc512e2b7a96417f39933b8acd54eec1fb19c015b87fac6f2e6c4",
+    "native-readback/Main.s7res": "94762c0c441c12f30515b49e1c8f05265b08e81751aff3e368087cb256a1474b",
+    "signals.csv": "d2ed0c1738ee0e2065b6162ddfaeb920364e551bc292bdc6e51a0806bff67c25",
+    "specification.json": "6c73dfd9edccdf0dfbdc40dd27791cae7b2cf078aa90fd211d3858b0fab1fe54"
+  }
+}

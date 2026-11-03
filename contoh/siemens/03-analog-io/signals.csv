@@ -1,0 +1,14 @@
+signal,reference,data_type,role,access
+Enabled,AnalogState03.Enabled / %I0.0,BOOL,input,read-only
+RawIn0,%IW96,INT,input,read-only
+InRange0,AnalogState03.InRange0,BOOL,internal,read-only
+RawIn1,%IW98,INT,input,read-only
+InRange1,AnalogState03.InRange1,BOOL,internal,read-only
+RawIn2,%IW100,INT,input,read-only
+InRange2,AnalogState03.InRange2,BOOL,internal,read-only
+RawIn3,%IW102,INT,input,read-only
+InRange3,AnalogState03.InRange3,BOOL,internal,read-only
+RawOut0,%QW112,INT,output,read-only
+RawOut1,%QW114,INT,output,read-only
+Command0,AnalogState03.CommandRaw0,INT,command,read-only
+Command1,AnalogState03.CommandRaw1,INT,command,read-only

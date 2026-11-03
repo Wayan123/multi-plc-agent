@@ -1,0 +1,9 @@
+signal,reference,data_type,role,access
+StartPB,State02.StartPB,BOOL,input,read-only
+StopHealthy,State02.StopHealthy,BOOL,input,read-only
+EStopHealthy,State02.EStopHealthy,BOOL,input,read-only
+Motor,State02.Motor,BOOL,output,read-only
+Horn,State02.Horn,BOOL,output,read-only
+Armed,State02.Armed,BOOL,internal,read-only
+RunRequest,State02.RunRequest,BOOL,internal,read-only
+StartDelay.Q,State02.StartDelayQ,BOOL,internal,read-only

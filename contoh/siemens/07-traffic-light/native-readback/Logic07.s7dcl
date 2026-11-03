@@ -1,0 +1,581 @@
+﻿{
+    S7_Optimized := "TRUE";
+    S7_Language := "LAD";
+}
+FUNCTION "Logic07" : Void
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage0 )
+            I_Contact( "State07".StageTimer0Q )
+            Coil( "State07".Hold0 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage0 )
+            Contact( "State07".StageTimer0Q )
+            Coil( "State07".Advance0 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage1 )
+            I_Contact( "State07".StageTimer1Q )
+            Coil( "State07".Hold1 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage1 )
+            Contact( "State07".StageTimer1Q )
+            Coil( "State07".Advance1 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage2 )
+            I_Contact( "State07".StageTimer2Q )
+            Coil( "State07".Hold2 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage2 )
+            Contact( "State07".StageTimer2Q )
+            Coil( "State07".Advance2 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage3 )
+            I_Contact( "State07".StageTimer3Q )
+            Coil( "State07".Hold3 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage3 )
+            Contact( "State07".StageTimer3Q )
+            Coil( "State07".Advance3 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage4 )
+            I_Contact( "State07".StageTimer4Q )
+            Coil( "State07".Hold4 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage4 )
+            Contact( "State07".StageTimer4Q )
+            Coil( "State07".Advance4 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage5 )
+            I_Contact( "State07".StageTimer5Q )
+            Coil( "State07".Hold5 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage5 )
+            Contact( "State07".StageTimer5Q )
+            Coil( "State07".Advance5 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage6 )
+            I_Contact( "State07".StageTimer6Q )
+            Coil( "State07".Hold6 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage6 )
+            Contact( "State07".StageTimer6Q )
+            Coil( "State07".Advance6 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage7 )
+            I_Contact( "State07".StageTimer7Q )
+            Coil( "State07".Hold7 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage7 )
+            Contact( "State07".StageTimer7Q )
+            Coil( "State07".Advance7 )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Hold0 )
+            wire#w1
+            Coil( "State07".Stage0 )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State07".Advance7 )
+        END_RUNG wire#w1
+        RUNG wire#powerrail
+            I_Contact( "State07".Initialised )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Hold1 )
+            wire#w1
+            Coil( "State07".Stage1 )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State07".Advance0 )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Hold2 )
+            wire#w1
+            Coil( "State07".Stage2 )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State07".Advance1 )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Hold3 )
+            wire#w1
+            Coil( "State07".Stage3 )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State07".Advance2 )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Hold4 )
+            wire#w1
+            Coil( "State07".Stage4 )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State07".Advance3 )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Hold5 )
+            wire#w1
+            Coil( "State07".Stage5 )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State07".Advance4 )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Hold6 )
+            wire#w1
+            Coil( "State07".Stage6 )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State07".Advance5 )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Hold7 )
+            wire#w1
+            Coil( "State07".Stage7 )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State07".Advance6 )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            I_Contact( "State07".Initialised )
+            S_Coil( "State07".Initialised )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage1 )
+            I_Contact( "State07".Stage0 )
+            I_Contact( "State07".Stage2 )
+            I_Contact( "State07".Stage3 )
+            I_Contact( "State07".Stage4 )
+            I_Contact( "State07".Stage5 )
+            I_Contact( "State07".Stage6 )
+            I_Contact( "State07".Stage7 )
+            Coil( "State07".NSGreenPermit )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage2 )
+            I_Contact( "State07".Stage0 )
+            I_Contact( "State07".Stage1 )
+            I_Contact( "State07".Stage3 )
+            I_Contact( "State07".Stage4 )
+            I_Contact( "State07".Stage5 )
+            I_Contact( "State07".Stage6 )
+            I_Contact( "State07".Stage7 )
+            Coil( "State07".NSYellowPermit )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage4 )
+            I_Contact( "State07".Stage0 )
+            I_Contact( "State07".Stage1 )
+            I_Contact( "State07".Stage2 )
+            I_Contact( "State07".Stage3 )
+            I_Contact( "State07".Stage5 )
+            I_Contact( "State07".Stage6 )
+            I_Contact( "State07".Stage7 )
+            Coil( "State07".EWGreenPermit )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage5 )
+            I_Contact( "State07".Stage0 )
+            I_Contact( "State07".Stage1 )
+            I_Contact( "State07".Stage2 )
+            I_Contact( "State07".Stage3 )
+            I_Contact( "State07".Stage4 )
+            I_Contact( "State07".Stage6 )
+            I_Contact( "State07".Stage7 )
+            Coil( "State07".EWYellowPermit )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".Stage7 )
+            I_Contact( "State07".Stage0 )
+            I_Contact( "State07".Stage1 )
+            I_Contact( "State07".Stage2 )
+            I_Contact( "State07".Stage3 )
+            I_Contact( "State07".Stage4 )
+            I_Contact( "State07".Stage5 )
+            I_Contact( "State07".Stage6 )
+            Coil( "State07".PedGreenPermit )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            I_Contact( "State07".NSGreenPermit )
+            I_Contact( "State07".NSYellowPermit )
+            Coil( "State07".NorthRed )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".NSYellowPermit )
+            Coil( "State07".NorthYellow )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".NSGreenPermit )
+            Coil( "State07".NorthGreen )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            I_Contact( "State07".NSGreenPermit )
+            I_Contact( "State07".NSYellowPermit )
+            Coil( "State07".SouthRed )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".NSYellowPermit )
+            Coil( "State07".SouthYellow )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".NSGreenPermit )
+            Coil( "State07".SouthGreen )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            I_Contact( "State07".EWGreenPermit )
+            I_Contact( "State07".EWYellowPermit )
+            Coil( "State07".EastRed )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".EWYellowPermit )
+            Coil( "State07".EastYellow )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".EWGreenPermit )
+            Coil( "State07".EastGreen )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            I_Contact( "State07".EWGreenPermit )
+            I_Contact( "State07".EWYellowPermit )
+            Coil( "State07".WestRed )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".EWYellowPermit )
+            Coil( "State07".WestYellow )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".EWGreenPermit )
+            Coil( "State07".WestGreen )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            I_Contact( "State07".PedGreenPermit )
+            Coil( "State07".PedRed )
+        END_RUNG
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State07".PedGreenPermit )
+            Coil( "State07".PedGreen )
+        END_RUNG
+
+    END_NETWORK
+
+END_FUNCTION

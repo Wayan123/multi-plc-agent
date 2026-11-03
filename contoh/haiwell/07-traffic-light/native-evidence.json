@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-03",
+  "software": "Haiwell Happy V2.2.13.240603",
+  "model": "AT16S0T/P",
+  "authorship": "Existing vendor MCP backend through multi-plc-agent stdio router",
+  "canonical_rungs": 52,
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "original_write_timed_out": true,
+    "cause": "Local harness used timeout instead of the documented timeout_s; router default 600s expired while the existing native writer was still working.",
+    "readback": {
+      "project": "$SCRATCH\\haiwell\\Case07.gpc",
+      "il": "Main program: [PGB:MainLD]\nLD          M11\nTON.1s      2, T0, TV0\nLD          M12\nTON.1s      10, T1, TV1\nLD          M13\nTON.1s      3, T2, TV2\nLD          M14\nTON.1s      2, T3, TV3\nLD          M15\nTON.1s      10, T4, TV4\nLD          M16\nTON.1s      3, T5, TV5\nLD          M17\nTON.1s      2, T6, TV6\nLD          M18\nTON.1s      5, T7, TV7\nLD          M11\nANDI        T0\nOUT         M19\nLD          M11\nAND         T0\nOUT         M27\nLD          M12\nANDI        T1\nOUT         M20\nLD          M12\nAND         T1\nOUT         M28\nLD          M13\nANDI        T2\nOUT         M21\nLD          M13\nAND         T2\nOUT         M29\nLD          M14\nANDI        T3\nOUT         M22\nLD          M14\nAND         T3\nOUT         M30\nLD          M15\nANDI        T4\nOUT         M23\nLD          M15\nAND         T4\nOUT         M31\nLD          M16\nANDI        T5\nOUT         M24\nLD          M16\nAND         T5\nOUT         M32\nLD          M17\nANDI        T6\nOUT         M25\nLD          M17\nAND         T6\nOUT         M33\nLD          M18\nANDI        T7\nOUT         M26\nLD          M18\nAND         T7\nOUT         M34\nLD          M19\nOR          M34\nORI         M10\nOUT         M11\nLD          M20\nOR          M27\nOUT         M12\nLD          M21\nOR          M28\nOUT         M13\nLD          M22\nOR          M29\nOUT         M14\nLD          M23\nOR          M30\nOUT         M15\nLD          M24\nOR          M31\nOUT         M16\nLD          M25\nOR          M32\nOUT         M17\nLD          M26\nOR          M33\nOUT         M18\nLDI         M10\nSET         M10\nLD          M12\nANDI        M11\nANDI        M13\nANDI        M14\nANDI        M15\nANDI        M16\nANDI        M17\nANDI        M18\nOUT         M35\nLD          M13\nANDI        M11\nANDI        M12\nANDI        M14\nANDI        M15\nANDI        M16\nANDI        M17\nANDI        M18\nOUT         M36\nLD          M15\nANDI        M11\nANDI        M12\nANDI        M13\nANDI        M14\nANDI        M16\nANDI        M17\nANDI        M18\nOUT         M37\nLD          M16\nANDI        M11\nANDI        M12\nANDI        M13\nANDI        M14\nANDI        M15\nANDI        M17\nANDI        M18\nOUT         M38\nLD          M18\nANDI        M11\nANDI        M12\nANDI        M13\nANDI        M14\nANDI        M15\nANDI        M16\nANDI        M17\nOUT         M39\nLDI         M35\nANDI        M36\nOUT         M100\nLD          M36\nOUT         M101\nLD          M35\nOUT         M102\nLDI         M35\nANDI        M36\nOUT         M103\nLD          M36\nOUT         M104\nLD          M35\nOUT         M105\nLDI         M37\nANDI        M38\nOUT         M106\nLD          M38\nOUT         M107\nLD          M37\nOUT         M108\nLDI         M37\nANDI        M38\nOUT         M109\nLD          M38\nOUT         M110\nLD          M37\nOUT         M111\nLDI         M39\nOUT         M112\nLD          M39\nOUT         M113\n\nEND\n",
+      "ok": true,
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case07.gpc]"
+    },
+    "saved_il_matches": true,
+    "compile": {
+      "project": "$SCRATCH\\haiwell\\Case07.gpc",
+      "ok": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "messages": [],
+      "summary": [
+        "Error number:0    Warning number:0",
+        "Hardware configuration:79    Program:780    Used capacity:859",
+        "CPU Module:AT16S0T/P    Program capacity:48000"
+      ],
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case07.gpc]"
+    },
+    "needs_cold_reopen": true,
+    "cold_readback": {
+      "project": "$SCRATCH\\haiwell\\Case07.gpc",
+      "il": "Main program: [PGB:MainLD]\nLD          M11\nTON.1s      2, T0, TV0\nLD          M12\nTON.1s      10, T1, TV1\nLD          M13\nTON.1s      3, T2, TV2\nLD          M14\nTON.1s      2, T3, TV3\nLD          M15\nTON.1s      10, T4, TV4\nLD          M16\nTON.1s      3, T5, TV5\nLD          M17\nTON.1s      2, T6, TV6\nLD          M18\nTON.1s      5, T7, TV7\nLD          M11\nANDI        T0\nOUT         M19\nLD          M11\nAND         T0\nOUT         M27\nLD          M12\nANDI        T1\nOUT         M20\nLD          M12\nAND         T1\nOUT         M28\nLD          M13\nANDI        T2\nOUT         M21\nLD          M13\nAND         T2\nOUT         M29\nLD          M14\nANDI        T3\nOUT         M22\nLD          M14\nAND         T3\nOUT         M30\nLD          M15\nANDI        T4\nOUT         M23\nLD          M15\nAND         T4\nOUT         M31\nLD          M16\nANDI        T5\nOUT         M24\nLD          M16\nAND         T5\nOUT         M32\nLD          M17\nANDI        T6\nOUT         M25\nLD          M17\nAND         T6\nOUT         M33\nLD          M18\nANDI        T7\nOUT         M26\nLD          M18\nAND         T7\nOUT         M34\nLD          M19\nOR          M34\nORI         M10\nOUT         M11\nLD          M20\nOR          M27\nOUT         M12\nLD          M21\nOR          M28\nOUT         M13\nLD          M22\nOR          M29\nOUT         M14\nLD          M23\nOR          M30\nOUT         M15\nLD          M24\nOR          M31\nOUT         M16\nLD          M25\nOR          M32\nOUT         M17\nLD          M26\nOR          M33\nOUT         M18\nLDI         M10\nSET         M10\nLD          M12\nANDI        M11\nANDI        M13\nANDI        M14\nANDI        M15\nANDI        M16\nANDI        M17\nANDI        M18\nOUT         M35\nLD          M13\nANDI        M11\nANDI        M12\nANDI        M14\nANDI        M15\nANDI        M16\nANDI        M17\nANDI        M18\nOUT         M36\nLD          M15\nANDI        M11\nANDI        M12\nANDI        M13\nANDI        M14\nANDI        M16\nANDI        M17\nANDI        M18\nOUT         M37\nLD          M16\nANDI        M11\nANDI        M12\nANDI        M13\nANDI        M14\nANDI        M15\nANDI        M17\nANDI        M18\nOUT         M38\nLD          M18\nANDI        M11\nANDI        M12\nANDI        M13\nANDI        M14\nANDI        M15\nANDI        M16\nANDI        M17\nOUT         M39\nLDI         M35\nANDI        M36\nOUT         M100\nLD          M36\nOUT         M101\nLD          M35\nOUT         M102\nLDI         M35\nANDI        M36\nOUT         M103\nLD          M36\nOUT         M104\nLD          M35\nOUT         M105\nLDI         M37\nANDI        M38\nOUT         M106\nLD          M38\nOUT         M107\nLD          M37\nOUT         M108\nLDI         M37\nANDI        M38\nOUT         M109\nLD          M38\nOUT         M110\nLD          M37\nOUT         M111\nLDI         M39\nOUT         M112\nLD          M39\nOUT         M113\n\nEND\n",
+      "ok": true,
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case07.gpc]"
+    },
+    "cold_compile": {
+      "project": "$SCRATCH\\haiwell\\Case07.gpc",
+      "ok": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "messages": [],
+      "summary": [
+        "Error number:0    Warning number:0",
+        "Hardware configuration:79    Program:780    Used capacity:859",
+        "CPU Module:AT16S0T/P    Program capacity:48000"
+      ],
+      "title": "HaiwellHappy V2.2.13.240603 [$SCRATCH\\haiwell\\Case07.gpc]"
+    },
+    "cold_saved_il_matches": true
+  },
+  "limitations": [
+    "The original router reply timed out under a misnamed local timeout setting. The owned writer finished; cold reopen, full saved IL comparison and native compile passed. Use timeout_s: 1200, not timeout.",
+    "Fourteen lamp commands are logical variables/internal relays; this is not a verified fourteen-physical-output configuration."
+  ]
+}

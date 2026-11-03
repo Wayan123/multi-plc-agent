@@ -1,0 +1,209 @@
+{
+  "date": "2026-11-03",
+  "software": "EcoStruxure Machine Expert - Basic",
+  "model": "TM221M16R/G",
+  "authorship": "Existing vendor MCP backend through multi-plc-agent stdio router",
+  "canonical_rungs": 5,
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "write": {
+      "ok": true,
+      "written": true,
+      "path": "$SCRATCH\\schneider\\Case01.smbp",
+      "backup": "$SCRATCH\\schneider\\Case01.smbp.bak",
+      "rungs": 5,
+      "il": [
+        [
+          "LD %M0",
+          "ORN %I0.0",
+          "AND %I0.1",
+          "AND %I0.2",
+          "AND %I0.3",
+          "ST %M0"
+        ],
+        [
+          "LD %M1",
+          "OR( %I0.0",
+          "AND %M0",
+          ")",
+          "AND %I0.1",
+          "AND %I0.2",
+          "AND %I0.3",
+          "ST %M1"
+        ],
+        [
+          "BLK %TM0",
+          "LD %M1",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "LD %M1",
+          "ANDN %TM0.Q",
+          "ST %Q0.1"
+        ],
+        [
+          "LD %M1",
+          "AND %TM0.Q",
+          "ST %Q0.0"
+        ]
+      ],
+      "il_matches": true,
+      "differences": []
+    },
+    "compile": {
+      "path": "$SCRATCH\\schneider\\Case01.smbp",
+      "status": "No error",
+      "ui_il": [
+        [
+          "LD ARMED",
+          "ORN STARTPB",
+          "AND STOPHEALTHY",
+          "AND ESTOPHEALTHY",
+          "AND GUARDHEALTHY",
+          "ST ARMED"
+        ],
+        [
+          "LD RUNREQUEST",
+          "OR( STARTPB",
+          "AND ARMED",
+          ")",
+          "AND STOPHEALTHY",
+          "AND ESTOPHEALTHY",
+          "AND GUARDHEALTHY",
+          "ST RUNREQUEST"
+        ],
+        [
+          "BLK %TM0",
+          "LD RUNREQUEST",
+          "IN",
+          "END_BLK"
+        ],
+        [
+          "LD RUNREQUEST",
+          "ANDN %TM0.Q",
+          "ST HORN"
+        ],
+        [
+          "LD RUNREQUEST",
+          "AND %TM0.Q",
+          "ST MOTOR"
+        ]
+      ],
+      "error_lines": [],
+      "error_count": 0,
+      "advisory": false,
+      "ok": true,
+      "languages": {
+        "0": "LD",
+        "1": "LD",
+        "2": "LD",
+        "3": "LD",
+        "4": "LD"
+      },
+      "status_after_ladder": "No error",
+      "saved": true,
+      "ui_il_matches": false,
+      "ladder_rungs": 5,
+      "il_matches": true,
+      "differences": []
+    },
+    "readback": {
+      "name": "Case01",
+      "cpu": "TM221M16R/G",
+      "pous": [
+        {
+          "name": "New POU",
+          "rungs": [
+            {
+              "name": "",
+              "comment": "Arm after start release with all permissives healthy",
+              "il": [
+                "LD %M0",
+                "ORN %I0.0",
+                "AND %I0.1",
+                "AND %I0.2",
+                "AND %I0.3",
+                "ST %M0"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Seal in run; permissive loss immediately drops run",
+              "il": [
+                "LD %M1",
+                "OR( %I0.0",
+                "AND %M0",
+                ")",
+                "AND %I0.1",
+                "AND %I0.2",
+                "AND %I0.3",
+                "ST %M1"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Three-second start warning delay",
+              "il": [
+                "BLK %TM0",
+                "LD %M1",
+                "IN",
+                "END_BLK"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Horn sounds only while the start delay is incomplete",
+              "il": [
+                "LD %M1",
+                "ANDN %TM0.Q",
+                "ST %Q0.1"
+              ],
+              "ladder": true
+            },
+            {
+              "name": "",
+              "comment": "Motor starts only after the warning delay",
+              "il": [
+                "LD %M1",
+                "AND %TM0.Q",
+                "ST %Q0.0"
+              ],
+              "ladder": true
+            }
+          ]
+        }
+      ],
+      "timers": [
+        {
+          "address": "%TM0",
+          "type": "TON",
+          "preset": 3,
+          "base": "1s"
+        }
+      ],
+      "counters": [],
+      "symbols": {
+        "%I0.0": "StartPB",
+        "%I0.1": "StopHealthy",
+        "%I0.2": "EStopHealthy",
+        "%I0.3": "GuardHealthy",
+        "%Q0.0": "Motor",
+        "%Q0.1": "Horn",
+        "%M0": "Armed",
+        "%M1": "RunRequest"
+      },
+      "comments": {}
+    },
+    "ui_symbols_resolved_match": true,
+    "persisted_il_matches": true
+  },
+  "limitations": [
+    "The raw UI-only IL match is false. Complete native saved-file IL matches the request. Digital UI aliases resolve through saved symbol mappings; traffic UI rows are virtualized/incomplete."
+  ]
+}

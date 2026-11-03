@@ -23,3 +23,8 @@ media-for-gdrive/
 *.smbp.bak
 *.dvp.bak
 demo.config.json
+
+# Original, native-accepted teaching sources (not precompile/user caches)
+!contoh/codesys/01-digital-interlock/native/Case01.project
+!contoh/codesys/02-digital-start-stop/native/Case02.project
+!contoh/codesys/07-traffic-light/native/Case07.project

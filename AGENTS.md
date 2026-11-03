@@ -13,3 +13,4 @@ Read CONTRIBUTING.md and ROADMAP.md before changing PLC support. Operational evi
 - HMI-AI and Content Studio are separate consumers. PLC logic/signals/evidence stay canonical here; do not guess live bindings, grant PLC write access, publish private sibling repositories or reschedule content as a side effect.
 - New public examples, backend docs and receipts are English. Review every native recording frame for private data and label step captures versus continuous recordings accurately.
 - Regression command: python3 -m pytest tests backends -q. Run the actual changed native path as well; tests alone do not establish vendor acceptance.
+- The capability-adapted teaching catalog is contoh/README.md; operational evidence and exclusions are in docs/operations/cross-vendor-examples.md. Cases 01/02/07 have native acceptance on seven backends; Siemens 03/04 are LAD/SCL hybrids. New-target XY-MD02 and Sysmac task-bound examples remain unchecked, not implicit support.

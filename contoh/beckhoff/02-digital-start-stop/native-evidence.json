@@ -1,0 +1,223 @@
+{
+  "date": "2026-11-03",
+  "software": "TwinCAT XAE 4026.27 / PLC integration 7.1.3",
+  "model": "TwinCAT RT (x64)",
+  "authorship": "Existing vendor MCP backend through multi-plc-agent stdio router",
+  "canonical_rungs": 5,
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "write": {
+      "ok": true,
+      "online_operations": 0,
+      "solution": "$SCRATCH\\beckhoff\\Case02\\Case02.sln",
+      "saved_closed_reopened": true,
+      "previous_platform": "TwinCAT RT (x64)",
+      "platform": "TwinCAT RT (x64)",
+      "build_state": "vsBuildStateDone",
+      "failed_projects": 0,
+      "diagnostics": [],
+      "native_build_output": "The application is up to date\r\nBuild complete -- 0 errors, 0 warnings : Ready for download\r\nGenerate TMC information ...\r\nImport symbol information ...\r\n\r\n------ Build started: Project: Engineering, Configuration: Release TwinCAT RT (x64) ------\r\n========== Build: 2 succeeded or up-to-date, 0 failed, 0 skipped ==========\r\n========== Build completed at 13:33 and took 00,778 seconds ==========\r\n",
+      "errors": 0,
+      "warnings": 0,
+      "platform_matches": true,
+      "quit_returned": true,
+      "owned_host_exited": true,
+      "timed_out": false,
+      "backup": null,
+      "logic": [
+        {
+          "comment": "Arm after start release with all permissives healthy",
+          "kind": "OUT",
+          "target": "Armed",
+          "logic": "(Armed AND EStopHealthy AND StopHealthy) OR (EStopHealthy AND NOT StartPB AND StopHealthy)"
+        },
+        {
+          "comment": "Seal in run; permissive loss immediately drops run",
+          "kind": "OUT",
+          "target": "RunRequest",
+          "logic": "(Armed AND EStopHealthy AND StartPB AND StopHealthy) OR (EStopHealthy AND RunRequest AND StopHealthy)"
+        },
+        {
+          "comment": "Three-second start warning delay",
+          "kind": "TON",
+          "target": "StartDelay",
+          "logic": "RunRequest",
+          "params": {
+            "PT": "T#3S"
+          }
+        },
+        {
+          "comment": "Horn sounds only while the start delay is incomplete",
+          "kind": "OUT",
+          "target": "Horn",
+          "logic": "NOT StartDelay.Q AND RunRequest"
+        },
+        {
+          "comment": "Motor starts only after the warning delay",
+          "kind": "OUT",
+          "target": "Motor",
+          "logic": "RunRequest AND StartDelay.Q"
+        }
+      ],
+      "declarations": {
+        "StartPB": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "StopHealthy": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "EStopHealthy": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "Armed": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "RunRequest": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "Motor": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "Horn": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "StartDelay": {
+          "type": "TON",
+          "address": ""
+        }
+      },
+      "tasks": [
+        {
+          "name": "PlcTask",
+          "calls": [
+            "MAIN"
+          ],
+          "settings": {
+            "KindOfTask": "Cyclic",
+            "Interval": "10000",
+            "IntervalUnit": "us",
+            "WithinSPSTimeSlicing": "true"
+          }
+        }
+      ],
+      "logic_matches": true,
+      "declarations_match": true,
+      "task_bound": true,
+      "written": true,
+      "simulation_verified": false,
+      "hardware_verified": false,
+      "native_export_sha256": "4865e199ebb9d3ddea12c002ad182e94ba2f0fb8ca26116ea3a87f95e3141947"
+    },
+    "reopened_build": {
+      "ok": true,
+      "online_operations": 0,
+      "solution": "$SCRATCH\\beckhoff\\Case02\\Case02.sln",
+      "previous_platform": "TwinCAT RT (x64)",
+      "platform": "TwinCAT RT (x64)",
+      "build_state": "vsBuildStateDone",
+      "failed_projects": 0,
+      "diagnostics": [],
+      "native_build_output": "The application is up to date\r\nBuild complete -- 0 errors, 0 warnings : Ready for download\r\nGenerate TMC information ...\r\nImport symbol information ...\r\n\r\n------ Build started: Project: Engineering, Configuration: Release TwinCAT RT (x64) ------\r\n========== Build: 2 succeeded or up-to-date, 0 failed, 0 skipped ==========\r\n========== Build completed at 13:34 and took 00,805 seconds ==========\r\n",
+      "errors": 0,
+      "warnings": 0,
+      "platform_matches": true,
+      "quit_returned": true,
+      "owned_host_exited": true,
+      "timed_out": false,
+      "logic": [
+        {
+          "comment": "Arm after start release with all permissives healthy",
+          "kind": "OUT",
+          "target": "Armed",
+          "logic": "(Armed AND EStopHealthy AND StopHealthy) OR (EStopHealthy AND NOT StartPB AND StopHealthy)"
+        },
+        {
+          "comment": "Seal in run; permissive loss immediately drops run",
+          "kind": "OUT",
+          "target": "RunRequest",
+          "logic": "(Armed AND EStopHealthy AND StartPB AND StopHealthy) OR (EStopHealthy AND RunRequest AND StopHealthy)"
+        },
+        {
+          "comment": "Three-second start warning delay",
+          "kind": "TON",
+          "target": "StartDelay",
+          "logic": "RunRequest",
+          "params": {
+            "PT": "T#3S"
+          }
+        },
+        {
+          "comment": "Horn sounds only while the start delay is incomplete",
+          "kind": "OUT",
+          "target": "Horn",
+          "logic": "NOT StartDelay.Q AND RunRequest"
+        },
+        {
+          "comment": "Motor starts only after the warning delay",
+          "kind": "OUT",
+          "target": "Motor",
+          "logic": "RunRequest AND StartDelay.Q"
+        }
+      ],
+      "declarations": {
+        "StartPB": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "StopHealthy": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "EStopHealthy": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "Armed": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "RunRequest": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "Motor": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "Horn": {
+          "type": "BOOL",
+          "address": ""
+        },
+        "StartDelay": {
+          "type": "TON",
+          "address": ""
+        }
+      },
+      "tasks": [
+        {
+          "name": "PlcTask",
+          "calls": [
+            "MAIN"
+          ],
+          "settings": {
+            "KindOfTask": "Cyclic",
+            "Interval": "10000",
+            "IntervalUnit": "us",
+            "WithinSPSTimeSlicing": "true"
+          }
+        }
+      ],
+      "native_export_sha256": "06ebb5df1aad20c1140b739ab64d76ca1d1fcd397d9e1aa094f57e7d3feafc67"
+    }
+  },
+  "limitations": []
+}

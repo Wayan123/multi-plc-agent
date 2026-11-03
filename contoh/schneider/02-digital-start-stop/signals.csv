@@ -1,0 +1,9 @@
+signal,reference,data_type,role,access
+StartPB,%I0.0,BOOL,input,read-only
+StopHealthy,%I0.1,BOOL,input,read-only
+EStopHealthy,%I0.2,BOOL,input,read-only
+Motor,%Q0.0,BOOL,output,read-only
+Horn,%Q0.1,BOOL,output,read-only
+Armed,%M0,BOOL,internal,read-only
+RunRequest,%M1,BOOL,internal,read-only
+StartDelay.Q,%TM0.Q,BOOL,internal,read-only

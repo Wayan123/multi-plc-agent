@@ -1,0 +1,49 @@
+DATA_BLOCK "AnalogState03"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+VAR
+    Enabled : Bool := FALSE;
+    RawIn0 : Int := 0;
+    RawIn1 : Int := 0;
+    RawIn2 : Int := 0;
+    RawIn3 : Int := 0;
+    InRange0 : Bool := FALSE;
+    InRange1 : Bool := FALSE;
+    InRange2 : Bool := FALSE;
+    InRange3 : Bool := FALSE;
+    CommandRaw0 : Int := 0;
+    CommandRaw1 : Int := 0;
+    RawOut0 : Int := 0;
+    RawOut1 : Int := 0;
+END_VAR
+BEGIN
+END_DATA_BLOCK
+
+FUNCTION "AnalogCycle03" : Void
+VERSION : 0.1
+VAR_TEMP
+    Value : DInt;
+END_VAR
+BEGIN
+    "AnalogState03".Enabled := %I0.0;
+    "AnalogState03".RawIn0 := %IW96;
+    "AnalogState03".InRange0 := ("AnalogState03".RawIn0 >= -27648) AND ("AnalogState03".RawIn0 <= 27648);
+    "AnalogState03".RawIn1 := %IW98;
+    "AnalogState03".InRange1 := ("AnalogState03".RawIn1 >= -27648) AND ("AnalogState03".RawIn1 <= 27648);
+    "AnalogState03".RawIn2 := %IW100;
+    "AnalogState03".InRange2 := ("AnalogState03".RawIn2 >= -27648) AND ("AnalogState03".RawIn2 <= 27648);
+    "AnalogState03".RawIn3 := %IW102;
+    "AnalogState03".InRange3 := ("AnalogState03".RawIn3 >= -27648) AND ("AnalogState03".RawIn3 <= 27648);
+    #Value := INT_TO_DINT("AnalogState03".CommandRaw0);
+    IF #Value < -27648 THEN #Value := -27648; END_IF;
+    IF #Value > 27648 THEN #Value := 27648; END_IF;
+    IF NOT "AnalogState03".Enabled THEN #Value := 0; END_IF;
+    "AnalogState03".RawOut0 := DINT_TO_INT(#Value);
+    %QW112 := "AnalogState03".RawOut0;
+    #Value := INT_TO_DINT("AnalogState03".CommandRaw1);
+    IF #Value < -27648 THEN #Value := -27648; END_IF;
+    IF #Value > 27648 THEN #Value := 27648; END_IF;
+    IF NOT "AnalogState03".Enabled THEN #Value := 0; END_IF;
+    "AnalogState03".RawOut1 := DINT_TO_INT(#Value);
+    %QW114 := "AnalogState03".RawOut1;
+END_FUNCTION

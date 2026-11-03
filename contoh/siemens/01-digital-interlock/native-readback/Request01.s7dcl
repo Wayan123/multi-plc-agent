@@ -1,0 +1,44 @@
+﻿{
+    S7_Optimized := "TRUE";
+    S7_Language := "LAD";
+}
+FUNCTION "Request01" : Void
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State01".Armed )
+            wire#w1
+            Contact( "State01".StopHealthy )
+            Contact( "State01".EStopHealthy )
+            Contact( "State01".GuardHealthy )
+            Coil( "State01".Armed )
+        END_RUNG
+        RUNG wire#powerrail
+            I_Contact( "State01".StartPB )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+    {
+      S7_Language := "LAD"
+    }
+    NETWORK
+        RUNG wire#powerrail
+            Contact( "State01".RunRequest )
+            wire#w1
+            Contact( "State01".StopHealthy )
+            Contact( "State01".EStopHealthy )
+            Contact( "State01".GuardHealthy )
+            Coil( "State01".RunRequest )
+        END_RUNG
+        RUNG wire#powerrail
+            Contact( "State01".StartPB )
+            Contact( "State01".Armed )
+        END_RUNG wire#w1
+
+    END_NETWORK
+
+END_FUNCTION

@@ -1,0 +1,126 @@
+{
+  "date": "2026-11-03",
+  "software": "CODESYS V3.5 SP21",
+  "model": "CODESYS Control Win V3 x64",
+  "authorship": "Existing vendor MCP backend through multi-plc-agent stdio router",
+  "canonical_rungs": 5,
+  "simulation_verified": false,
+  "hardware_verified": false,
+  "functional_safety_verified": false,
+  "native_receipts": {
+    "write": {
+      "messages": [
+        {
+          "severity": "Text",
+          "text": "------ Build started: Application: Device.Application -------",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Typify code...",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Compile complete -- 0 errors, 0 warnings",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Additional code checks ...",
+          "category": "Additional code checks"
+        },
+        {
+          "severity": "Text",
+          "text": "Additional code checks complete -- 0 errors",
+          "category": "Additional code checks"
+        }
+      ],
+      "project": "$SCRATCH\\codesys\\Case02.project",
+      "warning_count": 0,
+      "ok": true,
+      "error_count": 0,
+      "compile_line": "Compile complete -- 0 errors, 0 warnings",
+      "op": "write",
+      "backup": null,
+      "logic_matches": true,
+      "rungs": 5
+    },
+    "reopened_build": {
+      "messages": [
+        {
+          "severity": "Text",
+          "text": "------ Build started: Application: Device.Application -------",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Typify code...",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Compile complete -- 0 errors, 0 warnings",
+          "category": "Build"
+        },
+        {
+          "severity": "Text",
+          "text": "Additional code checks ...",
+          "category": "Additional code checks"
+        },
+        {
+          "severity": "Text",
+          "text": "Additional code checks complete -- 0 errors",
+          "category": "Additional code checks"
+        }
+      ],
+      "project": "$SCRATCH\\codesys\\Case02.project",
+      "warning_count": 0,
+      "ok": true,
+      "error_count": 0,
+      "compile_line": "Compile complete -- 0 errors, 0 warnings",
+      "op": "build"
+    },
+    "readback": {
+      "project": "$SCRATCH\\codesys\\Case02.project",
+      "ok": true,
+      "op": "export",
+      "logic": [
+        {
+          "comment": "Arm after start release with all permissives healthy",
+          "kind": "OUT",
+          "target": "Armed",
+          "logic": "(Armed AND EStopHealthy AND StopHealthy) OR (EStopHealthy AND NOT StartPB AND StopHealthy)"
+        },
+        {
+          "comment": "Seal in run; permissive loss immediately drops run",
+          "kind": "OUT",
+          "target": "RunRequest",
+          "logic": "(Armed AND EStopHealthy AND StartPB AND StopHealthy) OR (EStopHealthy AND RunRequest AND StopHealthy)"
+        },
+        {
+          "comment": "Three-second start warning delay",
+          "kind": "TON",
+          "target": "StartDelay",
+          "logic": "RunRequest",
+          "params": {
+            "PT": "T#3S"
+          }
+        },
+        {
+          "comment": "Horn sounds only while the start delay is incomplete",
+          "kind": "OUT",
+          "target": "Horn",
+          "logic": "NOT StartDelay.Q AND RunRequest"
+        },
+        {
+          "comment": "Motor starts only after the warning delay",
+          "kind": "OUT",
+          "target": "Motor",
+          "logic": "RunRequest AND StartDelay.Q"
+        }
+      ]
+    }
+  },
+  "limitations": []
+}
