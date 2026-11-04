@@ -1,0 +1,29 @@
+{
+  "version": 7,
+  "name": "simulation",
+  "packages": [
+    "parts/oip.belt-conveyor",
+    "parts/oip.box-spawner",
+    "parts/oip.box",
+    "parts/oip.diffuse-sensor",
+    "parts/oip.push-button",
+    "parts/oip.despawner"
+  ],
+  "scene": "scene.json",
+  "program": [
+    "plc/MAIN.st",
+    "plc/Pilot.st"
+  ],
+  "stScanMs": 10,
+  "tests": [
+    "tests/01_-_start_warning_and_physical_transfer.test.json",
+    "tests/02-stop-recovery.test.json",
+    "tests/03-estop-recovery.test.json",
+    "tests/04-stop-during-horn.test.json",
+    "tests/05-batch-ten-reset.test.json",
+    "tests/06-sensor-stuck-high.test.json",
+    "tests/07-jam-and-release.test.json",
+    "tests/08-comms-off-and-recovery.test.json",
+    "tests/09_-_held_photoeye_must_not_recount_on_restart.test.json"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "oip.box",
+  "name": "Box",
+  "category": "Products",
+  "geometry": {
+    "kind": "cargo",
+    "cargoKind": "box",
+    "size": {
+      "length": 0.6,
+      "width": 0.4,
+      "height": 0.4
+    }
+  },
+  "materials": [],
+  "origin": {
+    "app": "v2:1830:11c4ahwtzaq"
+  },
+  "sdk": {
+    "level": 13,
+    "of": "v2:1830:11c4ahwtzaq"
+  }
+}

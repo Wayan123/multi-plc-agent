@@ -1,0 +1,411 @@
+{
+  "scope": "Real licensed native PLC via ADS with OIP physics absent; same 3000 ms TON, no controller/task/test changes",
+  "timer_preset_ms": 3000,
+  "samples": [
+    {
+      "wall_ms": 7.284400000000005,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 0,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 110.98380000000009,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 90,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 213.72590000000002,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 190,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 321.7794,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 290,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 430.7332,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 400,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 540.2255000000001,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 500,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 651.0477,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 600,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 757.9166000000001,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 700,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 870.0688000000001,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 810,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 980.7211000000001,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 920,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1090.4706,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1020,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1202.3724000000002,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1130,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1314.2354,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1230,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1424.9186,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1340,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1536.7554,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1440,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1649.8219000000004,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1550,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1758.6069000000002,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1650,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1870.4861,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1750,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 1980.4718000000003,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1860,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2089.5251000000003,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 1960,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2197.8533,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2060,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2309.1743,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2160,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2418.6607000000004,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2260,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2526.7713000000003,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2370,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2639.1554,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2470,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2750.509,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2580,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2861.2551000000003,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2680,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 2970.5083,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2780,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 3082.1078,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2880,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 3191.7116,
+      "MAIN.Motor": false,
+      "MAIN.Horn": true,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 2990,
+      "MAIN.StartDelay.Q": false
+    },
+    {
+      "wall_ms": 3302.9691000000003,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    },
+    {
+      "wall_ms": 3415.2383,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    },
+    {
+      "wall_ms": 3525.8298999999997,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    },
+    {
+      "wall_ms": 3635.0801,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    },
+    {
+      "wall_ms": 3744.3845,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    },
+    {
+      "wall_ms": 3854.6041000000005,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    },
+    {
+      "wall_ms": 3964.5005,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    },
+    {
+      "wall_ms": 4077.3097,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    },
+    {
+      "wall_ms": 4186.6802,
+      "MAIN.Motor": true,
+      "MAIN.Horn": false,
+      "MAIN.RunReq": true,
+      "MAIN.BatchCounter.CV": 0,
+      "MAIN.StartDelay.PT": 3000,
+      "MAIN.StartDelay.ET": 3000,
+      "MAIN.StartDelay.Q": true
+    }
+  ],
+  "safe_before": {
+    "MAIN.Motor": false,
+    "MAIN.Horn": false,
+    "MAIN.RunReq": false,
+    "MAIN.BatchCounter.CV": 0
+  },
+  "safe_after": {
+    "MAIN.Motor": false,
+    "MAIN.Horn": false,
+    "MAIN.RunReq": false,
+    "MAIN.BatchCounter.CV": 0
+  },
+  "observed_boundary": "ET remained 2990 ms at wall time 3191.7116 ms; the next sample at wall time 3302.9691 ms had ET=3000 ms and Motor=TRUE. Sampling does not identify the exact transition instant.",
+  "vendor_reference": "https://infosys.beckhoff.com/content/1033/tc170x_tc3_usermode_runtime/11319889035.html",
+  "limits": "Usermode does not guarantee deterministic or wall-clock execution. No timer preset or canonical assertion was relaxed."
+}

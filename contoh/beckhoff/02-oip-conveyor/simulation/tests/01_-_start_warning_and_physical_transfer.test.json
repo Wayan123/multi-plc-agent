@@ -1,0 +1,112 @@
+{
+  "name": "01 - start warning and physical transfer",
+  "duration": 14,
+  "scanMs": 10,
+  "inputs": [
+    {
+      "at": 0.5,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 0.8,
+      "tag": "MAIN.StartPB",
+      "value": false
+    }
+  ],
+  "checks": [
+    {
+      "always": true,
+      "until": 3.4,
+      "tag": "MAIN.Motor",
+      "equals": false
+    },
+    {
+      "always": true,
+      "from": 0.6,
+      "until": 3.4,
+      "tag": "MAIN.Horn",
+      "equals": true
+    },
+    {
+      "at": 3.7,
+      "tag": "MAIN.Motor",
+      "equals": true
+    },
+    {
+      "at": 3.7,
+      "tag": "MAIN.Horn",
+      "equals": false
+    },
+    {
+      "eventually": true,
+      "from": 4,
+      "within": 14,
+      "tag": "MAIN.PartSensor",
+      "equals": true
+    },
+    {
+      "eventually": true,
+      "from": 4,
+      "within": 14,
+      "probe": {
+        "passed": {
+          "zone": {
+            "min": [
+              3.5,
+              0.8,
+              -0.4
+            ],
+            "max": [
+              3.9,
+              1.6,
+              0.4
+            ]
+          }
+        }
+      },
+      "min": 1
+    },
+    {
+      "at": 2,
+      "probe": {
+        "pose": {
+          "part": "pt_11",
+          "axis": "x"
+        }
+      },
+      "near": 1.2,
+      "tolerance": 0.1
+    },
+    {
+      "at": 10,
+      "probe": {
+        "pose": {
+          "part": "pt_11",
+          "axis": "x"
+        }
+      },
+      "min": 3.8
+    },
+    {
+      "at": 14,
+      "probe": {
+        "count": {
+          "zone": {
+            "min": [
+              5,
+              0,
+              -0.8
+            ],
+            "max": [
+              7,
+              0.5,
+              0.8
+            ]
+          }
+        }
+      },
+      "equals": 0
+    }
+  ]
+}

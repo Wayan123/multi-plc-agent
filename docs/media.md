@@ -29,6 +29,29 @@ frame by frame. Beckhoff shows LD/native build; Delta shows saved LD and IL with
 the native compile-complete message. Neither is continuous authoring, runtime
 simulation or hardware evidence.
 
+The [OIP conveyor pilot](../contoh/beckhoff/02-oip-conveyor/) includes one
+[actual simulation GIF](../contoh/beckhoff/02-oip-conveyor/media/oip-internal-conveyor.gif),
+also embedded in the root README without duplicating the binary. It is a
+30.8-second, 960×540, 5 fps recording of the internal OIP IEC/Jolt simulation,
+not a Beckhoff runtime recording. Its 1,495,016 bytes fit the existing preview
+limit. The 1080p MP4 remains local and has not been uploaded to GitHub or Drive.
+
+## Storage and billing scope
+
+GIF previews are regular Git files, not Git LFS objects or Actions artifacts.
+Keep each preview below the CI limit and reuse its path rather than committing
+copies. Large recordings, render frames, dependency trees and runtime caches
+must remain outside Git. Repeated binary revisions still grow Git history.
+
+The repository's file-size check is a content policy, not an account-wide
+spending cap. GitHub's [regular Git limits](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)
+are distinct from [Git LFS billing](https://docs.github.com/en/billing/concepts/product-billing/git-lfs)
+and [Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
+To prevent paid overages on metered products, review the owning account's
+[budgets](https://docs.github.com/en/billing/how-tos/set-up-budgets), use a $0
+budget with usage blocking where supported, and do not enable paid overages.
+Adding a small regular-Git GIF does not verify or change those account settings.
+
 
 ## Rules for media
 

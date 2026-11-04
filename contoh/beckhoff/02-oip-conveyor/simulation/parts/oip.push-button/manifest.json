@@ -1,0 +1,126 @@
+{
+  "id": "oip.push-button",
+  "name": "Push Button",
+  "category": "Devices",
+  "geometry": {
+    "kind": "rig",
+    "links": [
+      {
+        "name": "cap",
+        "shape": {
+          "kind": "frame"
+        },
+        "offset": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "label",
+        "shape": {
+          "kind": "label",
+          "textParam": "text",
+          "size": [
+            0.055,
+            0.015
+          ]
+        },
+        "offset": [
+          0,
+          0.078,
+          0.0205
+        ]
+      }
+    ],
+    "joints": [],
+    "bounds": {
+      "length": 0.09,
+      "width": 0.06,
+      "top": 0.09
+    }
+  },
+  "materials": [
+    {
+      "id": "cap",
+      "color": [
+        0.44798841,
+        0.00719441,
+        0.00489631
+      ],
+      "metalness": 0,
+      "roughness": 0.5
+    },
+    {
+      "id": "gray",
+      "color": [
+        0.5826,
+        0.5142,
+        0.509
+      ],
+      "metalness": 0.3394,
+      "roughness": 0.5
+    },
+    {
+      "id": "bolt",
+      "color": [
+        0.7101,
+        0.7101,
+        0.7101
+      ],
+      "metalness": 0.1,
+      "roughness": 0.5
+    },
+    {
+      "id": "dark",
+      "color": [
+        0.064,
+        0.064,
+        0.064
+      ],
+      "metalness": 0.211,
+      "roughness": 0.3624
+    },
+    {
+      "id": "light",
+      "color": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "metalness": 0.1,
+      "roughness": 0.5
+    },
+    {
+      "id": "yellow",
+      "color": [
+        1,
+        0.67385954,
+        0
+      ],
+      "metalness": 0,
+      "roughness": 0.45
+    }
+  ],
+  "snap": {
+    "mounts": [
+      {
+        "at": [
+          0,
+          0.045,
+          -0.03
+        ],
+        "accepts": "face",
+        "face": "out",
+        "attach": true
+      }
+    ]
+  },
+  "origin": {
+    "app": "v2:20016:2g1oyjy9ziu"
+  },
+  "sdk": {
+    "level": 13,
+    "of": "v2:20016:2g1oyjy9ziu"
+  }
+}

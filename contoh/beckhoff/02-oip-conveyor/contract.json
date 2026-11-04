@@ -1,0 +1,32 @@
+{
+  "name": "Beckhoff RT x64 / OIP conveyor",
+  "native_baseline": "../01-twincat-rt-x64-conveyor/request.json",
+  "native_target": "TwinCAT RT (x64)",
+  "native_task_ms": 10,
+  "horn_delay_seconds": 3,
+  "batch_preset": 10,
+  "inputs": {
+    "StartPB": "momentary start request",
+    "StopNC": "TRUE means healthy",
+    "EStopHealthy": "TRUE means healthy; ordinary PLC status, not safety rated",
+    "PartSensor": "physical photoeye; rising edges while Motor count",
+    "CountReset": "independent batch reset"
+  },
+  "outputs": {
+    "Horn": "warning horn command during the delay; represented visually, no acoustic horn model",
+    "Motor": "belt command",
+    "BatchLamp": "counter complete"
+  },
+  "scope": "The OIP IEC program is a separately authored implementation of this contract, not execution of the native TcPOU. Native runtime correspondence requires a separate vendor run.",
+  "fault_expectations": {
+    "sensor_stuck": "a held input counts once; report actual process consequences, not an invented diagnostic",
+    "jam": "actual cargo is immobilized by physics fault and resumes after release",
+    "communication_loss": "OIP fault injection de-energizes outputs in its internal test harness; not a measured ADS cable loss"
+  },
+  "recovery": "release StartPB before permissive recovery; reset alone must not start. Held StartPB behavior is level-sensitive in the original native seal-in, not a safety-rated restart interlock.",
+  "native_request": "request.json",
+  "counter_change": "PartPulse := PartSensor AND NOT LastPartSensor, evaluated every scan independently of Motor. CTU counts Motor AND PartPulse.",
+  "native_rungs": 8,
+  "native_declared_variables": 14,
+  "signal_prefix": "MAIN."
+}

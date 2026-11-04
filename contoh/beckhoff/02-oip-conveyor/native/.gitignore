@@ -1,0 +1,11 @@
+.vs/
+**/_CompileInfo/
+**/_Libraries/
+**/_Boot/
+*.suo
+*.user
+*.tmc
+*.tpy
+*.compileinfo
+*.opt
+*.bak

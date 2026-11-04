@@ -1,0 +1,15 @@
+signal,ads_symbol,data_type,owner,meaning
+StartPB,MAIN.StartPB,BOOL,simulator,Momentary start request
+StopNC,MAIN.StopNC,BOOL,simulator,TRUE means stop status healthy
+EStopHealthy,MAIN.EStopHealthy,BOOL,simulator,TRUE means E-stop status healthy; not safety rated
+PartSensor,MAIN.PartSensor,BOOL,simulator,Photoeye state
+CountReset,MAIN.CountReset,BOOL,simulator,Independent batch reset
+BeltRunning,MAIN.BeltRunning,BOOL,simulator,Belt feedback
+Spawned,MAIN.Spawned,DINT,simulator,Source throughput count
+Delivered,MAIN.Delivered,INT,simulator,Destination throughput count
+Horn,MAIN.Horn,BOOL,controller,Three-second warning command
+Motor,MAIN.Motor,BOOL,controller,Belt command
+BatchLamp,MAIN.BatchLamp,BOOL,controller,Batch complete
+RunReq,MAIN.RunReq,BOOL,internal,Seal-in request
+PartPulse,MAIN.PartPulse,BOOL,internal,Physical sensor rising edge
+LastPartSensor,MAIN.LastPartSensor,BOOL,internal,Previous sensor state

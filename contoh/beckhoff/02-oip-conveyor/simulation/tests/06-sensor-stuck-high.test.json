@@ -1,0 +1,65 @@
+{
+  "name": "06-sensor-stuck-high",
+  "duration": 16,
+  "scanMs": 10,
+  "inputs": [
+    {
+      "at": 0.5,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 0.8,
+      "tag": "MAIN.StartPB",
+      "value": false
+    }
+  ],
+  "faults": [
+    {
+      "at": 7,
+      "until": 12,
+      "kind": "sensorStuck",
+      "part": "pt_3",
+      "value": true
+    }
+  ],
+  "checks": [
+    {
+      "always": true,
+      "from": 7.1,
+      "until": 11.8,
+      "tag": "MAIN.PartSensor",
+      "equals": true
+    },
+    {
+      "at": 11.5,
+      "tag": "MAIN.BatchCounter.CV",
+      "equals": 1
+    },
+    {
+      "at": 11.5,
+      "probe": {
+        "passed": {
+          "zone": {
+            "min": [
+              3.5,
+              0.8,
+              -0.4
+            ],
+            "max": [
+              3.9,
+              1.6,
+              0.4
+            ]
+          }
+        }
+      },
+      "min": 2
+    },
+    {
+      "at": 16,
+      "tag": "MAIN.BatchCounter.CV",
+      "min": 2
+    }
+  ]
+}

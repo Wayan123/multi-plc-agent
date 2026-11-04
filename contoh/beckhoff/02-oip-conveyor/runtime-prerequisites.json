@@ -1,0 +1,126 @@
+{
+  "oip_source_revision": "a7648fc824b3dc260ee69b8965359037048c2698",
+  "node_observed": "24.15.0",
+  "openplc": {
+    "version": "v4.3.2",
+    "installer": "OpenPLC_Runtime_4.3.2_Setup.exe",
+    "download_bytes": 228075658,
+    "sha256": "11e4e269b7d662c400925e125108aa6acf51bfcea29d0dd9c095db502ccba3d9",
+    "release": "https://github.com/Autonomy-Logic/openplc-runtime/releases/tag/v4.3.2",
+    "installation_scope": "per-user Windows, bundled MSYS2/GCC/Python; no admin elevation",
+    "account": "private first local lab account; no credentials included"
+  },
+  "compiler": {
+    "editor_repository": "Autonomy-Logic/openplc-editor",
+    "editor_revision": "13fee913d66fb4d93f7528c3359144819da1c275",
+    "strucpp": {
+      "version": "v0.6.7",
+      "repository": "Autonomy-Logic/STruCpp"
+    },
+    "npm_pins": [
+      "@chevrotain/cst-dts-gen@11.0.3",
+      "@chevrotain/gast@11.0.3",
+      "@chevrotain/regexp-to-ast@11.0.3",
+      "@chevrotain/types@11.0.3",
+      "@chevrotain/utils@11.0.3",
+      "@nodable/entities@1.1.0",
+      "chevrotain@11.0.3",
+      "fast-xml-builder@1.1.4",
+      "fast-xml-parser@5.6.0",
+      "lodash-es@4.17.21",
+      "path-expression-matcher@1.5.0",
+      "strnum@2.2.3",
+      "zod@3.25.67",
+      "strucpp@0.6.7"
+    ],
+    "lifecycle_scripts": "disabled",
+    "sources_and_runtime_bundles": "external cache/private output; not bundled"
+  },
+  "beckhoff": {
+    "usermode_runtime_installed": "1.27.1",
+    "plc_endpoint_available": true,
+    "stable_run_verified": true,
+    "observed_transition": [
+      "Config",
+      "Run",
+      "Config",
+      "Run"
+    ],
+    "installed_plc_package_search_result": [],
+    "shared_license_directory_files": 0,
+    "available_plc_package": {
+      "id": "TwinCAT.XAR.PLC",
+      "version": "2.4.12",
+      "driver_version": "3.1.2142.0",
+      "tags": "Beckhoff Setup KM",
+      "installed_by_this_task": false
+    },
+    "separate_kernel_package": {
+      "id": "TwinCAT.XAR.PLC.KM",
+      "version": "2.4.12",
+      "tags": "Beckhoff Setup SystemServiceRestart",
+      "installed_by_this_task": false
+    },
+    "licensing_requirement": "TC1700 adds no separate license; TC1200 is required for PLC execution. The operator completed its official seven-day trial, accepted by the running native PLC.",
+    "root_cause": "The earlier license-not-found failure resolved after official TC1200 activation. The licensed owned instance ran the native PLC and full ADS suite without installing the additionally proposed PLC package.",
+    "native_sdk_checkpoint": {
+      "fresh_owned_xae": true,
+      "target": "dedicated non-kernel-local usermode instance",
+      "native_build_failed_projects": 0,
+      "activate_configuration_returned": true,
+      "restart_twincat_returned": true,
+      "stable_plc_run_verified": true,
+      "system_port_10000_ads_state": 5,
+      "plc_port_851_ads_code": 0,
+      "plc_port_851_ads_state": 5,
+      "previous_fatal_message": "license not found",
+      "previous_fatal_dialog_acknowledged": true
+    },
+    "operator_approval": {
+      "exact_package": "TwinCAT.XAR.PLC=2.4.12",
+      "official_trial": "TC1200 seven-day trial if no valid license",
+      "automatic_reboot_or_security_change": false
+    },
+    "package_install_attempt": {
+      "normal_uac_elevation": "Windows reported cancellation by the user",
+      "elevated_install_script_started": false,
+      "installed": false,
+      "alternate_elevation_attempted": false,
+      "next_step": "No additional installation was required for the observed licensed pilot; retain this canceled plan for audit, not as a new prerequisite"
+    },
+    "official_gui_trial_checkpoint": {
+      "private_project_and_usermode_target_verified": true,
+      "required_runtime_license_prompt_observed": true,
+      "dialog": "Enter Security Code",
+      "status": "operator completed official trial; native PLC RUN and full ADS scenario run verified",
+      "security_code_transcribed_entered_or_submitted_by_agent": false,
+      "prior_operator_cancellation": true,
+      "manual_retry_explicitly_requested_by_operator": true,
+      "manual_route": "License / Manage Licenses / Order Information (Runtime) / 7 Days Trial License",
+      "required_product": "TC1200 / TC3 PLC",
+      "automatic_detection_disabled": false,
+      "trial_response": "private target Target/License/TrialLicense.tclrs; payload excluded",
+      "activation_verified": true,
+      "scenario_evidence": "beckhoff-evidence.json",
+      "clock_limitations": "beckhoff-clock-evidence.json"
+    },
+    "candidate_install_plan": {
+      "command": "TcPkg install TwinCAT.XAR.PLC=2.4.12 --dry-run --show-files --as-json",
+      "dry_run": true,
+      "package": "TwinCAT.XAR.PLC",
+      "version": "2.4.12",
+      "installed_version": "",
+      "operation": "Install",
+      "source": "Beckhoff Stable Feed",
+      "flags": {
+        "AdminPrivilegesRequired": true,
+        "TestModeRequired": false,
+        "SystemServiceRestartRequired": false,
+        "BlockedForUM": false,
+        "DisclaimerAcceptanceRequired": false,
+        "BeckhoffHardwareRequired": false
+      },
+      "performed_installation": false
+    }
+  }
+}

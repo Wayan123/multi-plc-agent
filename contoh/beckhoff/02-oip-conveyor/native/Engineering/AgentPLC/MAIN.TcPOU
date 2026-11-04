@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{a72a5c3f-bb58-4406-b005-b015929f446d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	StartPB : BOOL;
+	StopNC : BOOL;
+	EStopHealthy : BOOL;
+	PartSensor : BOOL;
+	CountReset : BOOL;
+	RunReq : BOOL;
+	Horn : BOOL;
+	Motor : BOOL;
+	BatchLamp : BOOL;
+	BeltRunning : BOOL;
+	Spawned : DINT;
+	Delivered : INT;
+	PartPulse : BOOL;
+	LastPartSensor : BOOL;
+	StartDelay : TON;
+	BatchCounter : CTU;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <LADDER>
+        <XmlArchive>
+          <Data>
+            <o xml:space="preserve" t="LadderImplementationObject">
+              <v n="ModelJson">"{
+  "$type": "LadderDataModel",
+  "Networks": [
+    {
+      "$type": "Network",
+      "Id": "Klyd-DMq",
+      "Comment": "Start/stop seal-in with E-stop permissive",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "ParallelClosed",
+            "Branches": [
+              {
+                "$type": "Sequence",
+                "Elements": [
+                  {
+                    "$type": "Contact",
+                    "Operand": {
+                      "$type": "Operand",
+                      "Expression": "StartPB"
+                    }
+                  }
+                ]
+              },
+              {
+                "$type": "Sequence",
+                "Elements": [
+                  {
+                    "$type": "Contact",
+                    "Operand": {
+                      "$type": "Operand",
+                      "Expression": "RunReq"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "StopNC"
+            }
+          },
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "EStopHealthy"
+            }
+          },
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "BatchCounter.Q",
+              "Modifier": {
+                "$type": "Modifier",
+                "Negation": true
+              }
+            }
+          },
+          {
+            "$type": "Coil",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "RunReq"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "XMZcsDbD",
+      "Comment": "Three-second start delay",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "RunReq"
+            }
+          },
+          {
+            "$type": "Block",
+            "BlockType": "TON",
+            "Instance": {
+              "$type": "Operand",
+              "Expression": "StartDelay"
+            },
+            "Inputs": [
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "IN"
+                },
+                "Sequence": {
+                  "$type": "Sequence"
+                }
+              },
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "PT"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "InVariable",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "T#3S"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "Outputs": [
+              {
+                "$type": "Output",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "Q"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "LqcrxDdB",
+      "Comment": "Horn during start delay",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "RunReq"
+            }
+          },
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "StartDelay.Q",
+              "Modifier": {
+                "$type": "Modifier",
+                "Negation": true
+              }
+            }
+          },
+          {
+            "$type": "Coil",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "Horn"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "iMdlyUkL",
+      "Comment": "Motor after start delay",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "RunReq"
+            }
+          },
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "StartDelay.Q"
+            }
+          },
+          {
+            "$type": "Coil",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "Motor"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "RTupDQml",
+      "Comment": "Physical photoeye rising edge, independent of motor command",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "PartSensor"
+            }
+          },
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "LastPartSensor",
+              "Modifier": {
+                "$type": "Modifier",
+                "Negation": true
+              }
+            }
+          },
+          {
+            "$type": "Coil",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "PartPulse"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "IN-8swjF",
+      "Comment": "Remember photoeye every scan, including when stopped",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "PartSensor"
+            }
+          },
+          {
+            "$type": "Coil",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "LastPartSensor"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "SVLiJx6H",
+      "Comment": "Count ten parts; independent reset",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "Motor"
+            }
+          },
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "PartPulse"
+            }
+          },
+          {
+            "$type": "Block",
+            "BlockType": "CTU",
+            "Instance": {
+              "$type": "Operand",
+              "Expression": "BatchCounter"
+            },
+            "Inputs": [
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "CU"
+                },
+                "Sequence": {
+                  "$type": "Sequence"
+                }
+              },
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "RESET"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "InVariable",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "CountReset"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "PV"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "InVariable",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "10"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "Outputs": [
+              {
+                "$type": "Output",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "Q"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "Iw6ymm4C",
+      "Comment": "Batch-complete lamp",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "BatchCounter.Q"
+            }
+          },
+          {
+            "$type": "Coil",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "BatchLamp"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}"</v>
+            </o>
+          </Data>
+          <TypeList>
+            <Type n="LadderImplementationObject">{f0fda5b8-8c48-4377-bbd5-c49444e4d26e}</Type>
+            <Type n="String">System.String</Type>
+          </TypeList>
+        </XmlArchive>
+      </LADDER>
+    </Implementation>
+  </POU>
+</TcPlcObject>

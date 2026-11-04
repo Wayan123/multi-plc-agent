@@ -1,0 +1,298 @@
+{
+  "oipSource": "a7648fc824b3dc260ee69b8965359037048c2698",
+  "parts": [
+    {
+      "key": "belt",
+      "package": "oip.belt-conveyor",
+      "name": "Conveyor A",
+      "position": [
+        0,
+        0.8,
+        0
+      ],
+      "params": {
+        "shapePreset": "custom",
+        "segments": [
+          [
+            5,
+            0
+          ]
+        ],
+        "width": 0.8,
+        "speed": 0.5,
+        "runTag": "MAIN.Motor",
+        "runningTag": "MAIN.BeltRunning"
+      }
+    },
+    {
+      "key": "spawner",
+      "package": "oip.box-spawner",
+      "name": "Metered infeed",
+      "position": [
+        0.55,
+        1.35,
+        0
+      ],
+      "params": {
+        "boxesPerMinute": 30,
+        "fixedRate": true,
+        "length": 0.4,
+        "width": 0.3,
+        "height": 0.3,
+        "mass": 2,
+        "keepSpacing": true,
+        "runTag": "MAIN.Motor",
+        "countTag": "MAIN.Spawned"
+      }
+    },
+    {
+      "key": "sensor",
+      "package": "oip.diffuse-sensor",
+      "name": "Batch photoeye",
+      "position": [
+        4,
+        1.1,
+        -0.5
+      ],
+      "params": {
+        "tag": "MAIN.PartSensor"
+      }
+    },
+    {
+      "key": "start",
+      "package": "oip.push-button",
+      "name": "START",
+      "position": [
+        0.8,
+        0.8,
+        -0.43
+      ],
+      "params": {
+        "text": "START",
+        "buttonColor": "#169b45",
+        "tag": "MAIN.StartPB"
+      }
+    },
+    {
+      "key": "stop",
+      "package": "oip.push-button",
+      "name": "STOP",
+      "position": [
+        1.4,
+        0.8,
+        -0.43
+      ],
+      "params": {
+        "text": "STOP",
+        "normallyClosed": true,
+        "tag": "MAIN.StopNC"
+      }
+    },
+    {
+      "key": "estop",
+      "package": "oip.push-button",
+      "name": "E-STOP",
+      "position": [
+        2,
+        0.8,
+        -0.43
+      ],
+      "params": {
+        "text": "E-STOP",
+        "emergencyStop": true,
+        "tag": "MAIN.EStopHealthy"
+      }
+    },
+    {
+      "key": "reset",
+      "package": "oip.push-button",
+      "name": "RESET COUNT",
+      "position": [
+        2.6,
+        0.8,
+        -0.43
+      ],
+      "params": {
+        "text": "RESET",
+        "buttonColor": "#2879c9",
+        "tag": "MAIN.CountReset"
+      }
+    },
+    {
+      "key": "horn",
+      "package": "oip.push-button",
+      "name": "HORN command indicator",
+      "position": [
+        3.2,
+        0.8,
+        -0.43
+      ],
+      "params": {
+        "text": "HORN",
+        "buttonColor": "#e6aa00",
+        "lampSource": "tag",
+        "lampTag": "MAIN.Horn"
+      }
+    },
+    {
+      "key": "motor",
+      "package": "oip.push-button",
+      "name": "MOTOR command indicator",
+      "position": [
+        3.8,
+        0.8,
+        -0.43
+      ],
+      "params": {
+        "text": "MOTOR",
+        "buttonColor": "#159447",
+        "lampSource": "tag",
+        "lampTag": "MAIN.Motor"
+      }
+    },
+    {
+      "key": "batch",
+      "package": "oip.push-button",
+      "name": "BATCH 10 command indicator",
+      "position": [
+        4.4,
+        0.8,
+        -0.43
+      ],
+      "params": {
+        "text": "BATCH 10",
+        "buttonColor": "#2879c9",
+        "lampSource": "tag",
+        "lampTag": "MAIN.BatchLamp"
+      }
+    },
+    {
+      "key": "witness",
+      "package": "oip.box",
+      "name": "Tracked witness box",
+      "position": [
+        1.2,
+        1.15,
+        0
+      ],
+      "params": {
+        "length": 0.4,
+        "width": 0.3,
+        "height": 0.3,
+        "mass": 2
+      }
+    },
+    {
+      "key": "destination",
+      "package": "oip.despawner",
+      "name": "Completed product destination",
+      "position": [
+        5.2,
+        0.7,
+        0
+      ],
+      "params": {
+        "length": 1.2,
+        "width": 1,
+        "height": 1.5,
+        "countTag": "MAIN.Delivered"
+      }
+    }
+  ],
+  "mounts": [
+    {
+      "part": "sensor",
+      "onto": "belt",
+      "near": [
+        4,
+        0.8,
+        -0.5
+      ]
+    },
+    {
+      "part": "start",
+      "onto": "belt",
+      "near": [
+        0.8,
+        0.8,
+        -0.48
+      ]
+    },
+    {
+      "part": "stop",
+      "onto": "belt",
+      "near": [
+        1.4,
+        0.8,
+        -0.48
+      ]
+    },
+    {
+      "part": "estop",
+      "onto": "belt",
+      "near": [
+        2,
+        0.8,
+        -0.48
+      ]
+    },
+    {
+      "part": "reset",
+      "onto": "belt",
+      "near": [
+        2.6,
+        0.8,
+        -0.48
+      ]
+    },
+    {
+      "part": "horn",
+      "onto": "belt",
+      "near": [
+        3.2,
+        0.8,
+        -0.48
+      ]
+    },
+    {
+      "part": "motor",
+      "onto": "belt",
+      "near": [
+        3.8,
+        0.8,
+        -0.48
+      ]
+    },
+    {
+      "part": "batch",
+      "onto": "belt",
+      "near": [
+        4.4,
+        0.8,
+        -0.48
+      ]
+    }
+  ],
+  "templateIds": {
+    "belt": "pt_1",
+    "spawner": "pt_2",
+    "sensor": "pt_3",
+    "start": "pt_4",
+    "stop": "pt_5",
+    "estop": "pt_6",
+    "reset": "pt_7",
+    "horn": "pt_8",
+    "motor": "pt_9",
+    "batch": "pt_10",
+    "witness": "pt_11",
+    "destination": "pt_12"
+  },
+  "traceTags": [
+    "MAIN.Horn",
+    "MAIN.Motor",
+    "MAIN.PartSensor",
+    "MAIN.PartPulse",
+    "MAIN.BatchCounter.CV",
+    "MAIN.BatchLamp"
+  ]
+}

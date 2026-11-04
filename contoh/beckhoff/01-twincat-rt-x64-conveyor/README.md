@@ -20,7 +20,7 @@ This example was created through **multi-plc-agent's Beckhoff MCP backend**, not
 | `StartPB` | Start request |
 | `StopNC` | Stop permissive; TRUE means the stop circuit status is healthy |
 | `EStopHealthy` | E-stop status permissive; ordinary PLC logic, not a safety-rated function |
-| `PartSensor` | Rising edges count products while the motor is commanded on |
+| `PartSensor` | The CTU counts rising edges of `Motor AND PartSensor`; see the restart limitation below |
 | `CountReset` | Reset the batch counter independently of the motor command |
 | `RunReq` | Internal seal-in request, inhibited at batch complete |
 | `Horn` | Warning during the three-second start delay |
@@ -28,6 +28,10 @@ This example was created through **multi-plc-agent's Beckhoff MCP backend**, not
 | `BatchLamp` | Counter-complete indication |
 
 Instances `StartDelay : TON` and `BatchCounter : CTU` are generated from the rungs. The preset is `T#3S` / `10`. Resetting the batch does not itself create a new start request. Native compilation proves engineering acceptance only; runtime timing, sensor behavior, scan transitions and physical stopping remain untested. Use appropriate independent safety hardware before any real machine work.
+
+### Measured restart limitation
+
+The [OIP conveyor pilot](../02-oip-conveyor/) reproduced a contract-equivalent IEC run in which a photoeye held TRUE was counted again when the motor restarted: the CTU input falls with `Motor` and rises again without a new physical sensor edge. This is a measured simulation boundary, not a new native runtime result. Example 02 separates the physical sensor edge from the motor permissive and includes a failing-before/passing-after regression. This original six-rung engineering fixture and its native evidence remain unchanged.
 
 ## Recreate through the agent
 

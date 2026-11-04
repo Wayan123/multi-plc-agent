@@ -1,0 +1,1947 @@
+{
+  "oip_source": "a7648fc824b3dc260ee69b8965359037048c2698",
+  "engine": "OIP internal IEC plus real Jolt physics, not native TwinCAT execution",
+  "desktop_server": {
+    "name": "open-industry-project",
+    "title": "Open Industry Project",
+    "version": "0.1.0"
+  },
+  "mcp_tools_discovered": 58,
+  "node": "24.15.0",
+  "electron": "42.11.10",
+  "physics_hz": 60,
+  "plc_task_ms": 10,
+  "tests": {
+    "01-start-transfer": {
+      "summary": "1/1 test pass, 9/9 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=0s and t=3.4s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Horn stayed = true between t=0.6s and t=3.4s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=3.7s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Horn = false at t=3.7s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.PartSensor reached = true at t=8.80s"
+        },
+        {
+          "ok": true,
+          "detail": "passed(zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) reached \u2265 1 at t=8.17s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 1.2 (\u00b10.1) at t=2s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 3.8 at t=10s"
+        },
+        {
+          "ok": true,
+          "detail": "count(zone [5, 0, -0.8]..[7, 0.5, 0.8]) = 0 at t=14s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": [
+            {
+              "t": 8.8,
+              "v": 1
+            },
+            {
+              "t": 10.25,
+              "v": 2
+            },
+            {
+              "t": 12.25,
+              "v": 3
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 8.8,
+              "v": true
+            },
+            {
+              "t": 9.6,
+              "v": false
+            },
+            {
+              "t": 10.25,
+              "v": true
+            },
+            {
+              "t": 11.05,
+              "v": false
+            },
+            {
+              "t": 12.25,
+              "v": true
+            },
+            {
+              "t": 13.05,
+              "v": false
+            }
+          ]
+        }
+      ]
+    },
+    "02-stop-recovery": {
+      "summary": "1/1 test pass, 7/7 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=6.1s and t=12.9s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.RunReq = false at t=9.5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Horn stayed = true between t=10.2s and t=12.9s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=13.3s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2264 2.8 at t=9s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 2.8 at t=14.5s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            },
+            {
+              "t": 10.017,
+              "v": true
+            },
+            {
+              "t": 13.017,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            },
+            {
+              "t": 6.017,
+              "v": false
+            },
+            {
+              "t": 13.017,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": []
+        }
+      ]
+    },
+    "03-estop-recovery": {
+      "summary": "1/1 test pass, 7/7 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=6.1s and t=12.9s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.RunReq = false at t=9.5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Horn stayed = true between t=10.2s and t=12.9s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=13.3s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2264 2.8 at t=9s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 2.8 at t=14.5s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            },
+            {
+              "t": 10.017,
+              "v": true
+            },
+            {
+              "t": 13.017,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            },
+            {
+              "t": 6.017,
+              "v": false
+            },
+            {
+              "t": 13.017,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": []
+        }
+      ]
+    },
+    "04-stop-during-horn": {
+      "summary": "1/1 test pass, 6/6 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=0s and t=7.4s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Horn = false at t=2s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.RunReq = false at t=4s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Horn stayed = true between t=4.7s and t=7.4s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=7.8s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 1.2 (\u00b10.1) at t=7s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 1.517,
+              "v": false
+            },
+            {
+              "t": 4.517,
+              "v": true
+            },
+            {
+              "t": 7.517,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 7.517,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": []
+        }
+      ]
+    },
+    "05-batch-ten-reset": {
+      "summary": "1/1 test pass, 8/8 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 10 at t=30s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.BatchLamp = true at t=30s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = false at t=30s"
+        },
+        {
+          "ok": true,
+          "detail": "passed(zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) \u2265 10 at t=30s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 0 at t=33s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.BatchLamp = false at t=33s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=32.5s and t=35s"
+        },
+        {
+          "ok": true,
+          "detail": "count(zone [5, 0, -0.8]..[7, 0.5, 0.8]) = 0 at t=30s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": [
+            {
+              "t": 8.8,
+              "v": 1
+            },
+            {
+              "t": 10.25,
+              "v": 2
+            },
+            {
+              "t": 12.25,
+              "v": 3
+            },
+            {
+              "t": 14.25,
+              "v": 4
+            },
+            {
+              "t": 16.25,
+              "v": 5
+            },
+            {
+              "t": 18.25,
+              "v": 6
+            },
+            {
+              "t": 20.25,
+              "v": 7
+            },
+            {
+              "t": 22.25,
+              "v": 8
+            },
+            {
+              "t": 24.25,
+              "v": 9
+            },
+            {
+              "t": 26.25,
+              "v": 10
+            },
+            {
+              "t": 32.017,
+              "v": 0
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            },
+            {
+              "t": 26.25,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 8.8,
+              "v": true
+            },
+            {
+              "t": 9.6,
+              "v": false
+            },
+            {
+              "t": 10.25,
+              "v": true
+            },
+            {
+              "t": 11.05,
+              "v": false
+            },
+            {
+              "t": 12.25,
+              "v": true
+            },
+            {
+              "t": 13.05,
+              "v": false
+            },
+            {
+              "t": 14.25,
+              "v": true
+            },
+            {
+              "t": 15.05,
+              "v": false
+            },
+            {
+              "t": 16.25,
+              "v": true
+            },
+            {
+              "t": 17.05,
+              "v": false
+            },
+            {
+              "t": 18.25,
+              "v": true
+            },
+            {
+              "t": 19.05,
+              "v": false
+            },
+            {
+              "t": 20.25,
+              "v": true
+            },
+            {
+              "t": 21.05,
+              "v": false
+            },
+            {
+              "t": 22.25,
+              "v": true
+            },
+            {
+              "t": 23.05,
+              "v": false
+            },
+            {
+              "t": 24.25,
+              "v": true
+            },
+            {
+              "t": 25.05,
+              "v": false
+            },
+            {
+              "t": 26.25,
+              "v": true
+            }
+          ]
+        }
+      ]
+    },
+    "06-sensor-stuck-high": {
+      "summary": "1/1 test pass, 4/4 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.PartSensor stayed = true between t=7.1s and t=11.8s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=11.5s"
+        },
+        {
+          "ok": true,
+          "detail": "passed(zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) \u2265 2 at t=11.5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV \u2265 2 at t=16s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": [
+            {
+              "t": 7.017,
+              "v": 1
+            },
+            {
+              "t": 12.25,
+              "v": 2
+            },
+            {
+              "t": 14.25,
+              "v": 3
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 7.017,
+              "v": true
+            },
+            {
+              "t": 12.017,
+              "v": false
+            },
+            {
+              "t": 12.25,
+              "v": true
+            },
+            {
+              "t": 13.05,
+              "v": false
+            },
+            {
+              "t": 14.25,
+              "v": true
+            },
+            {
+              "t": 15.05,
+              "v": false
+            }
+          ]
+        }
+      ]
+    },
+    "07-jam-and-release": {
+      "summary": "1/1 test pass, 4/4 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=8s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 2.6 (\u00b10.1) at t=8s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 2.6 (\u00b10.1) at t=9.8s"
+        },
+        {
+          "ok": true,
+          "detail": "passed(part pt_11, zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) reached \u2265 1 at t=11.83s"
+        }
+      ],
+      "flowFacts": "1 flicker, 1 stalled",
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": [
+            {
+              "t": 12.467,
+              "v": 1
+            },
+            {
+              "t": 13.283,
+              "v": 2
+            },
+            {
+              "t": 16.25,
+              "v": 3
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": [
+            {
+              "t": 13.283,
+              "v": true
+            },
+            {
+              "t": 13.3,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 12.467,
+              "v": true
+            },
+            {
+              "t": 13.267,
+              "v": false
+            },
+            {
+              "t": 13.283,
+              "v": true
+            },
+            {
+              "t": 15.683,
+              "v": false
+            },
+            {
+              "t": 16.25,
+              "v": true
+            },
+            {
+              "t": 17.05,
+              "v": false
+            }
+          ]
+        }
+      ]
+    },
+    "08-comms-off-and-recovery": {
+      "summary": "1/1 test pass, 6/6 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=6.1s and t=12.9s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.RunReq = false at t=9.5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=13.3s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2264 2.8 at t=9s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 2.8 at t=14.5s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            },
+            {
+              "t": 10.017,
+              "v": true
+            },
+            {
+              "t": 13.017,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            },
+            {
+              "t": 6.017,
+              "v": false
+            },
+            {
+              "t": 13.017,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": []
+        }
+      ]
+    },
+    "09-held-sensor-restart": {
+      "summary": "1/1 test pass, 3/3 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=14s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=14s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": [
+            {
+              "t": 4.017,
+              "v": 1
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            },
+            {
+              "t": 10.017,
+              "v": true
+            },
+            {
+              "t": 13.017,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            },
+            {
+              "t": 6.017,
+              "v": false
+            },
+            {
+              "t": 13.017,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 4.017,
+              "v": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "checks_passed": 54,
+  "estop_negative": {
+    "mutation": "remove EStopHealthy in a separate copied project",
+    "result": {
+      "summary": "0/1 test pass, 2/7 checks",
+      "ok": false,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=5s"
+        },
+        {
+          "ok": false,
+          "detail": "MAIN.Motor became true at t=6.10s (must always be = false between t=6.1s and t=12.9s)",
+          "failedAt": 6.1
+        },
+        {
+          "ok": false,
+          "detail": "MAIN.RunReq was true at t=9.5s, expected = false",
+          "failedAt": 9.5
+        },
+        {
+          "ok": false,
+          "detail": "MAIN.Horn became false at t=10.20s (must always be = true between t=10.2s and t=12.9s)",
+          "failedAt": 10.2
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=13.3s"
+        },
+        {
+          "ok": false,
+          "detail": "pose(pt_11.x) was 3.9228014945983887 at t=9s, expected \u2264 2.8",
+          "failedAt": 9
+        },
+        {
+          "ok": false,
+          "detail": "probe pose(pt_11.x) not present at t=14.5s",
+          "failedAt": 14.5
+        }
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.EStopHealthy",
+          "start": true,
+          "changes": [
+            {
+              "t": 6.017,
+              "v": false
+            },
+            {
+              "t": 9.017,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 8.8,
+              "v": true
+            },
+            {
+              "t": 9.6,
+              "v": false
+            },
+            {
+              "t": 10.25,
+              "v": true
+            },
+            {
+              "t": 11.05,
+              "v": false
+            },
+            {
+              "t": 12.25,
+              "v": true
+            },
+            {
+              "t": 13.05,
+              "v": false
+            },
+            {
+              "t": 14.25,
+              "v": true
+            }
+          ]
+        }
+      ]
+    },
+    "positive_saved_source_unchanged": true
+  },
+  "counter_regression": {
+    "before": {
+      "summary": "0/1 test pass, 2/3 checks",
+      "ok": false,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=14s"
+        },
+        {
+          "ok": false,
+          "detail": "MAIN.BatchCounter.CV was 2 at t=14s, expected = 1",
+          "failedAt": 14
+        }
+      ],
+      "flowFacts": "1 tipped",
+      "factsBeforeFailure": [
+        "t=13.550s  tipped   box 4 tipped past 40 degrees at x 0.69 z -0.00 on 'Conveyor A' (pt_1)  [0.692, 1.21, -0.001]"
+      ],
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": [
+            {
+              "t": 4.017,
+              "v": 1
+            },
+            {
+              "t": 13.017,
+              "v": 2
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            },
+            {
+              "t": 6.017,
+              "v": false
+            },
+            {
+              "t": 13.017,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 4.017,
+              "v": true
+            }
+          ]
+        }
+      ]
+    },
+    "after": {
+      "summary": "1/1 test pass, 3/3 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=5s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=14s"
+        },
+        {
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=14s"
+        }
+      ],
+      "flowFacts": "1 tipped",
+      "trace": [
+        {
+          "tag": "MAIN.BatchCounter.CV",
+          "start": 0,
+          "changes": [
+            {
+              "t": 4.017,
+              "v": 1
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            },
+            {
+              "t": 6.017,
+              "v": false
+            },
+            {
+              "t": 13.017,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "MAIN.PartPulse",
+          "start": false,
+          "changes": []
+        },
+        {
+          "tag": "MAIN.PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 4.017,
+              "v": true
+            }
+          ]
+        }
+      ]
+    },
+    "fix": "sample the physical photoeye edge independently of Motor"
+  },
+  "destination_regression": {
+    "before": {
+      "summary": "0/1 test pass, 8/9 checks",
+      "ok": false,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "Motor stayed = false between t=0s and t=3.4s"
+        },
+        {
+          "ok": true,
+          "detail": "Horn stayed = true between t=0.6s and t=3.4s"
+        },
+        {
+          "ok": true,
+          "detail": "Motor = true at t=3.7s"
+        },
+        {
+          "ok": true,
+          "detail": "Horn = false at t=3.7s"
+        },
+        {
+          "ok": true,
+          "detail": "PartSensor reached = true at t=8.80s"
+        },
+        {
+          "ok": true,
+          "detail": "passed(zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) reached \u2265 1 at t=8.17s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 1.2 (\u00b10.1) at t=2s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 3.8 at t=10s"
+        },
+        {
+          "ok": false,
+          "detail": "count(zone [5, 0, -0.8]..[7, 0.5, 0.8]) was 2 at t=14s, expected = 0",
+          "failedAt": 14
+        }
+      ],
+      "flowFacts": "2 dropped, 2 tipped",
+      "factsBeforeFailure": [
+        "t=11.700s  tipped   box 1 tipped past 40 degrees at x 5.35 z -0.00  [5.348, 0.762, 0]",
+        "t=11.900s  dropped  box 1 fell to the floor at x 5.51 z -0.00 from 0.72 m  [5.51, 0.214, 0]",
+        "t=13.167s  tipped   box 2 tipped past 40 degrees at x 5.35 z -0.00  [5.354, 0.756, 0]",
+        "t=13.367s  dropped  box 2 fell to the floor at x 5.52 z -0.00 from 0.73 m, from 'Metered infeed' (pt_2) (over no conveyor)  [5.519, 0.206, 0]"
+      ],
+      "cargo": [
+        {
+          "at": 14,
+          "t": 14,
+          "count": 7,
+          "bodies": [
+            {
+              "id": 1,
+              "part": "pt_11",
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                5.896,
+                0.149,
+                -0.002
+              ],
+              "tiltDeg": 180,
+              "yawDeg": 0,
+              "vel": [
+                0,
+                0,
+                0
+              ],
+              "touching": [
+                "floor"
+              ]
+            },
+            {
+              "id": 2,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                5.526,
+                0.2,
+                0
+              ],
+              "tiltDeg": 90,
+              "yawDeg": 0,
+              "vel": [
+                0,
+                0,
+                0
+              ],
+              "touching": [
+                "floor"
+              ]
+            },
+            {
+              "id": 3,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                4.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            },
+            {
+              "id": 4,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                3.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            },
+            {
+              "id": 5,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                2.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            },
+            {
+              "id": 6,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                1.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            },
+            {
+              "id": 7,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                0.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "after": {
+      "summary": "1/1 test pass, 9/9 checks",
+      "ok": true,
+      "checks": [
+        {
+          "ok": true,
+          "detail": "Motor stayed = false between t=0s and t=3.4s"
+        },
+        {
+          "ok": true,
+          "detail": "Horn stayed = true between t=0.6s and t=3.4s"
+        },
+        {
+          "ok": true,
+          "detail": "Motor = true at t=3.7s"
+        },
+        {
+          "ok": true,
+          "detail": "Horn = false at t=3.7s"
+        },
+        {
+          "ok": true,
+          "detail": "PartSensor reached = true at t=8.80s"
+        },
+        {
+          "ok": true,
+          "detail": "passed(zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) reached \u2265 1 at t=8.17s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 1.2 (\u00b10.1) at t=2s"
+        },
+        {
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 3.8 at t=10s"
+        },
+        {
+          "ok": true,
+          "detail": "count(zone [5, 0, -0.8]..[7, 0.5, 0.8]) = 0 at t=14s"
+        }
+      ],
+      "trace": [
+        {
+          "tag": "BatchCounter.CV",
+          "start": 0,
+          "changes": [
+            {
+              "t": 8.8,
+              "v": 1
+            },
+            {
+              "t": 10.25,
+              "v": 2
+            },
+            {
+              "t": 12.25,
+              "v": 3
+            }
+          ]
+        },
+        {
+          "tag": "Delivered",
+          "start": 0,
+          "changes": [
+            {
+              "t": 10.383,
+              "v": 1
+            },
+            {
+              "t": 11.833,
+              "v": 2
+            },
+            {
+              "t": 13.833,
+              "v": 3
+            }
+          ]
+        },
+        {
+          "tag": "Horn",
+          "start": false,
+          "changes": [
+            {
+              "t": 0.517,
+              "v": true
+            },
+            {
+              "t": 3.517,
+              "v": false
+            }
+          ]
+        },
+        {
+          "tag": "Motor",
+          "start": false,
+          "changes": [
+            {
+              "t": 3.517,
+              "v": true
+            }
+          ]
+        },
+        {
+          "tag": "PartSensor",
+          "start": false,
+          "changes": [
+            {
+              "t": 8.8,
+              "v": true
+            },
+            {
+              "t": 9.6,
+              "v": false
+            },
+            {
+              "t": 10.25,
+              "v": true
+            },
+            {
+              "t": 11.05,
+              "v": false
+            },
+            {
+              "t": 12.25,
+              "v": true
+            },
+            {
+              "t": 13.05,
+              "v": false
+            }
+          ]
+        }
+      ],
+      "cargo": [
+        {
+          "at": 14,
+          "t": 14,
+          "count": 4,
+          "bodies": [
+            {
+              "id": 4,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                3.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            },
+            {
+              "id": 5,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                2.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            },
+            {
+              "id": 6,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                1.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            },
+            {
+              "id": 7,
+              "part": null,
+              "kind": "box",
+              "product": "oip.box",
+              "color": "#ffffff",
+              "pos": [
+                0.692,
+                0.945,
+                0
+              ],
+              "tiltDeg": 0,
+              "yawDeg": 0,
+              "vel": [
+                0.5,
+                0,
+                0
+              ],
+              "touching": [
+                "pt_1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "live_run": {
+    "scope": "OIP internal IEC only",
+    "final_tags": {
+      "MAIN.BeltRunning": false,
+      "MAIN.Horn": false,
+      "MAIN.Motor": false,
+      "MAIN.BatchLamp": true,
+      "MAIN.BatchCounter.CV": 10
+    },
+    "scan_times": [
+      {
+        "task": "PlcTask",
+        "intervalMs": 10,
+        "scans": 2640,
+        "lastMs": 0,
+        "avgMs": 0.018,
+        "maxMs": 0.825
+      }
+    ],
+    "trace": {
+      "from": 0.5,
+      "to": 30.533,
+      "initial": {
+        "MAIN.Horn": false,
+        "MAIN.Motor": false,
+        "MAIN.PartSensor": false,
+        "MAIN.PartPulse": false,
+        "MAIN.BatchCounter.CV": 0,
+        "MAIN.BatchLamp": false,
+        "MAIN.BeltRunning": false
+      },
+      "changes": [
+        {
+          "t": 0.6,
+          "tag": "MAIN.Horn",
+          "value": true
+        },
+        {
+          "t": 3.567,
+          "tag": "MAIN.Horn",
+          "value": false
+        },
+        {
+          "t": 3.567,
+          "tag": "MAIN.Motor",
+          "value": true
+        },
+        {
+          "t": 3.667,
+          "tag": "MAIN.BeltRunning",
+          "value": true
+        },
+        {
+          "t": 8.85,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 8.85,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 1
+        },
+        {
+          "t": 9.617,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 10.4,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 10.4,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 2
+        },
+        {
+          "t": 11.15,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 12.383,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 12.383,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 3
+        },
+        {
+          "t": 13.1,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 14.3,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 14.3,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 4
+        },
+        {
+          "t": 15.067,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 16.283,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 16.283,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 5
+        },
+        {
+          "t": 17.167,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 18.35,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 18.35,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 6
+        },
+        {
+          "t": 19.1,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 20.3,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 20.3,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 7
+        },
+        {
+          "t": 21.067,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 22.4,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 22.4,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 8
+        },
+        {
+          "t": 23.133,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 24.333,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 24.333,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 9
+        },
+        {
+          "t": 25.1,
+          "tag": "MAIN.PartSensor",
+          "value": false
+        },
+        {
+          "t": 26.317,
+          "tag": "MAIN.Motor",
+          "value": false
+        },
+        {
+          "t": 26.317,
+          "tag": "MAIN.PartSensor",
+          "value": true
+        },
+        {
+          "t": 26.317,
+          "tag": "MAIN.BatchCounter.CV",
+          "value": 10
+        },
+        {
+          "t": 26.317,
+          "tag": "MAIN.BatchLamp",
+          "value": true
+        },
+        {
+          "t": 26.417,
+          "tag": "MAIN.BeltRunning",
+          "value": false
+        }
+      ]
+    }
+  },
+  "recording": {
+    "gif": "media/oip-internal-conveyor.gif",
+    "gif_frames": 154,
+    "gif_fps": 5,
+    "mp4_local_only": true,
+    "mp4_resolution": [
+      1920,
+      1080
+    ],
+    "mp4_duration_seconds": 30.834,
+    "gif_frames_reviewed": true,
+    "scope_watermark": "OIP INTERNAL IEC + PHYSICS | TWINCAT RUNTIME NOT EXECUTED"
+  },
+  "limitations": [
+    "The horn is a visual command indication, not an acoustic model.",
+    "Sensor-stuck and jam scenarios expose process behavior; this example does not implement a diagnostic fault latch.",
+    "Comms loss is an internal safe-off I/O fault injection, not an actual ADS/network disconnect.",
+    "StartPB remains level-sensitive; release it before permissive recovery.",
+    "Optional capture_view returned UnknownVizError; the recording used the actual owned renderer over CDP.",
+    "Real OpenPLC v4.3.2 execution is separately proved; no successful TwinCAT PLC usermode/kernel execution or physical PLC result.",
+    "The standalone jam/release run reported a 17 ms photoeye clear flicker between blocked periods. This pilot has no sensor debounce; physical-product counting under chatter is not established."
+  ],
+  "standalone_cli": {
+    "project_validation": "valid project, 13 parts, 6 built-in copies matching the source checkout",
+    "test_exit_code": 0,
+    "tests_passed": 9,
+    "checks_passed": 54,
+    "repository_regression": {
+      "passed": 265,
+      "skipped": 3,
+      "subtests_passed": 24
+    }
+  },
+  "external_openplc": {
+    "executed": true,
+    "version": "v4.3.2",
+    "same_saved_scenarios": 9,
+    "checks_passed": 54,
+    "transport_requests": 37945,
+    "protocol_exceptions": 0,
+    "evidence": "openplc-evidence.json",
+    "traces": "openplc-traces.json",
+    "scope": "real wall-clock PLC and physical probes; case 08 remains safe-off I/O injection, not transport drop"
+  },
+  "beckhoff_runtime": {
+    "stable_run_verified": true,
+    "state_transition": [
+      "Config",
+      "Run",
+      "Config",
+      "Run"
+    ],
+    "plc_port_available": true,
+    "prerequisites": "runtime-prerequisites.json",
+    "driver_or_license_changes_performed": true,
+    "changes_scope": "Official TC1200 trial completed by operator; no package/driver or kernel-runtime configuration change",
+    "scenario_evidence": "beckhoff-evidence.json",
+    "trace_evidence": "beckhoff-traces.json",
+    "identity_evidence": "beckhoff-native-identity.json",
+    "timing_caveat": "beckhoff-clock-evidence.json; earlier wall-clock smoke failure retained"
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "variables": [
+    {
+      "name": "StartPB",
+      "type": "BOOL"
+    },
+    {
+      "name": "StopNC",
+      "type": "BOOL"
+    },
+    {
+      "name": "EStopHealthy",
+      "type": "BOOL"
+    },
+    {
+      "name": "PartSensor",
+      "type": "BOOL"
+    },
+    {
+      "name": "CountReset",
+      "type": "BOOL"
+    },
+    {
+      "name": "RunReq",
+      "type": "BOOL"
+    },
+    {
+      "name": "Horn",
+      "type": "BOOL"
+    },
+    {
+      "name": "Motor",
+      "type": "BOOL"
+    },
+    {
+      "name": "BatchLamp",
+      "type": "BOOL"
+    },
+    {
+      "name": "BeltRunning",
+      "type": "BOOL"
+    },
+    {
+      "name": "Spawned",
+      "type": "DINT"
+    },
+    {
+      "name": "Delivered",
+      "type": "INT"
+    },
+    {
+      "name": "PartPulse",
+      "type": "BOOL"
+    },
+    {
+      "name": "LastPartSensor",
+      "type": "BOOL"
+    }
+  ],
+  "rungs": [
+    {
+      "comment": "Start/stop seal-in with E-stop permissive",
+      "elements": [
+        {
+          "branch": [
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "StartPB"
+                ]
+              }
+            ],
+            [
+              {
+                "kind": "NO",
+                "args": [
+                  "RunReq"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StopNC"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "EStopHealthy"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "BatchCounter.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "RunReq"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Three-second start delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunReq"
+          ]
+        },
+        {
+          "kind": "TON",
+          "args": [
+            "StartDelay",
+            "T#3S"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Horn during start delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunReq"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "StartDelay.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Horn"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Motor after start delay",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "RunReq"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "StartDelay.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "Motor"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Physical photoeye rising edge, independent of motor command",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "PartSensor"
+          ]
+        },
+        {
+          "kind": "NC",
+          "args": [
+            "LastPartSensor"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "PartPulse"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Remember photoeye every scan, including when stopped",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "PartSensor"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "LastPartSensor"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Count ten parts; independent reset",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "Motor"
+          ]
+        },
+        {
+          "kind": "NO",
+          "args": [
+            "PartPulse"
+          ]
+        },
+        {
+          "kind": "CTU",
+          "args": [
+            "BatchCounter",
+            "10",
+            "CountReset"
+          ]
+        }
+      ]
+    },
+    {
+      "comment": "Batch-complete lamp",
+      "elements": [
+        {
+          "kind": "NO",
+          "args": [
+            "BatchCounter.Q"
+          ]
+        },
+        {
+          "kind": "OUT",
+          "args": [
+            "BatchLamp"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "version": 4,
+  "parts": [
+    {
+      "id": "bld_1",
+      "name": "Building",
+      "locked": true,
+      "type": "building",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotationY": 0,
+      "params": {
+        "lengthSections": 5,
+        "widthSections": 4,
+        "heightSections": 1,
+        "columnSpacing": 0,
+        "rules": [
+          {
+            "wall": "B",
+            "run": 1,
+            "gap": 1,
+            "count": 2,
+            "start": 1,
+            "doorCount": 1,
+            "trailer": true
+          },
+          {
+            "wall": "B",
+            "run": 1,
+            "gap": 1,
+            "count": 2,
+            "start": 24,
+            "doorCount": 1,
+            "trailer": true
+          },
+          {
+            "wall": "A",
+            "run": 1,
+            "gap": 2,
+            "count": 2,
+            "start": 32,
+            "doorCount": 1,
+            "trailer": true
+          },
+          {
+            "wall": "A",
+            "run": 1,
+            "gap": 2,
+            "count": 2,
+            "start": 28,
+            "doorCount": 1,
+            "trailer": true
+          },
+          {
+            "wall": "dock_door",
+            "run": 1,
+            "gap": 1,
+            "count": 1,
+            "start": 2,
+            "doorCount": 2,
+            "trailer": true
+          }
+        ],
+        "floorVisible": true,
+        "wallsVisible": true,
+        "roofVisible": true,
+        "brightness": 1,
+        "backgroundColor": "#9fb1c4"
+      }
+    },
+    {
+      "id": "pt_1",
+      "name": "Conveyor A",
+      "type": "part",
+      "packageId": "oip.belt-conveyor",
+      "position": [
+        0,
+        0.8,
+        0
+      ],
+      "rotationY": 0,
+      "params": {
+        "shapePreset": "custom",
+        "segments": [
+          [
+            5,
+            0
+          ]
+        ],
+        "width": 0.8,
+        "height": 0.17,
+        "standHeight": 0.8,
+        "fpmUnits": false,
+        "speedFpm": 394,
+        "speed": 0.5,
+        "accelTime": 0.5,
+        "decelTime": 0.5,
+        "friction": 0.59,
+        "beltColor": "#ffffff",
+        "beltTexture": "standard",
+        "frameRails": true,
+        "leftGuard": true,
+        "rightGuard": true,
+        "guardOpenings": [],
+        "guardHoles": [],
+        "guardMitres": [],
+        "railCuts": [],
+        "guardExtents": [],
+        "legs": true,
+        "legRests": [],
+        "tailLeg": true,
+        "tailLegOffset": 0.15,
+        "tailLegClearance": 1,
+        "headLeg": true,
+        "headLegOffset": 0.15,
+        "headLegClearance": 1,
+        "middleLegs": true,
+        "legSpacing": 3.05,
+        "exclusionStart": 0,
+        "exclusionEnd": 0,
+        "speedTag": "",
+        "speedFpmTag": "",
+        "runTag": "MAIN.Motor",
+        "runningTag": "MAIN.BeltRunning",
+        "speedAt30": 2,
+        "speedAt30Fpm": 394,
+        "velocityTag": "",
+        "inchesPerPulse": 1,
+        "pulseTag": "",
+        "encoderTag": ""
+      }
+    },
+    {
+      "id": "pt_2",
+      "name": "Metered infeed",
+      "type": "part",
+      "packageId": "oip.box-spawner",
+      "position": [
+        0.55,
+        1.35,
+        0
+      ],
+      "rotationY": 0,
+      "params": {
+        "boxesPerMinute": 30,
+        "fixedRate": true,
+        "product": "oip.box",
+        "productSettings": "",
+        "boxColor": "#ffffff",
+        "boxColors": "",
+        "mixAttribute": "",
+        "mixValues": "",
+        "randomColors": false,
+        "length": 0.4,
+        "width": 0.3,
+        "height": 0.3,
+        "randomSize": false,
+        "mass": 2,
+        "disable": false,
+        "release": "interval",
+        "keepSpacing": true,
+        "conveyorId": "pt_1",
+        "runTag": "MAIN.Motor",
+        "countTag": "MAIN.Spawned"
+      }
+    },
+    {
+      "id": "pt_3",
+      "name": "Batch photoeye",
+      "type": "part",
+      "packageId": "oip.diffuse-sensor",
+      "position": [
+        4,
+        0.78,
+        -0.457
+      ],
+      "rotationY": 0,
+      "params": {
+        "maxRange": 0.8400000000000001,
+        "mode": "diffuse",
+        "showBeam": true,
+        "normallyClosed": false,
+        "mark": "",
+        "tag": "MAIN.PartSensor"
+      }
+    },
+    {
+      "id": "pt_4",
+      "name": "START",
+      "parent": "pt_1",
+      "type": "part",
+      "packageId": "oip.push-button",
+      "position": [
+        0.7999999999999998,
+        0.8,
+        -0.43000000000000005
+      ],
+      "rotationY": 3.141592653589793,
+      "params": {
+        "emergencyStop": false,
+        "text": "START",
+        "buttonColor": "#169b45",
+        "momentary": true,
+        "startPressed": false,
+        "startStruck": false,
+        "normallyClosed": false,
+        "lampSource": "press",
+        "tag": "MAIN.StartPB",
+        "lampTag": ""
+      }
+    },
+    {
+      "id": "pt_5",
+      "name": "STOP",
+      "parent": "pt_1",
+      "type": "part",
+      "packageId": "oip.push-button",
+      "position": [
+        1.4000000000000004,
+        0.8,
+        -0.43000000000000005
+      ],
+      "rotationY": 3.141592653589793,
+      "params": {
+        "emergencyStop": false,
+        "text": "STOP",
+        "buttonColor": "#b3140f",
+        "momentary": true,
+        "startPressed": false,
+        "startStruck": false,
+        "normallyClosed": true,
+        "lampSource": "press",
+        "tag": "MAIN.StopNC",
+        "lampTag": ""
+      }
+    },
+    {
+      "id": "pt_6",
+      "name": "E-STOP",
+      "parent": "pt_1",
+      "type": "part",
+      "packageId": "oip.push-button",
+      "position": [
+        2.0000000000000004,
+        0.8,
+        -0.43000000000000005
+      ],
+      "rotationY": 3.141592653589793,
+      "params": {
+        "emergencyStop": true,
+        "text": "E-STOP",
+        "buttonColor": "#b3140f",
+        "momentary": true,
+        "startPressed": false,
+        "startStruck": false,
+        "normallyClosed": false,
+        "lampSource": "press",
+        "tag": "MAIN.EStopHealthy",
+        "lampTag": ""
+      }
+    },
+    {
+      "id": "pt_7",
+      "name": "RESET COUNT",
+      "parent": "pt_1",
+      "type": "part",
+      "packageId": "oip.push-button",
+      "position": [
+        2.6,
+        0.8,
+        -0.43000000000000005
+      ],
+      "rotationY": 3.141592653589793,
+      "params": {
+        "emergencyStop": false,
+        "text": "RESET",
+        "buttonColor": "#2879c9",
+        "momentary": true,
+        "startPressed": false,
+        "startStruck": false,
+        "normallyClosed": false,
+        "lampSource": "press",
+        "tag": "MAIN.CountReset",
+        "lampTag": ""
+      }
+    },
+    {
+      "id": "pt_8",
+      "name": "HORN command indicator",
+      "parent": "pt_1",
+      "type": "part",
+      "packageId": "oip.push-button",
+      "position": [
+        3.2,
+        0.8,
+        -0.43000000000000005
+      ],
+      "rotationY": 3.141592653589793,
+      "params": {
+        "emergencyStop": false,
+        "text": "HORN",
+        "buttonColor": "#e6aa00",
+        "momentary": true,
+        "startPressed": false,
+        "startStruck": false,
+        "normallyClosed": false,
+        "lampSource": "tag",
+        "tag": "",
+        "lampTag": "MAIN.Horn"
+      }
+    },
+    {
+      "id": "pt_9",
+      "name": "MOTOR command indicator",
+      "parent": "pt_1",
+      "type": "part",
+      "packageId": "oip.push-button",
+      "position": [
+        3.8,
+        0.8,
+        -0.43000000000000005
+      ],
+      "rotationY": 3.141592653589793,
+      "params": {
+        "emergencyStop": false,
+        "text": "MOTOR",
+        "buttonColor": "#159447",
+        "momentary": true,
+        "startPressed": false,
+        "startStruck": false,
+        "normallyClosed": false,
+        "lampSource": "tag",
+        "tag": "",
+        "lampTag": "MAIN.Motor"
+      }
+    },
+    {
+      "id": "pt_10",
+      "name": "BATCH 10 command indicator",
+      "parent": "pt_1",
+      "type": "part",
+      "packageId": "oip.push-button",
+      "position": [
+        4.4,
+        0.8,
+        -0.43000000000000005
+      ],
+      "rotationY": 3.141592653589793,
+      "params": {
+        "emergencyStop": false,
+        "text": "BATCH 10",
+        "buttonColor": "#2879c9",
+        "momentary": true,
+        "startPressed": false,
+        "startStruck": false,
+        "normallyClosed": false,
+        "lampSource": "tag",
+        "tag": "",
+        "lampTag": "MAIN.BatchLamp"
+      }
+    },
+    {
+      "id": "pt_11",
+      "name": "Tracked witness box",
+      "type": "part",
+      "packageId": "oip.box",
+      "position": [
+        1.2,
+        1.15,
+        0
+      ],
+      "rotationY": 0,
+      "params": {
+        "length": 0.4,
+        "width": 0.3,
+        "height": 0.3,
+        "mass": 2,
+        "color": "#ffffff"
+      }
+    },
+    {
+      "id": "pt_12",
+      "name": "Completed product destination",
+      "type": "part",
+      "packageId": "oip.despawner",
+      "position": [
+        5.2,
+        0.7,
+        0
+      ],
+      "rotationY": 0,
+      "params": {
+        "length": 1.2,
+        "width": 1,
+        "height": 1.5,
+        "countOnly": "",
+        "showReadout": false,
+        "countTag": "MAIN.Delivered",
+        "rateTag": "",
+        "cycleTag": "",
+        "blockTag": ""
+      }
+    }
+  ]
+}
