@@ -1,0 +1,79 @@
+{
+  "name": "04-stop-during-horn",
+  "duration": 10,
+  "scanMs": 10,
+  "inputs": [
+    {
+      "at": 0.5,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 0.8,
+      "tag": "MAIN.StartPB",
+      "value": false
+    },
+    {
+      "at": 1.5,
+      "tag": "MAIN.StopNC",
+      "value": false
+    },
+    {
+      "at": 3,
+      "tag": "MAIN.StopNC",
+      "value": true
+    },
+    {
+      "at": 4.5,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 4.8,
+      "tag": "MAIN.StartPB",
+      "value": false
+    }
+  ],
+  "checks": [
+    {
+      "always": true,
+      "from": 0,
+      "until": 7.4,
+      "tag": "MAIN.Motor",
+      "equals": false
+    },
+    {
+      "at": 2,
+      "tag": "MAIN.Horn",
+      "equals": false
+    },
+    {
+      "at": 4,
+      "tag": "MAIN.RunReq",
+      "equals": false
+    },
+    {
+      "always": true,
+      "from": 4.7,
+      "until": 7.4,
+      "tag": "MAIN.Horn",
+      "equals": true
+    },
+    {
+      "at": 7.8,
+      "tag": "MAIN.Motor",
+      "equals": true
+    },
+    {
+      "at": 7,
+      "probe": {
+        "pose": {
+          "part": "pt_11",
+          "axis": "x"
+        }
+      },
+      "near": 1.2,
+      "tolerance": 0.1
+    }
+  ]
+}

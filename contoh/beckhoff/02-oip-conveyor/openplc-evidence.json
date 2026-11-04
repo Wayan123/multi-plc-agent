@@ -1,0 +1,805 @@
+{
+  "mode": "openplc",
+  "programIdentity": {
+    "source_sha256": "256e2a8a27ab8f06c7500f0820735d73607a52b0b49bd1137a8fed3729db49c7",
+    "control_body_sha256": "6afc2488bb7b200850733b02346f0061fbe85b43358966ef704c0cf6e085ca3c",
+    "located_export_sha256": "a88b3929072c3405969563e796217af2dc55b8fad1386520ebd8c7983d14c98b",
+    "zip_sha256": "9460d07a9ded153ae9d9f92d8651ca6739022d66977467d2e2da329b36c50a12",
+    "observer": "CountValue mirrors the real CTU CV; RunReq is located in output image; control statements unchanged"
+  },
+  "clock": "external PLC wall clock; physics paced at 60Hz; actual transport I/O; no in-process PLC evaluator",
+  "shared_spec_files": [
+    "tests/01_-_start_warning_and_physical_transfer.test.json",
+    "tests/02-stop-recovery.test.json",
+    "tests/03-estop-recovery.test.json",
+    "tests/04-stop-during-horn.test.json",
+    "tests/05-batch-ten-reset.test.json",
+    "tests/06-sensor-stuck-high.test.json",
+    "tests/07-jam-and-release.test.json",
+    "tests/08-comms-off-and-recovery.test.json",
+    "tests/09_-_held_photoeye_must_not_recount_on_restart.test.json"
+  ],
+  "io_fault_scope": "commsLoss is the saved safe-off I/O injection, not transport disconnection",
+  "transport": {
+    "requests": {
+      "2": 7589,
+      "4": 15178,
+      "15": 7589,
+      "16": 7589
+    },
+    "exceptions": 0
+  },
+  "ok": true,
+  "tests": [
+    {
+      "file": "tests/01_-_start_warning_and_physical_transfer.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "always": true,
+            "until": 3.4,
+            "tag": "MAIN.Motor",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=0s and t=3.4s"
+        },
+        {
+          "check": {
+            "always": true,
+            "from": 0.6,
+            "until": 3.4,
+            "tag": "MAIN.Horn",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Horn stayed = true between t=0.6s and t=3.4s"
+        },
+        {
+          "check": {
+            "at": 3.7,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=3.7s"
+        },
+        {
+          "check": {
+            "at": 3.7,
+            "tag": "MAIN.Horn",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Horn = false at t=3.7s"
+        },
+        {
+          "check": {
+            "eventually": true,
+            "from": 4,
+            "within": 14,
+            "tag": "MAIN.PartSensor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.PartSensor reached = true at t=8.82s"
+        },
+        {
+          "check": {
+            "eventually": true,
+            "from": 4,
+            "within": 14,
+            "probe": {
+              "passed": {
+                "zone": {
+                  "min": [
+                    3.5,
+                    0.8,
+                    -0.4
+                  ],
+                  "max": [
+                    3.9,
+                    1.6,
+                    0.4
+                  ]
+                }
+              }
+            },
+            "min": 1
+          },
+          "ok": true,
+          "detail": "passed(zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) reached \u2265 1 at t=8.20s"
+        },
+        {
+          "check": {
+            "at": 2,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "near": 1.2,
+            "tolerance": 0.1
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 1.2 (\u00b10.1) at t=2s"
+        },
+        {
+          "check": {
+            "at": 10,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "min": 3.8
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 3.8 at t=10s"
+        },
+        {
+          "check": {
+            "at": 14,
+            "probe": {
+              "count": {
+                "zone": {
+                  "min": [
+                    5,
+                    0,
+                    -0.8
+                  ],
+                  "max": [
+                    7,
+                    0.5,
+                    0.8
+                  ]
+                }
+              }
+            },
+            "equals": 0
+          },
+          "ok": true,
+          "detail": "count(zone [5, 0, -0.8]..[7, 0.5, 0.8]) = 0 at t=14s"
+        }
+      ],
+      "worst_lag_ms": 28.940733333334112,
+      "facts": []
+    },
+    {
+      "file": "tests/02-stop-recovery.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "at": 5,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=5s"
+        },
+        {
+          "check": {
+            "always": true,
+            "from": 6.1,
+            "until": 12.9,
+            "tag": "MAIN.Motor",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=6.1s and t=12.9s"
+        },
+        {
+          "check": {
+            "at": 9.5,
+            "tag": "MAIN.RunReq",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.RunReq = false at t=9.5s"
+        },
+        {
+          "check": {
+            "always": true,
+            "from": 10.2,
+            "until": 12.9,
+            "tag": "MAIN.Horn",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Horn stayed = true between t=10.2s and t=12.9s"
+        },
+        {
+          "check": {
+            "at": 13.3,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=13.3s"
+        },
+        {
+          "check": {
+            "at": 9,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "max": 2.8
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2264 2.8 at t=9s"
+        },
+        {
+          "check": {
+            "at": 14.5,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "min": 2.8
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 2.8 at t=14.5s"
+        }
+      ],
+      "worst_lag_ms": 22.593433333329358,
+      "facts": []
+    },
+    {
+      "file": "tests/03-estop-recovery.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "at": 5,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=5s"
+        },
+        {
+          "check": {
+            "always": true,
+            "from": 6.1,
+            "until": 12.9,
+            "tag": "MAIN.Motor",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=6.1s and t=12.9s"
+        },
+        {
+          "check": {
+            "at": 9.5,
+            "tag": "MAIN.RunReq",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.RunReq = false at t=9.5s"
+        },
+        {
+          "check": {
+            "always": true,
+            "from": 10.2,
+            "until": 12.9,
+            "tag": "MAIN.Horn",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Horn stayed = true between t=10.2s and t=12.9s"
+        },
+        {
+          "check": {
+            "at": 13.3,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=13.3s"
+        },
+        {
+          "check": {
+            "at": 9,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "max": 2.8
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2264 2.8 at t=9s"
+        },
+        {
+          "check": {
+            "at": 14.5,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "min": 2.8
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 2.8 at t=14.5s"
+        }
+      ],
+      "worst_lag_ms": 22.387266666667074,
+      "facts": []
+    },
+    {
+      "file": "tests/04-stop-during-horn.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "always": true,
+            "from": 0,
+            "until": 7.4,
+            "tag": "MAIN.Motor",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=0s and t=7.4s"
+        },
+        {
+          "check": {
+            "at": 2,
+            "tag": "MAIN.Horn",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Horn = false at t=2s"
+        },
+        {
+          "check": {
+            "at": 4,
+            "tag": "MAIN.RunReq",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.RunReq = false at t=4s"
+        },
+        {
+          "check": {
+            "always": true,
+            "from": 4.7,
+            "until": 7.4,
+            "tag": "MAIN.Horn",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Horn stayed = true between t=4.7s and t=7.4s"
+        },
+        {
+          "check": {
+            "at": 7.8,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=7.8s"
+        },
+        {
+          "check": {
+            "at": 7,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "near": 1.2,
+            "tolerance": 0.1
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 1.2 (\u00b10.1) at t=7s"
+        }
+      ],
+      "worst_lag_ms": 21.871966666661137,
+      "facts": []
+    },
+    {
+      "file": "tests/05-batch-ten-reset.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "at": 30,
+            "tag": "MAIN.BatchCounter.CV",
+            "equals": 10
+          },
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 10 at t=30s"
+        },
+        {
+          "check": {
+            "at": 30,
+            "tag": "MAIN.BatchLamp",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.BatchLamp = true at t=30s"
+        },
+        {
+          "check": {
+            "at": 30,
+            "tag": "MAIN.Motor",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = false at t=30s"
+        },
+        {
+          "check": {
+            "at": 30,
+            "probe": {
+              "passed": {
+                "zone": {
+                  "min": [
+                    3.5,
+                    0.8,
+                    -0.4
+                  ],
+                  "max": [
+                    3.9,
+                    1.6,
+                    0.4
+                  ]
+                }
+              }
+            },
+            "min": 10
+          },
+          "ok": true,
+          "detail": "passed(zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) \u2265 10 at t=30s"
+        },
+        {
+          "check": {
+            "at": 33,
+            "tag": "MAIN.BatchCounter.CV",
+            "equals": 0
+          },
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 0 at t=33s"
+        },
+        {
+          "check": {
+            "at": 33,
+            "tag": "MAIN.BatchLamp",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.BatchLamp = false at t=33s"
+        },
+        {
+          "check": {
+            "always": true,
+            "from": 32.5,
+            "until": 35,
+            "tag": "MAIN.Motor",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=32.5s and t=35s"
+        },
+        {
+          "check": {
+            "at": 30,
+            "probe": {
+              "count": {
+                "zone": {
+                  "min": [
+                    5,
+                    0,
+                    -0.8
+                  ],
+                  "max": [
+                    7,
+                    0.5,
+                    0.8
+                  ]
+                }
+              }
+            },
+            "equals": 0
+          },
+          "ok": true,
+          "detail": "count(zone [5, 0, -0.8]..[7, 0.5, 0.8]) = 0 at t=30s"
+        }
+      ],
+      "worst_lag_ms": 22.076466666672786,
+      "facts": []
+    },
+    {
+      "file": "tests/06-sensor-stuck-high.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "always": true,
+            "from": 7.1,
+            "until": 11.8,
+            "tag": "MAIN.PartSensor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.PartSensor stayed = true between t=7.1s and t=11.8s"
+        },
+        {
+          "check": {
+            "at": 11.5,
+            "tag": "MAIN.BatchCounter.CV",
+            "equals": 1
+          },
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=11.5s"
+        },
+        {
+          "check": {
+            "at": 11.5,
+            "probe": {
+              "passed": {
+                "zone": {
+                  "min": [
+                    3.5,
+                    0.8,
+                    -0.4
+                  ],
+                  "max": [
+                    3.9,
+                    1.6,
+                    0.4
+                  ]
+                }
+              }
+            },
+            "min": 2
+          },
+          "ok": true,
+          "detail": "passed(zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) \u2265 2 at t=11.5s"
+        },
+        {
+          "check": {
+            "at": 16,
+            "tag": "MAIN.BatchCounter.CV",
+            "min": 2
+          },
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV \u2265 2 at t=16s"
+        }
+      ],
+      "worst_lag_ms": 22.646233333337477,
+      "facts": []
+    },
+    {
+      "file": "tests/07-jam-and-release.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "at": 8,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=8s"
+        },
+        {
+          "check": {
+            "at": 8,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "near": 2.6,
+            "tolerance": 0.1
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 2.6 (\u00b10.1) at t=8s"
+        },
+        {
+          "check": {
+            "at": 9.8,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "near": 2.6,
+            "tolerance": 0.1
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2248 2.6 (\u00b10.1) at t=9.8s"
+        },
+        {
+          "check": {
+            "eventually": true,
+            "from": 10,
+            "within": 18,
+            "probe": {
+              "passed": {
+                "part": "pt_11",
+                "zone": {
+                  "min": [
+                    3.5,
+                    0.8,
+                    -0.4
+                  ],
+                  "max": [
+                    3.9,
+                    1.6,
+                    0.4
+                  ]
+                }
+              }
+            },
+            "min": 1
+          },
+          "ok": true,
+          "detail": "passed(part pt_11, zone [3.5, 0.8, -0.4]..[3.9, 1.6, 0.4]) reached \u2265 1 at t=11.83s"
+        }
+      ],
+      "worst_lag_ms": 22.353800000011688,
+      "facts": [
+        {
+          "id": 1,
+          "kind": "stalled",
+          "t": 7.233333333333333,
+          "at": [
+            2.206,
+            0.945,
+            0
+          ],
+          "cargo": 2,
+          "part": "pt_1",
+          "boxes": 2,
+          "speed": 0.5,
+          "message": "2 boxes (first box 2) sat still on 'Conveyor A' (pt_1) while it ran (speed 0.50) for 2.8 s",
+          "duration": 2.817
+        },
+        {
+          "id": 2,
+          "kind": "flicker",
+          "t": 13.25,
+          "at": [
+            4,
+            0.88,
+            -0.15
+          ],
+          "cargo": 2,
+          "part": "pt_3",
+          "link": "lens",
+          "gap": 0.017,
+          "tags": [
+            "MAIN.PartSensor"
+          ],
+          "message": "'Batch photoeye' (pt_3) beam 'lens' read clear for 17 ms between two blocked periods by box 2; MAIN.PartSensor toggled"
+        }
+      ]
+    },
+    {
+      "file": "tests/08-comms-off-and-recovery.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "at": 5,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=5s"
+        },
+        {
+          "check": {
+            "always": true,
+            "from": 6.1,
+            "until": 12.9,
+            "tag": "MAIN.Motor",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.Motor stayed = false between t=6.1s and t=12.9s"
+        },
+        {
+          "check": {
+            "at": 9.5,
+            "tag": "MAIN.RunReq",
+            "equals": false
+          },
+          "ok": true,
+          "detail": "MAIN.RunReq = false at t=9.5s"
+        },
+        {
+          "check": {
+            "at": 13.3,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=13.3s"
+        },
+        {
+          "check": {
+            "at": 9,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "max": 2.8
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2264 2.8 at t=9s"
+        },
+        {
+          "check": {
+            "at": 14.5,
+            "probe": {
+              "pose": {
+                "part": "pt_11",
+                "axis": "x"
+              }
+            },
+            "min": 2.8
+          },
+          "ok": true,
+          "detail": "pose(pt_11.x) \u2265 2.8 at t=14.5s"
+        }
+      ],
+      "worst_lag_ms": 21.86553333334996,
+      "facts": []
+    },
+    {
+      "file": "tests/09_-_held_photoeye_must_not_recount_on_restart.test.json",
+      "ok": true,
+      "checks": [
+        {
+          "check": {
+            "at": 5,
+            "tag": "MAIN.BatchCounter.CV",
+            "equals": 1
+          },
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=5s"
+        },
+        {
+          "check": {
+            "at": 14,
+            "tag": "MAIN.Motor",
+            "equals": true
+          },
+          "ok": true,
+          "detail": "MAIN.Motor = true at t=14s"
+        },
+        {
+          "check": {
+            "at": 14,
+            "tag": "MAIN.BatchCounter.CV",
+            "equals": 1
+          },
+          "ok": true,
+          "detail": "MAIN.BatchCounter.CV = 1 at t=14s"
+        }
+      ],
+      "worst_lag_ms": 22.19156666668522,
+      "facts": []
+    }
+  ]
+}

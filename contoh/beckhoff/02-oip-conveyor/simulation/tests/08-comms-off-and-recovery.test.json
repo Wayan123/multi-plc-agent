@@ -1,0 +1,80 @@
+{
+  "name": "08-comms-off-and-recovery",
+  "duration": 15,
+  "scanMs": 10,
+  "inputs": [
+    {
+      "at": 0.5,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 0.8,
+      "tag": "MAIN.StartPB",
+      "value": false
+    },
+    {
+      "at": 10,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 10.3,
+      "tag": "MAIN.StartPB",
+      "value": false
+    }
+  ],
+  "faults": [
+    {
+      "at": 6,
+      "until": 9,
+      "kind": "commsLoss",
+      "inputs": "off",
+      "outputs": "off"
+    }
+  ],
+  "checks": [
+    {
+      "at": 5,
+      "tag": "MAIN.Motor",
+      "equals": true
+    },
+    {
+      "always": true,
+      "from": 6.1,
+      "until": 12.9,
+      "tag": "MAIN.Motor",
+      "equals": false
+    },
+    {
+      "at": 9.5,
+      "tag": "MAIN.RunReq",
+      "equals": false
+    },
+    {
+      "at": 13.3,
+      "tag": "MAIN.Motor",
+      "equals": true
+    },
+    {
+      "at": 9,
+      "probe": {
+        "pose": {
+          "part": "pt_11",
+          "axis": "x"
+        }
+      },
+      "max": 2.8
+    },
+    {
+      "at": 14.5,
+      "probe": {
+        "pose": {
+          "part": "pt_11",
+          "axis": "x"
+        }
+      },
+      "min": 2.8
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "target": "TwinCAT RT (x64), offline engineering only",
+  "rungs": 8,
+  "ordinary_variables": 14,
+  "declarations_including_function_blocks": 16,
+  "write": {
+    "ok": true,
+    "saved_closed_reopened": true,
+    "errors": 0,
+    "warnings": 0,
+    "failed_projects": 0,
+    "logic_matches": true,
+    "declarations_match": true,
+    "task_bound": true,
+    "platform_matches": true,
+    "owned_host_exited": true,
+    "online_operations": 0
+  },
+  "independent_export": {
+    "ok": true,
+    "native_export_sha256": "51050112133dc837df64c7a868c48a50cf136223f6e5538e02ab5435a0e728b4",
+    "logic_matches": true,
+    "declarations_match": true,
+    "task_bound": true,
+    "owned_host_exited": true,
+    "online_operations": 0
+  },
+  "fresh_host_build": {
+    "ok": true,
+    "errors": 0,
+    "warnings": 0,
+    "failed_projects": 0,
+    "platform_matches": true,
+    "owned_host_exited": true,
+    "online_operations": 0
+  },
+  "runtime_activated": false,
+  "vendor_simulation": false,
+  "hardware": false
+}

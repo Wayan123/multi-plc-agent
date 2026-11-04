@@ -1,0 +1,142 @@
+{
+  "id": "oip.diffuse-sensor",
+  "name": "Photo Eye",
+  "category": "Devices",
+  "geometry": {
+    "kind": "rig",
+    "links": [
+      {
+        "name": "lens",
+        "shape": {
+          "kind": "frame"
+        },
+        "offset": [
+          0,
+          0.1,
+          0.037
+        ],
+        "beam": {
+          "range": 10,
+          "rangeParam": "maxRange",
+          "showParam": "showBeam"
+        }
+      },
+      {
+        "name": "led",
+        "shape": {
+          "kind": "box",
+          "size": [
+            0.014,
+            0.008,
+            0.012
+          ]
+        },
+        "offset": [
+          0,
+          0.124,
+          0.034
+        ],
+        "lamps": [
+          {
+            "emissive": [
+              1,
+              0.35,
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "joints": [],
+    "bounds": {
+      "length": 0.045,
+      "width": 0.073,
+      "top": 0.16
+    }
+  },
+  "materials": [
+    {
+      "id": "body",
+      "color": [
+        0.63770563,
+        0.21222135,
+        0.03189377
+      ],
+      "metalness": 0.511,
+      "roughness": 0.361
+    },
+    {
+      "id": "black",
+      "color": [
+        0.00232198,
+        0.00232198,
+        0.00232198
+      ],
+      "metalness": 0,
+      "roughness": 0.55
+    },
+    {
+      "id": "lens",
+      "color": [
+        0.00232198,
+        0.00116099,
+        0.00116099
+      ],
+      "metalness": 0,
+      "roughness": 0.35
+    },
+    {
+      "id": "pot",
+      "color": [
+        0.26327341,
+        0.26327341,
+        0.26327341
+      ],
+      "metalness": 0.3,
+      "roughness": 0.45
+    },
+    {
+      "id": "steel",
+      "color": [
+        0.47699978,
+        0.50707851,
+        0.53823552
+      ],
+      "metalness": 0.8,
+      "roughness": 0.38
+    },
+    {
+      "id": "reflector",
+      "color": [
+        0.52252155,
+        0.00309598,
+        0.00232198
+      ],
+      "metalness": 0.1,
+      "roughness": 0.25
+    }
+  ],
+  "snap": {
+    "mounts": [
+      {
+        "at": [
+          0,
+          0,
+          0.037
+        ],
+        "accepts": "conveyorGuard",
+        "face": "in",
+        "outwardOffset": 0.02,
+        "yOffset": 0.02,
+        "fitRangeParam": "maxRange"
+      }
+    ]
+  },
+  "origin": {
+    "app": "v2:15090:3xav7fzdrw"
+  },
+  "sdk": {
+    "level": 13,
+    "of": "v2:15090:3xav7fzdrw"
+  }
+}

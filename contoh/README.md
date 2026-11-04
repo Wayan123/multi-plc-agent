@@ -30,6 +30,12 @@ The original [seven Omron CX-Programmer examples](omron/README.md) remain availa
 - [ ] **Mitsubishi variants in this catalog.** The existing conveyor demonstration is not evidence that these new teaching cases were compiled/read back in a fresh GX Works2 fixture. No new support claim is inferred from it.
 - [ ] **Delta SV3/DIADesigner and Beckhoff CX7000.** Delta cases use WPLSoft DVP-SS2; Beckhoff cases use TwinCAT RT x64. Previously unverified target families remain unchecked.
 
+## Conveyor process-simulation pilot
+
+The [Beckhoff + Open Industry conveyor pilot](beckhoff/02-oip-conveyor/) adds a separate measured example: eight native LD rungs with save/reopen, matching independent export and 0 native errors / 0 warnings. The same nine scenarios / 54 checks passed on OIP IEC/Jolt, real OpenPLC v4.3.2 over Modbus TCP and licensed native Beckhoff Usermode Runtime 1.27.1 over ADS. Its MCP CLI recreates the scene and rejects an E-stop-interlock mutant in a separate internal-simulation project. A held-photoeye restart regression exposed and corrected duplicate counting in the new pilot.
+
+The GIF shows **OIP internal IEC/Jolt execution**, not a native-runtime recording. OpenPLC and Beckhoff execution are evidenced separately by transport, tag and physical-cargo traces. The first native transfer smoke missed a timing deadline; a later complete run passed with unchanged controller/task/assertions, so no deterministic usermode timing is promised. ADS runner shutdown was independently red/green tested to clear active commands and reset the counter. Physical I/O, CX7000/ARM and hardware remain unverified. This pilot is distinct from the 23 capability-adapted teaching cases above, whose evidence levels are unchanged.
+
 ## Shared behavior specification
 
 ### 01 and 02: start/stop and a three-second horn

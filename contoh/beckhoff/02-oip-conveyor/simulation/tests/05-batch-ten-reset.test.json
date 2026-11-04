@@ -1,0 +1,101 @@
+{
+  "name": "05-batch-ten-reset",
+  "duration": 35,
+  "scanMs": 10,
+  "inputs": [
+    {
+      "at": 0.5,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 0.8,
+      "tag": "MAIN.StartPB",
+      "value": false
+    },
+    {
+      "at": 32,
+      "tag": "MAIN.CountReset",
+      "value": true
+    },
+    {
+      "at": 32.3,
+      "tag": "MAIN.CountReset",
+      "value": false
+    }
+  ],
+  "checks": [
+    {
+      "at": 30,
+      "tag": "MAIN.BatchCounter.CV",
+      "equals": 10
+    },
+    {
+      "at": 30,
+      "tag": "MAIN.BatchLamp",
+      "equals": true
+    },
+    {
+      "at": 30,
+      "tag": "MAIN.Motor",
+      "equals": false
+    },
+    {
+      "at": 30,
+      "probe": {
+        "passed": {
+          "zone": {
+            "min": [
+              3.5,
+              0.8,
+              -0.4
+            ],
+            "max": [
+              3.9,
+              1.6,
+              0.4
+            ]
+          }
+        }
+      },
+      "min": 10
+    },
+    {
+      "at": 33,
+      "tag": "MAIN.BatchCounter.CV",
+      "equals": 0
+    },
+    {
+      "at": 33,
+      "tag": "MAIN.BatchLamp",
+      "equals": false
+    },
+    {
+      "always": true,
+      "from": 32.5,
+      "until": 35,
+      "tag": "MAIN.Motor",
+      "equals": false
+    },
+    {
+      "at": 30,
+      "probe": {
+        "count": {
+          "zone": {
+            "min": [
+              5,
+              0,
+              -0.8
+            ],
+            "max": [
+              7,
+              0.5,
+              0.8
+            ]
+          }
+        }
+      },
+      "equals": 0
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "name": "07-jam-and-release",
+  "duration": 18,
+  "scanMs": 10,
+  "inputs": [
+    {
+      "at": 0.5,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 0.8,
+      "tag": "MAIN.StartPB",
+      "value": false
+    }
+  ],
+  "faults": [
+    {
+      "at": 5,
+      "until": 10,
+      "kind": "jam",
+      "zone": {
+        "min": [
+          2.6,
+          0.8,
+          -0.4
+        ],
+        "max": [
+          2.8,
+          1.6,
+          0.4
+        ]
+      }
+    }
+  ],
+  "checks": [
+    {
+      "at": 8,
+      "tag": "MAIN.Motor",
+      "equals": true
+    },
+    {
+      "at": 8,
+      "probe": {
+        "pose": {
+          "part": "pt_11",
+          "axis": "x"
+        }
+      },
+      "near": 2.6,
+      "tolerance": 0.1
+    },
+    {
+      "at": 9.8,
+      "probe": {
+        "pose": {
+          "part": "pt_11",
+          "axis": "x"
+        }
+      },
+      "near": 2.6,
+      "tolerance": 0.1
+    },
+    {
+      "eventually": true,
+      "from": 10,
+      "within": 18,
+      "probe": {
+        "passed": {
+          "part": "pt_11",
+          "zone": {
+            "min": [
+              3.5,
+              0.8,
+              -0.4
+            ],
+            "max": [
+              3.9,
+              1.6,
+              0.4
+            ]
+          }
+        }
+      },
+      "min": 1
+    }
+  ]
+}

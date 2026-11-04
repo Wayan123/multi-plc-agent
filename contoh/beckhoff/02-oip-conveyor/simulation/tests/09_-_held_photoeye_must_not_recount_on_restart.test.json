@@ -1,0 +1,63 @@
+{
+  "name": "09 - held photoeye must not recount on restart",
+  "duration": 15,
+  "scanMs": 10,
+  "inputs": [
+    {
+      "at": 0.5,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 0.8,
+      "tag": "MAIN.StartPB",
+      "value": false
+    },
+    {
+      "at": 6,
+      "tag": "MAIN.StopNC",
+      "value": false
+    },
+    {
+      "at": 9,
+      "tag": "MAIN.StopNC",
+      "value": true
+    },
+    {
+      "at": 10,
+      "tag": "MAIN.StartPB",
+      "value": true
+    },
+    {
+      "at": 10.3,
+      "tag": "MAIN.StartPB",
+      "value": false
+    }
+  ],
+  "faults": [
+    {
+      "at": 4,
+      "until": 15,
+      "kind": "sensorStuck",
+      "part": "pt_3",
+      "value": true
+    }
+  ],
+  "checks": [
+    {
+      "at": 5,
+      "tag": "MAIN.BatchCounter.CV",
+      "equals": 1
+    },
+    {
+      "at": 14,
+      "tag": "MAIN.Motor",
+      "equals": true
+    },
+    {
+      "at": 14,
+      "tag": "MAIN.BatchCounter.CV",
+      "equals": 1
+    }
+  ]
+}

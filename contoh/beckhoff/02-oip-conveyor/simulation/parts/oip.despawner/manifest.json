@@ -1,0 +1,123 @@
+{
+  "id": "oip.despawner",
+  "name": "Despawner",
+  "category": "Products",
+  "geometry": {
+    "kind": "rig",
+    "links": [
+      {
+        "name": "mouth",
+        "shape": {
+          "kind": "box",
+          "size": [
+            2,
+            1,
+            2
+          ],
+          "sizeParams": [
+            {
+              "axis": 0,
+              "param": "length"
+            },
+            {
+              "axis": 1,
+              "param": "height"
+            },
+            {
+              "axis": 2,
+              "param": "width"
+            }
+          ]
+        },
+        "offset": [
+          0,
+          0.5,
+          0
+        ],
+        "offsetParams": [
+          {
+            "axis": 1,
+            "param": "height",
+            "scale": 0.5
+          }
+        ],
+        "color": [
+          0.6939,
+          0.0953,
+          0.0953
+        ],
+        "opacity": 0.25,
+        "outline": [
+          1,
+          0.2542,
+          0.2159
+        ],
+        "collision": "none",
+        "zone": {
+          "size": [
+            2,
+            1,
+            2
+          ],
+          "sizeParams": [
+            {
+              "axis": 0,
+              "param": "length"
+            },
+            {
+              "axis": 1,
+              "param": "height"
+            },
+            {
+              "axis": 2,
+              "param": "width"
+            }
+          ]
+        }
+      },
+      {
+        "name": "readout",
+        "showParam": "showReadout",
+        "shape": {
+          "kind": "label",
+          "textFrom": "readout",
+          "size": [
+            1.6,
+            0.36
+          ]
+        },
+        "offset": [
+          0,
+          1.01,
+          0
+        ],
+        "offsetParams": [
+          {
+            "axis": 1,
+            "param": "height",
+            "add": 0.01
+          }
+        ],
+        "rotation": [
+          -1.5707963267948966,
+          0,
+          0
+        ]
+      }
+    ],
+    "joints": [],
+    "bounds": {
+      "length": 2,
+      "width": 2,
+      "top": 1
+    }
+  },
+  "materials": [],
+  "origin": {
+    "app": "v2:4761:27zeqlirhy5"
+  },
+  "sdk": {
+    "level": 13,
+    "of": "v2:4761:27zeqlirhy5"
+  }
+}

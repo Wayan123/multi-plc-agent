@@ -1,0 +1,115 @@
+{
+  "scope": "Dedicated TwinCAT x64 Usermode Runtime; not CX7000/ARM or physical I/O",
+  "usermode_package_version": "1.27.1",
+  "native_source": "native/Engineering/AgentPLC/MAIN.TcPOU",
+  "boot_output_platform": "TwinCAT OS (x64)",
+  "native_source_matches_published": true,
+  "compiled_and_active_boot_app_match": true,
+  "sha256": {
+    "published_native_source": "41974d592fec26a66c917f668ea1178bbe93909c15600e3a1f376e23c8349130",
+    "built_native_source": "41974d592fec26a66c917f668ea1178bbe93909c15600e3a1f376e23c8349130",
+    "compiled_boot_app": "c17a443c6890d605a34534b089b061191334a2ade2391a147b3caa769c9dfe93",
+    "active_target_boot_app": "c17a443c6890d605a34534b089b061191334a2ade2391a147b3caa769c9dfe93"
+  },
+  "native_build_failed_projects": 0,
+  "activation": "Official TC1200 seven-day trial completed by operator; response file generated in private target",
+  "public_sdk_configuration_and_restart": "returned for the explicitly guarded non-kernel-local usermode target",
+  "observed_start_states": {
+    "system_port_10000": {
+      "ads_code": 0,
+      "ads_state": 5
+    },
+    "plc_port_851": {
+      "ads_code": 0,
+      "ads_state": 5
+    }
+  },
+  "main_symbols": [
+    {
+      "name": "MAIN.BatchCounter",
+      "type": "Tc2_Standard.CTU",
+      "bytes": 24
+    },
+    {
+      "name": "MAIN.BatchLamp",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.BeltRunning",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.CountReset",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.Delivered",
+      "type": "INT",
+      "bytes": 2
+    },
+    {
+      "name": "MAIN.EStopHealthy",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.Horn",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.LastPartSensor",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.Motor",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.PartPulse",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.PartSensor",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.RunReq",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.Spawned",
+      "type": "DINT",
+      "bytes": 4
+    },
+    {
+      "name": "MAIN.StartDelay",
+      "type": "Tc2_Standard.TON",
+      "bytes": 32
+    },
+    {
+      "name": "MAIN.StartPB",
+      "type": "BOOL",
+      "bytes": 1
+    },
+    {
+      "name": "MAIN.StopNC",
+      "type": "BOOL",
+      "bytes": 1
+    }
+  ],
+  "device_identifiers_license_payload_and_vendor_binaries_included": false,
+  "limits": [
+    "Boot/source digest correspondence is scoped to the saved artifacts and guarded load, not a formal equivalence proof.",
+    "Runtime RUN and symbol availability alone do not establish a scenario pass.",
+    "No physical terminals or hardware were tested."
+  ]
+}

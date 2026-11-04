@@ -26,7 +26,7 @@ A box is checked only after the tool was run on real software: program written, 
 - [x] Delta WPLSoft (DVP)
 - [x] Outseal Studio (Nano / Mega)
 - [x] Haiwell Happy (C/T/N/H)
-- [x] Beckhoff TwinCAT 3 (TwinCAT RT x64, offline LD engineering; CX7000, simulation and hardware not verified)
+- [x] Beckhoff TwinCAT 3 (x64 offline LD engineering; separate OIP/OpenPLC/ADS usermode conveyor pilot verified; CX7000 and physical hardware not verified)
 
 **Planned**
 
@@ -169,11 +169,12 @@ These use the **Control Win V3 x64 software-PLC fixture**. Named signals are log
 
 ### Beckhoff examples
 
-These use **TwinCAT RT x64**, not CX7000/ARM. Named signals are logical variables without verified terminal mapping. The conveyor includes a native source-only solution, fresh-host build/readback receipts and an actual native step GIF.
+These use **TwinCAT x64 software targets**, not CX7000/ARM. Named signals are logical variables without verified terminal mapping. The original conveyor has a native step GIF. The OIP pilot adds an eight-rung physical-edge controller, native build/readback and an actual internal-simulation GIF. Its same nine scenarios / 54 checks passed on OIP IEC/Jolt, real OpenPLC v4.3.2 over Modbus TCP and native Beckhoff Usermode Runtime 1.27.1 over ADS. The earlier native timing miss is retained; usermode timing is not deterministic. Runtime evidence applies to the pilot, not automatically to every fixture below.
 
 | Example | PLC / offline configuration | Topic |
 | --- | --- | --- |
 | [Conveyor](contoh/beckhoff/01-twincat-rt-x64-conveyor/) | TwinCAT RT x64 | Start/stop, 3 s warning horn and 10-part batch |
+| [OIP conveyor pilot](contoh/beckhoff/02-oip-conveyor/) | Native TwinCAT x64 + OIP; OpenPLC v4.3.2; Beckhoff Usermode 1.27.1 | Eight LD rungs; 9 scenarios / 54 checks on each engine; actual ADS/cargo traces; E-stop negative control; internal-simulation GIF; no hardware claim |
 | [01 - Digital I/O](contoh/beckhoff/01-digital-interlock/) | TwinCAT RT x64 | Start/stop, interlock and warning horn |
 | [02 - Digital I/O](contoh/beckhoff/02-digital-start-stop/) | TwinCAT RT x64 | Start/stop and warning horn |
 | [07 - Traffic light](contoh/beckhoff/07-traffic-light/) | TwinCAT RT x64; logical lamp signals | Four approaches and a pedestrian phase |
@@ -225,6 +226,13 @@ CODESYS runs headless while the agent creates the project, imports the LD progra
 ![CODESYS demo](docs/demo/demo-codesys.gif)
 
 Full-length MP4 videos (1080p) are kept on Google Drive, not on GitHub: see [docs/media.md](docs/media.md). Sysmac and Schneider recordings remain pending. The new [Delta](contoh/delta/01-dvp-ss2-conveyor/) and [Beckhoff](contoh/beckhoff/01-twincat-rt-x64-conveyor/) GIFs are explicitly native step captures, not continuous authoring videos or simulations.
+
+### Open Industry Project — conveyor simulation
+
+![Actual OIP conveyor simulation using the internal IEC and Jolt physics engines; not a Beckhoff runtime recording](contoh/beckhoff/02-oip-conveyor/media/oip-internal-conveyor.gif)
+
+Actual 30.8-second desktop recording, published as a 960×540, 5 fps GIF (1.43 MiB). Boxes move through the conveyor, photoeye and destination zone until the ten-part batch completes. The recording uses OIP's internal IEC/Jolt engine; it is not footage of the native Beckhoff runtime. The [complete example](contoh/beckhoff/02-oip-conveyor/) provides the native LD, nine scenarios / 54 checks, separate OpenPLC/ADS traces and the rejected E-stop mutant. The MP4 stays local; this preview reuses the example's single GIF rather than adding another binary.
+
 
 ## Install (Windows)
 

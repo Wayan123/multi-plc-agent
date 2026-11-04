@@ -1,0 +1,28 @@
+{
+  "id": "oip.belt-conveyor",
+  "name": "Belt Conveyor",
+  "category": "Equipment",
+  "geometry": {
+    "kind": "drawn",
+    "bounds": {
+      "length": 4,
+      "width": 1.524,
+      "top": 0.17
+    },
+    "conveys": true
+  },
+  "materials": [],
+  "conveyor": {
+    "bed": "path",
+    "surface": "belt",
+    "speedParam": "speed",
+    "frictionParam": "friction"
+  },
+  "origin": {
+    "app": "v2:74516:p5dg4evky4"
+  },
+  "sdk": {
+    "level": 13,
+    "of": "v2:74516:p5dg4evky4"
+  }
+}
